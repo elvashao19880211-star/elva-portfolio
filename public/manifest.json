@@ -1,0 +1,29 @@
+{
+  "name": "河图 · 华夏纹样传承",
+  "short_name": "河图",
+  "description": "传统纹样复原、创新设计、品牌合作与交流平台",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F3EE",
+  "theme_color": "#3F9EAC",
+  "icons": [
+    {
+      "src": "/logo/logo-square.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

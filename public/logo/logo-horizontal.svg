@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120">
+  <defs>
+    <linearGradient id="qingGradH" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3F9EAC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#358A96;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- 左侧印章图标 -->
+  <rect x="8" y="18" width="84" height="84" rx="6" fill="none" stroke="#C3A370" stroke-width="2"/>
+  <rect x="14" y="24" width="72" height="72" rx="4" fill="none" stroke="#C3A370" stroke-width="0.8" opacity="0.35"/>
+
+  <!-- 回纹装饰 — 四角 -->
+  <path d="M16 26 L16 36 L26 36 L26 41 L16 41 L16 48" fill="none" stroke="#C3A370" stroke-width="1" opacity="0.45"/>
+  <path d="M84 26 L84 36 L74 36 L74 41 L84 41 L84 48" fill="none" stroke="#C3A370" stroke-width="1" opacity="0.45"/>
+  <path d="M16 94 L16 84 L26 84 L26 79 L16 79 L16 72" fill="none" stroke="#C3A370" stroke-width="1" opacity="0.45"/>
+  <path d="M84 94 L84 84 L74 84 L74 79 L84 79 L84 72" fill="none" stroke="#C3A370" stroke-width="1" opacity="0.45"/>
+
+  <!-- 印章内 竖排"河图" -->
+  <text x="58" y="65" text-anchor="middle" dominant-baseline="central"
+        font-family="'Noto Serif SC', 'STKaiti', 'KaiTi', serif"
+        font-size="30" font-weight="600" fill="#3F9EAC">
+    河
+  </text>
+  <text x="58" y="92" text-anchor="middle" dominant-baseline="central"
+        font-family="'Noto Serif SC', 'STKaiti', 'KaiTi', serif"
+        font-size="26" font-weight="400" fill="#C3A370">
+    图
+  </text>
+
+  <!-- 左侧装饰竖线 -->
+  <line x1="106" y1="30" x2="106" y2="90" stroke="#3F9EAC" stroke-width="1.2" opacity="0.25"/>
+
+  <!-- 右侧品牌名 -->
+  <text x="122" y="58" font-family="'Noto Serif SC', 'STSong', serif"
+        font-size="34" font-weight="600" fill="#3F9EAC">
+    河图
+  </text>
+  <text x="122" y="86" font-family="'Noto Sans SC', sans-serif"
+        font-size="12" fill="#9CA3AF" letter-spacing="1">
+    HÉ TÚ · 华夏纹样传承
+  </text>
+
+  <!-- 英文小字 -->
+  <text x="122" y="103" font-family="serif" font-style="italic"
+        font-size="9" fill="#3A506B" opacity="0.3" letter-spacing="1.5">
+    Chinese Pattern Heritage
+  </text>
+</svg>

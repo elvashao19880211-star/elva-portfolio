@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@theme {
+  --color-qing: #3F9EAC;   /* 天青（再深版） */
+  --color-gold: #C3A370;   /* 淡金 */
+  --color-ink: #3A506B;    /* 墨蓝 */
+}
+
+/* ===== 基础 ===== */
+body {
+  background-color: #F5F3EE;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== 动画 ===== */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-slideDown {
+  animation: slideDown 0.25s ease-out;
+}
+
+/* ===== 选中色 ===== */
+::selection {
+  background-color: rgba(86, 193, 206, 0.25);
+  color: #3A506B;
+}
+
+/* ===== 滚动条 ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(195, 163, 112, 0.3);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(195, 163, 112, 0.5);
+}
+
+/* ===== 卡片通用 ===== */
+.card {
+  @apply bg-white rounded-xl border border-gray-100 shadow-sm transition-all duration-300;
+}
+.card:hover {
+  @apply shadow-md border-qing/20;
+}
+
+/* ===== 按钮通用 ===== */
+.btn-gold {
+  @apply inline-flex items-center justify-center px-5 py-2 rounded-full bg-gold text-white text-sm font-medium
+         transition-all duration-300 hover:bg-gold/90 hover:shadow-md active:scale-[0.97];
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center px-5 py-2 rounded-full border border-gold text-gold text-sm font-medium
+         transition-all duration-300 hover:bg-gold hover:text-white active:scale-[0.97];
+}
+
+.btn-ink {
+  @apply inline-flex items-center justify-center px-5 py-2 rounded-full bg-ink text-white text-sm font-medium
+         transition-all duration-300 hover:bg-ink/90 hover:shadow-md active:scale-[0.97];
+}
+
+/* ===== 文字渐变色 ===== */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-qing via-gold to-ink;
+}
+
+/* ===== 金色下划线装饰 ===== */
+.underline-gold {
+  background-image: linear-gradient(transparent 65%, rgba(195, 163, 112, 0.25) 65%);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s;
+}
+.underline-gold:hover {
+  background-size: 100% 100%;
+}
+
+/* ===== 字体系统 ===== */
+
+/* 页面主标题 — 首页slogan、大板块标题 */
+.heading-1 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+@media (min-width: 640px) {
+  .heading-1 { font-size: 2.5rem; }
+}
+
+/* 板块标题 — 各页面的 section title */
+.heading-2 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  line-height: 1.35;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+@media (min-width: 640px) {
+  .heading-2 { font-size: 1.75rem; }
+}
+
+/* 次级标题 — 卡片标题、弹窗标题 */
+.heading-3 {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+/* 小标题 — 分类标签、筛选区标题 */
+.heading-4 {
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+/* 正文（大）— 页面描述文字 */
+.body-lg {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  color: #666;
+}
+
+/* 正文（中）— 卡片说明文字 */
+.body-md {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  letter-spacing: 0.02em;
+  color: #888;
+}
+
+/* 正文（小）— 辅助信息 */
+.body-sm {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #999;
+}
