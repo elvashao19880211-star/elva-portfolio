@@ -8,13 +8,37 @@ import FilterSidebar from '../../../components/FilterSidebar';
 import PatternDetail from '../../../components/PatternDetail';
 import { revivalPatterns, type RevivalPattern } from './data';
 
+const DYNASTY_ORDER: Record<string, number> = {
+  '新石器时代': 1,
+  '商周': 2,
+  '西周': 3,
+  '春秋': 4,
+  '汉代': 5,
+  '魏晋南北朝': 6,
+  '北凉': 7,
+  '北朝': 8,
+  '西魏': 9,
+  '唐代': 10,
+  '初唐': 11,
+  '盛唐': 12,
+  '辽代': 13,
+  '宋代': 14,
+  '金代': 15,
+  '元代': 16,
+  '明代': 17,
+  '明清': 18,
+  '清代': 19,
+  '近代': 20,
+  '现代': 21,
+};
+
 export default function RevivalPatternsPage() {
   const [selected, setSelected] = useState<RevivalPattern | null>(null);
   const [dynastyFilter, setDynastyFilter] = useState<string | null>(null);
 
   const dynasties = useMemo(() => {
     const set = new Set(revivalPatterns.map((p) => p.dynasty));
-    return Array.from(set).sort();
+    return Array.from(set).sort((a, b) => (DYNASTY_ORDER[a] || 99) - (DYNASTY_ORDER[b] || 99));
   }, []);
 
   const filtered = useMemo(
