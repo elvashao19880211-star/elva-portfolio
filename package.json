@@ -1,41 +1,26 @@
 {
   "name": "elva-portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@alloc/quick-lru": "^5.2.0",
-    "@eslint-community/eslint-utils": "^4.9.1",
-    "@eslint-community/regexpp": "^4.12.2",
-    "@eslint/config-array": "^0.23.5",
-    "@humanfs/node": "^0.16.8",
-    "@humanwhocodes/retry": "^0.4.3",
-    "@tailwindcss/oxide-win32-x64-msvc": "^4.3.0",
-    "@types/estree": "^1.0.9",
-    "enhanced-resolve": "^5.21.3",
-    "jiti": "^2.7.0",
-    "lightningcss": "^1.32.0",
-    "magic-string": "^0.30.21",
-    "next": "16.2.4",
-    "postcss": "^8.5.14",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "sharp": "^0.34.5",
-    "tapable": "^2.3.3"
+    "next": "^16.2.4",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.0",
-    "@types/node": "20.19.41",
-    "@types/react": "19.2.14",
+    "@types/node": "^20.19.41",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9",
-    "eslint-config-next": "16.2.4",
+    "eslint-config-next": "^16.2.4",
     "tailwindcss": "^4.3.0",
-    "typescript": "5.9.3"
+    "typescript": "^5.9.3"
   }
 }
