@@ -39,14 +39,6 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
     };
   }, [onClose]);
 
-  const handleDownload = () => {
-    // 模拟下载
-    const a = document.createElement('a');
-    a.href = pattern.src;
-    a.download = `${pattern.title}.png`;
-    a.click();
-  };
-
   const handleBuy = () => {
     setShowBuy(true);
   };
