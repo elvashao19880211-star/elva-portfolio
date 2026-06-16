@@ -85,13 +85,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               className="object-contain p-4"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            {/* 水印 */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-              <div className="text-white/20 text-4xl font-serif font-bold rotate-[-30deg] tracking-[0.3em]">
-                河图预览
-              </div>
-            </div>
-          </div>
+         
 
           {/* 右侧：信息 */}
           <div className="w-full md:w-1/2 p-5 sm:p-7 flex flex-col gap-4 sm:gap-5">
