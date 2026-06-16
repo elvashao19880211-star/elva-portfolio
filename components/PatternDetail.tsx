@@ -85,7 +85,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               className="object-contain p-4"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-         
+          </div>
 
           {/* 右侧：信息 */}
           <div className="w-full md:w-1/2 p-5 sm:p-7 flex flex-col gap-4 sm:gap-5">
@@ -144,12 +144,6 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
 
             {/* 操作按钮 */}
             <div className="flex gap-3 mt-auto pt-4 border-t border-gray-100">
-              <button
-                onClick={handleDownload}
-                className="btn-outline flex-1 text-xs py-2.5"
-              >
-                下载水印版
-              </button>
               <button
                 onClick={handleBuy}
                 className="btn-gold flex-1 text-xs py-2.5"
