@@ -1,4 +1,4 @@
-// 复原纹样数据 — 自动生成于 2026-05-17 | 125件 | v2
+// 复原纹样数据 — 自动生成于 2026-05-17 | 120件 | v2 (移除5件元代)
 export interface RevivalPattern {
   id: string;
   title: string;
