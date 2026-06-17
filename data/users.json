@@ -1,0 +1,9 @@
+[
+  {
+    "id": "elva-admin-001",
+    "email": "elva@hetu-pattern.com",
+    "passwordHash": "$2b$10$O4auQKD1gQNbIayhcjDxLed1EEjrJhxKmRXs3J2RpDGMCmkMrjMbm",
+    "nickname": "河图",
+    "createdAt": "2026-06-17T04:00:00.000Z"
+  }
+]
