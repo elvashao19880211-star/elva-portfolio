@@ -13,8 +13,6 @@ function LoginForm() {
   const [account, setAccount] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [emailConfirm, setEmailConfirm] = useState('');
-  const [phoneConfirm, setPhoneConfirm] = useState('');
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -102,12 +100,10 @@ function LoginForm() {
 
     if (regType === 'email') {
       if (!email) { setError('请填写邮箱'); return; }
-      if (email !== emailConfirm) { setError('两次邮箱不一致'); return; }
       if (!verificationCode) { setError('请输入验证码'); return; }
     }
-    if (regType === 'phone') {
-      if (!phone) { setError('请填写手机号'); return; }
-      if (phone !== phoneConfirm) { setError('两次手机号不一致'); return; }
+    if (regType === 'phone' && !phone) {
+      setError('请填写手机号'); return;
     }
 
     setLoading(true);
@@ -246,20 +242,10 @@ function LoginForm() {
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
                     />
                   </div>
-                  <div>
-                    <label className="text-xs text-gray-500 mb-1.5 block">确认邮箱 <span className="text-red-400">*</span></label>
-                    <input
-                      type="email"
-                      value={emailConfirm}
-                      onChange={(e) => setEmailConfirm(e.target.value)}
-                      placeholder="再次输入邮箱"
-                      required
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
-                    />
-                  </div>
 
                   {/* 邮箱验证码 */}
                   <div>
+
                     <label className="text-xs text-gray-500 mb-1.5 block">邮箱验证码 <span className="text-red-400">*</span></label>
                     <div className="flex gap-2">
                       <input
@@ -291,17 +277,6 @@ function LoginForm() {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="13812345678"
-                      required
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-xs text-gray-500 mb-1.5 block">确认手机号 <span className="text-red-400">*</span></label>
-                    <input
-                      type="tel"
-                      value={phoneConfirm}
-                      onChange={(e) => setPhoneConfirm(e.target.value)}
-                      placeholder="再次输入手机号"
                       required
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
                     />
