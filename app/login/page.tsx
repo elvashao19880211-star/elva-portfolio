@@ -348,6 +348,7 @@ function LoginForm() {
 }
 
 export default function LoginPage() {
+  // v3 - 去掉二次确认，添加验证码流程
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="w-8 h-8 border-2 border-qing border-t-transparent rounded-full animate-spin" /></div>}>
       <LoginForm />
