@@ -61,6 +61,10 @@ class JsonUserStore {
     return this.users.find(u => u.phone === phone) || null;
   }
 
+  async findByNickname(nickname: string): Promise<User | null> {
+    return this.users.find(u => u.nickname === nickname) || null;
+  }
+
   async findById(id: string): Promise<User | null> {
     return this.users.find(u => u.id === id) || null;
   }
@@ -151,15 +155,18 @@ export async function loginUser(
     return { success: false, error: '请输入账号和密码' };
   }
 
-  // 判断是邮箱还是手机号
+  // 判断是邮箱、手机号还是昵称
   const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(account);
   const isPhone = /^1\d{10}$/.test(account);
 
-  const user = isEmail
-    ? await userStore.findByEmail(account)
-    : isPhone
-    ? await userStore.findByPhone(account)
-    : null;
+  let user: User | null = null;
+  if (isEmail) {
+    user = await userStore.findByEmail(account);
+  } else if (isPhone) {
+    user = await userStore.findByPhone(account);
+  } else {
+    user = await userStore.findByNickname(account);
+  }
 
   if (!user) {
     return { success: false, error: '账号不存在' };

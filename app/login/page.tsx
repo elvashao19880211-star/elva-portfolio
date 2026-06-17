@@ -13,6 +13,8 @@ function LoginForm() {
   const [account, setAccount] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [emailConfirm, setEmailConfirm] = useState('');
+  const [phoneConfirm, setPhoneConfirm] = useState('');
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -57,13 +59,13 @@ function LoginForm() {
       return;
     }
 
-    if (regType === 'email' && !email) {
-      setError('请填写邮箱');
-      return;
+    if (regType === 'email') {
+      if (!email) { setError('请填写邮箱'); return; }
+      if (email !== emailConfirm) { setError('两次邮箱不一致'); return; }
     }
-    if (regType === 'phone' && !phone) {
-      setError('请填写手机号');
-      return;
+    if (regType === 'phone') {
+      if (!phone) { setError('请填写手机号'); return; }
+      if (phone !== phoneConfirm) { setError('两次手机号不一致'); return; }
     }
 
     setLoading(true);
@@ -157,14 +159,14 @@ function LoginForm() {
           )}
 
           {mode === 'login' ? (
-            /* 登录：一个账号框，支持邮箱或手机号 */
+            /* 登录：一个账号框，支持邮箱、手机号或昵称 */
             <div>
-              <label className="text-xs text-gray-500 mb-1.5 block">邮箱 / 手机号 <span className="text-red-400">*</span></label>
+              <label className="text-xs text-gray-500 mb-1.5 block">邮箱 / 手机号 / 昵称 <span className="text-red-400">*</span></label>
               <input
                 type="text"
                 value={account}
                 onChange={(e) => setAccount(e.target.value)}
-                placeholder="your@email.com 或 13812345678"
+                placeholder="输入任意一种方式登录"
                 required
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
               />
@@ -188,29 +190,55 @@ function LoginForm() {
               </div>
 
               {regType === 'email' ? (
-                <div>
-                  <label className="text-xs text-gray-500 mb-1.5 block">邮箱 <span className="text-red-400">*</span></label>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="your@email.com"
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
-                  />
-                </div>
+                <>
+                  <div>
+                    <label className="text-xs text-gray-500 mb-1.5 block">邮箱 <span className="text-red-400">*</span></label>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="your@email.com"
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs text-gray-500 mb-1.5 block">确认邮箱 <span className="text-red-400">*</span></label>
+                    <input
+                      type="email"
+                      value={emailConfirm}
+                      onChange={(e) => setEmailConfirm(e.target.value)}
+                      placeholder="再次输入邮箱"
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
+                    />
+                  </div>
+                </>
               ) : (
-                <div>
-                  <label className="text-xs text-gray-500 mb-1.5 block">手机号 <span className="text-red-400">*</span></label>
-                  <input
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="13812345678"
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
-                  />
-                </div>
+                <>
+                  <div>
+                    <label className="text-xs text-gray-500 mb-1.5 block">手机号 <span className="text-red-400">*</span></label>
+                    <input
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="13812345678"
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs text-gray-500 mb-1.5 block">确认手机号 <span className="text-red-400">*</span></label>
+                    <input
+                      type="tel"
+                      value={phoneConfirm}
+                      onChange={(e) => setPhoneConfirm(e.target.value)}
+                      placeholder="再次输入手机号"
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
+                    />
+                  </div>
+                </>
               )}
             </>
           )}
