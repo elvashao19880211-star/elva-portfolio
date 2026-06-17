@@ -1,19 +1,110 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Breadcrumb from '../../components/Breadcrumb';
 
 export default function LoginPage() {
-  const [mode, setMode] = useState<'login' | 'register'>('login');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [success, setSuccess] = useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get('redirect') || '/';
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [mode, setMode] = useState<'login' | 'register'>('login');
+  const [account, setAccount] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  // 注册时选择邮箱还是手机号
+  const [regType, setRegType] = useState<'email' | 'phone'>('email');
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSuccess(true);
-    setTimeout(() => setSuccess(false), 2000);
+    setError('');
+    setLoading(true);
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ account, password }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || '登录失败');
+        return;
+      }
+
+      router.push(redirect);
+      router.refresh();
+    } catch {
+      setError('网络错误，请重试');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    if (password !== confirmPassword) {
+      setError('两次密码不一致');
+      return;
+    }
+
+    if (regType === 'email' && !email) {
+      setError('请填写邮箱');
+      return;
+    }
+    if (regType === 'phone' && !phone) {
+      setError('请填写手机号');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: regType === 'email' ? email : undefined,
+          phone: regType === 'phone' ? phone : undefined,
+          password,
+          nickname,
+        }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || '注册失败');
+        return;
+      }
+
+      // 注册成功后自动登录
+      const loginRes = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          account: regType === 'email' ? email : phone,
+          password,
+        }),
+      });
+
+      if (loginRes.ok) {
+        router.push(redirect);
+        router.refresh();
+      }
+    } catch {
+      setError('网络错误，请重试');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -39,7 +130,7 @@ export default function LoginPage() {
           {(['login', 'register'] as const).map((m) => (
             <button
               key={m}
-              onClick={() => { setMode(m); setSuccess(false); }}
+              onClick={() => { setMode(m); setError(''); }}
               className={`flex-1 py-2 text-sm rounded-lg transition-all ${
                 mode === m ? 'bg-white shadow-sm text-ink font-medium' : 'text-gray-400 hover:text-ink'
               }`}
@@ -49,21 +140,83 @@ export default function LoginPage() {
           ))}
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="text-xs text-gray-500 mb-1.5 block">邮箱</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@email.com"
-              required
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
-            />
-          </div>
+        <form onSubmit={mode === 'login' ? handleLogin : handleRegister} className="space-y-4">
+          {/* 昵称（仅注册） */}
+          {mode === 'register' && (
+            <div>
+              <label className="text-xs text-gray-500 mb-1.5 block">昵称 <span className="text-red-400">*</span></label>
+              <input
+                type="text"
+                value={nickname}
+                onChange={(e) => setNickname(e.target.value)}
+                placeholder="你的昵称"
+                required
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
+              />
+            </div>
+          )}
+
+          {mode === 'login' ? (
+            /* 登录：一个账号框，支持邮箱或手机号 */
+            <div>
+              <label className="text-xs text-gray-500 mb-1.5 block">邮箱 / 手机号 <span className="text-red-400">*</span></label>
+              <input
+                type="text"
+                value={account}
+                onChange={(e) => setAccount(e.target.value)}
+                placeholder="your@email.com 或 13812345678"
+                required
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
+              />
+            </div>
+          ) : (
+            /* 注册：邮箱和手机号任选一个 */
+            <>
+              <div className="flex bg-gray-100 rounded-xl p-1 mb-1">
+                {(['email', 'phone'] as const).map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    onClick={() => { setRegType(t); setError(''); }}
+                    className={`flex-1 py-1.5 text-xs rounded-lg transition-all ${
+                      regType === t ? 'bg-white shadow-sm text-ink font-medium' : 'text-gray-400 hover:text-ink'
+                    }`}
+                  >
+                    {t === 'email' ? '📧 邮箱注册' : '📱 手机号注册'}
+                  </button>
+                ))}
+              </div>
+
+              {regType === 'email' ? (
+                <div>
+                  <label className="text-xs text-gray-500 mb-1.5 block">邮箱 <span className="text-red-400">*</span></label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your@email.com"
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
+                  />
+                </div>
+              ) : (
+                <div>
+                  <label className="text-xs text-gray-500 mb-1.5 block">手机号 <span className="text-red-400">*</span></label>
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="13812345678"
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
+                  />
+                </div>
+              )}
+            </>
+          )}
 
           <div>
-            <label className="text-xs text-gray-500 mb-1.5 block">密码</label>
+            <label className="text-xs text-gray-500 mb-1.5 block">密码 <span className="text-red-400">*</span></label>
             <input
               type="password"
               value={password}
@@ -77,7 +230,7 @@ export default function LoginPage() {
 
           {mode === 'register' && (
             <div>
-              <label className="text-xs text-gray-500 mb-1.5 block">确认密码</label>
+              <label className="text-xs text-gray-500 mb-1.5 block">确认密码 <span className="text-red-400">*</span></label>
               <input
                 type="password"
                 value={confirmPassword}
@@ -90,8 +243,14 @@ export default function LoginPage() {
             </div>
           )}
 
-          <button type="submit" className="btn-ink w-full text-sm">
-            {mode === 'login' ? '登录' : '创建账号'}
+          {error && (
+            <div className="bg-red-50 text-red-500 text-xs rounded-lg px-4 py-2.5">
+              {error}
+            </div>
+          )}
+
+          <button type="submit" disabled={loading} className="btn-ink w-full text-sm disabled:opacity-60">
+            {loading ? '处理中...' : mode === 'login' ? '登录' : '创建账号'}
           </button>
         </form>
 
@@ -112,28 +271,7 @@ export default function LoginPage() {
             </>
           )}
         </p>
-
-        <p className="text-center text-[10px] text-gray-200 mt-4">
-          （当前为演示模式，实际注册与登录接口待接入）
-        </p>
       </div>
-
-      {/* 成功浮层 */}
-      {success && (
-        <div className="fixed top-24 right-6 z-50 bg-white rounded-xl shadow-lg border border-green-100 p-4 flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-            <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <p className="text-sm font-medium text-ink">
-              {mode === 'login' ? '登录成功！' : '注册成功！'}
-            </p>
-            <p className="text-xs text-gray-400">正在跳转...</p>
-          </div>
-        </div>
-      )}
     </main>
   );
 }

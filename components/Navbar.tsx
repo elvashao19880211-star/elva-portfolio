@@ -1,7 +1,7 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
 const NAV_LINKS = [
   { label: '首页', href: '/' },
@@ -16,7 +16,16 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [user, setUser] = useState<{ nickname: string } | null>(null);
+  const [showUserMenu, setShowUserMenu] = useState(false);
+
+  useEffect(() => {
+    fetch('/api/auth/me').then(r => r.json()).then(d => {
+      if (d.user) setUser(d.user);
+    }).catch(() => {});
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
@@ -56,16 +65,49 @@ export default function Navbar() {
 
         {/* 用户区域 */}
         <div className="hidden md:flex items-center">
-          <a
-            href="/login"
-            className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors group"
-            title="登录 / 注册"
-          >
-            <svg className="w-5 h-5 text-gray-400 group-hover:text-ink transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-          </a>
+          {user ? (
+            <div className="relative">
+              <button
+                onClick={() => setShowUserMenu(!showUserMenu)}
+                className="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-gray-50 transition-colors"
+              >
+                <div className="w-7 h-7 rounded-full bg-qing flex items-center justify-center">
+                  <span className="text-white text-xs font-medium">
+                    {user.nickname.charAt(0)}
+                  </span>
+                </div>
+                <span className="text-sm text-ink">{user.nickname}</span>
+              </button>
+              {showUserMenu && (
+                <div className="absolute right-0 top-full mt-2 bg-white rounded-xl shadow-lg border border-gray-100 py-2 min-w-[120px] z-50">
+                  <a href="/member" className="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">会员中心</a>
+                  <hr className="my-1 border-gray-50" />
+                  <button
+                    onClick={async () => {
+                      await fetch('/api/auth/logout', { method: 'POST' });
+                      setUser(null);
+                      setShowUserMenu(false);
+                      router.refresh();
+                    }}
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-400 hover:bg-gray-50"
+                  >
+                    退出登录
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <a
+              href="/login"
+              className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors group"
+              title="登录 / 注册"
+            >
+              <svg className="w-5 h-5 text-gray-400 group-hover:text-ink transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </a>
+          )}
         </div>
 
         {/* 手机菜单按钮 */}
@@ -114,17 +156,39 @@ export default function Navbar() {
             );
           })}
           <hr className="my-2 border-gray-100" />
-          <a
-            href="/login"
-            onClick={() => setMobileOpen(false)}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-gray-500 hover:bg-gray-50 hover:text-ink"
-          >
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-            登录 / 注册
-          </a>
+          {user ? (
+            <>
+              <div className="flex items-center gap-2 px-4 py-2.5 text-sm text-ink">
+                <div className="w-6 h-6 rounded-full bg-qing flex items-center justify-center">
+                  <span className="text-white text-[10px] font-medium">{user.nickname.charAt(0)}</span>
+                </div>
+                {user.nickname}
+              </div>
+              <button
+                onClick={async () => {
+                  await fetch('/api/auth/logout', { method: 'POST' });
+                  setUser(null);
+                  setMobileOpen(false);
+                  router.refresh();
+                }}
+                className="block w-full text-left px-4 py-2.5 rounded-xl text-sm text-gray-400 hover:bg-gray-50"
+              >
+                退出登录
+              </button>
+            </>
+          ) : (
+            <a
+              href="/login"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-gray-500 hover:bg-gray-50 hover:text-ink"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+              登录 / 注册
+            </a>
+          )}
         </div>
       </div>
       )}
