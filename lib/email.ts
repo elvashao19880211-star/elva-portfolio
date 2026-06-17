@@ -74,7 +74,7 @@ export async function sendVerificationCode(
   params.Signature = sign(params, keySecret);
 
   const queryString = Object.keys(params).sort()
-    .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(params[k])}`)
+    .map(k => `${percentEncode(k)}=${percentEncode(params[k])}`)
     .join('&');
 
   try {
