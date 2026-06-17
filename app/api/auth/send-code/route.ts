@@ -17,14 +17,14 @@ export async function POST(req: NextRequest) {
     const result = await sendVerificationCode(email, code);
 
     if (!result.success) {
-      // 本地开发无 Resend 时仍可继续（验证码打印在控制台）
+      // 本地开发无阿里云时仍可继续（验证码打印在控制台）
       if (process.env.NODE_ENV !== 'production') {
         return NextResponse.json({ token, hint: `开发模式，验证码: ${code}` });
       }
       return NextResponse.json({ error: result.error || '发送失败，请稍后重试' }, { status: 500 });
     }
 
-    return NextResponse.json({ token });
+    return NextResponse.json({ token, sent: true });
   } catch {
     return NextResponse.json({ error: '服务器错误' }, { status: 500 });
   }

@@ -31,13 +31,17 @@ export async function sendVerificationCode(
   to: string,
   code: string
 ): Promise<{ success: boolean; error?: string }> {
-  const keyId = process.env.ALI_ACCESS_KEY_ID;
-  const keySecret = process.env.ALI_ACCESS_KEY_SECRET;
-  const account = process.env.ALI_DM_ACCOUNT; // 发件地址，如 noreply@hetu-pattern.com
+  const keyId = process.env.ALI_ACCESS_KEY_ID?.trim();
+  const keySecret = process.env.ALI_ACCESS_KEY_SECRET?.trim();
+  const account = process.env.ALI_DM_ACCOUNT?.trim(); // 发件地址，如 noreply@hetu-pattern.com
+  console.log('[DirectMail] env check:', { hasKeyId: !!keyId, hasSecret: !!keySecret, account });
 
   if (!keyId || !keySecret || !account) {
-    // 本地开发 - 控制台输出验证码
+    // 本地开发 - 控制台输出验证码，线上返回错误
     console.log(`\n📧 [DEV] 验证码: ${code} → ${to}\n`);
+    if (process.env.NODE_ENV === 'production') {
+      return { success: false, error: '邮件服务未配置，请联系管理员' };
+    }
     return { success: true };
   }
 
