@@ -14,66 +14,6 @@ export interface RevivalPattern {
 
 export const revivalPatterns: RevivalPattern[] = [
   {
-    "id": "revival-1",
-    "title": "卐字地龙纹",
-    "dynasty": "元代",
-    "era": "",
-    "culture": "",
-    "elements": [],
-    "description": "",
-    "detail": "",
-    "src": "/images/revival/元代-卐字地龙纹.png",
-    "thumbSrc": "/images/revival/thumbs/元代-卐字地龙纹.png"
-  },
-  {
-    "id": "revival-2",
-    "title": "柿蒂窠",
-    "dynasty": "元代",
-    "era": "",
-    "culture": "",
-    "elements": [],
-    "description": "",
-    "detail": "",
-    "src": "/images/revival/元代-柿蒂窠.png",
-    "thumbSrc": "/images/revival/thumbs/元代-柿蒂窠.png"
-  },
-  {
-    "id": "revival-3",
-    "title": "荷塘鸳鸯纹",
-    "dynasty": "元代",
-    "era": "",
-    "culture": "",
-    "elements": [],
-    "description": "",
-    "detail": "",
-    "src": "/images/revival/元代-荷塘鸳鸯纹.png",
-    "thumbSrc": "/images/revival/thumbs/元代-荷塘鸳鸯纹.png"
-  },
-  {
-    "id": "revival-4",
-    "title": "落花流水纹",
-    "dynasty": "元代",
-    "era": "",
-    "culture": "",
-    "elements": [],
-    "description": "",
-    "detail": "",
-    "src": "/images/revival/元代-落花流水纹.png",
-    "thumbSrc": "/images/revival/thumbs/元代-落花流水纹.png"
-  },
-  {
-    "id": "revival-5",
-    "title": "鸳鸯纹",
-    "dynasty": "元代",
-    "era": "",
-    "culture": "",
-    "elements": [],
-    "description": "",
-    "detail": "",
-    "src": "/images/revival/元代-鸳鸯纹.png",
-    "thumbSrc": "/images/revival/thumbs/元代-鸳鸯纹.png"
-  },
-  {
     "id": "revival-6",
     "title": "四人飞天",
     "dynasty": "初唐",
