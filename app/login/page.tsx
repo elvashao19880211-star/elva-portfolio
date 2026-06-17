@@ -20,8 +20,13 @@ function LoginForm() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  // 注册时选择邮箱还是手机号
   const [regType, setRegType] = useState<'email' | 'phone'>('email');
+
+  // 邮箱验证相关
+  const [sendingCode, setSendingCode] = useState(false);
+  const [codeSent, setCodeSent] = useState(false);
+  const [verificationCode, setVerificationCode] = useState('');
+  const [verificationToken, setVerificationToken] = useState('');
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,6 +55,42 @@ function LoginForm() {
     }
   };
 
+  const handleSendCode = async () => {
+    setError('');
+    if (regType === 'email' && !email) {
+      setError('请先填写邮箱');
+      return;
+    }
+    if (regType === 'phone' && !phone) {
+      setError('请先填写手机号');
+      return;
+    }
+
+    setSendingCode(true);
+    try {
+      const res = await fetch('/api/auth/send-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: regType === 'email' ? email : undefined }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || '发送失败');
+        return;
+      }
+
+      setVerificationToken(data.token);
+      setCodeSent(true);
+      // 开发模式显示验证码
+      if (data.hint) setError(`[开发模式] ${data.hint}`);
+    } catch {
+      setError('网络错误');
+    } finally {
+      setSendingCode(false);
+    }
+  };
+
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -62,6 +103,7 @@ function LoginForm() {
     if (regType === 'email') {
       if (!email) { setError('请填写邮箱'); return; }
       if (email !== emailConfirm) { setError('两次邮箱不一致'); return; }
+      if (!verificationCode) { setError('请输入验证码'); return; }
     }
     if (regType === 'phone') {
       if (!phone) { setError('请填写手机号'); return; }
@@ -79,6 +121,8 @@ function LoginForm() {
           phone: regType === 'phone' ? phone : undefined,
           password,
           nickname,
+          code: verificationCode || undefined,
+          token: verificationToken || undefined,
         }),
       });
       const data = await res.json();
@@ -172,19 +216,19 @@ function LoginForm() {
               />
             </div>
           ) : (
-            /* 注册：邮箱和手机号任选一个 */
+            /* 注册：邮箱和手机号任选 */
             <>
               <div className="flex bg-gray-100 rounded-xl p-1 mb-1">
                 {(['email', 'phone'] as const).map((t) => (
                   <button
                     key={t}
                     type="button"
-                    onClick={() => { setRegType(t); setError(''); }}
+                    onClick={() => { setRegType(t); setError(''); setCodeSent(false); setVerificationCode(''); }}
                     className={`flex-1 py-1.5 text-xs rounded-lg transition-all ${
                       regType === t ? 'bg-white shadow-sm text-ink font-medium' : 'text-gray-400 hover:text-ink'
                     }`}
                   >
-                    {t === 'email' ? '📧 邮箱注册' : '📱 手机号注册'}
+                    {t === 'email' ? '📧 邮箱' : '📱 手机号'}
                   </button>
                 ))}
               </div>
@@ -196,7 +240,7 @@ function LoginForm() {
                     <input
                       type="email"
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => { setEmail(e.target.value); setCodeSent(false); }}
                       placeholder="your@email.com"
                       required
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
@@ -212,6 +256,30 @@ function LoginForm() {
                       required
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
                     />
+                  </div>
+
+                  {/* 邮箱验证码 */}
+                  <div>
+                    <label className="text-xs text-gray-500 mb-1.5 block">邮箱验证码 <span className="text-red-400">*</span></label>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        value={verificationCode}
+                        onChange={(e) => setVerificationCode(e.target.value)}
+                        placeholder="6位数字"
+                        maxLength={6}
+                        required
+                        className="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
+                      />
+                      <button
+                        type="button"
+                        onClick={handleSendCode}
+                        disabled={sendingCode || codeSent}
+                        className="px-4 py-3 rounded-xl bg-qing text-white text-xs font-medium hover:bg-qing/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all whitespace-nowrap"
+                      >
+                        {sendingCode ? '发送中...' : codeSent ? '已发送' : '发送验证码'}
+                      </button>
+                    </div>
                   </div>
                 </>
               ) : (
@@ -272,7 +340,7 @@ function LoginForm() {
           )}
 
           {error && (
-            <div className="bg-red-50 text-red-500 text-xs rounded-lg px-4 py-2.5">
+            <div className={`rounded-lg px-4 py-2.5 text-xs ${error.startsWith('[开发模式]') ? 'bg-blue-50 text-blue-600' : 'bg-red-50 text-red-500'}`}>
               {error}
             </div>
           )}
