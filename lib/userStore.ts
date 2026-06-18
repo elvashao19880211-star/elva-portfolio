@@ -84,34 +84,58 @@ class RedisUserStore {
   }
 
   async findByEmail(email: string): Promise<User | null> {
-    const redis = await this.getClient();
-    const key = email.toLowerCase();
-    const id = await redis.get(`user:email:${key}`);
-    if (!id) return null;
-    const data = await redis.get(`user:${id}`);
-    return data ? JSON.parse(data as string) : null;
+    try {
+      const redis = await this.getClient();
+      const key = email.toLowerCase();
+      const id = await redis.get(`user:email:${key}`);
+      if (!id) return null;
+      const data = await redis.get(`user:${id}`);
+      if (!data) return null;
+      return typeof data === 'string' ? JSON.parse(data) : data;
+    } catch (e: any) {
+      console.error('Redis findByEmail error:', e.message);
+      return null;
+    }
   }
 
   async findByPhone(phone: string): Promise<User | null> {
-    const redis = await this.getClient();
-    const id = await redis.get(`user:phone:${phone}`);
-    if (!id) return null;
-    const data = await redis.get(`user:${id}`);
-    return data ? JSON.parse(data as string) : null;
+    try {
+      const redis = await this.getClient();
+      const id = await redis.get(`user:phone:${phone}`);
+      if (!id) return null;
+      const data = await redis.get(`user:${id}`);
+      if (!data) return null;
+      return typeof data === 'string' ? JSON.parse(data) : data;
+    } catch (e: any) {
+      console.error('Redis findByPhone error:', e.message);
+      return null;
+    }
   }
 
   async findByNickname(nickname: string): Promise<User | null> {
-    const redis = await this.getClient();
-    const id = await redis.get(`user:nickname:${nickname}`);
-    if (!id) return null;
-    const data = await redis.get(`user:${id}`);
-    return data ? JSON.parse(data as string) : null;
+    try {
+      const redis = await this.getClient();
+      const id = await redis.get(`user:nickname:${nickname}`);
+      if (!id) return null;
+      const data = await redis.get(`user:${id}`);
+      if (!data) return null;
+      return typeof data === 'string' ? JSON.parse(data) : data;
+    } catch (e: any) {
+      console.error('Redis findByNickname error:', e.message);
+      return null;
+    }
   }
 
   async findById(id: string): Promise<User | null> {
-    const redis = await this.getClient();
-    const data = await redis.get(`user:${id}`);
-    return data ? JSON.parse(data as string) : null;
+    try {
+      const redis = await this.getClient();
+      const data = await redis.get(`user:${id}`);
+      if (!data) return null;
+      return typeof data === 'string' ? JSON.parse(data) : data;
+    } catch (e: any) {
+      console.error('Redis findById error:', e.message);
+      return null;
+    }
   }
 
   async create(user: User): Promise<void> {
