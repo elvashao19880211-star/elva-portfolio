@@ -1,4 +1,5 @@
 import { hashPassword, verifyPassword } from './auth';
+import { Redis } from '@upstash/redis';
 
 export interface User {
   id: string;
@@ -75,7 +76,6 @@ class RedisUserStore {
 
   private async getClient() {
     if (this.redis) return this.redis;
-    const { Redis } = await import('@upstash/redis');
     this.redis = new Redis({
       url: process.env.UPSTASH_REDIS_REST_URL!,
       token: process.env.UPSTASH_REDIS_REST_TOKEN!,
