@@ -10,8 +10,11 @@ export interface User {
 }
 
 // ============================================================
-// 用户存储 - 支持本地 JSON 文件 + Vercel 生产环境
+// 用户存储 - Upstash Redis (生产) + JSON 文件 (本地开发)
 // ============================================================
+
+// 判断生产环境
+const isProd = typeof process !== 'undefined' && process.env.UPSTASH_REDIS_REST_URL;
 
 // JSON 文件存储（本地开发用）
 class JsonUserStore {
@@ -27,7 +30,6 @@ class JsonUserStore {
         const data = await fs.readFile(filePath, 'utf-8');
         this.users = JSON.parse(data);
       } catch {
-        // 文件不存在，创建空列表
         this.users = [];
       }
     } catch {
@@ -36,8 +38,6 @@ class JsonUserStore {
   }
 
   private async save() {
-    // Vercel serverless 文件系统不可写，跳过写入
-    if (process.env.VERCEL) return;
     try {
       const fs = await import('fs/promises');
       const path = await import('path');
@@ -69,16 +69,77 @@ class JsonUserStore {
   }
 }
 
-const userStore = new JsonUserStore();
+// Redis 存储（Vercel 生产环境）
+class RedisUserStore {
+  private redis: any | null = null;
 
-// 初始化（首次调用时）
+  private async getClient() {
+    if (this.redis) return this.redis;
+    const { Redis } = await import('@upstash/redis');
+    this.redis = new Redis({
+      url: process.env.UPSTASH_REDIS_REST_URL!,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+    });
+    return this.redis;
+  }
+
+  async findByEmail(email: string): Promise<User | null> {
+    const redis = await this.getClient();
+    const key = email.toLowerCase();
+    const id = await redis.get(`user:email:${key}`);
+    if (!id) return null;
+    const data = await redis.get(`user:${id}`);
+    return data ? JSON.parse(data as string) : null;
+  }
+
+  async findByPhone(phone: string): Promise<User | null> {
+    const redis = await this.getClient();
+    const id = await redis.get(`user:phone:${phone}`);
+    if (!id) return null;
+    const data = await redis.get(`user:${id}`);
+    return data ? JSON.parse(data as string) : null;
+  }
+
+  async findByNickname(nickname: string): Promise<User | null> {
+    const redis = await this.getClient();
+    const id = await redis.get(`user:nickname:${nickname}`);
+    if (!id) return null;
+    const data = await redis.get(`user:${id}`);
+    return data ? JSON.parse(data as string) : null;
+  }
+
+  async findById(id: string): Promise<User | null> {
+    const redis = await this.getClient();
+    const data = await redis.get(`user:${id}`);
+    return data ? JSON.parse(data as string) : null;
+  }
+
+  async create(user: User): Promise<void> {
+    const redis = await this.getClient();
+    const data = JSON.stringify(user);
+    await redis.set(`user:${user.id}`, data);
+
+    if (user.email) {
+      await redis.set(`user:email:${user.email.toLowerCase()}`, user.id);
+    }
+    if (user.phone) {
+      await redis.set(`user:phone:${user.phone}`, user.id);
+    }
+    // 昵称也建索引
+    await redis.set(`user:nickname:${user.nickname}`, user.id);
+  }
+}
+
+const store = isProd ? new RedisUserStore() : new JsonUserStore();
+
 let initialized = false;
 
 async function ensureInit() {
-  if (!initialized) {
-    await userStore.init();
-    initialized = true;
+  if (initialized) return;
+  if (store instanceof JsonUserStore) {
+    await store.init();
   }
+  initialized = true;
 }
 
 // ============================================================
@@ -93,7 +154,6 @@ export async function registerUser(
 ): Promise<{ success: boolean; error?: string; user?: Omit<User, 'passwordHash'> }> {
   await ensureInit();
 
-  // 邮箱或手机号至少填一个
   const useEmail = email?.trim();
   const usePhone = phone?.trim();
   if (!useEmail && !usePhone) {
@@ -113,10 +173,10 @@ export async function registerUser(
   }
 
   // 检查是否已存在
-  if (useEmail && await userStore.findByEmail(useEmail)) {
+  if (useEmail && await store.findByEmail(useEmail)) {
     return { success: false, error: '该邮箱已注册' };
   }
-  if (usePhone && await userStore.findByPhone(usePhone)) {
+  if (usePhone && await store.findByPhone(usePhone)) {
     return { success: false, error: '该手机号已注册' };
   }
 
@@ -133,7 +193,7 @@ export async function registerUser(
     createdAt: new Date().toISOString(),
   };
 
-  await userStore.create(user);
+  await store.create(user);
 
   const { passwordHash: _, ...safeUser } = user;
   return { success: true, user: safeUser };
@@ -149,17 +209,16 @@ export async function loginUser(
     return { success: false, error: '请输入账号和密码' };
   }
 
-  // 判断是邮箱、手机号还是昵称
   const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(account);
   const isPhone = /^1\d{10}$/.test(account);
 
   let user: User | null = null;
   if (isEmail) {
-    user = await userStore.findByEmail(account);
+    user = await store.findByEmail(account);
   } else if (isPhone) {
-    user = await userStore.findByPhone(account);
+    user = await store.findByPhone(account);
   } else {
-    user = await userStore.findByNickname(account);
+    user = await store.findByNickname(account);
   }
 
   if (!user) {
@@ -177,7 +236,7 @@ export async function loginUser(
 
 export async function getUserById(id: string): Promise<Omit<User, 'passwordHash'> | null> {
   await ensureInit();
-  const user = await userStore.findById(id);
+  const user = await store.findById(id);
   if (!user) return null;
   const { passwordHash: _, ...safeUser } = user;
   return safeUser;
