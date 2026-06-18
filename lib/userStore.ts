@@ -234,35 +234,44 @@ export async function loginUser(
   account: string,
   password: string
 ): Promise<{ success: boolean; error?: string; user?: Omit<User, 'passwordHash'> }> {
-  await ensureInit();
+  try {
+    await ensureInit();
 
-  if (!account || !password) {
-    return { success: false, error: '请输入账号和密码' };
+    if (!account || !password) {
+      return { success: false, error: '请输入账号和密码' };
+    }
+
+    const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(account);
+    const isPhone = /^1\d{10}$/.test(account);
+
+    let user: User | null = null;
+    if (isEmail) {
+      user = await store.findByEmail(account);
+    } else if (isPhone) {
+      user = await store.findByPhone(account);
+    } else {
+      user = await store.findByNickname(account);
+    }
+
+    if (!user) {
+      return { success: false, error: '账号不存在' };
+    }
+
+    if (!user.passwordHash) {
+      return { success: false, error: '账号数据异常，请联系管理员' };
+    }
+
+    const valid = await verifyPassword(password, user.passwordHash);
+    if (!valid) {
+      return { success: false, error: '密码错误' };
+    }
+
+    const { passwordHash: _, ...safeUser } = user;
+    return { success: true, user: safeUser };
+  } catch (e: any) {
+    console.error('loginUser error:', e.message || e);
+    return { success: false, error: `登录服务异常: ${e.message || e}` };
   }
-
-  const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(account);
-  const isPhone = /^1\d{10}$/.test(account);
-
-  let user: User | null = null;
-  if (isEmail) {
-    user = await store.findByEmail(account);
-  } else if (isPhone) {
-    user = await store.findByPhone(account);
-  } else {
-    user = await store.findByNickname(account);
-  }
-
-  if (!user) {
-    return { success: false, error: '账号不存在' };
-  }
-
-  const valid = await verifyPassword(password, user.passwordHash);
-  if (!valid) {
-    return { success: false, error: '密码错误' };
-  }
-
-  const { passwordHash: _, ...safeUser } = user;
-  return { success: true, user: safeUser };
 }
 
 export async function getUserById(id: string): Promise<Omit<User, 'passwordHash'> | null> {
