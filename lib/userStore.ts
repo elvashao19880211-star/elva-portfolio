@@ -115,18 +115,21 @@ class RedisUserStore {
   }
 
   async create(user: User): Promise<void> {
-    const redis = await this.getClient();
-    const data = JSON.stringify(user);
-    await redis.set(`user:${user.id}`, data);
+    try {
+      const redis = await this.getClient();
+      const data = JSON.stringify(user);
+      await redis.set(`user:${user.id}`, data);
 
-    if (user.email) {
-      await redis.set(`user:email:${user.email.toLowerCase()}`, user.id);
+      if (user.email) {
+        await redis.set(`user:email:${user.email.toLowerCase()}`, user.id);
+      }
+      if (user.phone) {
+        await redis.set(`user:phone:${user.phone}`, user.id);
+      }
+      await redis.set(`user:nickname:${user.nickname}`, user.id);
+    } catch (e: any) {
+      throw new Error(`Redis写入失败: ${e.message || e}`);
     }
-    if (user.phone) {
-      await redis.set(`user:phone:${user.phone}`, user.id);
-    }
-    // 昵称也建索引
-    await redis.set(`user:nickname:${user.nickname}`, user.id);
   }
 }
 
