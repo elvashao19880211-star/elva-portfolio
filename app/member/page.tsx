@@ -1,23 +1,24 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Breadcrumb from '../../components/Breadcrumb';
 import SectionTitle from '../../components/SectionTitle';
-import { MEMBER_PLANS, DOWNLOAD_PACKS } from './data';
+import { MEMBER_PLANS, DOWNLOAD_PACKS, ENTERPRISE_SERVICE } from './data';
 
 export default function MemberPage() {
+  const router = useRouter();
   const [selectedPlan, setSelectedPlan] = useState<string | null>('free');
   const [selectedPack, setSelectedPack] = useState<string | null>(null);
   const [showPay, setShowPay] = useState(false);
   const [paySuccess, setPaySuccess] = useState(false);
 
   const handleUpgrade = (planId: string) => {
-    if (planId === 'free') return;
-    setSelectedPlan(planId);
-    if (planId === 'enterprise') {
-      alert('企业用户请联系客服：微信 elva_pattern （演示模式）');
+    if (planId === 'free') {
+      router.push('/login');
       return;
     }
+    setSelectedPlan(planId);
     setShowPay(true);
   };
 
@@ -32,7 +33,7 @@ export default function MemberPage() {
       <Breadcrumb crumbs={[{ label: '首页', href: '/' }, { label: '会员中心' }]} />
       <SectionTitle
         title="会员中心"
-        subtitle="选择适合你的方案 · 免费浏览 · 付费下载高清无版权"
+        subtitle="年付制 · 三条独立产品线 · 复原库 / 素材库 / 全套"
       />
 
       {/* 当前状态 */}
@@ -47,13 +48,9 @@ export default function MemberPage() {
           <div>
             <p className="text-xs text-gray-400">当前身份</p>
             <p className="text-base font-serif font-semibold text-ink">
-              免费会员 <span className="text-xs font-normal text-gray-400 font-sans">· 今日剩余下载：3 次</span>
+              未登录 <span className="text-xs font-normal text-gray-400 font-sans">· 注册后查看权益</span>
             </p>
           </div>
-        </div>
-        <div className="text-right">
-          <p className="text-xs text-gray-400">已使用</p>
-          <p className="text-sm font-medium text-ink">0 / 3 次</p>
         </div>
       </div>
 
@@ -103,12 +100,11 @@ export default function MemberPage() {
 
               <button
                 onClick={() => handleUpgrade(plan.id)}
-                disabled={plan.id === 'free'}
                 className={`w-full py-2.5 rounded-xl text-sm font-medium transition-all ${
                   plan.highlight
                     ? 'bg-ink text-white hover:bg-ink/90 shadow-sm'
                     : 'bg-gray-50 text-ink border border-gray-200 hover:bg-gray-100'
-                } disabled:opacity-50 disabled:cursor-not-allowed`}
+                }`}
               >
                 {plan.cta}
               </button>
@@ -159,6 +155,21 @@ export default function MemberPage() {
         </div>
       </div>
 
+      {/* 企业合作 */}
+      <div className="max-w-3xl mx-auto mb-16">
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 text-center">
+          <h3 className="heading-4 text-ink mb-2">{ENTERPRISE_SERVICE.title}</h3>
+          <p className="body-md text-gray-500 mb-6">{ENTERPRISE_SERVICE.description}</p>
+          <p className="text-sm text-gray-400 mb-4">联系邮箱：{ENTERPRISE_SERVICE.contact}</p>
+          <a
+            href={`mailto:${ENTERPRISE_SERVICE.contact}`}
+            className="inline-block btn-gold text-sm"
+          >
+            {ENTERPRISE_SERVICE.cta}
+          </a>
+        </div>
+      </div>
+
       {/* 支付弹窗 */}
       {showPay && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowPay(false)}>
@@ -172,7 +183,7 @@ export default function MemberPage() {
             <h3 className="heading-3 text-ink mb-2">确认支付</h3>
             <p className="body-md mb-6">
               {selectedPlan && selectedPlan !== 'free'
-                ? `${MEMBER_PLANS.find(p => p.id === selectedPlan)?.name} · ¥${MEMBER_PLANS.find(p => p.id === selectedPlan)?.price}/月`
+                ? `${MEMBER_PLANS.find(p => p.id === selectedPlan)?.name} · ¥${MEMBER_PLANS.find(p => p.id === selectedPlan)?.price}${MEMBER_PLANS.find(p => p.id === selectedPlan)?.period}`
                 : selectedPack
                   ? `${DOWNLOAD_PACKS.find(p => p.id === selectedPack)?.credits} 次下载包 · ¥${DOWNLOAD_PACKS.find(p => p.id === selectedPack)?.price}`
                   : ''}
