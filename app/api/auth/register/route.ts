@@ -23,7 +23,9 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ user: result.user });
-  } catch {
-    return NextResponse.json({ error: '服务器错误' }, { status: 500 });
+  } catch (error: any) {
+    const msg = error?.message || String(error);
+    console.error('注册失败:', msg);
+    return NextResponse.json({ error: '服务器错误', detail: msg }, { status: 500 });
   }
 }
