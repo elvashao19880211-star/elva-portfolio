@@ -18,12 +18,6 @@ class JsonUserStore {
   private users: User[] = [];
 
   async init() {
-    // 在 Vercel serverless 环境下不使用 JSON 文件
-    if (process.env.VERCEL) {
-      this.users = [];
-      return;
-    }
-
     try {
       const fs = await import('fs/promises');
       const path = await import('path');
@@ -33,9 +27,7 @@ class JsonUserStore {
         const data = await fs.readFile(filePath, 'utf-8');
         this.users = JSON.parse(data);
       } catch {
-        // 文件不存在，创建目录和空列表
-        await fs.mkdir(path.join(process.cwd(), 'data'), { recursive: true });
-        await fs.writeFile(filePath, '[]', 'utf-8');
+        // 文件不存在，创建空列表
         this.users = [];
       }
     } catch {
@@ -44,11 +36,13 @@ class JsonUserStore {
   }
 
   private async save() {
+    // Vercel serverless 文件系统不可写，跳过写入
     if (process.env.VERCEL) return;
     try {
       const fs = await import('fs/promises');
       const path = await import('path');
       const filePath = path.join(process.cwd(), 'data', 'users.json');
+      await fs.mkdir(path.dirname(filePath), { recursive: true });
       await fs.writeFile(filePath, JSON.stringify(this.users, null, 2), 'utf-8');
     } catch {}
   }
