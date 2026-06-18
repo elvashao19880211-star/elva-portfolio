@@ -196,7 +196,11 @@ export async function registerUser(
     createdAt: new Date().toISOString(),
   };
 
-  await store.create(user);
+  try {
+    await store.create(user);
+  } catch (e: any) {
+    return { success: false, error: `存储写入失败: ${e.message || e}` };
+  }
 
   const { passwordHash: _, ...safeUser } = user;
   return { success: true, user: safeUser };

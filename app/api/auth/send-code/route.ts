@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: result.error || '发送失败，请稍后重试' }, { status: 500 });
     }
 
-    return NextResponse.json({ token, code, sent: true });
+    return NextResponse.json({ token, sent: true });
   } catch {
     return NextResponse.json({ error: '服务器错误' }, { status: 500 });
   }
