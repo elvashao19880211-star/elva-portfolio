@@ -18,15 +18,11 @@ export async function POST(req: NextRequest) {
       nickname: result.user.nickname,
     });
 
-    const res = NextResponse.json({ user: result.user });
-    res.cookies.set('token', token, {
-      httpOnly: true,
-      sameSite: 'lax',
-      path: '/',
-      maxAge: 60 * 60 * 24 * 7, // 7 天
-    });
-
-    return res;
+    const cookieValue = `token=${token}; HttpOnly; Path=/; SameSite=Lax; Max-Age=${60 * 60 * 24 * 7}`;
+    return NextResponse.json(
+      { user: result.user },
+      { headers: { 'Set-Cookie': cookieValue } }
+    );
   } catch (error: any) {
     const msg = error?.message || String(error);
     console.error('登录失败:', msg);
