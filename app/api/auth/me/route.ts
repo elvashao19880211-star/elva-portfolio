@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
     }
 
     const user = await getUserById(payload.id);
-    return NextResponse.json({ user, _debug: 'ok', _id: payload.id });
+    return NextResponse.json({ user, _version: 'V4-FORCE-REBUILD' });
   } catch (e: any) {
     console.error('me route error:', e?.message || String(e));
     return NextResponse.json({ user: null, _error: e?.message || String(e) });
