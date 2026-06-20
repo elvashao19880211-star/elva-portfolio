@@ -2,25 +2,23 @@ import { NextRequest, NextResponse } from 'next/server';
 import { verifyToken } from '@/lib/auth';
 import { getUserById } from '@/lib/userStore';
 
-// Vercel rebuild marker v3
 export const dynamic = 'force-dynamic';
 
 export async function GET(req: NextRequest) {
   try {
     const token = req.cookies.get('token')?.value;
     if (!token) {
-      return NextResponse.json({ user: null, _debug: 'no_cookie' });
+      return NextResponse.json({ user: null });
     }
 
     const payload = verifyToken(token);
     if (!payload) {
-      return NextResponse.json({ user: null, _debug: 'verify_failed', _tokenLen: token.length });
+      return NextResponse.json({ user: null });
     }
 
     const user = await getUserById(payload.id);
-    return NextResponse.json({ user, _version: 'V4-FORCE-REBUILD' });
+    return NextResponse.json({ user });
   } catch (e: any) {
-    console.error('me route error:', e?.message || String(e));
-    return NextResponse.json({ user: null, _error: e?.message || String(e) });
+    return NextResponse.json({ user: null, error: e?.message || String(e) });
   }
 }
