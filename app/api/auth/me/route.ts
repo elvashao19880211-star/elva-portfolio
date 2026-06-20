@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { verifyToken } from '@/lib/auth';
 import { getUserById } from '@/lib/userStore';
 
+// Vercel rebuild marker v3
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   try {
     const token = req.cookies.get('token')?.value;
