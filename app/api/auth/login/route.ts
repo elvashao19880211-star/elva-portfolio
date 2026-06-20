@@ -13,18 +13,18 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: result.error }, { status: 401 });
     }
 
-    // 生成 JWT token
     const token = createToken({
       id: result.user.id,
       email: result.user.email,
       nickname: result.user.nickname,
     });
 
-    const cookieValue = `token=${token}; HttpOnly; Path=/; SameSite=Lax; Max-Age=${60 * 60 * 24 * 7}`;
-    return NextResponse.json(
-      { user: result.user },
-      { headers: { 'Set-Cookie': cookieValue } }
+    const res = NextResponse.json(
+      { user: result.user, _hint: 'cookie_set' }
     );
+    res.cookies.set('token', token, { httpOnly: true, sameSite: 'lax', path: '/', maxAge: 60 * 60 * 24 * 7 });
+    res.cookies.set('tk_test', token.substring(0, 20), { sameSite: 'lax', path: '/', maxAge: 60 });
+    return res;
   } catch (error: any) {
     const msg = error?.message || String(error);
     console.error('登录失败:', msg);
