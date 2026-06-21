@@ -44,8 +44,8 @@ function LoginForm() {
         return;
       }
 
-      router.push(redirect);
-      router.refresh();
+      // 硬跳转让浏览器拿到新cookie后整页刷新
+      window.location.href = redirect;
     } catch {
       setError('网络错误，请重试');
     } finally {
@@ -139,8 +139,7 @@ function LoginForm() {
       });
 
       if (loginRes.ok) {
-        router.push(redirect);
-        router.refresh();
+        window.location.href = redirect;
       }
     } catch {
       setError('网络错误，请重试');
