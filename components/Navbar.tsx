@@ -22,7 +22,7 @@ export default function Navbar() {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   useEffect(() => {
-    fetch('/api/auth/me').then(r => r.json()).then(d => {
+    fetch('/api/auth/session').then(r => r.json()).then(d => {
       if (d.user) setUser(d.user);
     }).catch(() => {});
   }, []);
