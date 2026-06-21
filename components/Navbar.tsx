@@ -22,13 +22,14 @@ export default function Navbar() {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   useEffect(() => {
+    // V2-SESSION-FIX
     fetch('/api/auth/session').then(r => r.json()).then(d => {
       if (d.user) setUser(d.user);
     }).catch(() => {});
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
+    <nav className="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100" data-nav-version="v2-session">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-20">
         {/* Logo */}
         <a href="/" className="shrink-0">
