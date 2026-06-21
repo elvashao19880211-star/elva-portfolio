@@ -3,6 +3,8 @@ import { verifyToken } from '@/lib/auth';
 import { getUserById } from '@/lib/userStore';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+export const preferredRegion = 'hkg1';
 
 export async function GET(req: NextRequest) {
   try {
