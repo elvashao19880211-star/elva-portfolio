@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import { getSession } from '@/app/actions';
 
 const NAV_LINKS = [
   { label: '首页', href: '/' },
@@ -22,7 +23,7 @@ export default function Navbar() {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   useEffect(() => {
-    fetch('/api/auth/session').then(r => r.json()).then(d => {
+    getSession().then(d => {
       if (d.user) setUser(d.user);
     }).catch(() => {});
   }, []);
