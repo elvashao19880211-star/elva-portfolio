@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import CarouselBanner from '../components/CarouselBanner';
 import Footer from '../components/Footer';
 
