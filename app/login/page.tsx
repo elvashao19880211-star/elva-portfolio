@@ -45,8 +45,7 @@ function LoginForm() {
         return;
       }
 
-      // 硬跳转让浏览器拿到新cookie后整页刷新
-      window.location.href = redirect;
+      router.push(redirect);
     } catch {
       setError('网络错误，请重试');
     } finally {
@@ -142,7 +141,7 @@ function LoginForm() {
       });
 
       if (loginRes.ok) {
-        window.location.href = redirect;
+        router.push(redirect);
       } else {
         const loginData = await loginRes.json().catch(() => ({}));
         setError('注册成功，但自动登录失败：' + (loginData.error || loginRes.status));
