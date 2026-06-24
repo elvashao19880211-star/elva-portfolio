@@ -22,9 +22,7 @@ export async function POST(req: NextRequest) {
     const res = NextResponse.json(
       { user: result.user, _hint: 'cookie_set' }
     );
-    const isProd = !process.env.VERCEL_ENV || process.env.VERCEL_ENV === 'production';
-    res.cookies.set('token', token, { httpOnly: true, sameSite: 'lax', path: '/', maxAge: 60 * 60 * 24 * 7, secure: isProd });
-    res.cookies.set('tk_test', token.substring(0, 20), { sameSite: 'lax', path: '/', maxAge: 60, secure: isProd });
+    res.cookies.set('token', token, { httpOnly: true, sameSite: 'none', path: '/', maxAge: 60 * 60 * 24 * 7, secure: true });
     return res;
   } catch (error: any) {
     const msg = error?.message || String(error);
