@@ -35,7 +35,8 @@ function LoginForm() {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ account, password }),
+        credentials: 'include',
+        body: JSON.stringify({ account: account?.trim(), password }),
       });
       const data = await res.json();
 
@@ -112,6 +113,7 @@ function LoginForm() {
       const res = await fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({
           email: regType === 'email' ? email : undefined,
           phone: regType === 'phone' ? phone : undefined,
@@ -132,17 +134,21 @@ function LoginForm() {
       const loginRes = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({
-          account: regType === 'email' ? email : phone,
+          account: (regType === 'email' ? email : phone)?.trim(),
           password,
         }),
       });
 
       if (loginRes.ok) {
         window.location.href = redirect;
+      } else {
+        const loginData = await loginRes.json().catch(() => ({}));
+        setError('注册成功，但自动登录失败：' + (loginData.error || loginRes.status));
       }
-    } catch {
-      setError('网络错误，请重试');
+    } catch (e: any) {
+      setError('网络错误：' + (e?.message || '请重试'));
     } finally {
       setLoading(false);
     }
