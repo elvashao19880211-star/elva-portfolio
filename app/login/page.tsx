@@ -45,6 +45,7 @@ function LoginForm() {
         return;
       }
 
+      await new Promise(r => setTimeout(r, 300));
       router.push(redirect);
     } catch {
       setError('网络错误，请重试');
@@ -141,6 +142,7 @@ function LoginForm() {
       });
 
       if (loginRes.ok) {
+        await new Promise(r => setTimeout(r, 300));
         router.push(redirect);
       } else {
         const loginData = await loginRes.json().catch(() => ({}));
