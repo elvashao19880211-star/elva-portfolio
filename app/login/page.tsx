@@ -46,7 +46,7 @@ function LoginForm() {
       }
 
       await new Promise(r => setTimeout(r, 300));
-      router.push(redirect);
+      window.location.href = redirect;
     } catch {
       setError('网络错误，请重试');
     } finally {
@@ -143,7 +143,7 @@ function LoginForm() {
 
       if (loginRes.ok) {
         await new Promise(r => setTimeout(r, 300));
-        router.push(redirect);
+        window.location.href = redirect;
       } else {
         const loginData = await loginRes.json().catch(() => ({}));
         setError('注册成功，但自动登录失败：' + (loginData.error || loginRes.status));
