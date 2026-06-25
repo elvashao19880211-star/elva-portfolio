@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Breadcrumb from '../../components/Breadcrumb';
 import SectionTitle from '../../components/SectionTitle';
@@ -8,10 +8,22 @@ import { MEMBER_PLANS, DOWNLOAD_PACKS, ENTERPRISE_SERVICE } from './data';
 
 export default function MemberPage() {
   const router = useRouter();
+  const [user, setUser] = useState<{ nickname: string; email?: string } | null>(null);
+  const [loading, setLoading] = useState(true);
   const [selectedPlan, setSelectedPlan] = useState<string | null>('free');
   const [selectedPack, setSelectedPack] = useState<string | null>(null);
   const [showPay, setShowPay] = useState(false);
   const [paySuccess, setPaySuccess] = useState(false);
+
+  useEffect(() => {
+    fetch('/api/auth/session')
+      .then(r => r.json())
+      .then(d => {
+        if (d.user) setUser(d.user);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
 
   const handleUpgrade = (planId: string) => {
     if (planId === 'free') {
@@ -47,9 +59,18 @@ export default function MemberPage() {
           </div>
           <div>
             <p className="text-xs text-gray-400">当前身份</p>
-            <p className="text-base font-serif font-semibold text-ink">
-              未登录 <span className="text-xs font-normal text-gray-400 font-sans">· 注册后查看权益</span>
-            </p>
+            {loading ? (
+              <p className="text-base font-serif font-semibold text-gray-300">加载中...</p>
+            ) : user ? (
+              <p className="text-base font-serif font-semibold text-ink">
+                {user.nickname}
+                {user.email && <span className="text-xs font-normal text-gray-400 font-sans ml-2">{user.email}</span>}
+              </p>
+            ) : (
+              <p className="text-base font-serif font-semibold text-ink">
+                未登录 <span className="text-xs font-normal text-gray-400 font-sans">· 注册后查看权益</span>
+              </p>
+            )}
           </div>
         </div>
       </div>
