@@ -46,6 +46,17 @@ export default function RootLayout({
       <body className="font-sans">
         <Navbar />
         <main className="pt-20">{children}</main>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(function(regs) {
+                  regs.forEach(function(reg) { reg.unregister(); });
+                });
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   )
