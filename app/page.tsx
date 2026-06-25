@@ -1,4 +1,3 @@
-// build-test comment
 export const dynamic = 'force-dynamic';
 
 import CarouselBanner from '../components/CarouselBanner';

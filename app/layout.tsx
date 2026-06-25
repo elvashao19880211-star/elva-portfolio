@@ -46,17 +46,6 @@ export default function RootLayout({
       <body className="font-sans">
         <Navbar />
         <main className="pt-20">{children}</main>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                  navigator.serviceWorker.register('/sw.js');
-                });
-              }
-            `,
-          }}
-        />
       </body>
     </html>
   )
