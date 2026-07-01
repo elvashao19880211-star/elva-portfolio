@@ -4,268 +4,391 @@ import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Breadcrumb from '../../components/Breadcrumb';
 import SectionTitle from '../../components/SectionTitle';
-import materials, { MATERIAL_CATEGORIES } from './data';
+import materials, {
+  ELEMENT_TREE,
+  DYNASTIES,
+  CARRIERS,
+  STRUCTURES,
+  COLORS,
+  flattenElements,
+  getElementPath,
+  type ElementNode,
+  type MaterialItem,
+} from './data';
 
+// 预计算标签映射
+const elementLabelMap = flattenElements(ELEMENT_TREE);
+
+/* ========== 元素树组件（递归展开） ========== */
+function ElementTreeItem({
+  node,
+  selected,
+  onToggle,
+  depth = 0,
+}: {
+  node: ElementNode;
+  selected: Set<string>;
+  onToggle: (id: string) => void;
+  depth?: number;
+}) {
+  const isSelected = selected.has(node.id);
+  const hasChildren = node.children && node.children.length > 0;
+  const [expanded, setExpanded] = useState(depth < 1); // 默认展开一级
+
+  return (
+    <li>
+      <div className="flex items-center group">
+        {hasChildren && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="w-5 h-5 flex items-center justify-center text-gray-300 hover:text-ink text-[10px] shrink-0"
+          >
+            {expanded ? '▾' : '▸'}
+          </button>
+        )}
+        {!hasChildren && <span className="w-5 shrink-0" />}
+        <button
+          onClick={() => onToggle(node.id)}
+          className={`text-left px-1.5 py-1 rounded text-xs transition-colors truncate flex-1 ${
+            isSelected
+              ? 'bg-gold/15 text-gold font-medium'
+              : 'text-gray-400 hover:bg-gray-100 hover:text-ink'
+          }`}
+          style={{ paddingLeft: hasChildren ? 0 : 20 }}
+        >
+          {node.label}
+        </button>
+      </div>
+      {hasChildren && expanded && (
+        <ul className="ml-2.5 border-l border-gray-100 pl-2">
+          {node.children!.map((child) => (
+            <ElementTreeItem
+              key={child.id}
+              node={child}
+              selected={selected}
+              onToggle={onToggle}
+              depth={depth + 1}
+            />
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+}
+
+/* ========== 主页面 ========== */
 export default function MaterialsPage() {
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const [dynastyFilter, setDynastyFilter] = useState<string | null>(null);
-  const [activeTag, setActiveTag] = useState<string | null>(null);
+  // 五维筛选状态
+  const [dynasty, setDynasty] = useState<string | null>(null);
+  const [carrier, setCarrier] = useState<string | null>(null);
+  const [elementIds, setElementIds] = useState<Set<string>>(new Set());
+  const [structure, setStructure] = useState<string | null>(null);
+  const [color, setColor] = useState<string | null>(null);
 
-  const allDynasties = useMemo(() => {
-    const sorted = ['商', '周', '汉', '北魏', '唐', '宋', '元', '明', '清'];
-    const set = new Set(materials.map((m) => m.dynasty).filter(Boolean));
-    return sorted.filter((d) => set.has(d));
-  }, []);
+  const toggleElement = (id: string) => {
+    setElementIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const clearAll = () => {
+    setDynasty(null);
+    setCarrier(null);
+    setElementIds(new Set());
+    setStructure(null);
+    setColor(null);
+  };
+
+  const hasFilters = dynasty || carrier || elementIds.size > 0 || structure || color;
 
   const filtered = useMemo(() => {
     let result = materials;
-    if (activeCategory) result = result.filter((m) => m.category === activeCategory);
-    if (dynastyFilter) result = result.filter((m) => m.dynasty === dynastyFilter);
-    if (activeTag) result = result.filter((m) => m.tags.includes(activeTag));
+    if (dynasty) result = result.filter((m) => m.dynasty === dynasty);
+    if (carrier) result = result.filter((m) => m.carrier === carrier);
+    if (elementIds.size > 0) {
+      result = result.filter((m) => m.elements.some((eid) => elementIds.has(eid)));
+    }
+    if (structure) result = result.filter((m) => m.structure === structure);
+    if (color) result = result.filter((m) => m.colors.includes(color));
     return result;
-  }, [activeCategory, dynastyFilter, activeTag]);
-
-  const tags = useMemo(() => {
-    let items = materials;
-    if (activeCategory) items = items.filter((m) => m.category === activeCategory);
-    if (dynastyFilter) items = items.filter((m) => m.dynasty === dynastyFilter);
-    return Array.from(new Set(items.flatMap((m) => m.tags)));
-  }, [activeCategory, dynastyFilter]);
+  }, [dynasty, carrier, elementIds, structure, color]);
 
   return (
     <main className="min-h-screen px-4 sm:px-6 py-12">
-      <Breadcrumb crumbs={[
-        { label: '首页', href: '/' },
-        { label: '纹样素材' },
-      ]} />
+      <Breadcrumb crumbs={[{ label: '首页', href: '/' }, { label: '纹样素材' }]} />
       <SectionTitle
         title="纹样素材"
-        subtitle="按分类 · 朝代 · 标签精准筛选 —— 素材均有明确历史背景"
+        subtitle="朝代 · 载体 · 元素 · 结构 · 颜色 —— 五维精准筛选"
       />
 
       <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto">
-        {/* 侧边栏 */}
-        <aside className="hidden lg:block w-52 shrink-0">
-          <h3 className="text-sm font-serif font-semibold text-ink mb-4">素材分类</h3>
-          <ul className="space-y-1">
-            <li>
-              <button
-                onClick={() => { setActiveCategory(null); setActiveTag(null); setDynastyFilter(null); }}
-                className={`w-full text-left px-4 py-2 rounded-xl text-sm transition-all duration-200 ${
-                  activeCategory === null && dynastyFilter === null
-                    ? 'bg-ink text-white shadow-sm'
-                    : 'text-gray-500 hover:bg-gray-100 hover:text-ink'
-                }`}
-              >
-                全部素材
-              </button>
-            </li>
-            {MATERIAL_CATEGORIES.map((cat) => (
-              <li key={cat.id}>
+        {/* ===== 侧边栏 ===== */}
+        <aside className="hidden lg:block w-48 shrink-0 space-y-6">
+          {/* 全部 + 清除 */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={clearAll}
+              className={`text-xs px-3 py-1.5 rounded-full transition-colors ${
+                !hasFilters ? 'bg-ink text-white shadow-sm' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+              }`}
+            >
+              全部素材
+            </button>
+          </div>
+
+          {/* 朝代 */}
+          <FilterSection title="朝代">
+            {DYNASTIES.map((d) => (
+              <FilterBtn key={d} active={dynasty === d} onClick={() => setDynasty(dynasty === d ? null : d)}>
+                {d}
+              </FilterBtn>
+            ))}
+          </FilterSection>
+
+          {/* 载体 */}
+          <FilterSection title="载体">
+            {CARRIERS.map((c) => (
+              <FilterBtn key={c} active={carrier === c} onClick={() => setCarrier(carrier === c ? null : c)}>
+                {c}
+              </FilterBtn>
+            ))}
+          </FilterSection>
+
+          {/* 元素（树形） */}
+          <FilterSection title="元素">
+            <ul className="space-y-0.5 -ml-1">
+              {ELEMENT_TREE.map((node) => (
+                <ElementTreeItem
+                  key={node.id}
+                  node={node}
+                  selected={elementIds}
+                  onToggle={toggleElement}
+                />
+              ))}
+            </ul>
+          </FilterSection>
+
+          {/* 结构 */}
+          <FilterSection title="结构">
+            {STRUCTURES.map((s) => (
+              <FilterBtn key={s} active={structure === s} onClick={() => setStructure(structure === s ? null : s)}>
+                {s}
+              </FilterBtn>
+            ))}
+          </FilterSection>
+
+          {/* 颜色 */}
+          <FilterSection title="颜色" colorChips>
+            <div className="flex flex-wrap gap-1.5">
+              {COLORS.map((c) => (
                 <button
-                  onClick={() => { setActiveCategory(cat.id); setActiveTag(null); setDynastyFilter(null); }}
-                  className={`w-full text-left px-4 py-2 rounded-xl text-sm transition-all duration-200 ${
-                    activeCategory === cat.id
-                      ? 'bg-gold/15 text-gold font-medium border border-gold/20'
-                      : 'text-gray-500 hover:bg-gray-100 hover:text-ink'
+                  key={c}
+                  onClick={() => setColor(color === c ? null : c)}
+                  className={`px-2 py-1 rounded-full text-[11px] transition-all border ${
+                    color === c
+                      ? 'border-gold bg-gold/10 text-gold font-medium'
+                      : 'border-gray-200 text-gray-400 hover:border-gray-300'
                   }`}
                 >
-                  {cat.icon} {cat.label}
+                  {c}
                 </button>
-              </li>
-            ))}
-          </ul>
-
-          {/* 朝代筛选 */}
-          {activeCategory && allDynasties.length > 0 && (
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <h3 className="text-xs font-serif font-semibold text-ink mb-3">按朝代筛选</h3>
-              <ul className="space-y-1">
-                <li>
-                  <button
-                    onClick={() => setDynastyFilter(null)}
-                    className={`w-full text-left px-4 py-1.5 rounded-lg text-xs transition-all duration-200 ${
-                      dynastyFilter === null
-                        ? 'bg-qing/15 text-qing font-medium'
-                        : 'text-gray-400 hover:bg-gray-100'
-                    }`}
-                  >
-                    所有朝代
-                  </button>
-                </li>
-                {allDynasties.map((d) => (
-                  <li key={d}>
-                    <button
-                      onClick={() => setDynastyFilter(d)}
-                      className={`w-full text-left px-4 py-1.5 rounded-lg text-xs transition-all duration-200 ${
-                        dynastyFilter === d
-                          ? 'bg-gold/15 text-gold font-medium'
-                          : 'text-gray-400 hover:bg-gray-100'
-                      }`}
-                    >
-                      {d}代
-                    </button>
-                  </li>
-                ))}
-              </ul>
+              ))}
             </div>
-          )}
+          </FilterSection>
         </aside>
 
-        {/* 手机端：分类横滑 + 朝代横滑 */}
-        <div className="lg:hidden space-y-3 mb-2">
-          <div>
-            <h3 className="text-xs font-serif font-semibold text-ink mb-2">素材分类</h3>
-            <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none">
-              <button
-                onClick={() => { setActiveCategory(null); setActiveTag(null); setDynastyFilter(null); }}
-                className={`shrink-0 px-3 py-1.5 rounded-full text-xs transition-all duration-200 whitespace-nowrap ${
-                  activeCategory === null && dynastyFilter === null
-                    ? 'bg-ink text-white shadow-sm'
-                    : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                }`}
-              >
-                全部素材
-              </button>
-              {MATERIAL_CATEGORIES.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => { setActiveCategory(cat.id); setActiveTag(null); setDynastyFilter(null); }}
-                  className={`shrink-0 px-3 py-1.5 rounded-full text-xs transition-all duration-200 whitespace-nowrap ${
-                    activeCategory === cat.id
-                      ? 'bg-gold/15 text-gold font-medium border border-gold/30'
-                      : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                  }`}
-                >
-                  {cat.icon} {cat.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* 手机端朝代筛选 */}
-          {activeCategory && allDynasties.length > 0 && (
-            <div>
-              <h3 className="text-xs font-serif font-semibold text-ink mb-2">朝代</h3>
-              <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none">
-                <button
-                  onClick={() => setDynastyFilter(null)}
-                  className={`shrink-0 px-3 py-1.5 rounded-full text-xs transition-all duration-200 whitespace-nowrap ${
-                    dynastyFilter === null
-                      ? 'bg-qing/15 text-qing font-medium'
-                      : 'bg-gray-100 text-gray-400 hover:bg-gray-200'
-                  }`}
-                >
-                  所有朝代
-                </button>
-                {allDynasties.map((d) => (
-                  <button
-                    key={d}
-                    onClick={() => setDynastyFilter(d)}
-                    className={`shrink-0 px-3 py-1.5 rounded-full text-xs transition-all duration-200 whitespace-nowrap ${
-                      dynastyFilter === d
-                        ? 'bg-gold/15 text-gold font-medium'
-                        : 'bg-gray-100 text-gray-400 hover:bg-gray-200'
-                    }`}
-                  >
-                    {d}代
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
+        {/* ===== 移动端横滑筛选 ===== */}
+        <div className="lg:hidden space-y-2">
+          <MobileScroll title="朝代" options={[...DYNASTIES]} selected={dynasty} onSelect={setDynasty} />
+          <MobileScroll title="载体" options={[...CARRIERS]} selected={carrier} onSelect={setCarrier} />
+          <MobileScroll title="结构" options={[...STRUCTURES]} selected={structure} onSelect={setStructure} />
+          <MobileScroll title="颜色" options={[...COLORS]} selected={color} onSelect={setColor} />
         </div>
 
-        {/* 右侧 */}
+        {/* ===== 素材网格 ===== */}
         <div className="flex-1 min-w-0">
-          {/* 筛选提示 */}
-          <div className="flex items-center flex-wrap gap-2 mb-4 text-xs">
-            {activeCategory && (
-              <span className="px-3 py-1 rounded-full bg-qing/15 text-qing font-medium">
-                {MATERIAL_CATEGORIES.find((c) => c.id === activeCategory)?.label}
-              </span>
-            )}
-            {dynastyFilter && (
-              <span className="px-3 py-1 rounded-full bg-gold/15 text-gold font-medium">
-                {dynastyFilter}代
-              </span>
-            )}
-            <span className="text-gray-400 ml-auto">{filtered.length} 个素材</span>
-          </div>
+          {/* 当前筛选标签 */}
+          <ActiveChips
+            dynasty={dynasty}
+            carrier={carrier}
+            elementIds={elementIds}
+            structure={structure}
+            color={color}
+            onClear={clearAll}
+            onRemoveDynasty={() => setDynasty(null)}
+            onRemoveCarrier={() => setCarrier(null)}
+            onRemoveElement={(id) => toggleElement(id)}
+            onRemoveStructure={() => setStructure(null)}
+            onRemoveColor={() => setColor(null)}
+            count={filtered.length}
+          />
 
-          {/* 标签筛选 */}
-          {tags.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mb-6">
-              <button
-                onClick={() => setActiveTag(null)}
-                className={`px-3 py-1 text-xs rounded-full transition-all ${
-                  activeTag === null
-                    ? 'bg-ink/10 text-ink font-medium'
-                    : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                }`}
-              >
-                全部标签
-              </button>
-              {tags.map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-                  className={`px-3 py-1 text-xs rounded-full transition-all ${
-                    activeTag === tag
-                      ? 'bg-gold/20 text-gold font-medium'
-                      : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                  }`}
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
-          )}
-
-          {/* 素材网格 */}
           {filtered.length > 0 ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
-              {filtered.map((item) => (
-                <div
-                  key={item.id}
-                  className="group cursor-pointer bg-white rounded-xl overflow-hidden border border-gray-100
-                             shadow-sm hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="relative w-full aspect-square overflow-hidden bg-stone-50">
-                    <Image
-                      src={item.src}
-                      alt={item.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    />
-                  </div>
-                  <div className="p-3">
-                    <div className="flex items-center justify-between gap-2 mb-1">
-                      <h4 className="text-sm font-medium text-ink truncate">{item.title}</h4>
-                      {item.dynasty && (
-                        <span className="shrink-0 px-1.5 py-0.5 text-[10px] rounded bg-gold/15 text-gold font-medium">
-                          {item.dynasty}
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-[11px] text-gray-400 line-clamp-1">{item.description}</p>
-                    <div className="flex flex-wrap gap-1 mt-2">
-                      {item.tags.slice(0, 3).map((t) => (
-                        <span key={t} className="px-1.5 py-0.5 text-[10px] rounded bg-gray-100 text-gray-500">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
+              {filtered.map(renderCard)}
             </div>
           ) : (
-            <p className="text-gray-400 text-center py-20">暂无符合条件的素材 · 换个筛选条件试试</p>
+            <p className="text-gray-400 text-center py-20">
+              暂无符合条件的素材 · 换个筛选条件试试
+            </p>
           )}
         </div>
       </div>
     </main>
+  );
+}
+
+/* ========== 子组件 ========== */
+
+function FilterSection({
+  title,
+  children,
+  colorChips,
+}: {
+  title: string;
+  children: React.ReactNode;
+  colorChips?: boolean;
+}) {
+  return (
+    <div>
+      <h3 className="text-xs font-serif font-semibold text-ink mb-2">{title}</h3>
+      <div className={colorChips ? '' : 'flex flex-col gap-1'}>{children}</div>
+    </div>
+  );
+}
+
+function FilterBtn({ active, onClick, children }: { active: boolean; onClick: () => void; children: string }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`text-left text-xs px-2 py-1 rounded transition-colors ${
+        active ? 'bg-gold/15 text-gold font-medium' : 'text-gray-400 hover:bg-gray-100 hover:text-ink'
+      }`}
+    >
+      {children}
+    </button>
+  );
+}
+
+function MobileScroll({
+  title,
+  options,
+  selected,
+  onSelect,
+}: {
+  title: string;
+  options: string[];
+  selected: string | null;
+  onSelect: (v: string | null) => void;
+}) {
+  return (
+    <div>
+      <h3 className="text-[11px] font-serif font-semibold text-ink mb-1">{title}</h3>
+      <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+        <button
+          onClick={() => onSelect(null)}
+          className={`shrink-0 px-2.5 py-1 rounded-full text-[11px] whitespace-nowrap transition-colors ${
+            !selected ? 'bg-ink text-white shadow-sm' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+          }`}
+        >
+          全部
+        </button>
+        {options.map((o) => (
+          <button
+            key={o}
+            onClick={() => onSelect(selected === o ? null : o)}
+            className={`shrink-0 px-2.5 py-1 rounded-full text-[11px] whitespace-nowrap transition-colors ${
+              selected === o
+                ? 'bg-gold/15 text-gold font-medium border border-gold/30'
+                : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+            }`}
+          >
+            {o}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ActiveChips({
+  dynasty, carrier, elementIds, structure, color,
+  onClear, onRemoveDynasty, onRemoveCarrier, onRemoveElement,
+  onRemoveStructure, onRemoveColor, count,
+}: {
+  dynasty: string | null; carrier: string | null; elementIds: Set<string>;
+  structure: string | null; color: string | null;
+  onClear: () => void;
+  onRemoveDynasty: () => void; onRemoveCarrier: () => void;
+  onRemoveElement: (id: string) => void;
+  onRemoveStructure: () => void; onRemoveColor: () => void;
+  count: number;
+}) {
+  return (
+    <div className="flex items-center flex-wrap gap-1.5 mb-4 text-[11px]">
+      {dynasty && <Chip label={dynasty} onRemove={onRemoveDynasty} />}
+      {carrier && <Chip label={carrier} onRemove={onRemoveCarrier} />}
+      {structure && <Chip label={structure} onRemove={onRemoveStructure} />}
+      {color && <Chip label={color} onRemove={onRemoveColor} />}
+      {Array.from(elementIds).map((eid) => (
+        <Chip key={eid} label={elementLabelMap.get(eid) ?? eid} onRemove={() => onRemoveElement(eid)} />
+      ))}
+      <span className="text-gray-400 ml-auto">{count} 个素材</span>
+    </div>
+  );
+}
+
+function Chip({ label, onRemove }: { label: string; onRemove: () => void }) {
+  return (
+    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gold/10 text-gold text-[11px]">
+      {label}
+      <button onClick={onRemove} className="hover:text-red-400">×</button>
+    </span>
+  );
+}
+
+/* ========== 卡片渲染 ========== */
+
+function renderCard(item: MaterialItem) {
+  return (
+    <div
+      key={item.id}
+      className="group cursor-pointer bg-white rounded-xl overflow-hidden border border-gray-100
+                 shadow-sm hover:shadow-lg transition-all duration-300"
+    >
+      <div className="relative w-full aspect-square overflow-hidden bg-stone-50">
+        <Image
+          src={item.src}
+          alt={item.title}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+        />
+      </div>
+      <div className="p-3">
+        <div className="flex items-center justify-between gap-2 mb-1">
+          <h4 className="text-sm font-medium text-ink truncate">{item.title}</h4>
+          <span className="shrink-0 px-1.5 py-0.5 text-[10px] rounded bg-gold/15 text-gold font-medium">
+            {item.dynasty}
+          </span>
+        </div>
+        <p className="text-[11px] text-gray-400 line-clamp-1">{item.description}</p>
+        <div className="flex flex-wrap gap-1 mt-2">
+          {item.elements.slice(0, 3).map((eid) => (
+            <span key={eid} className="px-1.5 py-0.5 text-[10px] rounded bg-gray-100 text-gray-500">
+              {elementLabelMap.get(eid) ?? eid}
+            </span>
+          ))}
+          {item.colors.slice(0, 2).map((c) => (
+            <span key={c} className="px-1.5 py-0.5 text-[10px] rounded bg-qing/10 text-qing">
+              {c}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
