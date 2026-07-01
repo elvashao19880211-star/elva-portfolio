@@ -13,7 +13,6 @@ export default function MemberPage() {
   const [selectedPlan, setSelectedPlan] = useState<string | null>('free');
   const [selectedPack, setSelectedPack] = useState<string | null>(null);
   const [showPay, setShowPay] = useState(false);
-  const [paySuccess, setPaySuccess] = useState(false);
 
   useEffect(() => {
     fetch('/api/auth/session')
@@ -32,12 +31,6 @@ export default function MemberPage() {
     }
     setSelectedPlan(planId);
     setShowPay(true);
-  };
-
-  const handlePay = () => {
-    setShowPay(false);
-    setPaySuccess(true);
-    setTimeout(() => setPaySuccess(false), 2000);
   };
 
   return (
@@ -191,47 +184,28 @@ export default function MemberPage() {
         </div>
       </div>
 
-      {/* 支付弹窗 */}
+      {/* 支付弹窗 - 收款码 */}
       {showPay && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowPay(false)}>
           <div className="bg-white rounded-2xl max-w-sm w-full p-8 shadow-2xl text-center" onClick={(e) => e.stopPropagation()}>
-            <div className="w-16 h-16 rounded-full bg-qing/10 flex items-center justify-center mx-auto mb-5">
-              <svg className="w-8 h-8 text-qing" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
-                <path d="M12 6v6l4 2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <h3 className="heading-3 text-ink mb-2">确认支付</h3>
-            <p className="body-md mb-6">
+            <h3 className="heading-3 text-ink mb-1">扫码支付</h3>
+            <p className="text-sm text-gray-500 mb-5">
               {selectedPlan && selectedPlan !== 'free'
                 ? `${MEMBER_PLANS.find(p => p.id === selectedPlan)?.name} · ¥${MEMBER_PLANS.find(p => p.id === selectedPlan)?.price}${MEMBER_PLANS.find(p => p.id === selectedPlan)?.period}`
                 : selectedPack
                   ? `${DOWNLOAD_PACKS.find(p => p.id === selectedPack)?.credits} 次下载包 · ¥${DOWNLOAD_PACKS.find(p => p.id === selectedPack)?.price}`
                   : ''}
             </p>
-            <div className="flex gap-3">
-              <button onClick={() => setShowPay(false)} className="btn-outline flex-1 text-sm">取消</button>
-              <button onClick={handlePay} className="btn-ink flex-1 text-sm">确认支付</button>
+            <div className="bg-gray-50 rounded-xl p-4 mb-5">
+              <img src="/qrcode.png" alt="收款码" className="w-48 h-48 mx-auto" />
             </div>
-            <p className="text-[10px] text-gray-300 mt-4">（演示模式 · 支付接口待接入）</p>
+            <p className="text-xs text-gray-400 mb-3">微信 / 支付宝扫一扫即可支付</p>
+            <p className="text-[10px] text-gray-300 mb-5">支付完成后请联系客服确认开通</p>
+            <button onClick={() => setShowPay(false)} className="btn-outline w-full text-sm">关闭</button>
           </div>
         </div>
       )}
 
-      {/* Toast */}
-      {paySuccess && (
-        <div className="fixed top-24 right-6 z-50 bg-white rounded-xl shadow-lg border border-green-100 p-4 flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-            <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <p className="text-sm font-medium text-ink">支付成功！</p>
-            <p className="text-xs text-gray-400">权益已开通，开始浏览吧</p>
-          </div>
-        </div>
-      )}
     </main>
   );
 }
