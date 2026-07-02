@@ -37,11 +37,28 @@ for (const file of files) {
     continue;
   }
 
-  const dynasty = parts[0];
-  const carrier = parts[1];
+  let dynasty = parts[0];
+  let carrier = parts[1];
   const elementName = parts[2];
   const structure = parts[3];
   const color = parts[4];
+
+  // 朝代映射
+  if (dynasty === '明清') dynasty = '明';
+
+  // 载体映射
+  const carrierMap = {
+    '水陆画': '其他',
+    '家具装饰': '木器',
+    '竹盒装饰': '木器',
+  };
+  carrier = carrierMap[carrier] || carrier;
+
+  // 元素名称标准化（去变体前缀）
+  const cleanElement = elementName
+    .replace(/^变[型形]/, '')   // 变型云雷纹 → 云雷纹
+    .replace(/^圈圈/, '')       // 圈圈团云纹 → 团云纹
+    .replace(/^变形/, '');      // 变形四合云纹 → 四合云纹
 
   // 元素名 → ID 映射（支持模糊匹配，取包含关系的第一个）
   const { ELEMENT_TREE } = require(path.join(__dirname, '..', 'app', 'materials', 'data.ts'));
@@ -63,7 +80,7 @@ for (const file of files) {
     return null;
   }
 
-  const elementId = findElementId(ELEMENT_TREE, elementName);
+  const elementId = findElementId(ELEMENT_TREE, cleanElement);
 
   // 复制图片
   const destName = file.replace(/\s+/g, '-').toLowerCase();

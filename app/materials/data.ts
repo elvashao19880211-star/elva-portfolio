@@ -14,7 +14,7 @@ export const CARRIERS = [
 
 /** 结构 */
 export const STRUCTURES = [
-  '自由', '适合', '角隅', '二方', '四方', '组合', '开光',
+  '自由', '适合', '角隅', '二方连续', '四方连续', '组合', '开光',
 ] as const;
 
 /** 颜色 */
@@ -125,6 +125,8 @@ export const ELEMENT_TREE: ElementNode[] = [
         { id: 'dieyun', label: '叠云纹' },
         { id: 'yulin', label: '鱼鳞云纹' },
         { id: 'tuanyun', label: '团云纹' },
+        { id: 'ruyisihe', label: '如意四合云纹' },
+        { id: 'ruyiwen', label: '如意纹' },
       ]},
       { id: 'shui', label: '水纹', children: [
         { id: 'haishuijiangya', label: '海水江崖纹' },
@@ -207,40 +209,215 @@ export interface MaterialItem {
 /** 占位素材（待补充真实数据） */
 const materials: MaterialItem[] = [
   {
-    id: 'mat-01',
-    title: '示例纹样 1',
-    dynasty: '唐代',
+    id: 'mat-mr3am75v-iut',
+    title: '三角云纹',
+    dynasty: '战国',
+    carrier: '青铜器',
+    elements: ["sanjiao"],
+    structure: '二方连续',
+    colors: ["绿翠"],
+    description: '战国青铜器，三角云纹，二方连续排布，绿翠配色',
+    src: '/images/materials/战国-青铜器-三角云纹-二方连续-绿翠.png',
+  },
+  {
+    id: 'mat-mr3am76p-9e5',
+    title: '卷云纹',
+    dynasty: '战国',
+    carrier: '青铜器',
+    elements: ["juanyun"],
+    structure: '二方连续',
+    colors: ["绿翠"],
+    description: '战国青铜器，卷云纹，二方连续排布，绿翠配色',
+    src: '/images/materials/战国-青铜器-卷云纹-二方连续-绿翠.png',
+  },
+  {
+    id: 'mat-mr3am78i-lts',
+    title: '团云',
+    dynasty: '明代',
+    carrier: '其他',
+    elements: ["tuanyun"],
+    structure: '自由',
+    colors: ["多色"],
+    description: '明代其他，团云纹，自由排布，多色配色',
+    src: '/images/materials/明代-水陆画-团云-自由-多色.png',
+  },
+  {
+    id: 'mat-mr3am79n-nru',
+    title: '火焰云纹',
+    dynasty: '明代',
+    carrier: '其他',
+    elements: ["huoyanyun"],
+    structure: '自由',
+    colors: ["黄金"],
+    description: '明代其他，火焰云纹，自由排布，黄金配色',
+    src: '/images/materials/明代-水陆画-火焰云纹-自由-黄金.png',
+  },
+  {
+    id: 'mat-mr3am7bd-zl8',
+    title: '变型云雷纹',
+    dynasty: '明代',
     carrier: '织物',
-    elements: ['mudan', 'juanzhi'],
-    structure: '二方',
-    colors: ['赤红', '黄金'],
-    description: '唐代织锦，牡丹卷草纹，二方连续排布，红金配色华丽大气',
-    src: '/image-one.png',
+    elements: ["yunlei"],
+    structure: '四方连续',
+    colors: ["黄金"],
+    description: '明代织物，变型云雷纹，四方连续排布，黄金配色',
+    src: '/images/materials/明代-织物-变型云雷纹-四方连续-黄金.png',
+  },
+  {
+    id: 'mat-mr3am7bv-rex',
+    title: '变形四合云纹',
+    dynasty: '明代',
+    carrier: '织物',
+    elements: ["siheyun"],
+    structure: '四方连续',
+    colors: ["黄金"],
+    description: '明代织物，变形四合云纹，四方连续排布，黄金配色',
+    src: '/images/materials/明代-织物-变形四合云纹-四方连续-黄金.png',
+  },
+  {
+    id: 'mat-mr3am7cf-ggi',
+    title: '团云纹',
+    dynasty: '明代',
+    carrier: '织物',
+    elements: ["tuanyun"],
+    structure: '四方连续',
+    colors: ["黄金"],
+    description: '明代织物，团云纹，四方连续排布，黄金配色',
+    src: '/images/materials/明代-织物-团云纹-四方连续-黄金.png',
+  },
+  {
+    id: 'mat-mr3am7cx-goj',
+    title: '如意四合云纹',
+    dynasty: '明代',
+    carrier: '陶瓷',
+    elements: ["ruyisihe"],
+    structure: '自由',
+    colors: ["多色"],
+    description: '明代陶瓷，如意四合云纹，自由排布，多色配色',
+    src: '/images/materials/明代-陶瓷-如意四合云纹-自由-多色.png',
+  },
+  {
+    id: 'mat-mr3am7dx-gtq',
+    title: '四合如意云纹',
+    dynasty: '明',
+    carrier: '织物',
+    elements: ["ruyisihe"],
+    structure: '四方连续',
+    colors: ["青蓝"],
+    description: '明清织物，四合如意云纹，四方连续排布，青蓝配色',
+    src: '/images/materials/明清-织物-四合如意云纹-四方连续-青蓝.png',
+  },
+  {
+    id: 'mat-mr3am7ej-9n5',
+    title: '云气纹',
+    dynasty: '汉代',
+    carrier: '漆器',
+    elements: ["yunqi"],
+    structure: '适合',
+    colors: ["黑墨"],
+    description: '汉代漆器，云气纹，适合排布，黑墨配色',
+    src: '/images/materials/汉代-漆器-云气纹-适合-黑墨.png',
+  },
+  {
+    id: 'mat-mr3am7f5-pge',
+    title: '卷云纹',
+    dynasty: '汉代',
+    carrier: '漆器',
+    elements: ["juanyun"],
+    structure: '二方连续',
+    colors: ["赭褐"],
+    description: '汉代漆器，卷云纹，二方连续排布，赭褐配色',
+    src: '/images/materials/汉代-漆器-卷云纹-二方连续-赭褐.png',
+  },
+  {
+    id: 'mat-mr3am7gr-h0e',
+    title: '云气纹',
+    dynasty: '汉代',
+    carrier: '织物',
+    elements: ["yunqi"],
+    structure: '四方连续',
+    colors: ["多色"],
+    description: '汉代织物，云气纹，四方连续排布，多色配色',
+    src: '/images/materials/汉代-织物-云气纹-四方连续-多色.png',
+  },
+  {
+    id: 'mat-mr3am7hb-1kt',
+    title: '变形如意云纹',
+    dynasty: '清代',
+    carrier: '木器',
+    elements: ["ruyiwen"],
+    structure: '自由',
+    colors: ["赭褐"],
+    description: '清代木器，变形如意云纹，自由排布，赭褐配色',
+    src: '/images/materials/清代-家具装饰-变形如意云纹-自由-赭褐.png',
+  },
+  {
+    id: 'mat-mr3am7hu-flq',
+    title: '鱼鳞云纹',
+    dynasty: '清代',
+    carrier: '掐丝珐琅',
+    elements: ["yulin"],
+    structure: '四方连续',
+    colors: ["青蓝"],
+    description: '清代掐丝珐琅，鱼鳞云纹，四方连续排布，青蓝配色',
+    src: '/images/materials/清代-掐丝珐琅-鱼鳞云纹-四方连续-青蓝.png',
+  },
+  {
+    id: 'mat-mr3am7i3-frr',
+    title: '卷云纹',
+    dynasty: '清代',
+    carrier: '木器',
+    elements: ["juanyun"],
+    structure: '四方连续',
+    colors: ["赤红"],
+    description: '清代木器，卷云纹，四方连续排布，赤红配色',
+    src: '/images/materials/清代-木器-卷云纹-四方连续-赤红.png',
+  },
+  {
+    id: 'mat-mr3am7ig-8tc',
+    title: '变型卷云纹',
+    dynasty: '清代',
+    carrier: '木器',
+    elements: ["juanyun"],
+    structure: '四方连续',
+    colors: ["绿翠"],
+    description: '清代木器，变型卷云纹，四方连续排布，绿翠配色',
+    src: '/images/materials/清代-竹盒装饰-变型卷云纹-四方连续-绿翠.png',
+  },
+  {
+    id: 'mat-mr3am7j1-zt9',
+    title: '如意云纹',
+    dynasty: '清代',
+    carrier: '织物',
+    elements: ["ruyiwen"],
+    structure: '自由',
+    colors: ["多色"],
+    description: '清代织物，如意云纹，自由排布，多色配色',
+    src: '/images/materials/清代-织物-如意云纹-自由-多色.png',
+  },
+  {
+    id: 'mat-mr3am7jl-exl',
+    title: '叠云纹',
+    dynasty: '清代',
+    carrier: '陶瓷',
+    elements: ["dieyun"],
+    structure: '自由',
+    colors: ["绿翠"],
+    description: '清代陶瓷，叠云纹，自由排布，绿翠配色',
+    src: '/images/materials/清代-陶瓷-叠云纹-自由-绿翠.png',
+  },
+  {
+    id: 'mat-mr3am7k6-5pw',
+    title: '圈圈团云纹',
+    dynasty: '清代',
+    carrier: '陶瓷',
+    elements: ["tuanyun"],
+    structure: '自由',
+    colors: ["青蓝"],
+    description: '清代陶瓷，圈圈团云纹，自由排布，青蓝配色',
+    src: '/images/materials/清代-陶瓷-圈圈团云纹-自由-青蓝.png',
   },
 ];
-
-export default materials;
-
-// ==================== 工具函数 ====================
-
-/** 展开元素树为扁平 ID→label 映射 */
-export function flattenElements(tree: ElementNode[]): Map<string, string> {
-  const map = new Map<string, string>();
-  function walk(nodes: ElementNode[]) {
-    for (const n of nodes) {
-      map.set(n.id, n.label);
-      if (n.children) walk(n.children);
-    }
-  }
-  walk(tree);
-  return map;
-}
-
-/** 获取某个元素 ID 对应的所有标签（含祖先层级） */
-export function getElementPath(id: string, tree: ElementNode[] = ELEMENT_TREE): string[] {
-  function find(nodes: ElementNode[], path: string[]): string[] | null {
-    for (const n of nodes) {
-      const cur = [...path, n.label];
       if (n.id === id) return cur;
       if (n.children) {
         const r = find(n.children, cur);

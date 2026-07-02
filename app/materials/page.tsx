@@ -72,14 +72,29 @@ function ElementTreeItem({
   node,
   selected,
   onToggle,
+  onCategoryClick,
+  depth = 0,
 }: {
   node: ElementNode;
   selected: Set<string>;
   onToggle: (id: string) => void;
+  onCategoryClick?: (id: string) => void;
+  depth?: number;
 }) {
   const isSelected = selected.has(node.id);
   const hasChildren = node.children && node.children.length > 0;
   const [expanded, setExpanded] = useState(false);
+  const isTopLevel = depth === 0;
+
+  const handleLabelClick = () => {
+    if (isTopLevel && onCategoryClick) {
+      // 点击一级分类名 → 图片上方显示二级分类
+      onCategoryClick(node.id);
+    } else {
+      // 点击二/三级 → 直接筛选
+      onToggle(node.id);
+    }
+  };
 
   return (
     <li>
@@ -95,7 +110,7 @@ function ElementTreeItem({
           <span className="w-4 shrink-0" />
         )}
         <button
-          onClick={() => onToggle(node.id)}
+          onClick={handleLabelClick}
           className={`text-left px-1 py-0.5 rounded text-[11px] transition-colors truncate flex-1 ${
             isSelected
               ? 'bg-gold/10 text-gold font-medium'
@@ -113,6 +128,8 @@ function ElementTreeItem({
               node={child}
               selected={selected}
               onToggle={onToggle}
+              onCategoryClick={onCategoryClick}
+              depth={depth + 1}
             />
           ))}
         </ul>
@@ -128,6 +145,8 @@ export default function MaterialsPage() {
   const [elementIds, setElementIds] = useState<Set<string>>(new Set());
   const [structure, setStructure] = useState<string | null>(null);
   const [color, setColor] = useState<string | null>(null);
+  // 当前展开查看二级元素的一级分类
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
   const toggleElement = (id: string) => {
     setElementIds((prev) => {
@@ -147,6 +166,13 @@ export default function MaterialsPage() {
   };
 
   const hasFilters = dynasty || carrier || elementIds.size > 0 || structure || color;
+
+  // 当前展开的一级元素的二级子项
+  const expandedChildren = useMemo(() => {
+    if (!expandedCategory) return [];
+    const cat = ELEMENT_TREE.find((n) => n.id === expandedCategory);
+    return cat?.children ?? [];
+  }, [expandedCategory]);
 
   const filtered = useMemo(() => {
     let result = materials;
@@ -233,6 +259,7 @@ export default function MaterialsPage() {
                       node={node}
                       selected={elementIds}
                       onToggle={toggleElement}
+                      onCategoryClick={setExpandedCategory}
                     />
                   ))}
                 </ul>
@@ -295,6 +322,43 @@ export default function MaterialsPage() {
             onRemoveColor={() => setColor(null)}
             count={filtered.length}
           />
+
+          {/* 二级元素分类 chip 条 */}
+          {expandedChildren.length > 0 && (
+            <div className="mb-4 p-3 bg-white rounded-xl border border-gray-100 shadow-sm">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[11px] text-gray-400">
+                  {ELEMENT_TREE.find((n) => n.id === expandedCategory)?.label} · 二级分类
+                </span>
+                {expandedChildren.some((c) => elementIds.has(c.id)) && (
+                  <button
+                    onClick={() => expandedChildren.forEach((c) => elementIds.has(c.id) && toggleElement(c.id))}
+                    className="text-[10px] text-gray-300 hover:text-red-400"
+                  >
+                    清除
+                  </button>
+                )}
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {expandedChildren.map((child) => (
+                  <button
+                    key={child.id}
+                    onClick={() => toggleElement(child.id)}
+                    className={`px-3 py-1.5 rounded-full text-xs transition-all ${
+                      elementIds.has(child.id)
+                        ? 'bg-gold/15 text-gold font-medium border border-gold/30 shadow-sm'
+                        : 'bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-ink border border-transparent'
+                    }`}
+                  >
+                    {child.label}
+                    {child.children && child.children.length > 0 && (
+                      <span className="ml-1 text-[10px] opacity-50">+{child.children.length}</span>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           {filtered.length > 0 ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
