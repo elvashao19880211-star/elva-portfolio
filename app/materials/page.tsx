@@ -34,13 +34,11 @@ const COLOR_SWATCH: Record<string, string> = {
 /* ========== 可折叠分区组件 ========== */
 function AccordionSection({
   title,
-  icon,
   children,
   hasSelection = false,
   defaultOpen = false,
 }: {
   title: string;
-  icon: string;
   children: React.ReactNode;
   hasSelection?: boolean;
   defaultOpen?: boolean;
@@ -50,13 +48,12 @@ function AccordionSection({
     <div className="border-b border-gray-50 last:border-0">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center gap-1.5 px-3 py-2.5 text-xs hover:bg-gray-50/80 transition-colors"
+        className="w-full flex items-center gap-2 px-3 py-2.5 text-xs hover:bg-gray-50/80 transition-colors"
       >
-        <span className="text-[13px]">{icon}</span>
         <span className={`font-serif font-semibold ${open ? 'text-ink' : 'text-gray-500'}`}>{title}</span>
         {hasSelection && <span className="w-1.5 h-1.5 rounded-full bg-gold ml-auto" />}
         <svg
-          className={`w-3 h-3 text-gray-300 transition-transform ${open ? 'rotate-90' : ''}`}
+          className={`w-3 h-3 text-gray-300 transition-transform ${hasSelection ? '' : 'ml-auto'} ${open ? 'rotate-90' : ''}`}
           viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
         >
           <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
@@ -174,7 +171,7 @@ export default function MaterialsPage() {
           <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden sticky top-24">
             {/* 头部 */}
             <div className="px-4 py-3 border-b border-gray-50 flex items-center justify-between bg-gray-50/50">
-              <span className="text-xs font-serif font-semibold text-ink tracking-wide">
+              <span className="text-sm font-serif font-semibold text-ink">
                 筛选条件
               </span>
               {hasFilters && (
@@ -203,7 +200,7 @@ export default function MaterialsPage() {
               </div>
 
               {/* 朝代 */}
-              <AccordionSection title="朝代" icon="🏛" hasSelection={!!dynasty} defaultOpen>
+              <AccordionSection title="朝代" hasSelection={!!dynasty} defaultOpen>
                 <div className="flex flex-col gap-0.5">
                   {DYNASTIES.map((d) => (
                     <FilterBtn key={d} active={dynasty === d} onClick={() => setDynasty(dynasty === d ? null : d)}>
@@ -214,7 +211,7 @@ export default function MaterialsPage() {
               </AccordionSection>
 
               {/* 载体 */}
-              <AccordionSection title="载体" icon="🏺" hasSelection={!!carrier}>
+              <AccordionSection title="载体" hasSelection={!!carrier}>
                 <div className="flex flex-col gap-0.5">
                   {CARRIERS.map((c) => (
                     <FilterBtn key={c} active={carrier === c} onClick={() => setCarrier(carrier === c ? null : c)}>
@@ -225,7 +222,7 @@ export default function MaterialsPage() {
               </AccordionSection>
 
               {/* 元素 */}
-              <AccordionSection title="元素" icon="❖" hasSelection={elementIds.size > 0}>
+              <AccordionSection title="元素" hasSelection={elementIds.size > 0}>
                 <ul className="space-y-0.5">
                   {ELEMENT_TREE.map((node) => (
                     <ElementTreeItem
@@ -239,7 +236,7 @@ export default function MaterialsPage() {
               </AccordionSection>
 
               {/* 结构 */}
-              <AccordionSection title="结构" icon="▦" hasSelection={!!structure}>
+              <AccordionSection title="结构" hasSelection={!!structure}>
                 <div className="flex flex-col gap-0.5">
                   {STRUCTURES.map((s) => (
                     <FilterBtn key={s} active={structure === s} onClick={() => setStructure(structure === s ? null : s)}>
@@ -250,7 +247,7 @@ export default function MaterialsPage() {
               </AccordionSection>
 
               {/* 颜色 */}
-              <AccordionSection title="颜色" icon="🎨" hasSelection={!!color}>
+              <AccordionSection title="颜色" hasSelection={!!color}>
                 <div className="flex flex-wrap gap-2">
                   {COLORS.map((c) => (
                     <button
