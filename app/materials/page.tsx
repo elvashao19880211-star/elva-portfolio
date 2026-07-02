@@ -171,7 +171,7 @@ export default function MaterialsPage() {
           <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden sticky top-24">
             {/* 头部 */}
             <div className="px-4 py-3 border-b border-gray-50 flex items-center justify-between bg-gray-50/50">
-              <span className="text-base font-serif font-semibold text-ink">
+              <span className="text-xl font-serif font-semibold text-ink">
                 筛选条件
               </span>
               {hasFilters && (
