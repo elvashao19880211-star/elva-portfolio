@@ -31,7 +31,7 @@ const COLOR_SWATCH: Record<string, string> = {
   '赭褐': 'bg-amber-700',
   '烟灰': 'bg-gray-400',
   '银素': 'bg-slate-300',
-  '多彩': 'bg-gradient-to-r from-rose-400 via-amber-400 to-sky-400',
+  '多色': 'bg-gradient-to-r from-rose-400 via-amber-400 to-sky-400',
 };
 
 /* ========== 可折叠分区组件 ========== */
