@@ -262,7 +262,7 @@ export default function MaterialsPage() {
                           : 'hover:bg-gray-50'
                       }`}
                     >
-                      <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${COLOR_SWATCH[c] ?? 'bg-gray-300'}`} />
+                      <span className={`w-4 h-4 rounded-full shrink-0 shadow-inner ring-1 ring-black/5 ${COLOR_SWATCH[c] ?? 'bg-gray-300'}`} />
                       <span className={color === c ? 'text-ink font-medium' : 'text-gray-400'}>{c}</span>
                     </button>
                   ))}
