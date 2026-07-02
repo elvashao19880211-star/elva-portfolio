@@ -14,8 +14,7 @@ export const CARRIERS = [
 
 /** 结构 */
 export const STRUCTURES = [
-  '单独自由', '对称式', '二方连续', '四方连续',
-  '团窠式', '分层式', '环绕式', '散点式', '满铺式',
+  '自由', '适合', '角隅', '二方', '四方', '组合', '开光',
 ] as const;
 
 /** 颜色 */
@@ -213,7 +212,7 @@ const materials: MaterialItem[] = [
     dynasty: '唐代',
     carrier: '织锦',
     elements: ['mudan', 'juanzhi'],
-    structure: '二方连续',
+    structure: '二方',
     colors: ['赤红', '黄金'],
     description: '唐代织锦，牡丹卷草纹，二方连续排布，红金配色华丽大气',
     src: '/image-one.png',
