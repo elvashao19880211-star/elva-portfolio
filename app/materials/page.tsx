@@ -21,13 +21,17 @@ const elementLabelMap = flattenElements(ELEMENT_TREE);
 
 /* ========== 颜色映射（纯色色块用） ========== */
 const COLOR_SWATCH: Record<string, string> = {
-  '青蓝': 'bg-sky-500',
-  '赤红': 'bg-rose-500',
-  '黄金': 'bg-amber-400',
-  '白素': 'bg-stone-200',
-  '黑墨': 'bg-stone-800',
-  '绿翠': 'bg-emerald-500',
-  '紫绀': 'bg-purple-500',
+  '红': 'bg-red-500',
+  '橙': 'bg-orange-400',
+  '黄': 'bg-yellow-400',
+  '绿': 'bg-emerald-500',
+  '蓝': 'bg-sky-500',
+  '紫': 'bg-purple-500',
+  '黑': 'bg-stone-800',
+  '白': 'bg-stone-200 ring-1 ring-gray-300',
+  '灰': 'bg-gray-400',
+  '金': 'bg-amber-400',
+  '银': 'bg-slate-300',
   '多彩': 'bg-gradient-to-r from-rose-400 via-amber-400 to-sky-400',
 };
 

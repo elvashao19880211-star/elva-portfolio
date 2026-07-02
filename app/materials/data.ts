@@ -20,7 +20,7 @@ export const STRUCTURES = [
 
 /** 颜色 */
 export const COLORS = [
-  '青蓝', '赤红', '黄金', '白素', '黑墨', '绿翠', '紫绀', '多彩',
+  '红', '橙', '黄', '绿', '蓝', '紫', '黑', '白', '灰', '金', '银', '多彩',
 ] as const;
 
 /** 元素三级分类 */
@@ -214,7 +214,7 @@ const materials: MaterialItem[] = [
     carrier: '织锦',
     elements: ['mudan', 'juanzhi'],
     structure: '二方连续',
-    colors: ['赤红', '黄金'],
+    colors: ['红', '金'],
     description: '唐代织锦，牡丹卷草纹，二方连续排布，红金配色华丽大气',
     src: '/image-one.png',
   },
