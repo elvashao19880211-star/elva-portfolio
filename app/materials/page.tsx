@@ -28,9 +28,9 @@ const COLOR_SWATCH: Record<string, string> = {
   '黑墨': 'bg-stone-800',
   '绿翠': 'bg-emerald-500',
   '紫绀': 'bg-purple-500',
-  '棕色': 'bg-amber-700',
-  '灰色': 'bg-gray-400',
-  '银色': 'bg-slate-300',
+  '赭褐': 'bg-amber-700',
+  '烟灰': 'bg-gray-400',
+  '银素': 'bg-slate-300',
   '多彩': 'bg-gradient-to-r from-rose-400 via-amber-400 to-sky-400',
 };
 
