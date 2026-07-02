@@ -33,7 +33,7 @@ function ElementTreeItem({
 }) {
   const isSelected = selected.has(node.id);
   const hasChildren = node.children && node.children.length > 0;
-  const [expanded, setExpanded] = useState(depth < 1); // 默认展开一级
+  const [expanded, setExpanded] = useState(false); // 默认收起，点击展开
 
   return (
     <li>
