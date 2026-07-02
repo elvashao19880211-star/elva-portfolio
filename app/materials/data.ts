@@ -8,8 +8,8 @@ export const DYNASTIES = [
 
 /** 载体 */
 export const CARRIERS = [
-  '青铜器', '陶瓷', '漆器', '织锦', '刺绣',
-  '壁画', '石刻', '金银器', '玉器', '木雕', '建筑', '其他',
+  '青铜器', '陶瓷', '漆器', '织物', '刺绣',
+  '壁画', '石刻', '金银器', '玉器', '木器', '建筑', '其他',
 ] as const;
 
 /** 结构 */
@@ -210,7 +210,7 @@ const materials: MaterialItem[] = [
     id: 'mat-01',
     title: '示例纹样 1',
     dynasty: '唐代',
-    carrier: '织锦',
+    carrier: '织物',
     elements: ['mudan', 'juanzhi'],
     structure: '二方',
     colors: ['赤红', '黄金'],
