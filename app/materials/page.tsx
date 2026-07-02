@@ -3,16 +3,29 @@
 import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Breadcrumb from '../../components/Breadcrumb';
+import { ELEMENT_TREE, type ElementNode } from './data';
+
+// 预构建祖先映射：每个元素 ID → 其所有祖先 ID（含自身）
+function buildAncestorMap(tree: ElementNode[]) {
+  const map = new Map<string, Set<string>>();
+  (function walk(nodes: ElementNode[], ancestors: string[]) {
+    for (const n of nodes) {
+      map.set(n.id, new Set([...ancestors, n.id]));
+      if (n.children) walk(n.children, [...ancestors, n.id]);
+    }
+  })(tree, []);
+  return map;
+}
+const ancestorMap = buildAncestorMap(ELEMENT_TREE);
+const getAncestors = (id: string) => ancestorMap.get(id) ?? new Set<string>();
 import SectionTitle from '../../components/SectionTitle';
 import materials, {
-  ELEMENT_TREE,
   DYNASTIES,
   CARRIERS,
   STRUCTURES,
   COLORS,
   flattenElements,
   getElementPath,
-  type ElementNode,
   type MaterialItem,
 } from './data';
 
@@ -179,7 +192,14 @@ export default function MaterialsPage() {
     if (dynasty) result = result.filter((m) => m.dynasty === dynasty);
     if (carrier) result = result.filter((m) => m.carrier === carrier);
     if (elementIds.size > 0) {
-      result = result.filter((m) => m.elements.some((eid) => elementIds.has(eid)));
+      result = result.filter((m) =>
+        m.elements.some((eid) => {
+          if (elementIds.has(eid)) return true;
+          // 如果选的是父级，匹配其所有子孙
+          const ancestors = getAncestors(eid);
+          return [...elementIds].some((sid) => ancestors.has(sid));
+        })
+      );
     }
     if (structure) result = result.filter((m) => m.structure === structure);
     if (color) result = result.filter((m) => m.colors.includes(color));
