@@ -29,7 +29,7 @@ if (files.length === 0) {
 const newItems = [];
 
 for (const file of files) {
-  const nameNoExt = path.parse(file).name; // "唐代-织锦-牡丹纹-二方连续-红"
+  const nameNoExt = path.parse(file).name.replace(/\(\d+\)$/g, ''); // 去掉末尾 (2) 等重复编号
   const parts = nameNoExt.split('-');
 
   if (parts.length < 5) {
