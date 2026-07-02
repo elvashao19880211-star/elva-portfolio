@@ -106,15 +106,18 @@ for (const file of files) {
 // 读取现有 data.ts，替换 materials 数组
 let content = fs.readFileSync(DATA_FILE, 'utf-8');
 
-// 找到 const materials 数组并替换
+// 找到 const materials 数组开始位置
 const startMarker = 'const materials: MaterialItem[] = [';
-const endMarker = '];';
-
 const start = content.indexOf(startMarker);
-const end = content.indexOf(endMarker, content.indexOf('export default materials;') + 1);
-
-if (start === -1 || end === -1) {
+if (start === -1) {
   console.log('❌ 找不到 materials 数组，请检查 data.ts');
+  process.exit(1);
+}
+
+// 从 start 之后找第一个 ]; （数组结束）
+const end = content.indexOf('\n];', start + startMarker.length);
+if (end === -1) {
+  console.log('❌ 找不到 materials 数组结束标记，请检查 data.ts');
   process.exit(1);
 }
 
@@ -123,7 +126,7 @@ const itemsJson = newItems.map(item =>
 ).join(',\n');
 
 const newArray = `const materials: MaterialItem[] = [\n${itemsJson},\n];`;
-content = content.slice(0, start) + newArray + content.slice(end + 2);
+content = content.slice(0, start) + newArray + content.slice(end + 3); // end+3 跳过 \n];
 
 fs.writeFileSync(DATA_FILE, content, 'utf-8');
 

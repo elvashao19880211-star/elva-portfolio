@@ -418,6 +418,27 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-陶瓷-圈圈团云纹-自由-青蓝.png',
   },
 ];
+
+export default materials;
+
+/** 展开元素树为扁平 ID→label 映射 */
+export function flattenElements(tree: ElementNode[]): Map<string, string> {
+  const map = new Map<string, string>();
+  function walk(nodes: ElementNode[]) {
+    for (const n of nodes) {
+      map.set(n.id, n.label);
+      if (n.children) walk(n.children);
+    }
+  }
+  walk(tree);
+  return map;
+}
+
+/** 获取某个元素 ID 对应的所有标签（含祖先层级） */
+export function getElementPath(id: string, tree: ElementNode[] = ELEMENT_TREE): string[] {
+  function find(nodes: ElementNode[], path: string[]): string[] | null {
+    for (const n of nodes) {
+      const cur = [...path, n.label];
       if (n.id === id) return cur;
       if (n.children) {
         const r = find(n.children, cur);
