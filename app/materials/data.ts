@@ -6,6 +6,17 @@ export const DYNASTIES = [
   '隋唐五代', '宋辽金', '元', '明', '清', '近现代',
 ] as const;
 
+/** 具体朝代 → 大分类映射 */
+export const DYNASTY_ALIASES: Record<string, string> = {
+  '唐代': '隋唐五代',
+  '战国': '春秋战国',
+  '汉代': '秦汉',
+  '明代': '明',
+  '清代': '清',
+  '辽代': '宋辽金',
+  '金代': '宋辽金',
+};
+
 /** 载体 */
 export const CARRIERS = [
   '青铜器', '陶瓷', '漆器', '织物', '刺绣',

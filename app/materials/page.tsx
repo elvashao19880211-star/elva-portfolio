@@ -25,6 +25,7 @@ import materials, {
   CARRIERS,
   STRUCTURES,
   COLORS,
+  DYNASTY_ALIASES,
   flattenElements,
   getElementPath,
   type MaterialItem,
@@ -191,7 +192,7 @@ export default function MaterialsPage() {
 
   const filtered = useMemo(() => {
     let result = materials;
-    if (dynasty) result = result.filter((m) => m.dynasty === dynasty);
+    if (dynasty) result = result.filter((m) => m.dynasty === dynasty || DYNASTY_ALIASES[m.dynasty] === dynasty);
     if (carrier) result = result.filter((m) => m.carrier === carrier);
     if (elementIds.size > 0) {
       result = result.filter((m) =>
