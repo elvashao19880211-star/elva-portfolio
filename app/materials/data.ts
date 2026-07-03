@@ -156,10 +156,14 @@ export const ELEMENT_TREE: ElementNode[] = [
     ],
   },
   {
+    id: 'zhiwu', label: '植物纹', children: [
+      { id: 'huahui', label: '花卉纹' },
+    ],
+  },
+  {
     id: 'yixiang', label: '意象纹样', children: [
       { id: 'baoxianghua', label: '宝相花' },
       { id: 'tuanhua', label: '团花' },
-      { id: 'huahui', label: '花卉纹' },
     ],
   },
   {
