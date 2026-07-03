@@ -302,7 +302,10 @@ export default function MaterialsPage() {
                       node={node}
                       selected={elementIds}
                       onToggle={toggleElement}
-                      onCategoryClick={setExpandedCategory}
+                      onCategoryClick={(id) => {
+                        setExpandedChipId(null);
+                        setExpandedCategory(id);
+                      }}
                     />
                   ))}
                 </ul>

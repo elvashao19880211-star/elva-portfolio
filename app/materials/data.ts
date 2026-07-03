@@ -107,7 +107,6 @@ export const ELEMENT_TREE: ElementNode[] = [
       { id: 'liudayun', label: '六达晕' },
       { id: 'badayun', label: '八达晕' },
       { id: 'tianhuajin', label: '天华锦纹' },
-      { id: 'tuanqun', label: '团窠纹' },
     ],
   },
   {
