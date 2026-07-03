@@ -161,7 +161,22 @@ export default function MaterialsPage() {
   const [color, setColor] = useState<string | null>(null);
   // 当前展开查看二级元素的一级分类
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
+  const [expandedChipId, setExpandedChipId] = useState<string | null>(null);
   const [lightbox, setLightbox] = useState<{ src: string; title: string } | null>(null);
+
+  // 找到树节点
+  const findNode = (id: string, nodes: typeof ELEMENT_TREE): typeof ELEMENT_TREE[number] | null => {
+    for (const n of nodes) {
+      if (n.id === id) return n;
+      if (n.children) {
+        const found = findNode(id, n.children);
+        if (found) return found;
+      }
+    }
+    return null;
+  };
+
+  const expandedChipNode = expandedChipId ? findNode(expandedChipId, ELEMENT_TREE) : null;
 
   const toggleElement = (id: string) => {
     setElementIds((prev) => {
@@ -351,44 +366,82 @@ export default function MaterialsPage() {
             count={filtered.length}
           />
 
-          {/* 二级元素分类 chip 条 */}
-          {expandedChildren.length > 0 && (
-            <div className="mb-4 p-3 bg-white rounded-xl border border-gray-100 shadow-sm">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[11px] text-gray-400">
-                  {ELEMENT_TREE.find((n) => n.id === expandedCategory)?.label} · 二级分类
-                </span>
-                {expandedChildren.some((c) => elementIds.has(c.id)) && (
-                  <button
-                    onClick={() => expandedChildren.forEach((c) => elementIds.has(c.id) && toggleElement(c.id))}
-                    className="text-[10px] text-gray-300 hover:text-red-400"
-                  >
-                    清除
-                  </button>
-                )}
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {expandedChildren.map((child) => (
-                  <button
-                    key={child.id}
-                    onClick={() => toggleElement(child.id)}
-                    className={`px-3 py-1.5 rounded-full text-xs transition-all ${
-                      elementIds.has(child.id)
-                        ? 'bg-gold/15 text-gold font-medium border border-gold/30 shadow-sm'
-                        : 'bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-ink border border-transparent'
-                    }`}
-                  >
-                    {child.label}
-                    <span className="ml-1 text-[10px] opacity-50">
-                      {filtered.filter((item) =>
-                        item.elements.some((id) => getAncestors(id).has(child.id))
-                      ).length}
+          {/* 二级/三级元素分类 chip 条 */}
+          {expandedChildren.length > 0 && (() => {
+            // 钻取模式：expandedChipId 表示当前钻取到的节点
+            const chipNode = expandedChipNode;
+            const chips = chipNode ? (chipNode.children || []) : expandedChildren;
+            const parentLabel = chipNode ? chipNode.label : '';
+
+            const getChipCount = (chipId: string) => {
+              return filtered.filter((item) =>
+                item.elements.some((id) => getAncestors(id).has(chipId))
+              ).length;
+            };
+
+            const handleChipClick = (child: typeof ELEMENT_TREE[number]) => {
+              if (child.children && child.children.length > 0) {
+                // 有子级 → 钻取
+                setExpandedChipId(child.id);
+              } else {
+                // 叶子 → 筛选
+                toggleElement(child.id);
+              }
+            };
+
+            return (
+              <div className="mb-4 p-3 bg-white rounded-xl border border-gray-100 shadow-sm">
+                <div className="flex items-center gap-2 mb-2">
+                  {chipNode ? (
+                    <button
+                      onClick={() => setExpandedChipId(null)}
+                      className="text-xs text-gold hover:text-qing transition-colors"
+                    >
+                      ← 返回 {ELEMENT_TREE.find((n) => n.id === expandedCategory)?.label}
+                    </button>
+                  ) : (
+                    <span className="text-[11px] text-gray-400">
+                      {ELEMENT_TREE.find((n) => n.id === expandedCategory)?.label} · 二级分类
                     </span>
-                  </button>
-                ))}
+                  )}
+                  {chips.some((c) => elementIds.has(c.id)) && (
+                    <button
+                      onClick={() => chips.forEach((c) => elementIds.has(c.id) && toggleElement(c.id))}
+                      className="text-[10px] text-gray-300 hover:text-red-400"
+                    >
+                      清除
+                    </button>
+                  )}
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {chipNode && (
+                    <span className="px-3 py-1.5 rounded-full text-xs bg-gold/10 text-gold font-medium border border-gold/20">
+                      {parentLabel}
+                    </span>
+                  )}
+                  {chips.map((child) => {
+                    const isSelected = elementIds.has(child.id);
+                    const count = getChipCount(child.id);
+                    const hasKids = child.children && child.children.length > 0;
+                    return (
+                      <button
+                        key={child.id}
+                        onClick={() => handleChipClick(child)}
+                        className={`px-3 py-1.5 rounded-full text-xs transition-all ${
+                          isSelected
+                            ? 'bg-gold/15 text-gold font-medium border border-gold/30 shadow-sm'
+                            : 'bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-ink border border-transparent'
+                        }`}
+                      >
+                        {child.label} {count > 0 && <span className="opacity-50 ml-0.5">{count}</span>}
+                        {hasKids && <span className="ml-0.5">▸</span>}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          )}
+            );
+          })()}
 
           {filtered.length > 0 ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
