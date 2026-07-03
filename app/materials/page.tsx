@@ -205,8 +205,14 @@ export default function MaterialsPage() {
     }
     if (structure) result = result.filter((m) => m.structure === structure);
     if (color) result = result.filter((m) => m.colors.includes(color));
+    // 点击一级分类时，只显示该分类下的图片
+    if (expandedCategory) {
+      result = result.filter((m) =>
+        m.elements.some((eid) => getAncestors(eid).has(expandedCategory))
+      );
+    }
     return result;
-  }, [dynasty, carrier, elementIds, structure, color]);
+  }, [dynasty, carrier, elementIds, structure, color, expandedCategory]);
 
   return (
     <main className="min-h-screen px-4 sm:px-6 py-12">
@@ -373,9 +379,11 @@ export default function MaterialsPage() {
                     }`}
                   >
                     {child.label}
-                    {child.children && child.children.length > 0 && (
-                      <span className="ml-1 text-[10px] opacity-50">+{child.children.length}</span>
-                    )}
+                    <span className="ml-1 text-[10px] opacity-50">
+                      {filtered.filter((item) =>
+                        item.elements.some((id) => getAncestors(id).has(child.id))
+                      ).length}
+                    </span>
                   </button>
                 ))}
               </div>
