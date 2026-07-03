@@ -54,11 +54,40 @@ for (const file of files) {
   };
   carrier = carrierMap[carrier] || carrier;
 
-  // 元素名称标准化（去变体前缀）
+  // 元素名称标准化（去变体前缀、补全/去除纹后缀）
   const cleanElement = elementName
+    // 去前缀
     .replace(/^变[型形]/, '')   // 变型云雷纹 → 云雷纹
+    .replace(/^变形/, '')       // 变形四合云纹 → 四合云纹
     .replace(/^圈圈/, '')       // 圈圈团云纹 → 团云纹
-    .replace(/^变形/, '');      // 变形四合云纹 → 四合云纹
+    .replace(/^朵[型形]/, '')   // 朵型宝相花 → 宝相花
+    .replace(/^方形/, '')       // 方形小宝相 → 小宝相
+    .replace(/^小/, '')         // 小宝相纹 → 宝相纹
+    // 去纹后缀（树里没有纹）
+    .replace(/^团花纹$/, '团花')
+    .replace(/^宝相花纹$/, '宝相花')
+    .replace(/^小宝相纹$/, '宝相花')
+    .replace(/^宝相$/, '宝相花')
+    .replace(/^宝相纹$/, '宝相花')
+    // 补纹后缀（树里有纹）
+    .replace(/^团云$/, '团云纹')
+    .replace(/^如意云纹$/, '如意纹')
+    .replace(/^四合如意云$/, '如意四合云纹')
+    .replace(/^四合如意云纹$/, '如意四合云纹')
+    // 杂宝
+    .replace(/^杂宝团纹$/, '杂宝纹')
+    .replace(/^杂宝团花$/, '杂宝纹')
+    .replace(/^杂宝团花纹$/, '杂宝纹')
+    // 宫灯
+    .replace(/^八角宫灯纹$/, '灯纹')
+    .replace(/^宫灯纹$/, '灯纹')
+    // 团窠
+    .replace(/^对鸟团窠$/, '对鸟团窠纹')
+    // 鸟纹
+    .replace(/^海东青捕大雁纹$/, '鸟纹')
+    // 三多子类
+    .replace(/^三多佛手柑纹$/, '三多纹')
+    .replace(/^三多石榴纹$/, '三多纹');
 
   // 元素名 → ID 映射（支持模糊匹配，取包含关系的第一个）
   const { ELEMENT_TREE } = require(path.join(__dirname, '..', 'app', 'materials', 'data.ts'));
