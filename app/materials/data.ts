@@ -35,9 +35,8 @@ export const ELEMENT_TREE: ElementNode[] = [
       { id: 'huwen', label: '虎纹' },
       { id: 'mawen', label: '马纹' },
       { id: 'tuwen', label: '兔纹' },
-      { id: 'niao', label: '鸟纹', children: [
-        { id: 'duiniaotuanqun', label: '对鸟团窠纹' },
-      ]},
+      { id: 'niao', label: '鸟纹' },
+      { id: 'duiniaotuanqun', label: '对鸟团窠纹' },
       { id: 'shizi', label: '狮子纹' },
       { id: 'chan', label: '蝉纹' },
       { id: 'yuwen', label: '鱼纹' },
@@ -60,9 +59,8 @@ export const ELEMENT_TREE: ElementNode[] = [
       { id: 'lian', label: '莲纹' },
       { id: 'shiliu', label: '石榴纹' },
       { id: 'haishiliu', label: '海石榴纹' },
-      { id: 'huahui', label: '花卉纹', children: [
-        { id: 'fangxinghuahui', label: '方形花卉纹样' },
-      ]},
+      { id: 'huahui', label: '花卉纹' },
+      { id: 'fangxinghuahui', label: '方形花卉纹样' },
     ],
   },
   {
