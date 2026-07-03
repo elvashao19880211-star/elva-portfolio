@@ -7,6 +7,8 @@ export interface InnovationPattern {
   category: string;       // 分类
   inspiration?: string;   // 灵感来源
   elements?: string[];    // 构成元素
+  structure?: string;     // 结构：自由/适合/二方连续/四方连续/角隅/组合/开光
+  colors?: string[];      // 颜色
   description: string;
   detail?: string;        // 设计说明
   src: string;
@@ -104,5 +106,9 @@ const innovationPatterns: InnovationPattern[] = [
     src: '/images/innovation/鸟兽-狮子云纹.png',
   },
 ];
+
+// 结构与颜色（与素材库一致）
+export const STRUCTURES = ['自由', '适合', '角隅', '二方连续', '四方连续', '组合', '开光'] as const;
+export const COLORS = ['青蓝', '赤红', '黄金', '白素', '黑墨', '绿翠', '紫绀', '赭褐', '烟灰', '银素', '多色'] as const;
 
 export default innovationPatterns;

@@ -10,6 +10,8 @@ interface BasePattern {
   era?: string;
   culture?: string;
   elements?: string[];
+  structure?: string;
+  colors?: string[];
   description: string;
   detail?: string;
   src: string;
@@ -102,6 +104,11 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                     {pattern.category}
                   </span>
                 )}
+                {pattern.structure && (
+                  <span className="inline-block px-2.5 py-0.5 text-xs rounded-full bg-gray-100 text-ink/50">
+                    {pattern.structure}
+                  </span>
+                )}
               </div>
               <h2 className="text-xl font-serif font-semibold text-ink">{pattern.title}</h2>
             </div>
@@ -129,6 +136,18 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                 <div className="flex flex-wrap gap-1.5">
                   {pattern.elements.map((el) => (
                     <span key={el} className="inline-block px-2.5 py-1 text-xs rounded-full bg-qing/15 text-ink/70">{el}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* 颜色 */}
+            {pattern.colors && pattern.colors.length > 0 && (
+              <div>
+                <h3 className="text-xs font-medium text-gold uppercase tracking-wider mb-1.5">配色</h3>
+                <div className="flex flex-wrap gap-1.5">
+                  {pattern.colors.map((c) => (
+                    <span key={c} className="inline-block px-2.5 py-1 text-xs rounded-full bg-gold/10 text-ink/60">{c}</span>
                   ))}
                 </div>
               </div>
