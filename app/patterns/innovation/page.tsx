@@ -10,7 +10,6 @@ import innovationPatterns, { type InnovationPattern, STRUCTURES, COLORS } from '
 export default function InnovationPatternsPage() {
   const [selected, setSelected] = useState<InnovationPattern | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
-  const [elementFilter, setElementFilter] = useState<Set<string>>(new Set());
   const [structureFilter, setStructureFilter] = useState<string | null>(null);
   const [colorFilter, setColorFilter] = useState<string | null>(null);
 
@@ -19,35 +18,15 @@ export default function InnovationPatternsPage() {
     return Array.from(set);
   }, []);
 
-  // 收集所有不重复的元素标签
-  const allElements = useMemo(() => {
-    const set = new Set<string>();
-    innovationPatterns.forEach((p) => p.elements?.forEach((e) => set.add(e)));
-    return Array.from(set).sort();
-  }, []);
-
   const filtered = useMemo(() => {
     let result = innovationPatterns;
     if (categoryFilter) result = result.filter((p) => p.category === categoryFilter);
-    if (elementFilter.size > 0) {
-      result = result.filter((p) =>
-        p.elements?.some((e) => elementFilter.has(e))
-      );
-    }
     if (structureFilter) result = result.filter((p) => p.structure === structureFilter);
     if (colorFilter) result = result.filter((p) => p.colors?.includes(colorFilter));
     return result;
-  }, [categoryFilter, elementFilter, structureFilter, colorFilter]);
+  }, [categoryFilter, structureFilter, colorFilter]);
 
-  const toggleElement = (el: string) => {
-    setElementFilter((prev) => {
-      const next = new Set(prev);
-      if (next.has(el)) next.delete(el); else next.add(el);
-      return next;
-    });
-  };
-
-  const hasFilters = !!categoryFilter || elementFilter.size > 0 || !!structureFilter || !!colorFilter;
+  const hasFilters = !!categoryFilter || !!structureFilter || !!colorFilter;
 
   return (
     <main className="min-h-screen px-4 sm:px-6 py-12">
@@ -123,34 +102,11 @@ export default function InnovationPatternsPage() {
               </div>
             </div>
 
-            {/* 元素 */}
-            {allElements.length > 0 && (
-              <div>
-                <h4 className="text-xs font-medium text-ink/70 mb-2">元素</h4>
-                <div className="flex flex-wrap gap-1.5 max-h-40 overflow-y-auto">
-                  {allElements.map((el) => (
-                    <button
-                      key={el}
-                      onClick={() => toggleElement(el)}
-                      className={`px-2.5 py-1 rounded-full text-xs transition-all ${
-                        elementFilter.has(el)
-                          ? 'bg-gold/15 text-gold font-medium border border-gold/30'
-                          : 'bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-ink border border-transparent'
-                      }`}
-                    >
-                      {el}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
             {/* 清除 */}
             {hasFilters && (
               <button
                 onClick={() => {
                   setCategoryFilter(null);
-                  setElementFilter(new Set());
                   setStructureFilter(null);
                   setColorFilter(null);
                 }}
