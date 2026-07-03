@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Breadcrumb from '../../components/Breadcrumb';
+import Lightbox from '../../components/Lightbox';
 import { ELEMENT_TREE, type ElementNode } from './data';
 
 // 预构建祖先映射：每个元素 ID → 其所有祖先 ID（含自身）
@@ -160,6 +161,7 @@ export default function MaterialsPage() {
   const [color, setColor] = useState<string | null>(null);
   // 当前展开查看二级元素的一级分类
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
+  const [lightbox, setLightbox] = useState<{ src: string; title: string } | null>(null);
 
   const toggleElement = (id: string) => {
     setElementIds((prev) => {
@@ -382,7 +384,7 @@ export default function MaterialsPage() {
 
           {filtered.length > 0 ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
-              {filtered.map(renderCard)}
+              {filtered.map((item) => renderCard(item, setLightbox))}
             </div>
           ) : (
             <div className="text-center py-20">
@@ -393,6 +395,13 @@ export default function MaterialsPage() {
           )}
         </div>
       </div>
+      {lightbox && (
+        <Lightbox
+          src={lightbox.src}
+          title={lightbox.title}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </main>
   );
 }
@@ -492,12 +501,13 @@ function Chip({ label, onRemove }: { label: string; onRemove: () => void }) {
 
 /* ========== 卡片渲染 ========== */
 
-function renderCard(item: MaterialItem) {
+function renderCard(item: MaterialItem, setLightbox: (lb: { src: string; title: string } | null) => void) {
   return (
     <div
       key={item.id}
       className="group cursor-pointer bg-white rounded-xl overflow-hidden border border-gray-100
                  shadow-sm hover:shadow-lg transition-all duration-300"
+      onClick={() => setLightbox({ src: item.src, title: item.title })}
     >
       <div className="relative w-full aspect-square overflow-hidden bg-stone-50">
         <Image
