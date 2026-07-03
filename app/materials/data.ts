@@ -159,6 +159,7 @@ export const ELEMENT_TREE: ElementNode[] = [
     id: 'yixiang', label: '意象纹样', children: [
       { id: 'baoxianghua', label: '宝相花' },
       { id: 'tuanhua', label: '团花' },
+      { id: 'huahui', label: '花卉纹' },
     ],
   },
   {
@@ -238,7 +239,7 @@ const materials: MaterialItem[] = [
     title: '方形花卉纹样',
     dynasty: '唐代',
     carrier: '漆器',
-    elements: ["方形花卉纹样"],
+    elements: ["huahui"],
     structure: '四方连续',
     colors: ["黄金"],
     description: '唐代漆器，方形花卉纹样，四方连续排布，黄金配色',

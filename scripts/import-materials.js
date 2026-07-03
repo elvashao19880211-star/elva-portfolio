@@ -87,7 +87,9 @@ for (const file of files) {
     .replace(/^海东青捕大雁纹$/, '鸟纹')
     // 三多子类
     .replace(/^三多佛手柑纹$/, '三多纹')
-    .replace(/^三多石榴纹$/, '三多纹');
+    .replace(/^三多石榴纹$/, '三多纹')
+    // 花卉
+    .replace(/^方形花卉纹样$/, '花卉纹');
 
   // 元素名 → ID 映射（支持模糊匹配，取包含关系的第一个）
   const { ELEMENT_TREE } = require(path.join(__dirname, '..', 'app', 'materials', 'data.ts'));
