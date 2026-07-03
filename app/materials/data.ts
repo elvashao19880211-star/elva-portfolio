@@ -217,7 +217,7 @@ export interface MaterialItem {
 /** 占位素材（待补充真实数据） */
 const materials: MaterialItem[] = [
   {
-    id: 'mat-mr4lxi7z-zjz',
+    id: 'mat-mr4oxsp5-vlh',
     title: '朵型宝相花',
     dynasty: '唐代',
     carrier: '壁画',
@@ -228,7 +228,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/唐代-壁画-朵型宝相花-适合-多色.png',
   },
   {
-    id: 'mat-mr4lxi8c-250',
+    id: 'mat-mr4oxspf-n2a',
     title: '对鸟团窠',
     dynasty: '唐代',
     carrier: '漆器',
@@ -239,7 +239,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/唐代-漆器-对鸟团窠-四方连续-绿翠.png',
   },
   {
-    id: 'mat-mr4lxi8d-acz',
+    id: 'mat-mr4oxsph-r6t',
     title: '方形花卉纹样',
     dynasty: '唐代',
     carrier: '漆器',
@@ -250,7 +250,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/唐代-漆器-方形花卉纹样-四方连续-黄金.png',
   },
   {
-    id: 'mat-mr4lxi8f-t2x',
+    id: 'mat-mr4oxspi-2a2',
     title: '团花纹',
     dynasty: '唐代',
     carrier: '织物',
@@ -261,7 +261,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/唐代-织物-团花纹-四方连续-赤红.png',
   },
   {
-    id: 'mat-mr4lxi8h-hu4',
+    id: 'mat-mr4oxspn-lp4',
     title: '小宝相纹',
     dynasty: '唐代',
     carrier: '织物',
@@ -272,7 +272,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/唐代-织物-小宝相纹-四方连续-赭褐.png',
   },
   {
-    id: 'mat-mr4lxi8k-i5h',
+    id: 'mat-mr4oxspp-sf3',
     title: '方形小宝相',
     dynasty: '唐代',
     carrier: '织物',
@@ -283,7 +283,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/唐代-织物-方形小宝相-四方连续-赭褐.png',
   },
   {
-    id: 'mat-mr4lxi8m-zac',
+    id: 'mat-mr4oxspr-3be',
     title: '方形小宝相纹',
     dynasty: '唐代',
     carrier: '织物',
@@ -294,7 +294,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/唐代-织物-方形小宝相纹-四方连续-绿翠.png',
   },
   {
-    id: 'mat-mr4lxi8o-x7i',
+    id: 'mat-mr4oxsps-atq',
     title: '三角云纹',
     dynasty: '战国',
     carrier: '青铜器',
@@ -305,7 +305,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/战国-青铜器-三角云纹-二方连续-绿翠.png',
   },
   {
-    id: 'mat-mr4lxi8q-1wf',
+    id: 'mat-mr4oxspu-22q',
     title: '卷云纹',
     dynasty: '战国',
     carrier: '青铜器',
@@ -316,7 +316,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/战国-青铜器-卷云纹-二方连续-绿翠.png',
   },
   {
-    id: 'mat-mr4lxi8u-9aj',
+    id: 'mat-mr4oxspy-koj',
     title: '团云',
     dynasty: '明代',
     carrier: '其他',
@@ -327,7 +327,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/明代-水陆画-团云-自由-多色.png',
   },
   {
-    id: 'mat-mr4lxi8w-8b8',
+    id: 'mat-mr4oxsq0-r2j',
     title: '火焰云纹',
     dynasty: '明代',
     carrier: '其他',
@@ -338,7 +338,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/明代-水陆画-火焰云纹-自由-黄金.png',
   },
   {
-    id: 'mat-mr4lxi8z-cjc',
+    id: 'mat-mr4oxsq6-tl8',
     title: '变型云雷纹',
     dynasty: '明代',
     carrier: '织物',
@@ -349,7 +349,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/明代-织物-变型云雷纹-四方连续-黄金.png',
   },
   {
-    id: 'mat-mr4lxi93-xca',
+    id: 'mat-mr4oxsq7-vbt',
     title: '变形四合云纹',
     dynasty: '明代',
     carrier: '织物',
@@ -360,7 +360,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/明代-织物-变形四合云纹-四方连续-黄金.png',
   },
   {
-    id: 'mat-mr4lxi96-yg2',
+    id: 'mat-mr4oxsq9-jur',
     title: '团云纹',
     dynasty: '明代',
     carrier: '织物',
@@ -371,7 +371,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/明代-织物-团云纹-四方连续-黄金.png',
   },
   {
-    id: 'mat-mr4lxi97-6jm',
+    id: 'mat-mr4oxsqa-vos',
     title: '杂宝团纹',
     dynasty: '明代',
     carrier: '织物',
@@ -382,7 +382,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/明代-织物-杂宝团纹-四方连续-绿翠.png',
   },
   {
-    id: 'mat-mr4lxi99-pua',
+    id: 'mat-mr4oxsqb-tkc',
     title: '杂宝团花纹',
     dynasty: '明代',
     carrier: '织物',
@@ -393,7 +393,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/明代-织物-杂宝团花纹-四方连续-绿翠.png',
   },
   {
-    id: 'mat-mr4lxi9a-ojf',
+    id: 'mat-mr4oxsqd-y6l',
     title: '如意四合云纹',
     dynasty: '明代',
     carrier: '陶瓷',
@@ -404,7 +404,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/明代-陶瓷-如意四合云纹-自由-多色.png',
   },
   {
-    id: 'mat-mr4lxi9b-2zi',
+    id: 'mat-mr4oxsqe-mk5',
     title: '四合如意云纹',
     dynasty: '明',
     carrier: '织物',
@@ -415,7 +415,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/明清-织物-四合如意云纹-四方连续-青蓝.png',
   },
   {
-    id: 'mat-mr4lxi9d-tpt',
+    id: 'mat-mr4oxsqg-tmi',
     title: '云气纹',
     dynasty: '汉代',
     carrier: '漆器',
@@ -426,7 +426,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/汉代-漆器-云气纹-适合-黑墨.png',
   },
   {
-    id: 'mat-mr4lxi9e-3ht',
+    id: 'mat-mr4oxsqh-q2m',
     title: '卷云纹',
     dynasty: '汉代',
     carrier: '漆器',
@@ -437,7 +437,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/汉代-漆器-卷云纹-二方连续-赭褐.png',
   },
   {
-    id: 'mat-mr4lxi9j-7lj',
+    id: 'mat-mr4oxsqm-1ab',
     title: '云气纹',
     dynasty: '汉代',
     carrier: '织物',
@@ -448,7 +448,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/汉代-织物-云气纹-四方连续-多色.png',
   },
   {
-    id: 'mat-mr4lxi9l-s6k',
+    id: 'mat-mr4oxsqn-ycq',
     title: '变形如意云纹',
     dynasty: '清代',
     carrier: '木器',
@@ -459,7 +459,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-家具装饰-变形如意云纹-自由-赭褐.png',
   },
   {
-    id: 'mat-mr4lxi9n-wl8',
+    id: 'mat-mr4oxsqp-475',
     title: '宝相花纹',
     dynasty: '清代',
     carrier: '掐丝珐琅',
@@ -470,7 +470,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-掐丝珐琅-宝相花纹-适合-多色.png',
   },
   {
-    id: 'mat-mr4lxi9o-egb',
+    id: 'mat-mr4oxsqq-je2',
     title: '鱼鳞云纹',
     dynasty: '清代',
     carrier: '掐丝珐琅',
@@ -481,7 +481,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-掐丝珐琅-鱼鳞云纹-四方连续-青蓝.png',
   },
   {
-    id: 'mat-mr4lxi9p-t4u',
+    id: 'mat-mr4oxsqr-2yx',
     title: '卷云纹',
     dynasty: '清代',
     carrier: '木器',
@@ -492,7 +492,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-木器-卷云纹-四方连续-赤红.png',
   },
   {
-    id: 'mat-mr4lxi9q-qxq',
+    id: 'mat-mr4oxsqs-u52',
     title: '变型卷云纹',
     dynasty: '清代',
     carrier: '木器',
@@ -503,7 +503,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-竹盒装饰-变型卷云纹-四方连续-绿翠.png',
   },
   {
-    id: 'mat-mr4lxi9s-81w',
+    id: 'mat-mr4oxsqv-46w',
     title: '三多佛手柑纹',
     dynasty: '清代',
     carrier: '织物',
@@ -514,7 +514,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-织物-三多佛手柑纹-四方连续-多色.png',
   },
   {
-    id: 'mat-mr4lxi9u-dbg',
+    id: 'mat-mr4oxsqx-box',
     title: '三多石榴纹',
     dynasty: '清代',
     carrier: '织物',
@@ -525,7 +525,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-织物-三多石榴纹-四方连续-多色.png',
   },
   {
-    id: 'mat-mr4lxi9x-ick',
+    id: 'mat-mr4oxsr2-la2',
     title: '三多纹',
     dynasty: '清代',
     carrier: '织物',
@@ -536,7 +536,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-织物-三多纹-福寿纹-四方连续-多色.png',
   },
   {
-    id: 'mat-mr4lxia2-vgh',
+    id: 'mat-mr4oxsr4-zc1',
     title: '八角宫灯纹',
     dynasty: '清代',
     carrier: '织物',
@@ -547,7 +547,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-织物-八角宫灯纹-自由-多色.png',
   },
   {
-    id: 'mat-mr4lxia4-9v0',
+    id: 'mat-mr4oxsr6-vep',
     title: '如意云纹',
     dynasty: '清代',
     carrier: '织物',
@@ -558,7 +558,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-织物-如意云纹-自由-多色.png',
   },
   {
-    id: 'mat-mr4lxia6-stz',
+    id: 'mat-mr4oxsra-dbg',
     title: '宫灯纹',
     dynasty: '清代',
     carrier: '织物',
@@ -569,7 +569,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-织物-宫灯纹-自由-多色.png',
   },
   {
-    id: 'mat-mr4lxia8-cnx',
+    id: 'mat-mr4oxsrd-ndd',
     title: '牡丹纹',
     dynasty: '清代',
     carrier: '织物',
@@ -580,7 +580,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-织物-牡丹纹-四方连续-赤红.png',
   },
   {
-    id: 'mat-mr4lxia9-6p8',
+    id: 'mat-mr4oxsrf-0p4',
     title: '叠云纹',
     dynasty: '清代',
     carrier: '陶瓷',
@@ -591,7 +591,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-陶瓷-叠云纹-自由-绿翠.png',
   },
   {
-    id: 'mat-mr4lxiab-1ym',
+    id: 'mat-mr4oxsri-z86',
     title: '圈圈团云纹',
     dynasty: '清代',
     carrier: '陶瓷',
@@ -602,7 +602,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-陶瓷-圈圈团云纹-自由-青蓝.png',
   },
   {
-    id: 'mat-mr4lxiae-scp',
+    id: 'mat-mr4oxsrl-wlv',
     title: '牡丹纹',
     dynasty: '清代',
     carrier: '陶瓷',
@@ -613,7 +613,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/清代-陶瓷-牡丹纹-开光-多色.png',
   },
   {
-    id: 'mat-mr4lxiag-du5',
+    id: 'mat-mr4oxsrn-bk9',
     title: '团花纹',
     dynasty: '辽代',
     carrier: '织物',
@@ -624,7 +624,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/辽代-织物-团花纹-四方连续-赤红.png',
   },
   {
-    id: 'mat-mr4lxiai-2ta',
+    id: 'mat-mr4oxsrp-yfw',
     title: '宝相花纹',
     dynasty: '辽代',
     carrier: '织物',
@@ -635,7 +635,7 @@ const materials: MaterialItem[] = [
     src: '/images/materials/辽代-织物-宝相花纹-四方连续-赤红.png',
   },
   {
-    id: 'mat-mr4lxiak-gpy',
+    id: 'mat-mr4oxsrq-6uw',
     title: '海东青捕大雁纹',
     dynasty: '金代',
     carrier: '织物',

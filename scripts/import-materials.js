@@ -61,14 +61,17 @@ for (const file of files) {
     .replace(/^变形/, '')       // 变形四合云纹 → 四合云纹
     .replace(/^圈圈/, '')       // 圈圈团云纹 → 团云纹
     .replace(/^朵[型形]/, '')   // 朵型宝相花 → 宝相花
+    // 完整匹配（必须在 strip 方形之前）
+    .replace(/^方形花卉纹样$/, '花卉纹')
     .replace(/^方形/, '')       // 方形小宝相 → 小宝相
     .replace(/^小/, '')         // 小宝相纹 → 宝相纹
-    // 去纹后缀（树里没有纹）
+    // 去纹后缀（不含纹）
     .replace(/^团花纹$/, '团花')
     .replace(/^宝相花纹$/, '宝相花')
     .replace(/^小宝相纹$/, '宝相花')
     .replace(/^宝相$/, '宝相花')
     .replace(/^宝相纹$/, '宝相花')
+    .replace(/^花卉纹样$/, '花卉纹')
     // 补纹后缀（树里有纹）
     .replace(/^团云$/, '团云纹')
     .replace(/^如意云纹$/, '如意纹')
@@ -87,9 +90,7 @@ for (const file of files) {
     .replace(/^海东青捕大雁纹$/, '鸟纹')
     // 三多子类
     .replace(/^三多佛手柑纹$/, '三多纹')
-    .replace(/^三多石榴纹$/, '三多纹')
-    // 花卉
-    .replace(/^方形花卉纹样$/, '花卉纹');
+    .replace(/^三多石榴纹$/, '三多纹');
 
   // 元素名 → ID 映射（支持模糊匹配，取包含关系的第一个）
   const { ELEMENT_TREE } = require(path.join(__dirname, '..', 'app', 'materials', 'data.ts'));
