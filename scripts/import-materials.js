@@ -11,6 +11,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const sharp = require('sharp');
 
 const SRC_DIR = path.join(__dirname, '..', '素材待导入');
 const IMG_DIR = path.join(__dirname, '..', 'public', 'images', 'materials');
@@ -87,6 +88,8 @@ for (const file of files) {
     .replace(/^宫灯纹$/, '灯纹')
     // 团窠
     .replace(/^对鸟团窠$/, '对鸟团窠纹')
+    // 团花
+    .replace(/^六出团花纹$/, '团花')
     // 三多子类
     .replace(/^三多佛手柑纹$/, '三多纹')
     .replace(/^三多石榴纹$/, '三多纹');
