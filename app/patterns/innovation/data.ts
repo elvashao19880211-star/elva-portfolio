@@ -123,6 +123,15 @@ const innovationPatterns: InnovationPattern[] = [
     detail: '融合唐代狮子纹的威猛与敦煌祥云的飘逸。狮子形象以块面概括，鬃毛化作翻卷的云纹。整体在刚与柔之间寻找平衡，既有守护的力度，又不失东方的含蓄美感。',
     src: '/images/innovation/鸟兽-狮子云纹.png',
   },
+  {
+    id: 'innov-010',
+    title: '绿麒麟踏海望月',
+    category: '神兽纹',
+    structure: '适合',
+    colors: ['绿翠'],
+    description: '神兽类绿麒麟踏海望月创新设计',
+    src: '/images/innovation/神兽-绿麒麟踏海望月-适合-绿翠.png',
+  },
 ];
 
 // 分类取自素材库元素一级分类
