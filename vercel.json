@@ -2,6 +2,12 @@
   "framework": "nextjs",
   "headers": [
     {
+      "source": "/(.*)\\.(png|jpg|jpeg|webp|gif|svg|ico)",
+      "headers": [
+        { "key": "Content-Disposition", "value": "inline" }
+      ]
+    },
+    {
       "source": "/((?!_next|api|images|favicon).*)",
       "headers": [
         { "key": "Cache-Control", "value": "no-store, max-age=0" }
