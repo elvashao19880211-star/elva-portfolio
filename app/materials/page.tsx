@@ -131,7 +131,7 @@ function ElementTreeItem({
           onClick={handleLabelClick}
           className={`text-left px-1 py-0.5 rounded text-[11px] transition-colors truncate flex-1 ${
             isExpandedCat
-              ? 'bg-qing/15 text-qing font-semibold'
+              ? 'bg-gold/10 text-gold font-semibold'
               : isSelected
               ? 'bg-gold/10 text-gold font-medium'
               : 'text-gray-400 hover:bg-gray-50 hover:text-ink'
