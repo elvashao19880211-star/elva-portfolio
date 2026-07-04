@@ -109,6 +109,6 @@ const innovationPatterns: InnovationPattern[] = [
 
 // 结构与颜色（与素材库一致）
 export const STRUCTURES = ['自由', '适合', '角隅', '二方连续', '四方连续', '组合', '开光'] as const;
-export const COLORS = ['青蓝', '赤红', '黄金', '白素', '黑墨', '绿翠', '紫绀', '赭褐', '烟灰', '银素', '粉色', '多色'] as const;
+export const COLORS = ['青蓝', '赤红', '黄金', '白素', '黑墨', '绿翠', '紫绀', '赭褐', '烟灰', '银素', '樱粉', '多色'] as const;
 
 export default innovationPatterns;

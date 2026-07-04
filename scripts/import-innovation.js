@@ -19,7 +19,7 @@ const EXTENSIONS = ['.png', '.jpg', '.jpeg', '.webp', '.gif'];
 // 有效结构值
 const VALID_STRUCTURES = ['自由', '适合', '角隅', '二方连续', '四方连续', '组合', '开光'];
 // 有效颜色值
-const VALID_COLORS = ['青蓝', '赤红', '黄金', '白素', '黑墨', '绿翠', '紫绀', '赭褐', '烟灰', '银素', '粉色', '多色'];
+const VALID_COLORS = ['青蓝', '赤红', '黄金', '白素', '黑墨', '绿翠', '紫绀', '赭褐', '烟灰', '银素', '樱粉', '多色'];
 
 if (!fs.existsSync(IMG_DIR)) {
   console.error('❌ 未找到图片目录：public/images/innovation/');
