@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Breadcrumb from '../../../components/Breadcrumb';
 import SectionTitle from '../../../components/SectionTitle';
 import PatternDetail from '../../../components/PatternDetail';
-import innovationPatterns, { type InnovationPattern, STRUCTURES, COLORS } from './data';
+import innovationPatterns, { type InnovationPattern, STRUCTURES, COLORS, CATEGORIES } from './data';
 
 export default function InnovationPatternsPage() {
   const [selected, setSelected] = useState<InnovationPattern | null>(null);
@@ -13,10 +13,7 @@ export default function InnovationPatternsPage() {
   const [structureFilter, setStructureFilter] = useState<string | null>(null);
   const [colorFilter, setColorFilter] = useState<string | null>(null);
 
-  const categories = useMemo(() => {
-    const set = new Set(innovationPatterns.map((p) => p.category));
-    return Array.from(set);
-  }, []);
+  const categories = CATEGORIES;
 
   const filtered = useMemo(() => {
     let result = innovationPatterns;

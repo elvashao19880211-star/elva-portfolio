@@ -18,7 +18,7 @@ const innovationPatterns: InnovationPattern[] = [
   {
     id: 'innov-001',
     title: '四叶纹',
-    category: '几何',
+    category: '几何纹',
     structure: '四方连续',
     colors: ['绿翠'],
     inspiration: '唐代团窠四叶结构',
@@ -30,7 +30,7 @@ const innovationPatterns: InnovationPattern[] = [
   {
     id: 'innov-002',
     title: '天华锦',
-    category: '几何',
+    category: '几何纹',
     structure: '四方连续',
     colors: ['樱粉'],
     inspiration: '宋代八达晕锦纹',
@@ -42,7 +42,7 @@ const innovationPatterns: InnovationPattern[] = [
   {
     id: 'innov-003',
     title: '方形小宝相纹',
-    category: '几何',
+    category: '几何纹',
     structure: '四方连续',
     colors: ['赭褐'],
     inspiration: '唐代宝相花的几何转译',
@@ -54,7 +54,7 @@ const innovationPatterns: InnovationPattern[] = [
   {
     id: 'innov-004',
     title: '球路吉鱼纹',
-    category: '几何',
+    category: '几何纹',
     structure: '四方连续',
     colors: ['黄金'],
     inspiration: '宋代球路纹与汉代双鱼纹',
@@ -66,7 +66,7 @@ const innovationPatterns: InnovationPattern[] = [
   {
     id: 'innov-005',
     title: '金钱纹',
-    category: '几何',
+    category: '几何纹',
     structure: '四方连续',
     colors: ['赭褐'],
     inspiration: '清代方孔钱纹与现代货币符号',
@@ -78,7 +78,7 @@ const innovationPatterns: InnovationPattern[] = [
   {
     id: 'innov-006',
     title: '葫芦金钱纹',
-    category: '吉祥',
+    category: '意象纹样',
     structure: '四方连续',
     colors: ['绿翠'],
     inspiration: '清代吉祥纹样中的葫芦与金钱组合',
@@ -90,7 +90,7 @@ const innovationPatterns: InnovationPattern[] = [
   {
     id: 'innov-007',
     title: '如意龟背填花',
-    category: '复合',
+    category: '综合元素',
     structure: '四方连续',
     colors: ['多色'],
     inspiration: '汉代龟背纹与清代如意纹',
@@ -102,7 +102,7 @@ const innovationPatterns: InnovationPattern[] = [
   {
     id: 'innov-008',
     title: '如意小马哒哒纹',
-    category: '鸟兽',
+    category: '鸟兽鱼虫',
     structure: '四方连续',
     colors: ['樱粉'],
     inspiration: '唐代马球纹与民间吉祥马纹',
@@ -114,7 +114,7 @@ const innovationPatterns: InnovationPattern[] = [
   {
     id: 'innov-009',
     title: '狮子云纹',
-    category: '鸟兽',
+    category: '鸟兽鱼虫',
     structure: '四方连续',
     colors: ['樱粉'],
     inspiration: '唐代狮子纹与敦煌祥云',
@@ -124,6 +124,12 @@ const innovationPatterns: InnovationPattern[] = [
     src: '/images/innovation/鸟兽-狮子云纹.png',
   },
 ];
+
+// 分类取自素材库元素一级分类
+export const CATEGORIES = [
+  '自然纹', '鸟兽鱼虫', '植物纹', '意象纹样', '几何纹',
+  '综合元素', '人物纹', '器物纹', '宗教纹', '边饰纹', '文字纹', '其他',
+] as const;
 
 // 结构与颜色（与素材库一致）
 export const STRUCTURES = ['自由', '适合', '角隅', '二方连续', '四方连续', '组合', '开光'] as const;
