@@ -90,7 +90,7 @@ const innovationPatterns: InnovationPattern[] = [
   {
     id: 'innov-007',
     title: '如意龟背填花',
-    category: '符合',
+    category: '复合',
     structure: '四方连续',
     colors: ['多色'],
     inspiration: '汉代龟背纹与清代如意纹',
