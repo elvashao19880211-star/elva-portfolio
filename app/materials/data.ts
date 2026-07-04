@@ -15,6 +15,7 @@ export const DYNASTY_ALIASES: Record<string, string> = {
   '清代': '清',
   '辽代': '宋辽金',
   '金代': '宋辽金',
+  '北凉': '魏晋南北朝',
 };
 
 /** 载体 */

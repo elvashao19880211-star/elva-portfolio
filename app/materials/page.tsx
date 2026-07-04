@@ -88,15 +88,18 @@ function ElementTreeItem({
   selected,
   onToggle,
   onCategoryClick,
+  expandedCategory,
   depth = 0,
 }: {
   node: ElementNode;
   selected: Set<string>;
   onToggle: (id: string) => void;
   onCategoryClick?: (id: string) => void;
+  expandedCategory?: string | null;
   depth?: number;
 }) {
   const isSelected = selected.has(node.id);
+  const isExpandedCat = expandedCategory === node.id;
   const hasChildren = node.children && node.children.length > 0;
   const [expanded, setExpanded] = useState(false);
   const isTopLevel = depth === 0;
@@ -127,7 +130,9 @@ function ElementTreeItem({
         <button
           onClick={handleLabelClick}
           className={`text-left px-1 py-0.5 rounded text-[11px] transition-colors truncate flex-1 ${
-            isSelected
+            isExpandedCat
+              ? 'bg-qing/15 text-qing font-semibold'
+              : isSelected
               ? 'bg-gold/10 text-gold font-medium'
               : 'text-gray-400 hover:bg-gray-50 hover:text-ink'
           }`}
@@ -144,6 +149,7 @@ function ElementTreeItem({
               selected={selected}
               onToggle={onToggle}
               onCategoryClick={onCategoryClick}
+              expandedCategory={expandedCategory}
               depth={depth + 1}
             />
           ))}
@@ -289,6 +295,7 @@ export default function MaterialsPage() {
                       selected={elementIds}
                       onToggle={toggleElement}
                       onCategoryClick={setExpandedCategory}
+                      expandedCategory={expandedCategory}
                     />
                   ))}
                 </ul>
