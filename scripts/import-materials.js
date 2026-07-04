@@ -72,6 +72,7 @@ for (const file of files) {
     .replace(/^团花纹$/, '团花')
     .replace(/^宝相花纹$/, '宝相花')
     .replace(/^小宝相纹$/, '宝相花')
+    .replace(/^小宝相$/, '宝相花')
     .replace(/^宝相$/, '宝相花')
     .replace(/^宝相纹$/, '宝相花')
     // 补纹后缀（树里有纹）
