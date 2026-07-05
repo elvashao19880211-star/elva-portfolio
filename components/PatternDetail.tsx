@@ -60,7 +60,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
   };
 
   const getLabelText = (tier: string) => {
-    if (tier === 'personal') return isRevival ? '个人学习 · 带水印 · ¥9.9' : '个人学习 · 带水印 · ¥29.9';
+    if (tier === 'personal') return isRevival ? '个人学习/临摹 · 带水印 · ¥9.9' : '个人学习/临摹 · 带水印 · ¥29.9';
     if (tier === 'commercial') return isRevival ? '标准商业许可 · 高清PNG · ¥399' : '标准商业许可 · 高清PNG · ¥499';
     return '源文件企业授权 · PSD+修改权 · ¥4,999';
   };
@@ -188,8 +188,8 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
       {showBuy && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowBuy(false)}>
           <div className="bg-white rounded-2xl max-w-sm w-full p-8 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-lg font-serif font-semibold text-ink mb-1">购买 {pattern.title}</h3>
-            <p className="text-xs text-gray-400 mb-6">选择授权级别</p>
+            <h3 className="text-lg font-serif font-semibold text-ink mb-1">购买授权 · {pattern.title}</h3>
+            <p className="text-xs text-gray-400 mb-6">按用途选择</p>
 
             <div className="space-y-3">
               {/* 个人学习 */}
@@ -199,8 +199,8 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-ink">个人学习许可</p>
-                    <p className="text-xs text-gray-400">带水印低分辨率 · 非商业用途</p>
+                    <p className="text-sm font-medium text-ink">个人学习 / 临摹</p>
+                    <p className="text-xs text-gray-400">带水印 · 非商业用途</p>
                   </div>
                   <span className="text-lg font-serif font-bold text-gold">¥{isRevival ? '9.9' : '29.9'}</span>
                 </div>
