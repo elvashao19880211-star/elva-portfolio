@@ -173,8 +173,9 @@ console.log(`   图片已复制 → ${IMG_DIR}`);
 addWatermarks();
 
 async function addWatermarks() {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="80">
-    <text x="100" y="55" text-anchor="middle" font-size="28" fill="rgba(255,255,255,0.15)" font-family="sans-serif">河图</text>
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="260" height="100">
+    <text x="130" y="42" text-anchor="middle" font-size="28" fill="rgba(255,255,255,0.15)" font-family="sans-serif">河图</text>
+    <text x="130" y="68" text-anchor="middle" font-size="16" fill="rgba(255,255,255,0.10)" font-family="sans-serif" font-style="italic">hetu-pattern.com</text>
   </svg>`;
   const buf = Buffer.from(svg);
   const files = fs.readdirSync(IMG_DIR).filter((f) => /\.(png|jpg|jpeg)$/i.test(f));

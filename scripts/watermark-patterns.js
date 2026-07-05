@@ -10,19 +10,24 @@ const fs = require('fs');
 const dirs = ['public/images/revival', 'public/images/innovation'];
 
 async function addWatermark(image, width, height) {
-  const fontSize = Math.round(Math.min(width, height) * 0.04);
-  const spacing = Math.round(fontSize * 4);
-  const offsetY = Math.round(fontSize * 1.2);
+  // 主文字大小
+  const fontSize = Math.round(Math.min(width, height) * 0.035);
+  const urlSize = Math.round(fontSize * 0.55);
+  const spacingX = Math.round(fontSize * 5);
+  const spacingY = Math.round(fontSize * 6);
+  const lineGap = Math.round(fontSize * 1.4);
 
-  const cols = Math.ceil(width / spacing) + 1;
-  const rows = Math.ceil(height / spacing) + 1;
+  const cols = Math.ceil(width / spacingX) + 1;
+  const rows = Math.ceil(height / spacingY) + 1;
 
   let textElements = '';
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
-      const x = col * spacing;
-      const y = row * spacing + offsetY;
-      textElements += `<text x="${x}" y="${y}" font-size="${fontSize}" fill="rgba(255,255,255,0.12)" font-family="sans-serif">河图</text>`;
+      const x = col * spacingX;
+      const y = row * spacingY + fontSize;
+      textElements +=
+        `<text x="${x}" y="${y}" font-size="${fontSize}" fill="rgba(255,255,255,0.12)" font-family="sans-serif">河图</text>` +
+        `<text x="${x + fontSize * 0.2}" y="${y + lineGap}" font-size="${urlSize}" fill="rgba(255,255,255,0.08)" font-family="sans-serif" font-style="italic">hetu-pattern.com</text>`;
     }
   }
 
