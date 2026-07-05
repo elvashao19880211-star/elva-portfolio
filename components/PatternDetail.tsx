@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Lightbox from './Lightbox';
 
 interface BasePattern {
   id: string;
@@ -29,6 +30,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
   const [showBuy, setShowBuy] = useState(false);
   const [showPay, setShowPay] = useState(false);
   const [selectedTier, setSelectedTier] = useState('commercial');
+  const [showLightbox, setShowLightbox] = useState(false);
   const isRevival = pattern.type === 'revival' || !!pattern.dynasty;
 
   useEffect(() => {
@@ -86,7 +88,10 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
           </button>
 
           {/* 左侧：大图 */}
-          <div className="relative w-full md:w-1/2 min-h-[280px] md:min-h-[460px] bg-stone-50">
+          <div
+            className="relative w-full md:w-1/2 min-h-[280px] md:min-h-[460px] bg-stone-50 cursor-zoom-in group"
+            onClick={() => setShowLightbox(true)}
+          >
             <Image
               src={pattern.src}
               alt={pattern.title}
@@ -271,6 +276,11 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
             <button onClick={() => setShowPay(false)} className="btn-outline w-full text-xs mt-4">返回</button>
           </div>
         </div>
+      )}
+
+      {/* 放大查看 */}
+      {showLightbox && (
+        <Lightbox src={pattern.src} title={pattern.title} onClose={() => setShowLightbox(false)} />
       )}
     </>
   );
