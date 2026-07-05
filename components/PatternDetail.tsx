@@ -6,6 +6,7 @@ import Image from 'next/image';
 interface BasePattern {
   id: string;
   title: string;
+  type?: 'revival' | 'innovation';
   dynasty?: string;
   era?: string;
   culture?: string;
@@ -26,8 +27,9 @@ interface PatternDetailProps {
 
 export default function PatternDetail({ pattern, onClose }: PatternDetailProps) {
   const [showBuy, setShowBuy] = useState(false);
-  const [buyOption, setBuyOption] = useState<'hd' | 'vector' | 'commercial'>('hd');
-  const [paySuccess, setPaySuccess] = useState(false);
+  const [showPay, setShowPay] = useState(false);
+  const [selectedTier, setSelectedTier] = useState('commercial');
+  const isRevival = pattern.type === 'revival' || !!pattern.dynasty;
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -45,17 +47,22 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
     setShowBuy(true);
   };
 
-  const handlePay = () => {
+  const handleSelectTier = (tier: string) => {
+    setSelectedTier(tier);
     setShowBuy(false);
-    setPaySuccess(true);
-    setTimeout(() => setPaySuccess(false), 2000);
+    setShowPay(true);
   };
 
-  const prices = { hd: 9.9, vector: 29.9, commercial: 99 };
-  const labels = {
-    hd: '高清版 · 1920px · ¥9.9',
-    vector: '高清+矢量 · 3840px+EPS · ¥29.9',
-    commercial: '商用完整版 · 源文件+授权 · ¥99',
+  const getPriceText = (tier: string) => {
+    if (tier === 'personal') return isRevival ? '9.9' : '29.9';
+    if (tier === 'commercial') return isRevival ? '399' : '499';
+    return '4,999';
+  };
+
+  const getLabelText = (tier: string) => {
+    if (tier === 'personal') return isRevival ? '个人学习 · 带水印 · ¥9.9' : '个人学习 · 带水印 · ¥29.9';
+    if (tier === 'commercial') return isRevival ? '标准商业许可 · 高清PNG · ¥399' : '标准商业许可 · 高清PNG · ¥499';
+    return '源文件企业授权 · PSD+修改权 · ¥4,999';
   };
 
   return (
@@ -167,7 +174,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                 onClick={handleBuy}
                 className="btn-gold flex-1 text-xs py-2.5"
               >
-                购买高清版
+                购买授权
               </button>
             </div>
             <p className="text-[10px] text-gray-200 text-center -mt-2">
@@ -177,53 +184,91 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
         </div>
       </div>
 
-      {/* 购买弹窗 */}
+      {/* 选择版本弹窗 */}
       {showBuy && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowBuy(false)}>
           <div className="bg-white rounded-2xl max-w-sm w-full p-8 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <h3 className="heading-3 text-ink mb-2">购买 {pattern.title}</h3>
-            <p className="body-sm text-gray-400 mb-6">选择下载版本</p>
+            <h3 className="text-lg font-serif font-semibold text-ink mb-1">购买 {pattern.title}</h3>
+            <p className="text-xs text-gray-400 mb-6">选择授权级别</p>
 
             <div className="space-y-3">
-              {( ['hd', 'vector', 'commercial'] as const).map((opt) => (
+              {/* 个人学习 */}
+              <div
+                className="p-4 rounded-xl border-2 cursor-pointer transition-all border-gray-100 hover:border-gold"
+                onClick={() => handleSelectTier('personal')}
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-ink">个人学习许可</p>
+                    <p className="text-xs text-gray-400">带水印低分辨率 · 非商业用途</p>
+                  </div>
+                  <span className="text-lg font-serif font-bold text-gold">¥{isRevival ? '9.9' : '29.9'}</span>
+                </div>
+              </div>
+
+              {/* 商业许可 */}
+              <div
+                className="p-4 rounded-xl border-2 cursor-pointer transition-all border-gold bg-gold/5"
+                onClick={() => handleSelectTier('commercial')}
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-ink">标准商业许可</p>
+                    <p className="text-xs text-gray-400">高清无水印 · 不限印刷量 · 非独家</p>
+                  </div>
+                  <span className="text-lg font-serif font-bold text-gold">¥{isRevival ? '399' : '499'}</span>
+                </div>
+              </div>
+
+              {/* 源文件（仅创新纹样） */}
+              {!isRevival && (
                 <div
-                  key={opt}
-                  className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                    buyOption === opt ? 'border-qing bg-qing/5' : 'border-gray-100 hover:border-gray-200'
-                  }`}
-                  onClick={() => setBuyOption(opt)}
+                  className="p-4 rounded-xl border-2 cursor-pointer transition-all border-gray-100 hover:border-gold"
+                  onClick={() => handleSelectTier('source')}
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-ink">{labels[opt].split('·')[0].trim()}</p>
-                      <p className="text-xs text-gray-400">{labels[opt].split('·').slice(1).join('·')}</p>
+                      <p className="text-sm font-medium text-ink">源文件企业授权</p>
+                      <p className="text-xs text-gray-400">PSD源文件 · 修改权 · 永久</p>
                     </div>
-                    <span className="text-lg font-serif font-bold text-gold">¥{prices[opt]}</span>
+                    <span className="text-lg font-serif font-bold text-gold">¥4,999</span>
                   </div>
                 </div>
-              ))}
+              )}
             </div>
 
-            <div className="flex gap-3 mt-6">
-              <button onClick={() => setShowBuy(false)} className="btn-outline flex-1 text-sm">取消</button>
-              <button onClick={handlePay} className="btn-ink flex-1 text-sm">支付 ¥{prices[buyOption]}</button>
-            </div>
-            <p className="text-[10px] text-gray-300 text-center mt-4">（演示模式 · 支付接口待接入）</p>
+            <button onClick={() => setShowBuy(false)} className="btn-outline w-full text-sm mt-6">取消</button>
+            <p className="text-[10px] text-gray-300 text-center mt-3 leading-relaxed">
+              版权归创作者所有 · 您购买的是使用权许可 · 禁止转卖文件、子授权、注册商标
+            </p>
           </div>
         </div>
       )}
 
-      {/* Toast */}
-      {paySuccess && (
-        <div className="fixed top-24 right-6 z-[70] bg-white rounded-xl shadow-lg border border-green-100 p-4 flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-            <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <p className="text-sm font-medium text-ink">购买成功！</p>
-            <p className="text-xs text-gray-400">高清文件已加入你的下载中心</p>
+      {/* 支付弹窗 — 支付宝扫码 */}
+      {showPay && (
+        <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowPay(false)}>
+          <div className="bg-white rounded-2xl max-w-sm w-full p-8 shadow-2xl text-center" onClick={(e) => e.stopPropagation()}>
+            <p className="text-xs text-gray-400 mb-1">支付</p>
+            <p className="text-xl font-serif font-semibold text-ink mb-2">¥{getPriceText(selectedTier)}</p>
+            <p className="text-xs text-gray-500 mb-5">{getLabelText(selectedTier)}</p>
+
+            <div className="bg-gray-50 rounded-xl p-4 inline-block mb-4">
+              <img src="/qrcode.png" alt="支付宝付款码" className="w-48 h-48 object-contain" />
+            </div>
+
+            <p className="text-xs text-gray-400">请使用支付宝扫码支付</p>
+            <p className="text-[10px] text-gray-300 mt-1">支付后请联系客服发送文件</p>
+
+            <div className="mt-6 pt-4 border-t border-gray-100">
+              <p className="text-[10px] text-gray-300 leading-relaxed">
+                版权归创作者所有 · 购买即同意授权条款<br />
+                禁止转卖文件、子授权、注册商标<br />
+                如发现将纹样注册商标，授权自动终止并保留追诉权利
+              </p>
+            </div>
+
+            <button onClick={() => setShowPay(false)} className="btn-outline w-full text-xs mt-4">返回</button>
           </div>
         </div>
       )}
