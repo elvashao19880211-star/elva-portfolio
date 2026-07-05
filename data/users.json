@@ -5,12 +5,5 @@
     "passwordHash": "$2b$10$O4auQKD1gQNbIayhcjDxLed1EEjrJhxKmRXs3J2RpDGMCmkMrjMbm",
     "nickname": "河图",
     "createdAt": "2026-06-17T04:00:00.000Z"
-  },
-  {
-    "id": "6beb1f91-572b-453f-a3df-a49ab6d65e22",
-    "phone": "13600000001",
-    "passwordHash": "$2b$10$iqz8WW/Q8aoNSgtyhcPOleab.HpaJe/nFnsAAb.MVIVJvwRFDcQwu",
-    "nickname": "天亮测试",
-    "createdAt": "2026-06-20T14:45:14.604Z"
   }
 ]
