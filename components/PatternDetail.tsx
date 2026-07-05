@@ -60,8 +60,8 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
   };
 
   const getLabelText = (tier: string) => {
-    if (tier === 'personal') return isRevival ? '个人学习/临摹 · 带水印 · ¥9.9' : '个人学习/临摹 · 带水印 · ¥29.9';
-    if (tier === 'commercial') return isRevival ? '标准商业许可 · 高清PNG · ¥399' : '标准商业许可 · 高清PNG · ¥499';
+    if (tier === 'personal') return isRevival ? '个人学习/临摹 · 带水印 · ¥9.9/幅' : '个人学习/临摹 · 带水印 · ¥29.9/幅';
+    if (tier === 'commercial') return isRevival ? '标准商业许可 · 高清PNG · ¥399/幅' : '标准商业许可 · 高清PNG · ¥499/幅';
     return '源文件企业授权 · PSD+修改权 · ¥4,999';
   };
 
@@ -202,7 +202,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                     <p className="text-sm font-medium text-ink">个人学习 / 临摹</p>
                     <p className="text-xs text-gray-400">带水印 · 非商业用途</p>
                   </div>
-                  <span className="text-lg font-serif font-bold text-gold">¥{isRevival ? '9.9' : '29.9'}</span>
+                  <span className="text-lg font-serif font-bold text-gold">¥{isRevival ? '9.9' : '29.9'}<span className="text-xs font-normal text-gray-400">/幅</span></span>
                 </div>
               </div>
 
@@ -216,7 +216,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                     <p className="text-sm font-medium text-ink">标准商业许可</p>
                     <p className="text-xs text-gray-400">高清无水印 · 不限印刷量 · 非独家</p>
                   </div>
-                  <span className="text-lg font-serif font-bold text-gold">¥{isRevival ? '399' : '499'}</span>
+                  <span className="text-lg font-serif font-bold text-gold">¥{isRevival ? '399' : '499'}<span className="text-xs font-normal text-gray-400">/幅</span></span>
                 </div>
               </div>
 
@@ -250,7 +250,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
         <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowPay(false)}>
           <div className="bg-white rounded-2xl max-w-sm w-full p-8 shadow-2xl text-center" onClick={(e) => e.stopPropagation()}>
             <p className="text-xs text-gray-400 mb-1">支付</p>
-            <p className="text-xl font-serif font-semibold text-ink mb-2">¥{getPriceText(selectedTier)}</p>
+            <p className="text-xl font-serif font-semibold text-ink mb-2">¥{getPriceText(selectedTier)}/幅</p>
             <p className="text-xs text-gray-500 mb-5">{getLabelText(selectedTier)}</p>
 
             <div className="bg-gray-50 rounded-xl p-4 inline-block mb-4">

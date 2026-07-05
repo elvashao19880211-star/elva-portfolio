@@ -117,11 +117,11 @@ export default function MemberPage() {
             <div className="space-y-2 text-xs text-gray-500">
               <div className="flex justify-between py-1.5 border-b border-gray-50">
                 <span>个人学习（带水印）</span>
-                <span className="font-medium text-gold">¥{PATTERN_PRICING.revival.personal.price}</span>
+                <span className="font-medium text-gold">¥{PATTERN_PRICING.revival.personal.price}/幅</span>
               </div>
               <div className="flex justify-between py-1.5">
                 <span>标准商业许可（高清）</span>
-                <span className="font-medium text-gold">¥{PATTERN_PRICING.revival.commercial.price}</span>
+                <span className="font-medium text-gold">¥{PATTERN_PRICING.revival.commercial.price}/幅</span>
               </div>
             </div>
           </div>
@@ -130,15 +130,15 @@ export default function MemberPage() {
             <div className="space-y-2 text-xs text-gray-500">
               <div className="flex justify-between py-1.5 border-b border-gray-50">
                 <span>个人学习（带水印）</span>
-                <span className="font-medium text-gold">¥{PATTERN_PRICING.innovation.personal.price}</span>
+                <span className="font-medium text-gold">¥{PATTERN_PRICING.innovation.personal.price}/幅</span>
               </div>
               <div className="flex justify-between py-1.5 border-b border-gray-50">
                 <span>标准商业许可（高清）</span>
-                <span className="font-medium text-gold">¥{PATTERN_PRICING.innovation.commercial.price}</span>
+                <span className="font-medium text-gold">¥{PATTERN_PRICING.innovation.commercial.price}/幅</span>
               </div>
               <div className="flex justify-between py-1.5">
                 <span>源文件企业授权</span>
-                <span className="font-medium text-gold">¥{PATTERN_PRICING.innovation.source.price.toLocaleString()}</span>
+                <span className="font-medium text-gold">¥{PATTERN_PRICING.innovation.source.price.toLocaleString()}/幅</span>
               </div>
             </div>
           </div>
