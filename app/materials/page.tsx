@@ -438,7 +438,7 @@ export default function MaterialsPage() {
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowMembership(false)}>
           <div className="bg-white rounded-2xl max-w-sm w-full p-8 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <h3 className="text-lg font-serif font-semibold text-ink mb-1">开通会员</h3>
-            <p className="text-xs text-gray-400 mb-6">素材库会员 · 年度订阅 · 全年持续更新</p>
+            <p className="text-xs text-gray-400 mb-6">素材库会员 · 年度订阅 · 全年持续上新</p>
 
             <div className="space-y-3">
               <div
@@ -450,7 +450,7 @@ export default function MaterialsPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-ink">个人/学习会员</p>
-                    <p className="text-xs text-gray-400">非商业用途 · 含未来新增</p>
+                    <p className="text-xs text-gray-400">非商业用途 · 全年持续上新</p>
                   </div>
                   <span className="text-lg font-serif font-bold text-gold">¥159/年</span>
                 </div>
@@ -465,7 +465,7 @@ export default function MaterialsPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-ink">商用会员</p>
-                    <p className="text-xs text-gray-400">标准商业许可 · 含未来新增</p>
+                    <p className="text-xs text-gray-400">标准商业许可 · 全年持续上新</p>
                   </div>
                   <span className="text-lg font-serif font-bold text-gold">¥899/年</span>
                 </div>
