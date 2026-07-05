@@ -56,7 +56,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
   const getPriceText = (tier: string) => {
     if (tier === 'personal') return isRevival ? '9.9' : '29.9';
     if (tier === 'commercial') return isRevival ? '399' : '499';
-    return '4,999';
+    return '3,999';
   };
 
   const getLabelText = (tier: string) => {
@@ -231,7 +231,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                       <p className="text-sm font-medium text-ink">源文件企业授权</p>
                       <p className="text-xs text-gray-400">PSD源文件 · 修改权 · 永久</p>
                     </div>
-                    <span className="text-lg font-serif font-bold text-gold">¥4,999</span>
+                    <span className="text-lg font-serif font-bold text-gold">¥3,999</span>
                   </div>
                 </div>
               )}
