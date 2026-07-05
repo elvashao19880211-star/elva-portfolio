@@ -238,7 +238,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
             </div>
 
             <button onClick={() => setShowBuy(false)} className="btn-outline w-full text-sm mt-6">取消</button>
-            <p className="text-[10px] text-gray-300 text-center mt-3 leading-relaxed">
+            <p className="text-[10px] text-gray-500 text-center mt-3 leading-relaxed">
               版权归创作者所有 · 您购买的是使用权许可 · 禁止转卖文件、子授权、注册商标
             </p>
           </div>
@@ -261,7 +261,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
             <p className="text-[10px] text-gray-300 mt-1">支付后请联系客服发送文件</p>
 
             <div className="mt-6 pt-4 border-t border-gray-100">
-              <p className="text-[10px] text-gray-300 leading-relaxed">
+              <p className="text-[10px] text-gray-500 leading-relaxed">
                 版权归创作者所有 · 购买即同意授权条款<br />
                 禁止转卖文件、子授权、注册商标<br />
                 如发现将纹样注册商标，授权自动终止并保留追诉权利
