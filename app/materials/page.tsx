@@ -46,6 +46,7 @@ const COLOR_SWATCH: Record<string, string> = {
   '赭褐': 'bg-amber-700',
   '烟灰': 'bg-gray-400',
   '银素': 'bg-slate-300',
+  '樱粉': 'bg-pink-300',
   '多色': 'bg-gradient-to-r from-rose-400 via-amber-400 to-sky-400',
 };
 
@@ -169,6 +170,8 @@ export default function MaterialsPage() {
   // 当前展开查看二级元素的一级分类
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const [lightbox, setLightbox] = useState<{ src: string; title: string } | null>(null);
+  const [showMembership, setShowMembership] = useState(false);
+  const [memberTier, setMemberTier] = useState<'personal' | 'commercial'>('personal');
 
   const toggleElement = (id: string) => {
     setElementIds((prev) => {
@@ -228,6 +231,17 @@ export default function MaterialsPage() {
         title="纹样素材"
         subtitle="朝代 · 载体 · 元素 · 结构 · 颜色 —— 五维精准筛选"
       />
+
+      {/* 会员按钮 */}
+      <div className="max-w-7xl mx-auto mb-6 flex justify-end">
+        <button
+          onClick={() => setShowMembership(true)}
+          className="px-5 py-2.5 bg-gradient-to-r from-gold to-amber-500 text-white rounded-xl text-sm font-medium
+                     shadow-md hover:shadow-lg hover:from-amber-500 hover:to-amber-600 transition-all"
+        >
+          开通会员 · 下载全库素材
+        </button>
+      </div>
 
       <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto">
         {/* ===== 侧边栏 ===== */}
@@ -417,6 +431,70 @@ export default function MaterialsPage() {
           title={lightbox.title}
           onClose={() => setLightbox(null)}
         />
+      )}
+
+      {/* 会员购买弹窗 */}
+      {showMembership && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowMembership(false)}>
+          <div className="bg-white rounded-2xl max-w-sm w-full p-8 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <h3 className="text-lg font-serif font-semibold text-ink mb-1">开通会员</h3>
+            <p className="text-xs text-gray-400 mb-6">素材库会员 · 年度订阅 · 全库下载</p>
+
+            <div className="space-y-3">
+              <div
+                className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                  memberTier === 'personal' ? 'border-gold bg-gold/5' : 'border-gray-100 hover:border-gold'
+                }`}
+                onClick={() => setMemberTier('personal')}
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-ink">个人/学习会员</p>
+                    <p className="text-xs text-gray-400">非商业用途 · 含未来新增</p>
+                  </div>
+                  <span className="text-lg font-serif font-bold text-gold">¥159/年</span>
+                </div>
+              </div>
+
+              <div
+                className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                  memberTier === 'commercial' ? 'border-gold bg-gold/5' : 'border-gray-100 hover:border-gold'
+                }`}
+                onClick={() => setMemberTier('commercial')}
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-ink">商用会员</p>
+                    <p className="text-xs text-gray-400">标准商业许可 · 含未来新增</p>
+                  </div>
+                  <span className="text-lg font-serif font-bold text-gold">¥899/年</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 二维码支付 */}
+            <div className="mt-6 text-center">
+              <p className="text-xs text-gray-500 mb-3">
+                选择 <span className="font-medium text-ink">{memberTier === 'personal' ? '个人/学习会员 ¥159/年' : '商用会员 ¥899/年'}</span>
+              </p>
+              <div className="bg-gray-50 rounded-xl p-4 inline-block mb-3">
+                <img src="/qrcode.png" alt="支付宝付款码" className="w-48 h-48 object-contain" />
+              </div>
+              <p className="text-xs text-gray-400">请使用支付宝扫码支付</p>
+              <p className="text-[10px] text-gray-300 mt-1">支付后请联系客服开通会员</p>
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-gray-100">
+              <p className="text-[10px] text-gray-500 leading-relaxed">
+                会员有效期365天 · 到期需续费<br />
+                会员到期后已用于产品的素材可继续使用<br />
+                源文件不包含在会员权益内
+              </p>
+            </div>
+
+            <button onClick={() => setShowMembership(false)} className="btn-outline w-full text-xs mt-4">关闭</button>
+          </div>
+        </div>
       )}
     </main>
   );
