@@ -74,6 +74,12 @@ export default function Footer() {
             受《中华人民共和国著作权法》保护。未经权利人书面许可，禁止以任何形式复制、转载、修改、传播或用于商业用途。
             侵权必究。授权合作请联系 <span className="text-gold/80">elva_pattern</span>。
           </p>
+          <div className="flex items-center justify-center gap-4 pt-1">
+            <a href="/terms" className="text-white/40 hover:text-gold transition-colors text-[10px]">用户协议</a>
+            <a href="/privacy" className="text-white/40 hover:text-gold transition-colors text-[10px]">隐私政策</a>
+            <a href="/refund" className="text-white/40 hover:text-gold transition-colors text-[10px]">退款政策</a>
+            <a href="/copyright" className="text-white/40 hover:text-gold transition-colors text-[10px]">版权声明</a>
+          </div>
         </div>
       </div>
     </footer>

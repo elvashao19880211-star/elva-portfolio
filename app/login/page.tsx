@@ -25,6 +25,7 @@ function LoginForm() {
   const [codeSent, setCodeSent] = useState(false);
   const [verificationCode, setVerificationCode] = useState('');
   const [verificationToken, setVerificationToken] = useState('');
+  const [agreeTerms, setAgreeTerms] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -105,6 +106,11 @@ function LoginForm() {
     }
     if (regType === 'phone' && !phone) {
       setError('请填写手机号'); return;
+    }
+
+    if (!agreeTerms) {
+      setError('请先阅读并同意用户协议');
+      return;
     }
 
     setLoading(true);
@@ -324,6 +330,23 @@ function LoginForm() {
             <div className={`rounded-lg px-4 py-2.5 text-xs ${error.startsWith('[开发模式]') ? 'bg-blue-50 text-blue-600' : 'bg-red-50 text-red-500'}`}>
               {error}
             </div>
+          )}
+
+          {mode === 'register' && (
+            <label className="flex items-start gap-2 text-xs text-gray-400 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={agreeTerms}
+                onChange={(e) => setAgreeTerms(e.target.checked)}
+                className="mt-0.5 accent-qing"
+              />
+              <span>
+                我已阅读并同意{' '}
+                <a href="/terms" target="_blank" className="text-qing hover:underline">用户协议</a>
+                {' '}和{' '}
+                <a href="/privacy" target="_blank" className="text-qing hover:underline">隐私政策</a>
+              </span>
+            </label>
           )}
 
           <button type="submit" disabled={loading} className="btn-ink w-full text-sm disabled:opacity-60">
