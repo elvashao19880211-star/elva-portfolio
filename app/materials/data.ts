@@ -869,7 +869,7 @@ const materials: MaterialItem[] = [
     structure: '自由',
     colors: ["多色"],
     description: '宋代画本，麒麟纹，自由排布，多色配色',
-    src: '/images/materials/宋代-画本-麒麟-单独-多色.png',
+    src: '/images/materials/宋代-画本-麒麟-自由-多色.png',
   },
   {
     id: 'mat-mr6fzz19-s59',
