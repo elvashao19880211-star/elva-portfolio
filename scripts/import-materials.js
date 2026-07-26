@@ -55,6 +55,12 @@ for (const file of files) {
   };
   carrier = carrierMap[carrier] || carrier;
 
+  // 结构映射
+  const structureMap = {
+    '单独': '自由',
+  };
+  const mappedStructure = structureMap[structure] || structure;
+
   // 元素名称标准化（去变体前缀、补全/去除纹后缀）
   const cleanElement = elementName
     // 去前缀
@@ -91,6 +97,8 @@ for (const file of files) {
     .replace(/^对鸟团窠$/, '对鸟团窠纹')
     // 团花
     .replace(/^六出团花纹$/, '团花')
+    // 麒麟
+    .replace(/^麒麟$/, '麒麟纹')
     // 三多子类
     .replace(/^三多佛手柑纹$/, '三多纹')
     .replace(/^三多石榴纹$/, '三多纹');
@@ -129,9 +137,9 @@ for (const file of files) {
     dynasty,
     carrier,
     elements: elementId ? [elementId] : [elementName],
-    structure,
+    structure: mappedStructure,
     colors: color.split('，').map(c => c.trim()), // 支持"红，金"多颜色
-    description: `${dynasty}${carrier}，${elementName}，${structure}排布，${color}配色`,
+    description: `${dynasty}${carrier}，${elementName}，${mappedStructure}排布，${color}配色`,
     src: `/images/materials/${destName}`,
   });
 
