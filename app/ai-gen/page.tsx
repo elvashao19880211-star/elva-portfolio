@@ -3,7 +3,7 @@ import Breadcrumb from '../../components/Breadcrumb';
 export default function AIGenPage() {
   return (
     <main className="min-h-screen bg-[#F5F3EE]">
-      <Breadcrumb items={[{ label: '首页', href: '/' }, { label: 'AI 纹样' }]} />
+      <Breadcrumb crumbs={[{ label: '首页', href: '/' }, { label: 'AI 纹样' }]} />
 
       {/* Hero */}
       <section className="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center">
