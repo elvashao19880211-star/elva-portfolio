@@ -33,7 +33,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="/" className="shrink-0">
           <img
-            src="/logo/logo-horizontal.svg"
+            src="/logo/方版龙纹.png"
             alt="河图"
             className="h-9 sm:h-10 w-auto"
           />

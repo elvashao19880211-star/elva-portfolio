@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   description: "传统纹样复原 · 创新设计 · 品牌合作 · 纹样库与交流平台 —— 以千年纹样，续华夏脉络",
   manifest: "/manifest.json",
   icons: {
-    icon: "/logo/logo-square.svg",
-    apple: "/icon-192.png",
+    icon: "/logo/方版龙纹.png",
+    apple: "/logo/apple-icon.png",
   },
   appleWebApp: {
     capable: true,
