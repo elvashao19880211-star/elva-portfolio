@@ -94,13 +94,12 @@ export default function MemberPage() {
               </ul>
               <button
                 onClick={() => handleUpgrade(plan.id)}
-                className={`w-full py-2.5 rounded-xl text-sm font-medium transition-all ${
-                  plan.highlight
-                    ? 'bg-ink text-white hover:bg-ink/90 shadow-sm'
-                    : 'bg-gray-50 text-ink border border-gray-200 hover:bg-gray-100'
-                }`}
+                className="w-full py-3 rounded-xl text-sm font-semibold transition-all bg-qing text-white hover:bg-qing/90 shadow-md shadow-qing/20 hover:shadow-lg hover:shadow-qing/25 active:scale-[0.98] flex items-center justify-center gap-1.5"
               >
                 {plan.cta}
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </button>
             </div>
           ))}
