@@ -22,7 +22,7 @@ export const MEMBER_PLANS = [
     name: '商用会员',
     price: 899,
     period: '/年',
-    badge: '推荐',
+    badge: null,
     features: [
       '素材库全部内容（全年持续上新）',
       '标准商业许可',
@@ -31,7 +31,7 @@ export const MEMBER_PLANS = [
       '365天有效，到期需续费',
     ],
     cta: '开通商用会员',
-    highlight: true,
+    highlight: false,
   },
 ];
 
