@@ -9,7 +9,6 @@ const NAV_LINKS = [
   { label: '素材库', href: '/materials' },
   { label: '会员', href: '/member' },
   { label: '复原记录', href: '/heritage' },
-  { label: '纹样知识', href: '/community' },
   { label: 'AI 纹样', href: '/ai-gen' },
   { label: '企业合作', href: '/cooperation' },
 ];

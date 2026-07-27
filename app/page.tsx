@@ -38,15 +38,6 @@ const REVIVAL_ICON = (
   </svg>
 );
 
-const COMMUNITY_ICON = (
-  <svg className="w-8 h-8 text-gold" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <path d="M6 20a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-4l-4 4-4-4H6z" />
-    <circle cx="10" cy="14" r="1.5" fill="currentColor" stroke="none" />
-    <circle cx="16" cy="14" r="1.5" fill="currentColor" stroke="none" />
-    <circle cx="22" cy="14" r="1.5" fill="currentColor" stroke="none" />
-  </svg>
-);
-
 const CARDS = [
   {
     title: '纹样库',
@@ -68,13 +59,6 @@ const CARDS = [
     href: '/heritage',
     icon: REVIVAL_ICON,
     bg: 'from-qing/15 to-transparent',
-  },
-  {
-    title: '纹样知识',
-    desc: '问答 · 技法 · 文化',
-    href: '/community',
-    icon: COMMUNITY_ICON,
-    bg: 'from-gold/15 to-transparent',
   },
 ];
 
