@@ -161,12 +161,17 @@ export default function MemberPage() {
       {showPay && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowPay(false)}>
           <div className="bg-white rounded-2xl max-w-sm w-full p-8 shadow-2xl text-center" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-lg font-serif font-semibold text-ink mb-1">扫码支付</h3>
-            <p className="text-sm text-gray-500 mb-5">{payInfo.title}</p>
+            <h3 className="text-lg font-serif font-semibold text-ink mb-1">支付宝扫码支付</h3>
+            <p className="text-sm text-gray-500 mb-3">{payInfo.title}</p>
+            {/* 金额醒目提示 */}
+            <div className="bg-qing/5 border border-qing/20 rounded-xl px-4 py-3 mb-5">
+              <p className="text-xs text-qing/70 mb-1">请输入以下金额</p>
+              <p className="text-2xl font-bold text-qing tracking-wide">{payInfo.price}</p>
+            </div>
             <div className="bg-gray-50 rounded-xl p-4 mb-4">
               <img src="/qrcode.png" alt="支付宝付款码" className="w-48 h-48 mx-auto" />
             </div>
-            <p className="text-xs text-gray-400 mb-3">请使用支付宝扫码支付</p>
+            <p className="text-xs text-gray-400 mb-3">使用支付宝扫一扫，输入上方金额完成支付</p>
             <p className="text-[10px] text-gray-300 mb-2">支付后请联系客服开通/发送文件</p>
             <div className="mb-5 pt-3 border-t border-gray-100">
               <p className="text-[10px] text-gray-500 leading-relaxed">
