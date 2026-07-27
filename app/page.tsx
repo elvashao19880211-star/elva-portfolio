@@ -70,8 +70,8 @@ const CARDS = [
     bg: 'from-qing/15 to-transparent',
   },
   {
-    title: '交流与合作',
-    desc: '讨论 · 咨询 · 定制',
+    title: '纹样知识',
+    desc: '问答 · 技法 · 文化',
     href: '/community',
     icon: COMMUNITY_ICON,
     bg: 'from-gold/15 to-transparent',
