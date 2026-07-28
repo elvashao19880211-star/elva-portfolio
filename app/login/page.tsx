@@ -288,7 +288,7 @@ function LoginForm() {
                       type="tel"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      placeholder="13812345678"
+                      placeholder="请输入手机号"
                       required
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
                     />
