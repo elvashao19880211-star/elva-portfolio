@@ -116,14 +116,17 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                     {pattern.category}
                   </span>
                 )}
-                {pattern.structure && (
-                  <span className="inline-block px-2.5 py-0.5 text-xs rounded-full bg-gray-100 text-ink/50">
-                    {pattern.structure}
-                  </span>
-                )}
               </div>
               <h2 className="text-xl font-serif font-semibold text-ink">{pattern.title}</h2>
             </div>
+
+            {/* 结构 */}
+            {pattern.structure && (
+              <div>
+                <h3 className="text-xs font-medium text-gold uppercase tracking-wider mb-1.5">纹样结构</h3>
+                <p className="text-gray-700 text-sm">{pattern.structure}</p>
+              </div>
+            )}
 
             {/* 灵感来源 */}
             {pattern.inspiration && (

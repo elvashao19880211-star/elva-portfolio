@@ -5,7 +5,9 @@ export interface RevivalPattern {
   dynasty: string;
   era?: string;
   culture?: string;
+  structure?: string;
   elements?: string[];
+  colors?: string[];
   description: string;
   detail?: string;
   src: string;
@@ -18,228 +20,243 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "四人飞天",
     "dynasty": "初唐",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "飞天纹"
+      "飞天"
     ],
-    "description": "初唐时期的飞天纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件初唐四人飞天采用动态飘逸的人物造型，飘带环绕构成画面节奏，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究初唐装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/初唐-四人飞天.png",
-    "thumbSrc": "/images/revival/thumbs/初唐-四人飞天.png"
+    "thumbSrc": "/images/revival/thumbs/初唐-四人飞天.png",
+    "structure": "人物动态"
   },
   {
     "id": "revival-7",
     "title": "葡萄石榴藻井",
     "dynasty": "初唐",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "石榴纹",
-      "葡萄纹",
-      "藻井纹"
+      "石榴",
+      "葡萄",
+      "藻井"
     ],
-    "description": "初唐时期的石榴纹、葡萄纹、藻井纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件初唐葡萄石榴藻井采用层层套叠的方形框架，向心汇聚的纵深结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究初唐装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/初唐-葡萄石榴藻井.png",
-    "thumbSrc": "/images/revival/thumbs/初唐-葡萄石榴藻井.png"
+    "thumbSrc": "/images/revival/thumbs/初唐-葡萄石榴藻井.png",
+    "structure": "植物造型"
   },
   {
     "id": "revival-8",
     "title": "第272窟忍冬藻井",
     "dynasty": "北凉",
     "era": "",
-    "culture": "这件纹样承载着所属时代的审美追求和工艺智慧，是中华传统装饰艺术的珍贵遗产。",
+    "culture": "",
     "elements": [
-      "忍冬纹",
-      "藻井纹"
+      "忍冬",
+      "藻井"
     ],
-    "description": "北凉时期的忍冬纹、藻井纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件北凉第272窟忍冬藻井采用层层套叠的方形框架，向心汇聚的纵深结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究北凉装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/北凉-第272窟忍冬藻井.png",
-    "thumbSrc": "/images/revival/thumbs/北凉-第272窟忍冬藻井.png"
+    "thumbSrc": "/images/revival/thumbs/北凉-第272窟忍冬藻井.png",
+    "structure": "忍冬藤蔓"
   },
   {
     "id": "revival-9",
     "title": "联珠日神纹",
     "dynasty": "北朝",
     "era": "",
-    "culture": "这件纹样承载着所属时代的审美追求和工艺智慧，是中华传统装饰艺术的珍贵遗产。",
+    "culture": "",
     "elements": [
-      "联珠纹"
+      "联珠"
     ],
-    "description": "北朝时期的联珠纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件北朝联珠日神纹采用圆形联珠圈构成外框，内部填充主题纹样，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究北朝装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/北朝-联珠日神纹.png",
-    "thumbSrc": "/images/revival/thumbs/北朝-联珠日神纹.png"
+    "thumbSrc": "/images/revival/thumbs/北朝-联珠日神纹.png",
+    "structure": "联珠圈框"
   },
   {
     "id": "revival-10",
     "title": "卷草纹",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "卷草纹"
+      "卷草"
     ],
-    "description": "唐代时期的卷草纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代卷草纹采用波浪状延伸的植物茎蔓，叶片沿曲线展开，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-卷草纹.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-卷草纹.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-卷草纹.png",
+    "structure": "卷草蜿蜒"
   },
   {
     "id": "revival-11",
     "title": "团窠对鸟衔瑞草",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "鸟纹"
+      "传统纹样"
     ],
-    "description": "唐代时期的鸟纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代团窠对鸟衔瑞草采用圆形框架内填充主题纹样，外围常联珠圈，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-团窠对鸟衔瑞草.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-团窠对鸟衔瑞草.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-团窠对鸟衔瑞草.png",
+    "structure": "禽鸟造型"
   },
   {
     "id": "revival-12",
     "title": "团窠牡丹",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "牡丹纹"
+      "牡丹"
     ],
-    "description": "唐代时期的牡丹纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代团窠牡丹采用折枝或团花结构，花瓣层次丰富，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-团窠牡丹.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-团窠牡丹.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-团窠牡丹.png",
+    "structure": "折枝/团花"
   },
   {
     "id": "revival-13",
     "title": "团花狮子纹",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "狮纹",
-      "团花纹"
+      "狮子",
+      "团花"
     ],
-    "description": "唐代时期的狮纹、团花纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代团花狮子纹采用威严稳重的瑞兽造型，常配以绣球，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-团花狮子纹.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-团花狮子纹.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-团花狮子纹.png",
+    "structure": "瑞兽造型"
   },
   {
     "id": "revival-14",
     "title": "团花纹",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "团花纹"
+      "团花"
     ],
-    "description": "唐代时期的团花纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代团花纹采用圆形或近圆形的完整花朵结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-团花纹.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-团花纹.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-团花纹.png",
+    "structure": "圆形团花"
   },
   {
     "id": "revival-15",
     "title": "宝相花",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
       "宝相花"
     ],
-    "description": "唐代时期的宝相花作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代宝相花采用团窠对称结构，多层花瓣辐射状排列，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-宝相花.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-宝相花.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-宝相花.png",
+    "structure": "团窠对称"
   },
   {
     "id": "revival-16",
     "title": "对马纹",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
       "马纹"
     ],
-    "description": "唐代时期的马纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代对马纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-对马纹.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-对马纹.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-对马纹.png",
+    "structure": "动物造型"
   },
   {
     "id": "revival-17",
     "title": "对鹿联珠团窠",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "联珠纹",
-      "鹿纹"
+      "联珠",
+      "对鹿"
     ],
-    "description": "唐代时期的联珠纹、鹿纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代对鹿联珠团窠采用圆形联珠圈构成外框，内部填充主题纹样，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-对鹿联珠团窠.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-对鹿联珠团窠.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-对鹿联珠团窠.png",
+    "structure": "联珠圈框"
   },
   {
     "id": "revival-18",
     "title": "小团花纹",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "团花纹"
+      "团花"
     ],
-    "description": "唐代时期的团花纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代小团花纹采用圆形或近圆形的完整花朵结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-小团花纹.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-小团花纹.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-小团花纹.png",
+    "structure": "圆形团花"
   },
   {
     "id": "revival-19",
     "title": "小宝相花",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
       "宝相花"
     ],
-    "description": "唐代时期的宝相花作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代小宝相花采用团窠对称结构，多层花瓣辐射状排列，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-小宝相花.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-小宝相花.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-小宝相花.png",
+    "structure": "团窠对称"
   },
   {
     "id": "revival-20",
     "title": "折枝卧鹿纹",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "折枝花",
+      "折枝",
       "鹿纹"
     ],
-    "description": "唐代时期的折枝花、鹿纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代折枝卧鹿纹采用截取一枝花叶的独立构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-折枝卧鹿纹.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-折枝卧鹿纹.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-折枝卧鹿纹.png",
+    "structure": "独立折枝"
   },
   {
     "id": "revival-21",
     "title": "摩羯纹",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "唐代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代摩羯纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-摩羯纹.png",
     "thumbSrc": "/images/revival/thumbs/唐代-摩羯纹.png"
   },
@@ -248,55 +265,58 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "柿蒂纹",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "柿蒂纹"
+      "柿蒂"
     ],
-    "description": "唐代时期的柿蒂纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代柿蒂纹采用四瓣对称的植物造型，花萼向四角延伸，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-柿蒂纹.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-柿蒂纹.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-柿蒂纹.png",
+    "structure": "四瓣对称"
   },
   {
     "id": "revival-23",
     "title": "海石榴纹",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "石榴纹"
+      "石榴"
     ],
-    "description": "唐代时期的石榴纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代海石榴纹采用多籽植物造型，内部填充密集纹样，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-海石榴纹.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-海石榴纹.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-海石榴纹.png",
+    "structure": "植物造型"
   },
   {
     "id": "revival-24",
     "title": "石榴纹藻井",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "石榴纹",
-      "藻井纹"
+      "石榴",
+      "藻井"
     ],
-    "description": "唐代时期的石榴纹、藻井纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代石榴纹藻井采用层层套叠的方形框架，向心汇聚的纵深结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-石榴纹藻井.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-石榴纹藻井.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-石榴纹藻井.png",
+    "structure": "植物造型"
   },
   {
     "id": "revival-25",
     "title": "簇六添花球路纹",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "唐代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代簇六添花球路纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-簇六添花球路纹.png",
     "thumbSrc": "/images/revival/thumbs/唐代-簇六添花球路纹.png"
   },
@@ -305,97 +325,103 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "花鸟纹",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "花鸟纹",
+      "花鸟",
       "鸟纹"
     ],
-    "description": "唐代时期的花鸟纹、鸟纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代花鸟纹采用花卉与鸟禽组合的写实构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-花鸟纹.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-花鸟纹.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-花鸟纹.png",
+    "structure": "花鸟写实"
   },
   {
     "id": "revival-27",
     "title": "飞鸟小宝花",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "鸟纹"
+      "传统纹样"
     ],
-    "description": "唐代时期的鸟纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代飞鸟小宝花采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-飞鸟小宝花.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-飞鸟小宝花.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-飞鸟小宝花.png",
+    "structure": "禽鸟造型"
   },
   {
     "id": "revival-28",
     "title": "鸳鸯鎏金盘",
     "dynasty": "唐代",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
-      "鸳鸯纹"
+      "鸳鸯"
     ],
-    "description": "唐代时期的鸳鸯纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件唐代鸳鸯鎏金盘采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究唐代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/唐代-鸳鸯鎏金盘.png",
-    "thumbSrc": "/images/revival/thumbs/唐代-鸳鸯鎏金盘.png"
+    "thumbSrc": "/images/revival/thumbs/唐代-鸳鸯鎏金盘.png",
+    "structure": "禽鸟造型"
   },
   {
     "id": "revival-29",
     "title": "兽面纹",
     "dynasty": "商周",
     "era": "",
-    "culture": "商代是中国青铜文明的鼎盛时期，纹样以饕餮纹、夔龙纹等青铜纹饰为主，造型凝重古朴，体现了早期祭祀文化的庄严与神秘感。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "商周时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件商周兽面纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究商周装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/商周-兽面纹.png",
-    "thumbSrc": "/images/revival/thumbs/商周-兽面纹.png"
+    "thumbSrc": "/images/revival/thumbs/商周-兽面纹.png",
+    "structure": "瑞兽造型"
   },
   {
     "id": "revival-30",
     "title": "涡纹&兽面纹",
     "dynasty": "商周",
     "era": "",
-    "culture": "商代是中国青铜文明的鼎盛时期，纹样以饕餮纹、夔龙纹等青铜纹饰为主，造型凝重古朴，体现了早期祭祀文化的庄严与神秘感。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "商周时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件商周涡纹&兽面纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究商周装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/商周-涡纹&兽面纹.png",
-    "thumbSrc": "/images/revival/thumbs/商周-涡纹&兽面纹.png"
+    "thumbSrc": "/images/revival/thumbs/商周-涡纹&兽面纹.png",
+    "structure": "瑞兽造型"
   },
   {
     "id": "revival-31",
     "title": "蟠龙纹",
     "dynasty": "商周",
     "era": "",
-    "culture": "商代是中国青铜文明的鼎盛时期，纹样以饕餮纹、夔龙纹等青铜纹饰为主，造型凝重古朴，体现了早期祭祀文化的庄严与神秘感。",
+    "culture": "",
     "elements": [
       "龙纹"
     ],
-    "description": "商周时期的龙纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件商周蟠龙纹采用蜿蜒盘旋的神兽造型，须发鳞甲细节丰富，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究商周装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/商周-蟠龙纹.png",
-    "thumbSrc": "/images/revival/thumbs/商周-蟠龙纹.png"
+    "thumbSrc": "/images/revival/thumbs/商周-蟠龙纹.png",
+    "structure": "神兽造型"
   },
   {
     "id": "revival-32",
     "title": "一年景纹",
     "dynasty": "宋代",
     "era": "",
-    "culture": "宋代理学兴起，文人审美主导了装饰艺术。纹样从唐代的华丽奔放转向内敛含蓄，写生花鸟成为主流，整体风格典雅秀美、意境深远。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "宋代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件宋代一年景纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究宋代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/宋代-一年景纹.png",
     "thumbSrc": "/images/revival/thumbs/宋代-一年景纹.png"
   },
@@ -404,40 +430,42 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "团窠重莲纹",
     "dynasty": "宋代",
     "era": "",
-    "culture": "宋代理学兴起，文人审美主导了装饰艺术。纹样从唐代的华丽奔放转向内敛含蓄，写生花鸟成为主流，整体风格典雅秀美、意境深远。",
+    "culture": "",
     "elements": [
-      "莲花纹"
+      "传统纹样"
     ],
-    "description": "宋代时期的莲花纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件宋代团窠重莲纹采用中心对称的团窠结构，或多瓣散点排列，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究宋代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/宋代-团窠重莲纹.png",
-    "thumbSrc": "/images/revival/thumbs/宋代-团窠重莲纹.png"
+    "thumbSrc": "/images/revival/thumbs/宋代-团窠重莲纹.png",
+    "structure": "团窠"
   },
   {
     "id": "revival-34",
     "title": "太极鱼鳞纹",
     "dynasty": "宋代",
     "era": "",
-    "culture": "宋代理学兴起，文人审美主导了装饰艺术。纹样从唐代的华丽奔放转向内敛含蓄，写生花鸟成为主流，整体风格典雅秀美、意境深远。",
+    "culture": "",
     "elements": [
-      "鱼纹"
+      "传统纹样"
     ],
-    "description": "宋代时期的鱼纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件宋代太极鱼鳞纹采用游动姿态的动物造型，鳞片纹路细腻，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究宋代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/宋代-太极鱼鳞纹.png",
-    "thumbSrc": "/images/revival/thumbs/宋代-太极鱼鳞纹.png"
+    "thumbSrc": "/images/revival/thumbs/宋代-太极鱼鳞纹.png",
+    "structure": "动物造型"
   },
   {
     "id": "revival-35",
     "title": "开光四季花",
     "dynasty": "宋代",
     "era": "",
-    "culture": "宋代理学兴起，文人审美主导了装饰艺术。纹样从唐代的华丽奔放转向内敛含蓄，写生花鸟成为主流，整体风格典雅秀美、意境深远。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "宋代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件宋代开光四季花采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究宋代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/宋代-开光四季花.png",
     "thumbSrc": "/images/revival/thumbs/宋代-开光四季花.png"
   },
@@ -446,54 +474,57 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "折枝小花",
     "dynasty": "宋代",
     "era": "",
-    "culture": "宋代理学兴起，文人审美主导了装饰艺术。纹样从唐代的华丽奔放转向内敛含蓄，写生花鸟成为主流，整体风格典雅秀美、意境深远。",
+    "culture": "",
     "elements": [
-      "折枝花"
+      "折枝"
     ],
-    "description": "宋代时期的折枝花作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件宋代折枝小花采用截取一枝花叶的独立构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究宋代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/宋代-折枝小花.png",
-    "thumbSrc": "/images/revival/thumbs/宋代-折枝小花.png"
+    "thumbSrc": "/images/revival/thumbs/宋代-折枝小花.png",
+    "structure": "独立折枝"
   },
   {
     "id": "revival-37",
     "title": "海石榴纹",
     "dynasty": "宋代",
     "era": "",
-    "culture": "宋代理学兴起，文人审美主导了装饰艺术。纹样从唐代的华丽奔放转向内敛含蓄，写生花鸟成为主流，整体风格典雅秀美、意境深远。",
+    "culture": "",
     "elements": [
-      "石榴纹"
+      "石榴"
     ],
-    "description": "宋代时期的石榴纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件宋代海石榴纹采用多籽植物造型，内部填充密集纹样，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究宋代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/宋代-海石榴纹.png",
-    "thumbSrc": "/images/revival/thumbs/宋代-海石榴纹.png"
+    "thumbSrc": "/images/revival/thumbs/宋代-海石榴纹.png",
+    "structure": "植物造型"
   },
   {
     "id": "revival-38",
     "title": "罗地龟背纹",
     "dynasty": "宋代",
     "era": "",
-    "culture": "宋代理学兴起，文人审美主导了装饰艺术。纹样从唐代的华丽奔放转向内敛含蓄，写生花鸟成为主流，整体风格典雅秀美、意境深远。",
+    "culture": "",
     "elements": [
-      "龟背纹"
+      "龟背"
     ],
-    "description": "宋代时期的龟背纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件宋代罗地龟背纹采用六边形网状框架，内部填充适合纹样，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究宋代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/宋代-罗地龟背纹.png",
-    "thumbSrc": "/images/revival/thumbs/宋代-罗地龟背纹.png"
+    "thumbSrc": "/images/revival/thumbs/宋代-罗地龟背纹.png",
+    "structure": "六边网格"
   },
   {
     "id": "revival-39",
     "title": "锁子纹",
     "dynasty": "宋代",
     "era": "",
-    "culture": "宋代理学兴起，文人审美主导了装饰艺术。纹样从唐代的华丽奔放转向内敛含蓄，写生花鸟成为主流，整体风格典雅秀美、意境深远。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "宋代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件宋代锁子纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究宋代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/宋代-锁子纹.png",
     "thumbSrc": "/images/revival/thumbs/宋代-锁子纹.png"
   },
@@ -502,12 +533,12 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "旋涡纹",
     "dynasty": "新石器时代",
     "era": "",
-    "culture": "这件纹样承载着所属时代的审美追求和工艺智慧，是中华传统装饰艺术的珍贵遗产。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "新石器时代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件新石器时代旋涡纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究新石器时代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/新石器时代-旋涡纹.png",
     "thumbSrc": "/images/revival/thumbs/新石器时代-旋涡纹.png"
   },
@@ -516,26 +547,27 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "鱼纹",
     "dynasty": "新石器时代",
     "era": "",
-    "culture": "这件纹样承载着所属时代的审美追求和工艺智慧，是中华传统装饰艺术的珍贵遗产。",
+    "culture": "",
     "elements": [
       "鱼纹"
     ],
-    "description": "新石器时代时期的鱼纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件新石器时代鱼纹采用游动姿态的动物造型，鳞片纹路细腻，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究新石器时代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/新石器时代-鱼纹.png",
-    "thumbSrc": "/images/revival/thumbs/新石器时代-鱼纹.png"
+    "thumbSrc": "/images/revival/thumbs/新石器时代-鱼纹.png",
+    "structure": "动物造型"
   },
   {
     "id": "revival-42",
     "title": "万寿杂宝八吉祥纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "明代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代万寿杂宝八吉祥纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-万寿杂宝八吉祥纹.png",
     "thumbSrc": "/images/revival/thumbs/明代-万寿杂宝八吉祥纹.png"
   },
@@ -544,12 +576,12 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "五湖四海纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "明代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代五湖四海纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-五湖四海纹.png",
     "thumbSrc": "/images/revival/thumbs/明代-五湖四海纹.png"
   },
@@ -558,12 +590,12 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "八宝火焰纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "明代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代八宝火焰纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-八宝火焰纹.png",
     "thumbSrc": "/images/revival/thumbs/明代-八宝火焰纹.png"
   },
@@ -572,41 +604,43 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "卐字莲花锦纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
-      "莲花纹"
+      "莲花"
     ],
-    "description": "明代时期的莲花纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代卐字莲花锦纹采用中心对称的团窠结构，或多瓣散点排列，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-卐字莲花锦纹.png",
-    "thumbSrc": "/images/revival/thumbs/明代-卐字莲花锦纹.png"
+    "thumbSrc": "/images/revival/thumbs/明代-卐字莲花锦纹.png",
+    "structure": "团窠"
   },
   {
     "id": "revival-46",
     "title": "四合如意云纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
-      "云纹",
-      "如意纹"
+      "如意",
+      "云纹"
     ],
-    "description": "明代时期的云纹、如意纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代四合如意云纹采用婉转流动的曲线组合，以如意云头为核心，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-四合如意云纹.png",
-    "thumbSrc": "/images/revival/thumbs/明代-四合如意云纹.png"
+    "thumbSrc": "/images/revival/thumbs/明代-四合如意云纹.png",
+    "structure": "如意云头"
   },
   {
     "id": "revival-47",
     "title": "四季花纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "明代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代四季花纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-四季花纹.png",
     "thumbSrc": "/images/revival/thumbs/明代-四季花纹.png"
   },
@@ -615,26 +649,27 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "夔龙球路纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
-      "龙纹"
+      "传统纹样"
     ],
-    "description": "明代时期的龙纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代夔龙球路纹采用蜿蜒盘旋的神兽造型，须发鳞甲细节丰富，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-夔龙球路纹.png",
-    "thumbSrc": "/images/revival/thumbs/明代-夔龙球路纹.png"
+    "thumbSrc": "/images/revival/thumbs/明代-夔龙球路纹.png",
+    "structure": "神兽造型"
   },
   {
     "id": "revival-49",
     "title": "摩羯纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "明代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代摩羯纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-摩羯纹.png",
     "thumbSrc": "/images/revival/thumbs/明代-摩羯纹.png"
   },
@@ -643,26 +678,27 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "杂宝团花纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
-      "团花纹"
+      "团花"
     ],
-    "description": "明代时期的团花纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代杂宝团花纹采用圆形或近圆形的完整花朵结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-杂宝团花纹.png",
-    "thumbSrc": "/images/revival/thumbs/明代-杂宝团花纹.png"
+    "thumbSrc": "/images/revival/thumbs/明代-杂宝团花纹.png",
+    "structure": "圆形团花"
   },
   {
     "id": "revival-51",
     "title": "杂宝纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "明代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代杂宝纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-杂宝纹.png",
     "thumbSrc": "/images/revival/thumbs/明代-杂宝纹.png"
   },
@@ -671,70 +707,72 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "绵羊太子纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
-      "羊纹"
+      "传统纹样"
     ],
-    "description": "明代时期的羊纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代绵羊太子纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-绵羊太子纹.png",
-    "thumbSrc": "/images/revival/thumbs/明代-绵羊太子纹.png"
+    "thumbSrc": "/images/revival/thumbs/明代-绵羊太子纹.png",
+    "structure": "动物造型"
   },
   {
     "id": "revival-53",
     "title": "缠枝梅花",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
-      "缠枝纹",
-      "梅花纹"
+      "缠枝"
     ],
-    "description": "明代时期的缠枝纹、梅花纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代缠枝梅花采用S形连续缠绕的植物蔓藤结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-缠枝梅花.png",
-    "thumbSrc": "/images/revival/thumbs/明代-缠枝梅花.png"
+    "thumbSrc": "/images/revival/thumbs/明代-缠枝梅花.png",
+    "structure": "缠枝连续"
   },
   {
     "id": "revival-54",
     "title": "缠枝莲纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
-      "莲花纹",
-      "缠枝纹"
+      "缠枝"
     ],
-    "description": "明代时期的莲花纹、缠枝纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代缠枝莲纹采用中心对称的团窠结构，或多瓣散点排列，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-缠枝莲纹.png",
-    "thumbSrc": "/images/revival/thumbs/明代-缠枝莲纹.png"
+    "thumbSrc": "/images/revival/thumbs/明代-缠枝莲纹.png",
+    "structure": "团窠"
   },
   {
     "id": "revival-55",
     "title": "落花流水纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
       "水纹"
     ],
-    "description": "明代时期的水纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代落花流水纹采用层叠的波浪线结构，常与云纹组合，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-落花流水纹.png",
-    "thumbSrc": "/images/revival/thumbs/明代-落花流水纹.png"
+    "thumbSrc": "/images/revival/thumbs/明代-落花流水纹.png",
+    "structure": "水纹层叠"
   },
   {
     "id": "revival-56",
     "title": "葫芦灯纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
-      "葫芦纹"
+      "葫芦"
     ],
-    "description": "明代时期的葫芦纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代葫芦灯纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-葫芦灯纹.png",
     "thumbSrc": "/images/revival/thumbs/明代-葫芦灯纹.png"
   },
@@ -743,55 +781,58 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "虎镇五毒纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "明代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代虎镇五毒纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-虎镇五毒纹.png",
-    "thumbSrc": "/images/revival/thumbs/明代-虎镇五毒纹.png"
+    "thumbSrc": "/images/revival/thumbs/明代-虎镇五毒纹.png",
+    "structure": "走兽造型"
   },
   {
     "id": "revival-58",
     "title": "锦地折枝牡丹纹",
     "dynasty": "明代",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
-      "牡丹纹",
-      "折枝花"
+      "牡丹",
+      "折枝"
     ],
-    "description": "明代时期的牡丹纹、折枝花作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明代锦地折枝牡丹纹采用折枝或团花结构，花瓣层次丰富，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明代-锦地折枝牡丹纹.png",
-    "thumbSrc": "/images/revival/thumbs/明代-锦地折枝牡丹纹.png"
+    "thumbSrc": "/images/revival/thumbs/明代-锦地折枝牡丹纹.png",
+    "structure": "折枝/团花"
   },
   {
     "id": "revival-59",
     "title": "云鹤纹",
     "dynasty": "明清",
     "era": "",
-    "culture": "明代纹样风格从元代的繁复转向清丽雅致。吉祥寓意图案大量流行，纹样造型规整、构图饱满，\"图必有意、意必吉祥\"。",
+    "culture": "",
     "elements": [
       "鹤纹"
     ],
-    "description": "明清时期的鹤纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件明清云鹤纹采用婉转流动的曲线组合，以如意云头为核心，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究明清装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/明清-云鹤纹.png",
-    "thumbSrc": "/images/revival/thumbs/明清-云鹤纹.png"
+    "thumbSrc": "/images/revival/thumbs/明清-云鹤纹.png",
+    "structure": "禽鸟造型"
   },
   {
     "id": "revival-60",
     "title": "蟠螭纹",
     "dynasty": "春秋",
     "era": "",
-    "culture": "这件纹样承载着所属时代的审美追求和工艺智慧，是中华传统装饰艺术的珍贵遗产。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "春秋时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件春秋蟠螭纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究春秋装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/春秋-蟠螭纹.png",
     "thumbSrc": "/images/revival/thumbs/春秋-蟠螭纹.png"
   },
@@ -800,26 +841,27 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "乘云绣",
     "dynasty": "汉代",
     "era": "",
-    "culture": "汉代是中国大一统帝国形成后的第一个文化高峰。丝绸之路的开通带来了西域的新鲜元素，云气纹、动物纹广泛流行，纹样充满动感和生命力。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "汉代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件汉代乘云绣采用婉转流动的曲线组合，以如意云头为核心，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究汉代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/汉代-乘云绣.png",
-    "thumbSrc": "/images/revival/thumbs/汉代-乘云绣.png"
+    "thumbSrc": "/images/revival/thumbs/汉代-乘云绣.png",
+    "structure": "云气流动"
   },
   {
     "id": "revival-62",
     "title": "四神纹",
     "dynasty": "汉代",
     "era": "",
-    "culture": "汉代是中国大一统帝国形成后的第一个文化高峰。丝绸之路的开通带来了西域的新鲜元素，云气纹、动物纹广泛流行，纹样充满动感和生命力。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "汉代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件汉代四神纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究汉代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/汉代-四神纹.png",
     "thumbSrc": "/images/revival/thumbs/汉代-四神纹.png"
   },
@@ -828,12 +870,12 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "四神纹辅首",
     "dynasty": "汉代",
     "era": "",
-    "culture": "汉代是中国大一统帝国形成后的第一个文化高峰。丝绸之路的开通带来了西域的新鲜元素，云气纹、动物纹广泛流行，纹样充满动感和生命力。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "汉代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件汉代四神纹辅首采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究汉代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/汉代-四神纹辅首.png",
     "thumbSrc": "/images/revival/thumbs/汉代-四神纹辅首.png"
   },
@@ -842,82 +884,87 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "大宜子孙安乐锦纹",
     "dynasty": "汉代",
     "era": "",
-    "culture": "汉代是中国大一统帝国形成后的第一个文化高峰。丝绸之路的开通带来了西域的新鲜元素，云气纹、动物纹广泛流行，纹样充满动感和生命力。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "汉代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件汉代大宜子孙安乐锦纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究汉代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/汉代-大宜子孙安乐锦纹.png",
-    "thumbSrc": "/images/revival/thumbs/汉代-大宜子孙安乐锦纹.png"
+    "thumbSrc": "/images/revival/thumbs/汉代-大宜子孙安乐锦纹.png",
+    "structure": "连续纹样"
   },
   {
     "id": "revival-65",
     "title": "杯纹菱",
     "dynasty": "汉代",
     "era": "",
-    "culture": "汉代是中国大一统帝国形成后的第一个文化高峰。丝绸之路的开通带来了西域的新鲜元素，云气纹、动物纹广泛流行，纹样充满动感和生命力。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "汉代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件汉代杯纹菱采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究汉代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/汉代-杯纹菱.png",
-    "thumbSrc": "/images/revival/thumbs/汉代-杯纹菱.png"
+    "thumbSrc": "/images/revival/thumbs/汉代-杯纹菱.png",
+    "structure": "几何框架"
   },
   {
     "id": "revival-66",
     "title": "豹首兽面纹",
     "dynasty": "汉代",
     "era": "",
-    "culture": "汉代是中国大一统帝国形成后的第一个文化高峰。丝绸之路的开通带来了西域的新鲜元素，云气纹、动物纹广泛流行，纹样充满动感和生命力。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "汉代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件汉代豹首兽面纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究汉代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/汉代-豹首兽面纹.png",
-    "thumbSrc": "/images/revival/thumbs/汉代-豹首兽面纹.png"
+    "thumbSrc": "/images/revival/thumbs/汉代-豹首兽面纹.png",
+    "structure": "瑞兽造型"
   },
   {
     "id": "revival-67",
     "title": "鱼蛙纹",
     "dynasty": "汉代",
     "era": "",
-    "culture": "汉代是中国大一统帝国形成后的第一个文化高峰。丝绸之路的开通带来了西域的新鲜元素，云气纹、动物纹广泛流行，纹样充满动感和生命力。",
+    "culture": "",
     "elements": [
-      "鱼纹"
+      "蛙纹"
     ],
-    "description": "汉代时期的鱼纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件汉代鱼蛙纹采用游动姿态的动物造型，鳞片纹路细腻，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究汉代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/汉代-鱼蛙纹.png",
-    "thumbSrc": "/images/revival/thumbs/汉代-鱼蛙纹.png"
+    "thumbSrc": "/images/revival/thumbs/汉代-鱼蛙纹.png",
+    "structure": "动物造型"
   },
   {
     "id": "revival-68",
     "title": "龟背填花纹",
     "dynasty": "汉代",
     "era": "",
-    "culture": "汉代是中国大一统帝国形成后的第一个文化高峰。丝绸之路的开通带来了西域的新鲜元素，云气纹、动物纹广泛流行，纹样充满动感和生命力。",
+    "culture": "",
     "elements": [
-      "龟背纹"
+      "龟背"
     ],
-    "description": "汉代时期的龟背纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件汉代龟背填花纹采用六边形网状框架，内部填充适合纹样，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究汉代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/汉代-龟背填花纹.png",
-    "thumbSrc": "/images/revival/thumbs/汉代-龟背填花纹.png"
+    "thumbSrc": "/images/revival/thumbs/汉代-龟背填花纹.png",
+    "structure": "六边网格"
   },
   {
     "id": "revival-69",
     "title": "三多纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "清代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代三多纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-三多纹.png",
     "thumbSrc": "/images/revival/thumbs/清代-三多纹.png"
   },
@@ -926,26 +973,27 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "云蝠纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "清代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代云蝠纹采用婉转流动的曲线组合，以如意云头为核心，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-云蝠纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-云蝠纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-云蝠纹.png",
+    "structure": "云气流动"
   },
   {
     "id": "revival-71",
     "title": "五福捧寿纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "清代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代五福捧寿纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-五福捧寿纹.png",
     "thumbSrc": "/images/revival/thumbs/清代-五福捧寿纹.png"
   },
@@ -954,110 +1002,117 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "五蝠缠枝花纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "缠枝纹"
+      "缠枝"
     ],
-    "description": "清代时期的缠枝纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代五蝠缠枝花纹采用S形连续缠绕的植物蔓藤结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-五蝠缠枝花纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-五蝠缠枝花纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-五蝠缠枝花纹.png",
+    "structure": "缠枝连续"
   },
   {
     "id": "revival-73",
     "title": "八吉祥团花纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "团花纹"
+      "团花"
     ],
-    "description": "清代时期的团花纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代八吉祥团花纹采用圆形或近圆形的完整花朵结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-八吉祥团花纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-八吉祥团花纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-八吉祥团花纹.png",
+    "structure": "圆形团花"
   },
   {
     "id": "revival-74",
     "title": "兽面纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "清代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代兽面纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-兽面纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-兽面纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-兽面纹.png",
+    "structure": "瑞兽造型"
   },
   {
     "id": "revival-75",
     "title": "兽面鳞纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "清代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代兽面鳞纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-兽面鳞纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-兽面鳞纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-兽面鳞纹.png",
+    "structure": "瑞兽造型"
   },
   {
     "id": "revival-76",
     "title": "冰裂梅花纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "梅花纹"
+      "传统纹样"
     ],
-    "description": "清代时期的梅花纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代冰裂梅花纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-冰裂梅花纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-冰裂梅花纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-冰裂梅花纹.png",
+    "structure": "植物造型"
   },
   {
     "id": "revival-77",
     "title": "几何蝠纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "几何纹"
+      "传统纹样"
     ],
-    "description": "清代时期的几何纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代几何蝠纹采用对称的几何框架，以菱形、方形或六边形为基本单元，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-几何蝠纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-几何蝠纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-几何蝠纹.png",
+    "structure": "几何框架"
   },
   {
     "id": "revival-78",
     "title": "勾莲纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "莲花纹"
+      "传统纹样"
     ],
-    "description": "清代时期的莲花纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代勾莲纹采用中心对称的团窠结构，或多瓣散点排列，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-勾莲纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-勾莲纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-勾莲纹.png",
+    "structure": "团窠"
   },
   {
     "id": "revival-79",
     "title": "十二章纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "清代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代十二章纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-十二章纹.png",
     "thumbSrc": "/images/revival/thumbs/清代-十二章纹.png"
   },
@@ -1066,12 +1121,12 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "博古纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "清代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代博古纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-博古纹.png",
     "thumbSrc": "/images/revival/thumbs/清代-博古纹.png"
   },
@@ -1080,56 +1135,57 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "卷草莲纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "莲花纹",
-      "卷草纹"
+      "卷草"
     ],
-    "description": "清代时期的莲花纹、卷草纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代卷草莲纹采用中心对称的团窠结构，或多瓣散点排列，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-卷草莲纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-卷草莲纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-卷草莲纹.png",
+    "structure": "团窠"
   },
   {
     "id": "revival-82",
     "title": "双狮戏绣球",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "狮纹"
+      "传统纹样"
     ],
-    "description": "清代时期的狮纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代双狮戏绣球采用威严稳重的瑞兽造型，常配以绣球，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-双狮戏绣球.png",
-    "thumbSrc": "/images/revival/thumbs/清代-双狮戏绣球.png"
+    "thumbSrc": "/images/revival/thumbs/清代-双狮戏绣球.png",
+    "structure": "瑞兽造型"
   },
   {
     "id": "revival-83",
     "title": "双龙海水江崖",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "龙纹",
-      "水纹"
+      "传统纹样"
     ],
-    "description": "清代时期的龙纹、水纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代双龙海水江崖采用蜿蜒盘旋的神兽造型，须发鳞甲细节丰富，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-双龙海水江崖.png",
-    "thumbSrc": "/images/revival/thumbs/清代-双龙海水江崖.png"
+    "thumbSrc": "/images/revival/thumbs/清代-双龙海水江崖.png",
+    "structure": "神兽造型"
   },
   {
     "id": "revival-84",
     "title": "和合二仙纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "清代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代和合二仙纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-和合二仙纹.png",
     "thumbSrc": "/images/revival/thumbs/清代-和合二仙纹.png"
   },
@@ -1138,69 +1194,73 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "夔凤纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "凤纹"
     ],
-    "description": "清代时期的凤纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代夔凤纹采用展翅或回首的祥禽造型，尾羽飘逸形成流动感，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-夔凤纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-夔凤纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-夔凤纹.png",
+    "structure": "祥禽造型"
   },
   {
     "id": "revival-86",
     "title": "夔龙团纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "龙纹"
+      "传统纹样"
     ],
-    "description": "清代时期的龙纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代夔龙团纹采用蜿蜒盘旋的神兽造型，须发鳞甲细节丰富，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-夔龙团纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-夔龙团纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-夔龙团纹.png",
+    "structure": "神兽造型"
   },
   {
     "id": "revival-87",
     "title": "大雅斋花鸟纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "花鸟纹",
+      "花鸟",
       "鸟纹"
     ],
-    "description": "清代时期的花鸟纹、鸟纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代大雅斋花鸟纹采用花卉与鸟禽组合的写实构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-大雅斋花鸟纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-大雅斋花鸟纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-大雅斋花鸟纹.png",
+    "structure": "花鸟写实"
   },
   {
     "id": "revival-88",
     "title": "宫灯云凤纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "凤纹"
     ],
-    "description": "清代时期的凤纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代宫灯云凤纹采用展翅或回首的祥禽造型，尾羽飘逸形成流动感，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-宫灯云凤纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-宫灯云凤纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-宫灯云凤纹.png",
+    "structure": "祥禽造型"
   },
   {
     "id": "revival-89",
     "title": "宫灯纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "清代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代宫灯纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-宫灯纹.png",
     "thumbSrc": "/images/revival/thumbs/清代-宫灯纹.png"
   },
@@ -1209,41 +1269,43 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "山水纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "水纹"
     ],
-    "description": "清代时期的水纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代山水纹采用层叠的波浪线结构，常与云纹组合，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-山水纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-山水纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-山水纹.png",
+    "structure": "水纹层叠"
   },
   {
     "id": "revival-91",
     "title": "折枝花蝶纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "折枝花",
+      "折枝",
       "蝶纹"
     ],
-    "description": "清代时期的折枝花、蝶纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代折枝花蝶纹采用截取一枝花叶的独立构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-折枝花蝶纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-折枝花蝶纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-折枝花蝶纹.png",
+    "structure": "独立折枝"
   },
   {
     "id": "revival-92",
     "title": "暗八仙纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "清代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代暗八仙纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-暗八仙纹.png",
     "thumbSrc": "/images/revival/thumbs/清代-暗八仙纹.png"
   },
@@ -1252,183 +1314,194 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "松鼠葡萄纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "葡萄纹",
-      "松纹"
+      "葡萄"
     ],
-    "description": "清代时期的葡萄纹、松纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代松鼠葡萄纹采用藤蔓缠绕的果实簇结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-松鼠葡萄纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-松鼠葡萄纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-松鼠葡萄纹.png",
+    "structure": "藤蔓缠绕"
   },
   {
     "id": "revival-94",
     "title": "果品蝠纹天华锦",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "清代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代果品蝠纹天华锦采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-果品蝠纹天华锦.png",
-    "thumbSrc": "/images/revival/thumbs/清代-果品蝠纹天华锦.png"
+    "thumbSrc": "/images/revival/thumbs/清代-果品蝠纹天华锦.png",
+    "structure": "连续纹样"
   },
   {
     "id": "revival-95",
     "title": "海水江崖纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "水纹"
+      "传统纹样"
     ],
-    "description": "清代时期的水纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代海水江崖纹采用层叠的波浪线结构，常与云纹组合，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-海水江崖纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-海水江崖纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-海水江崖纹.png",
+    "structure": "水纹层叠"
   },
   {
     "id": "revival-96",
     "title": "狮子纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "狮纹"
+      "狮子"
     ],
-    "description": "清代时期的狮纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代狮子纹采用威严稳重的瑞兽造型，常配以绣球，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-狮子纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-狮子纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-狮子纹.png",
+    "structure": "瑞兽造型"
   },
   {
     "id": "revival-97",
     "title": "球路双龙纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "龙纹"
     ],
-    "description": "清代时期的龙纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代球路双龙纹采用蜿蜒盘旋的神兽造型，须发鳞甲细节丰富，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-球路双龙纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-球路双龙纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-球路双龙纹.png",
+    "structure": "神兽造型"
   },
   {
     "id": "revival-98",
     "title": "皮球小团花",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "团花纹"
+      "团花"
     ],
-    "description": "清代时期的团花纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代皮球小团花采用圆形或近圆形的完整花朵结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-皮球小团花.png",
-    "thumbSrc": "/images/revival/thumbs/清代-皮球小团花.png"
+    "thumbSrc": "/images/revival/thumbs/清代-皮球小团花.png",
+    "structure": "圆形团花"
   },
   {
     "id": "revival-99",
     "title": "石榴牡丹纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "牡丹纹",
-      "石榴纹"
+      "牡丹",
+      "石榴"
     ],
-    "description": "清代时期的牡丹纹、石榴纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代石榴牡丹纹采用折枝或团花结构，花瓣层次丰富，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-石榴牡丹纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-石榴牡丹纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-石榴牡丹纹.png",
+    "structure": "折枝/团花"
   },
   {
     "id": "revival-100",
     "title": "缠枝八吉祥",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "缠枝纹"
+      "缠枝"
     ],
-    "description": "清代时期的缠枝纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代缠枝八吉祥采用S形连续缠绕的植物蔓藤结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-缠枝八吉祥.png",
-    "thumbSrc": "/images/revival/thumbs/清代-缠枝八吉祥.png"
+    "thumbSrc": "/images/revival/thumbs/清代-缠枝八吉祥.png",
+    "structure": "缠枝连续"
   },
   {
     "id": "revival-101",
     "title": "缠枝八吉祥纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "缠枝纹"
+      "缠枝"
     ],
-    "description": "清代时期的缠枝纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代缠枝八吉祥纹采用S形连续缠绕的植物蔓藤结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-缠枝八吉祥纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-缠枝八吉祥纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-缠枝八吉祥纹.png",
+    "structure": "缠枝连续"
   },
   {
     "id": "revival-102",
     "title": "缠枝四季花纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "缠枝纹"
+      "缠枝"
     ],
-    "description": "清代时期的缠枝纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代缠枝四季花纹采用S形连续缠绕的植物蔓藤结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-缠枝四季花纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-缠枝四季花纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-缠枝四季花纹.png",
+    "structure": "缠枝连续"
   },
   {
     "id": "revival-103",
     "title": "缠枝牡丹纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "牡丹纹",
-      "缠枝纹"
+      "牡丹",
+      "缠枝"
     ],
-    "description": "清代时期的牡丹纹、缠枝纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代缠枝牡丹纹采用折枝或团花结构，花瓣层次丰富，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-缠枝牡丹纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-缠枝牡丹纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-缠枝牡丹纹.png",
+    "structure": "折枝/团花"
   },
   {
     "id": "revival-104",
     "title": "缠枝花果纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "缠枝纹"
+      "缠枝"
     ],
-    "description": "清代时期的缠枝纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代缠枝花果纹采用S形连续缠绕的植物蔓藤结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-缠枝花果纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-缠枝花果纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-缠枝花果纹.png",
+    "structure": "缠枝连续"
   },
   {
     "id": "revival-105",
     "title": "葫芦纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "葫芦纹"
+      "葫芦"
     ],
-    "description": "清代时期的葫芦纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代葫芦纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-葫芦纹.png",
     "thumbSrc": "/images/revival/thumbs/清代-葫芦纹.png"
   },
@@ -1437,12 +1510,12 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "蕉叶纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "清代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代蕉叶纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-蕉叶纹.png",
     "thumbSrc": "/images/revival/thumbs/清代-蕉叶纹.png"
   },
@@ -1451,26 +1524,27 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "蕉叶缠枝花纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "缠枝纹"
+      "缠枝"
     ],
-    "description": "清代时期的缠枝纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代蕉叶缠枝花纹采用S形连续缠绕的植物蔓藤结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-蕉叶缠枝花纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-蕉叶缠枝花纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-蕉叶缠枝花纹.png",
+    "structure": "缠枝连续"
   },
   {
     "id": "revival-108",
     "title": "蝉纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "清代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代蝉纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-蝉纹.png",
     "thumbSrc": "/images/revival/thumbs/清代-蝉纹.png"
   },
@@ -1479,12 +1553,12 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "西番莲蝠纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "清代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代西番莲蝠纹采用中心对称的团窠结构，或多瓣散点排列，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-西番莲蝠纹.png",
     "thumbSrc": "/images/revival/thumbs/清代-西番莲蝠纹.png"
   },
@@ -1493,126 +1567,134 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "金鱼纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "鱼纹"
     ],
-    "description": "清代时期的鱼纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代金鱼纹采用游动姿态的动物造型，鳞片纹路细腻，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-金鱼纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-金鱼纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-金鱼纹.png",
+    "structure": "动物造型"
   },
   {
     "id": "revival-111",
     "title": "锦地团花",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "团花纹"
+      "团花"
     ],
-    "description": "清代时期的团花纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代锦地团花采用圆形或近圆形的完整花朵结构，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-锦地团花.png",
-    "thumbSrc": "/images/revival/thumbs/清代-锦地团花.png"
+    "thumbSrc": "/images/revival/thumbs/清代-锦地团花.png",
+    "structure": "圆形团花"
   },
   {
     "id": "revival-112",
     "title": "锦地开光花蝶纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "蝶纹"
     ],
-    "description": "清代时期的蝶纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代锦地开光花蝶纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-锦地开光花蝶纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-锦地开光花蝶纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-锦地开光花蝶纹.png",
+    "structure": "昆虫造型"
   },
   {
     "id": "revival-113",
     "title": "鹤纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
       "鹤纹"
     ],
-    "description": "清代时期的鹤纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代鹤纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-鹤纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-鹤纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-鹤纹.png",
+    "structure": "禽鸟造型"
   },
   {
     "id": "revival-114",
     "title": "麒麟纹",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "麒麟纹"
+      "麒麟"
     ],
-    "description": "清代时期的麒麟纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代麒麟纹采用复合神兽造型，集多种动物特征为一体，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-麒麟纹.png",
-    "thumbSrc": "/images/revival/thumbs/清代-麒麟纹.png"
+    "thumbSrc": "/images/revival/thumbs/清代-麒麟纹.png",
+    "structure": "瑞兽造型"
   },
   {
     "id": "revival-115",
     "title": "龙纹柿蒂窠",
     "dynasty": "清代",
     "era": "",
-    "culture": "清代纹样达到了中国装饰艺术中最为繁缛精致的程度。满工装饰、多层套叠成为主流，吉祥寓意更加丰富，工艺水平臻于极致。",
+    "culture": "",
     "elements": [
-      "龙纹",
-      "柿蒂纹"
+      "柿蒂",
+      "龙纹"
     ],
-    "description": "清代时期的龙纹、柿蒂纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件清代龙纹柿蒂窠采用蜿蜒盘旋的神兽造型，须发鳞甲细节丰富，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究清代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/清代-龙纹柿蒂窠.png",
-    "thumbSrc": "/images/revival/thumbs/清代-龙纹柿蒂窠.png"
+    "thumbSrc": "/images/revival/thumbs/清代-龙纹柿蒂窠.png",
+    "structure": "神兽造型"
   },
   {
     "id": "revival-116",
     "title": "菱形天华锦（成都博物馆）",
     "dynasty": "现代",
     "era": "",
-    "culture": "这件纹样承载着所属时代的审美追求和工艺智慧，是中华传统装饰艺术的珍贵遗产。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "现代时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件现代菱形天华锦（成都博物馆）采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究现代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/现代-菱形天华锦（成都博物馆）.png",
-    "thumbSrc": "/images/revival/thumbs/现代-菱形天华锦（成都博物馆）.png"
+    "thumbSrc": "/images/revival/thumbs/现代-菱形天华锦（成都博物馆）.png",
+    "structure": "几何框架"
   },
   {
     "id": "revival-117",
     "title": "第319窟宝相花藻井",
     "dynasty": "盛唐",
     "era": "",
-    "culture": "唐代是纹样艺术的黄金时代。丝绸之路贸易繁荣，大量吸收波斯、中亚的装饰元素，加以本土化创造。宝相花、联珠纹、卷草纹、飞天等成为标志性纹样，风格丰满华丽、气度恢弘。",
+    "culture": "",
     "elements": [
       "宝相花",
-      "藻井纹"
+      "藻井"
     ],
-    "description": "盛唐时期的宝相花、藻井纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件盛唐第319窟宝相花藻井采用团窠对称结构，多层花瓣辐射状排列，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究盛唐装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/盛唐-第319窟宝相花藻井.png",
-    "thumbSrc": "/images/revival/thumbs/盛唐-第319窟宝相花藻井.png"
+    "thumbSrc": "/images/revival/thumbs/盛唐-第319窟宝相花藻井.png",
+    "structure": "团窠对称"
   },
   {
     "id": "revival-118",
     "title": "波曲纹",
     "dynasty": "西周",
     "era": "",
-    "culture": "周代继承了商代的青铜传统，但在纹样上更趋简约端庄。礼制文化的高度发展使纹样的秩序感和象征性进一步增强。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "西周时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件西周波曲纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究西周装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/西周-波曲纹.png",
     "thumbSrc": "/images/revival/thumbs/西周-波曲纹.png"
   },
@@ -1621,12 +1703,12 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "窃曲纹",
     "dynasty": "西周",
     "era": "",
-    "culture": "周代继承了商代的青铜传统，但在纹样上更趋简约端庄。礼制文化的高度发展使纹样的秩序感和象征性进一步增强。",
+    "culture": "",
     "elements": [
       "传统纹样"
     ],
-    "description": "西周时期的传统纹样作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件西周窃曲纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究西周装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/西周-窃曲纹.png",
     "thumbSrc": "/images/revival/thumbs/西周-窃曲纹.png"
   },
@@ -1635,85 +1717,91 @@ export const revivalPatterns: RevivalPattern[] = [
     "title": "第285窟莲花忍冬藻井",
     "dynasty": "西魏",
     "era": "",
-    "culture": "这件纹样承载着所属时代的审美追求和工艺智慧，是中华传统装饰艺术的珍贵遗产。",
+    "culture": "",
     "elements": [
-      "莲花纹",
-      "忍冬纹",
-      "藻井纹"
+      "莲花",
+      "忍冬",
+      "藻井"
     ],
-    "description": "西魏时期的莲花纹、忍冬纹、藻井纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件西魏第285窟莲花忍冬藻井采用中心对称的团窠结构，或多瓣散点排列，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究西魏装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/西魏-第285窟莲花忍冬藻井.png",
-    "thumbSrc": "/images/revival/thumbs/西魏-第285窟莲花忍冬藻井.png"
+    "thumbSrc": "/images/revival/thumbs/西魏-第285窟莲花忍冬藻井.png",
+    "structure": "团窠"
   },
   {
     "id": "revival-121",
     "title": "秋山鹿纹",
     "dynasty": "辽代",
     "era": "",
-    "culture": "这件纹样承载着所属时代的审美追求和工艺智慧，是中华传统装饰艺术的珍贵遗产。",
+    "culture": "",
     "elements": [
       "鹿纹"
     ],
-    "description": "辽代时期的鹿纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件辽代秋山鹿纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究辽代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/辽代-秋山鹿纹.png",
-    "thumbSrc": "/images/revival/thumbs/辽代-秋山鹿纹.png"
+    "thumbSrc": "/images/revival/thumbs/辽代-秋山鹿纹.png",
+    "structure": "动物造型"
   },
   {
     "id": "revival-122",
     "title": "鱼纹",
     "dynasty": "辽代",
     "era": "",
-    "culture": "这件纹样承载着所属时代的审美追求和工艺智慧，是中华传统装饰艺术的珍贵遗产。",
+    "culture": "",
     "elements": [
       "鱼纹"
     ],
-    "description": "辽代时期的鱼纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件辽代鱼纹采用游动姿态的动物造型，鳞片纹路细腻，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究辽代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/辽代-鱼纹.png",
-    "thumbSrc": "/images/revival/thumbs/辽代-鱼纹.png"
+    "thumbSrc": "/images/revival/thumbs/辽代-鱼纹.png",
+    "structure": "动物造型"
   },
   {
     "id": "revival-123",
     "title": "双凤朝阳纹",
     "dynasty": "近代",
     "era": "",
-    "culture": "这件纹样承载着所属时代的审美追求和工艺智慧，是中华传统装饰艺术的珍贵遗产。",
+    "culture": "",
     "elements": [
-      "凤纹"
+      "传统纹样"
     ],
-    "description": "近代时期的凤纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件近代双凤朝阳纹采用展翅或回首的祥禽造型，尾羽飘逸形成流动感，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究近代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/近代-双凤朝阳纹.png",
-    "thumbSrc": "/images/revival/thumbs/近代-双凤朝阳纹.png"
+    "thumbSrc": "/images/revival/thumbs/近代-双凤朝阳纹.png",
+    "structure": "祥禽造型"
   },
   {
     "id": "revival-124",
     "title": "春水滴珠窠",
     "dynasty": "金代",
     "era": "",
-    "culture": "这件纹样承载着所属时代的审美追求和工艺智慧，是中华传统装饰艺术的珍贵遗产。",
+    "culture": "",
     "elements": [
-      "水纹"
+      "传统纹样"
     ],
-    "description": "金代时期的水纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件金代春水滴珠窠采用层叠的波浪线结构，常与云纹组合，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究金代装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/金代-春水滴珠窠.png",
-    "thumbSrc": "/images/revival/thumbs/金代-春水滴珠窠.png"
+    "thumbSrc": "/images/revival/thumbs/金代-春水滴珠窠.png",
+    "structure": "水纹层叠"
   },
   {
     "id": "revival-125",
     "title": "双头鸟纹",
     "dynasty": "魏晋南北朝",
     "era": "",
-    "culture": "魏晋南北朝是民族大融合的时代。佛教艺术的传入深刻影响了中国纹样，忍冬纹、莲花纹开始大量出现，纹样风格从中原的端庄转向融合与开放。",
+    "culture": "",
     "elements": [
       "鸟纹"
     ],
-    "description": "魏晋南北朝时期的鸟纹作品。构图严谨、线条流畅，充分体现了该时期纹样装饰语言的特色与魅力。",
-    "detail": "这件魏晋南北朝双头鸟纹采用传统对称构图，整体布局均衡有序，细节处理精到。纹样中的线条疏密有致，造型生动自然，是研究魏晋南北朝装饰艺术的重要参考实例。",
+    "description": "",
+    "detail": "",
     "src": "/images/revival/魏晋南北朝-双头鸟纹.png",
-    "thumbSrc": "/images/revival/thumbs/魏晋南北朝-双头鸟纹.png"
+    "thumbSrc": "/images/revival/thumbs/魏晋南北朝-双头鸟纹.png",
+    "structure": "禽鸟造型"
   }
 ];
