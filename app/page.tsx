@@ -68,31 +68,57 @@ export default function HomePage() {
       <CarouselBanner />
 
       {/* 品牌简介区 */}
-      <section className="relative overflow-hidden py-16 sm:py-24 px-4 sm:px-6 text-center">
-        {/* 装饰 */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-qing/5 rounded-full blur-3xl pointer-events-none" />
+      <section className="relative overflow-hidden py-16 sm:py-24 px-4 sm:px-6">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-qing/5 rounded-full blur-3xl pointer-events-none translate-x-1/3 -translate-y-1/4" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/5 rounded-full blur-3xl pointer-events-none -translate-x-1/3 translate-y-1/3" />
 
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-qing/10 text-qing text-xs font-medium mb-5 sm:mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-qing animate-pulse" />
-            河图 · 华夏纹样传承
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-20">
+            {/* 左：文字 */}
+            <div className="flex-shrink-0 text-center md:text-left">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-qing/10 text-qing text-xs font-medium mb-5 sm:mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-qing animate-pulse" />
+                河图 · 华夏纹样传承
+              </div>
+              <h2 className="text-[1.6rem] sm:text-3xl lg:text-4xl text-ink leading-tight mb-5 sm:mb-6">
+                以现代中式美学，
+                <br />
+                传承与重生<span className="text-gold">东方纹样</span>
+              </h2>
+              <p className="text-sm sm:text-base text-gray-500 max-w-md">
+                汇聚复原纹样、创新设计与灵感素材，连接设计师与品牌方，让传统之美在当代焕发新意。
+              </p>
+            </div>
+
+            {/* 右：装饰图形 */}
+            <div className="hidden md:flex flex-1 items-center justify-center">
+              <svg viewBox="0 0 320 320" className="w-64 h-64 lg:w-80 lg:h-80 opacity-60">
+                {/* 外框 */}
+                <rect x="20" y="20" width="280" height="280" rx="16" fill="none" stroke="#7BC4D0" strokeWidth="1" opacity="0.3" />
+                <rect x="40" y="40" width="240" height="240" rx="8" fill="none" stroke="#7BC4D0" strokeWidth="1" opacity="0.2" />
+                {/* 圆 */}
+                <circle cx="160" cy="160" r="100" fill="none" stroke="#C3A370" strokeWidth="1" opacity="0.3" />
+                <circle cx="160" cy="160" r="70" fill="none" stroke="#C3A370" strokeWidth="1" opacity="0.2" />
+                {/* 花瓣辐射 */}
+                {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => (
+                  <g key={i} transform={`rotate(${angle} 160 160)`}>
+                    <ellipse cx="160" cy="80" rx="12" ry="35" fill="#7BC4D0" opacity="0.08" />
+                  </g>
+                ))}
+                {/* 中心 */}
+                <circle cx="160" cy="160" r="14" fill="#C3A370" opacity="0.15" />
+                <circle cx="160" cy="160" r="6" fill="#C3A370" opacity="0.3" />
+                {/* 小联珠圈 */}
+                <circle cx="160" cy="160" r="44" fill="none" stroke="#7BC4D0" strokeWidth="0.8" strokeDasharray="2 4" opacity="0.25" />
+              </svg>
+            </div>
           </div>
-          <h2 className="text-[1.6rem] sm:heading-1 text-ink leading-tight mb-5 sm:mb-6">
-            以现代中式美学，
-            <br />
-            传承与重生<span className="text-gold">东方纹样</span>
-          </h2>
-          <p className="text-sm sm:body-lg text-gray-500 max-w-2xl mx-auto">
-            汇聚复原纹样、创新设计与灵感素材，连接设计师与品牌方，
-            <br className="hidden sm:block" />
-            让传统之美在当代焕发新意。
-          </p>
         </div>
       </section>
 
       {/* 引导卡片 */}
       <section className="px-4 sm:px-6 pb-16 sm:pb-24 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {CARDS.map((card) => (
             <a
               key={card.title}
