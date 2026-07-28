@@ -18,7 +18,7 @@ function LoginForm() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [regType, setRegType] = useState<'email' | 'phone'>('email');
+  const [regType, setRegType] = useState<'email' | 'phone'>('phone');
 
   // 邮箱验证相关
   const [sendingCode, setSendingCode] = useState(false);
@@ -227,7 +227,7 @@ function LoginForm() {
             /* 注册：邮箱和手机号任选 */
             <>
               <div className="flex bg-gray-100 rounded-xl p-1 mb-1">
-                {(['email', 'phone'] as const).map((t) => (
+                {(['phone', 'email'] as const).map((t) => (
                   <button
                     key={t}
                     type="button"
@@ -236,7 +236,7 @@ function LoginForm() {
                       regType === t ? 'bg-white shadow-sm text-ink font-medium' : 'text-gray-400 hover:text-ink'
                     }`}
                   >
-                    {t === 'email' ? '📧 邮箱' : '📱 手机号'}
+                    {t === 'phone' ? '📱 手机号' : '📧 邮箱'}
                   </button>
                 ))}
               </div>
