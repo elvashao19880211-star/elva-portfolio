@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Lightbox from './Lightbox';
 import FavoriteButton from './FavoriteButton';
-import { addPurchase, type FavoriteItem } from '@/lib/userData';
+import { addPurchase } from '@/lib/userData';
 
 interface BasePattern {
   id: string;
@@ -38,7 +38,7 @@ const TIER_CONFIG: Record<PurchaseTier, {
 }> = {
   personal: {
     label: '个人学习 / 临摹',
-    desc: '带水印 · 非商业用途 · 直接下载',
+    desc: '带水印 · 非商业用途',
     getPrice: (r) => r ? '9.9' : '29.9',
     showTier: () => true,
   },
@@ -50,9 +50,9 @@ const TIER_CONFIG: Record<PurchaseTier, {
   },
   source: {
     label: '源文件企业授权',
-    desc: 'PSD源文件 · 修改权 · 永久 · 需联系客服',
+    desc: 'PSD源文件 · 修改权 · 永久',
     getPrice: () => '3,999',
-    showTier: (r) => !r, // 仅创新纹样
+    showTier: (r) => !r,
   },
 };
 
@@ -61,8 +61,10 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
   const [showPay, setShowPay] = useState(false);
   const [selectedTier, setSelectedTier] = useState<PurchaseTier>('commercial');
   const [showLightbox, setShowLightbox] = useState(false);
-  const [paid, setPaid] = useState(false);
+  const [showAuthForm, setShowAuthForm] = useState(false);
   const [showAuthDoc, setShowAuthDoc] = useState(false);
+  const [authData, setAuthData] = useState({ name: '', company: '', purpose: '' });
+  const [orderSubmitted, setOrderSubmitted] = useState(false);
   const isRevival = pattern.type === 'revival' || !!pattern.dynasty;
 
   useEffect(() => {
@@ -81,10 +83,10 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
     setSelectedTier(tier);
     setShowBuy(false);
     setShowPay(true);
-    setPaid(false);
+    setOrderSubmitted(false);
   };
 
-  const handleConfirmPaid = () => {
+  const handleSubmitOrder = () => {
     const cfg = TIER_CONFIG[selectedTier];
     const price = cfg.getPrice(isRevival);
     addPurchase({
@@ -96,7 +98,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
       price: `¥${price}`,
       purchasedAt: Date.now(),
     });
-    setPaid(true);
+    setOrderSubmitted(true);
   };
 
   const handleDownload = () => {
@@ -151,7 +153,6 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
 
           {/* 右侧：信息 */}
           <div className="w-full md:w-1/2 p-5 sm:p-7 flex flex-col gap-4 sm:gap-5">
-            {/* 标签 + 标题 */}
             <div>
               <div className="flex items-center gap-2 mb-2">
                 {pattern.dynasty && (
@@ -168,7 +169,6 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               <h2 className="text-xl font-serif font-semibold text-ink">{pattern.title}</h2>
             </div>
 
-            {/* 结构 */}
             {pattern.structure && (
               <div>
                 <h3 className="text-xs font-medium text-gold uppercase tracking-wider mb-1.5">纹样结构</h3>
@@ -176,7 +176,6 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               </div>
             )}
 
-            {/* 灵感来源 */}
             {pattern.inspiration && (
               <div>
                 <h3 className="text-xs font-medium text-gold uppercase tracking-wider mb-1.5">灵感来源</h3>
@@ -184,7 +183,6 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               </div>
             )}
 
-            {/* 文化背景 */}
             {pattern.culture && (
               <div>
                 <h3 className="text-xs font-medium text-gold uppercase tracking-wider mb-1.5">文化背景</h3>
@@ -192,7 +190,6 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               </div>
             )}
 
-            {/* 元素 */}
             {pattern.elements && pattern.elements.length > 0 && (
               <div>
                 <h3 className="text-xs font-medium text-gold uppercase tracking-wider mb-1.5">构成元素</h3>
@@ -204,7 +201,6 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               </div>
             )}
 
-            {/* 颜色 */}
             {pattern.colors && pattern.colors.length > 0 && (
               <div>
                 <h3 className="text-xs font-medium text-gold uppercase tracking-wider mb-1.5">配色</h3>
@@ -216,7 +212,6 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               </div>
             )}
 
-            {/* 设计说明 */}
             {pattern.detail && (
               <div>
                 <h3 className="text-xs font-medium text-gold uppercase tracking-wider mb-1.5">设计说明</h3>
@@ -224,7 +219,6 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               </div>
             )}
 
-            {/* 操作按钮 */}
             <div className="flex items-center gap-3 mt-auto pt-4 border-t border-gray-100">
               <button
                 onClick={() => setShowBuy(true)}
@@ -250,7 +244,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
         </div>
       </div>
 
-      {/* 选择版本弹窗 */}
+      {/* ====== 选择版本弹窗 ====== */}
       {showBuy && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowBuy(false)}>
           <div className="bg-white rounded-2xl max-w-sm w-full p-8 shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -261,11 +255,10 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               {(Object.entries(TIER_CONFIG) as [PurchaseTier, typeof TIER_CONFIG[PurchaseTier]][]).map(([key, cfg]) => {
                 if (!cfg.showTier(isRevival)) return null;
                 const price = cfg.getPrice(isRevival);
-                const isActive = selectedTier === key;
                 return (
                   <div
                     key={key}
-                    className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${isActive ? 'border-gold bg-gold/5' : 'border-gray-100 hover:border-gold'}`}
+                    className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${selectedTier === key ? 'border-gold bg-gold/5' : 'border-gray-100 hover:border-gold'}`}
                     onClick={() => handleSelectTier(key)}
                   >
                     <div className="flex items-center justify-between">
@@ -288,74 +281,73 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
         </div>
       )}
 
-      {/* 支付弹窗 */}
+      {/* ====== 支付弹窗 ====== */}
       {showPay && (
         <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowPay(false)}>
-          <div className="bg-white rounded-2xl max-w-sm w-full p-8 shadow-2xl text-center" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl text-center max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             <p className="text-xs text-gray-400 mb-1">支付</p>
             <p className="text-xl font-serif font-semibold text-ink mb-2">¥{getPriceText(selectedTier)}/幅</p>
-            <p className="text-xs text-gray-500 mb-5">{getLabelText(selectedTier)}</p>
+            <p className="text-xs text-gray-500 mb-1">{getLabelText(selectedTier)}</p>
+            <p className="text-[10px] text-gray-400 mb-5">订单号：HETU-{Date.now().toString(36).toUpperCase()}</p>
 
             <div className="bg-gray-50 rounded-xl p-4 inline-block mb-4">
               <img src="/qrcode.png" alt="支付宝付款码" className="w-48 h-48 object-contain" />
             </div>
 
-            {!paid ? (
+            {!orderSubmitted ? (
               <>
-                <p className="text-xs text-gray-400">请使用支付宝扫码支付</p>
+                <p className="text-xs text-gray-500">请使用支付宝扫码支付</p>
+                <p className="text-[10px] text-gray-400 mt-1">支付时请备注纹样名称</p>
                 <button
-                  onClick={handleConfirmPaid}
+                  onClick={handleSubmitOrder}
                   className="inline-flex items-center gap-2 px-6 py-2.5 mt-4 rounded-xl bg-gold text-white text-sm font-medium hover:bg-amber-600 transition-colors shadow-md"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  我已完成支付
+                  我已支付
                 </button>
               </>
             ) : selectedTier === 'source' ? (
-              /* 企业源文件 → 联系客服 */
-              <div className="mt-4 px-4 py-4 rounded-xl bg-amber-50 border border-amber-200 text-center">
-                <svg className="w-8 h-8 text-amber-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              /* ====== 源文件企业授权 → 联系客服 ====== */
+              <div className="mt-4 px-4 py-5 rounded-xl bg-amber-50 border border-amber-200 text-center space-y-3">
+                <svg className="w-8 h-8 text-amber-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <p className="text-sm font-medium text-ink mb-1">请联系客服获取源文件</p>
-                <p className="text-xs text-gray-500 mb-3">我们将确认授权并发送PSD源文件</p>
-                <div className="space-y-1 text-xs text-gray-600">
+                <p className="text-sm font-semibold text-ink">订单已提交</p>
+                <p className="text-xs text-gray-500">我们将确认支付后与您联系，发送PSD源文件及企业授权协议</p>
+                <div className="text-xs text-gray-600 pt-1">
                   <p>📧 hetu@hetu-pattern.com</p>
                 </div>
               </div>
             ) : selectedTier === 'commercial' ? (
-              /* 商业许可 → 下载 + 授权书 */
+              /* ====== 商业许可 ====== */
               <div className="mt-4 space-y-3">
-                <div className="px-4 py-3 rounded-xl bg-green-50 border border-green-200 text-center">
-                  <svg className="w-8 h-8 text-green-500 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="px-4 py-3 rounded-xl bg-qing/5 border border-qing/20 text-center">
+                  <svg className="w-8 h-8 text-qing mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <p className="text-sm font-medium text-ink">支付确认成功！</p>
-                  <p className="text-[10px] text-gray-500 mt-1">已记录至「个人中心」</p>
+                  <p className="text-sm font-semibold text-ink">订单已提交</p>
+                  <p className="text-[10px] text-gray-500 mt-1">支付确认后，无水印文件将发送至您的邮箱</p>
                 </div>
-                <button onClick={handleDownload} className="w-full py-3 rounded-xl bg-qing text-white text-sm font-semibold hover:bg-qing/90 transition-colors shadow-md flex items-center justify-center gap-2">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                  </svg>
-                  下载无水印高清图
-                </button>
-                <button onClick={() => setShowAuthDoc(true)} className="w-full py-3 rounded-xl border-2 border-gold text-gold text-sm font-semibold hover:bg-gold/5 transition-colors flex items-center justify-center gap-2">
+                <button
+                  onClick={() => setShowAuthForm(true)}
+                  className="w-full py-3 rounded-xl border-2 border-gold text-gold text-sm font-semibold hover:bg-gold/5 transition-colors flex items-center justify-center gap-2"
+                >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
-                  生成授权书
+                  填写信息 · 生成授权书
                 </button>
               </div>
             ) : (
-              /* 个人学习 → 直接下载 */
+              /* ====== 个人学习 → 直接下载（带水印） ====== */
               <div className="mt-4 space-y-3">
                 <div className="px-4 py-3 rounded-xl bg-green-50 border border-green-200 text-center">
                   <svg className="w-8 h-8 text-green-500 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <p className="text-sm font-medium text-ink">支付确认成功！</p>
+                  <p className="text-sm font-semibold text-ink">支付确认成功</p>
                   <p className="text-[10px] text-gray-500 mt-1">已记录至「个人中心」</p>
                 </div>
                 <button onClick={handleDownload} className="w-full py-3 rounded-xl bg-qing text-white text-sm font-semibold hover:bg-qing/90 transition-colors shadow-md flex items-center justify-center gap-2">
@@ -364,6 +356,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                   </svg>
                   下载图片（带水印）
                 </button>
+                <p className="text-[10px] text-gray-400">水印仅供参考学习，不含商业使用权</p>
               </div>
             )}
 
@@ -380,11 +373,83 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
         </div>
       )}
 
-      {/* 授权书弹窗 */}
+      {/* ====== 授权书填写表单 ====== */}
+      {showAuthForm && (
+        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowAuthForm(false)}>
+          <div className="bg-white rounded-2xl max-w-sm w-full p-8 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <h3 className="text-lg font-serif font-semibold text-ink mb-1">授权书信息</h3>
+            <p className="text-xs text-gray-400 mb-6">请填写被授权方信息</p>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-xs font-medium text-gray-600 mb-1">被授权人姓名 / 公司名称 *</label>
+                <input
+                  type="text"
+                  value={authData.name}
+                  onChange={(e) => setAuthData({ ...authData, name: e.target.value })}
+                  placeholder="个人姓名或企业全称"
+                  className="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gold transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-600 mb-1">统一社会信用代码（企业选填）</label>
+                <input
+                  type="text"
+                  value={authData.company}
+                  onChange={(e) => setAuthData({ ...authData, company: e.target.value })}
+                  placeholder="企业信用代码"
+                  className="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gold transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-600 mb-1">用途说明</label>
+                <textarea
+                  value={authData.purpose}
+                  onChange={(e) => setAuthData({ ...authData, purpose: e.target.value })}
+                  placeholder="如：布料印花、包装设计、产品贴图等"
+                  rows={2}
+                  className="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gold transition-colors resize-none"
+                />
+              </div>
+            </div>
+
+            <div className="flex gap-3 mt-6">
+              <button
+                onClick={() => setShowAuthForm(false)}
+                className="flex-1 py-3 rounded-xl border border-gray-200 text-gray-500 text-sm font-medium hover:bg-gray-50 transition-colors"
+              >
+                取消
+              </button>
+              <button
+                onClick={() => {
+                  if (!authData.name.trim()) return;
+                  setShowAuthForm(false);
+                  setShowAuthDoc(true);
+                }}
+                disabled={!authData.name.trim()}
+                className={`flex-1 py-3 rounded-xl text-sm font-semibold transition-colors ${
+                  authData.name.trim()
+                    ? 'bg-gold text-white hover:bg-amber-600'
+                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                }`}
+              >
+                生成授权书
+              </button>
+            </div>
+
+            <p className="text-[10px] text-gray-400 text-center mt-4">
+              填写后点击"生成"，即可获得个性化授权书
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* ====== 授权书展示 ====== */}
       {showAuthDoc && (
         <AuthorizationDoc
           pattern={pattern}
           price={getPriceText('commercial')}
+          authData={authData}
           onClose={() => setShowAuthDoc(false)}
         />
       )}
@@ -401,16 +466,19 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
 function AuthorizationDoc({
   pattern,
   price,
+  authData,
   onClose,
 }: {
   pattern: BasePattern;
   price: string;
+  authData: { name: string; company: string; purpose: string };
   onClose: () => void;
 }) {
   const today = new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+  const authId = `HETU-${pattern.id.slice(0, 8).toUpperCase()}-${Date.now().toString(36).toUpperCase()}`;
 
   return (
-    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={onClose}>
+    <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={onClose}>
       <div className="bg-white rounded-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-8 shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="text-center mb-6">
           <h2 className="text-xl font-serif font-bold text-ink mb-1">纹样使用授权书</h2>
@@ -418,20 +486,28 @@ function AuthorizationDoc({
         </div>
 
         <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
-          <div className="bg-qing/5 rounded-xl p-4 border border-qing/10">
-            <p><span className="font-semibold">授权编号：</span>HETU-{pattern.id.slice(0, 8).toUpperCase()}-{Date.now().toString(36).toUpperCase()}</p>
+          <div className="bg-qing/5 rounded-xl p-4 border border-qing/10 space-y-1">
+            <p><span className="font-semibold">授权编号：</span>{authId}</p>
             <p><span className="font-semibold">授权日期：</span>{today}</p>
+            <p><span className="font-semibold">授权方：</span>合图纹样工作室</p>
+          </div>
+
+          <div className="bg-gold/5 rounded-xl p-4 border border-gold/10 space-y-1">
+            <p className="text-xs text-gold font-semibold mb-2">被授权方</p>
+            <p><span className="font-semibold">名称：</span>{authData.name}</p>
+            {authData.company && <p><span className="font-semibold">统一社会信用代码：</span>{authData.company}</p>}
           </div>
 
           <p>
-            兹授权购买方在以下范围内使用本平台提供的纹样作品：
+            兹授权 <span className="font-semibold text-ink">{authData.name}</span> 在以下范围内使用本平台提供的纹样作品：
           </p>
 
           <div className="bg-gray-50 rounded-xl p-4 space-y-2">
             <p><span className="font-semibold">作品名称：</span>{pattern.title}</p>
             <p><span className="font-semibold">作品类型：</span>{pattern.type === 'revival' || pattern.dynasty ? '复原纹样' : '创新纹样'}</p>
-            <p><span className="font-semibold">授权类型：</span>标准商业许可</p>
+            <p><span className="font-semibold">授权类型：</span>标准商业许可（非独家）</p>
             <p><span className="font-semibold">授权费用：</span>¥{price}</p>
+            {authData.purpose && <p><span className="font-semibold">用途：</span>{authData.purpose}</p>}
           </div>
 
           <div>
@@ -457,9 +533,15 @@ function AuthorizationDoc({
           <div className="bg-amber-50 rounded-xl p-4 border border-amber-100 text-xs">
             <p className="font-semibold text-amber-800 mb-1">⚠️ 重要提示</p>
             <p className="text-amber-700">
-              本授权为非独占许可，著作权归创作者所有。如发现将纹样注册商标的行为，
-              本授权自动终止，平台保留追诉权利。
+              本授权为非独占许可，著作权归合图纹样工作室所有。如发现将纹样注册商标的行为，
+              本授权自动终止，工作室保留追诉权利。
             </p>
+          </div>
+
+          <div className="text-center text-xs text-gray-400 pt-2 border-t border-gray-100">
+            <p>授权方：合图纹样工作室</p>
+            <p>授权人（签章）：________________</p>
+            <p>日期：{today}</p>
           </div>
         </div>
 
