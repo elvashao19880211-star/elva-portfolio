@@ -101,9 +101,14 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
     setOrderSubmitted(true);
   };
 
-  const handleDownload = () => {
+  const handleDownload = (clean: boolean = false) => {
+    let url = pattern.src;
+    if (clean) {
+      // 商业/会员下载 → 使用无水印版本
+      url = pattern.src.replace('/revival/', '/revival-clean/').replace('/innovation/', '/innovation-clean/');
+    }
     const link = document.createElement('a');
-    link.href = pattern.src;
+    link.href = url;
     link.download = `${pattern.title || '纹样'}.png`;
     document.body.appendChild(link);
     link.click();
@@ -327,9 +332,15 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                   <svg className="w-8 h-8 text-qing mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <p className="text-sm font-semibold text-ink">订单已提交</p>
-                  <p className="text-[10px] text-gray-500 mt-1">支付确认后，无水印文件将发送至您的邮箱</p>
+                  <p className="text-sm font-semibold text-ink">支付确认成功</p>
+                  <p className="text-[10px] text-gray-500 mt-1">已记录至「个人中心」</p>
                 </div>
+                <button onClick={() => handleDownload(true)} className="w-full py-3 rounded-xl bg-qing text-white text-sm font-semibold hover:bg-qing/90 transition-colors shadow-md flex items-center justify-center gap-2">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  下载高清无水印图
+                </button>
                 <button
                   onClick={() => setShowAuthForm(true)}
                   className="w-full py-3 rounded-xl border-2 border-gold text-gold text-sm font-semibold hover:bg-gold/5 transition-colors flex items-center justify-center gap-2"
