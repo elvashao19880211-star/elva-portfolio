@@ -226,7 +226,9 @@ export default function MaterialsPage() {
 
   return (
     <main className="min-h-screen px-4 sm:px-6 py-12">
-      <Breadcrumb crumbs={[{ label: '首页', href: '/' }, { label: '纹样素材' }]} />
+      <div className="max-w-7xl mx-auto">
+        <Breadcrumb crumbs={[{ label: '首页', href: '/' }, { label: '纹样素材' }]} />
+      </div>
       <SectionTitle
         title="纹样素材"
         subtitle="朝代 · 载体 · 元素 · 结构 · 颜色 —— 五维精准筛选"

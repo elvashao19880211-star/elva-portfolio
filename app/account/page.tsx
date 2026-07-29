@@ -32,7 +32,9 @@ export default function AccountPage() {
 
   return (
     <main className="min-h-screen px-4 sm:px-6 py-12">
-      <Breadcrumb crumbs={[{ label: '首页', href: '/' }, { label: '个人中心' }]} />
+      <div className="max-w-4xl mx-auto">
+        <Breadcrumb crumbs={[{ label: '首页', href: '/' }, { label: '个人中心' }]} />
+      </div>
 
       <div className="max-w-4xl mx-auto">
         {/* 用户信息卡片 */}

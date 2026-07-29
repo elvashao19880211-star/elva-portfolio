@@ -35,10 +35,12 @@ export default function HeritagePage() {
 
   return (
     <main className="min-h-screen px-4 sm:px-6 py-12">
-      <Breadcrumb crumbs={[
-        { label: '首页', href: '/' },
-        { label: '传承理念' },
-      ]} />
+      <div className="max-w-6xl mx-auto">
+        <Breadcrumb crumbs={[
+          { label: '首页', href: '/' },
+          { label: '传承理念' },
+        ]} />
+      </div>
       <SectionTitle
         title="纹样复原记录"
         subtitle="从考据研究到线稿绘制，再到色彩校对——记录纹样从文物到新生的完整旅程"

@@ -30,7 +30,9 @@ export default function MemberPage() {
 
   return (
     <main className="min-h-screen px-6 py-12">
-      <Breadcrumb crumbs={[{ label: '首页', href: '/' }, { label: '会员中心' }]} />
+      <div className="max-w-4xl mx-auto">
+        <Breadcrumb crumbs={[{ label: '首页', href: '/' }, { label: '会员中心' }]} />
+      </div>
       <SectionTitle title="会员中心" subtitle="素材库会员 · 年付制 · 全年持续上新" />
 
       {/* 当前状态 */}
