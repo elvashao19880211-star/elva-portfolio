@@ -188,9 +188,12 @@ export default function MaterialsPage() {
     setElementIds(new Set());
     setStructure(null);
     setColor(null);
+    setSearchQuery('');
   };
 
-  const hasFilters = dynasty || carrier || elementIds.size > 0 || structure || color;
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const hasFilters = dynasty || carrier || elementIds.size > 0 || structure || color || !!searchQuery;
 
   // 当前展开的一级元素的二级子项
   const expandedChildren = useMemo(() => {
@@ -215,6 +218,18 @@ export default function MaterialsPage() {
     }
     if (structure) result = result.filter((m) => m.structure === structure);
     if (color) result = result.filter((m) => m.colors.includes(color));
+    // 搜索：匹配标题、朝代、元素名称
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      result = result.filter((m) =>
+        m.title.toLowerCase().includes(q) ||
+        (m.dynasty && m.dynasty.toLowerCase().includes(q)) ||
+        m.elements.some((eid) => {
+          const label = elementLabelMap.get(eid);
+          return label?.toLowerCase().includes(q);
+        })
+      );
+    }
     // 点击一级分类时，只显示该分类下的图片
     if (expandedCategory) {
       result = result.filter((m) =>
@@ -222,7 +237,7 @@ export default function MaterialsPage() {
       );
     }
     return result;
-  }, [dynasty, carrier, elementIds, structure, color, expandedCategory]);
+  }, [dynasty, carrier, elementIds, structure, color, expandedCategory, searchQuery]);
 
   return (
     <main className="min-h-screen px-4 sm:px-6 py-12">
@@ -243,6 +258,31 @@ export default function MaterialsPage() {
         >
           开通会员 · 下载全库素材
         </button>
+      </div>
+
+      {/* 搜索栏 */}
+      <div className="max-w-7xl mx-auto mb-5">
+        <div className="relative">
+          <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="搜索纹样名称、朝代、元素..."
+            className="w-full pl-12 pr-4 py-3 bg-white rounded-xl border border-gray-200 text-sm text-ink placeholder-gray-300
+                       focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/10 transition-all shadow-sm"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery('')}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-gray-200 text-gray-400 hover:bg-gray-300 hover:text-gray-600 flex items-center justify-center text-xs transition-colors"
+            >
+              ✕
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto">
