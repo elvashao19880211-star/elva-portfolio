@@ -50,10 +50,11 @@ export default function FavoritesPage() {
   );
 
   const totalPrice = useMemo(() => {
-    return selectedItems.reduce((sum, item) => {
+    const raw = selectedItems.reduce((sum, item) => {
       const prices = PRICES[item.type] || PRICES.innovation;
       return sum + parseFloat(prices[tier] || prices.commercial);
     }, 0);
+    return Math.round(raw * 10) / 10;
   }, [selectedItems, tier]);
 
   const handleRemove = (id: string) => {
