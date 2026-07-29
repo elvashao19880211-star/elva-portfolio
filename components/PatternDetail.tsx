@@ -538,10 +538,20 @@ function AuthorizationDoc({
             </p>
           </div>
 
-          <div className="text-center text-xs text-gray-400 pt-2 border-t border-gray-100">
-            <p>授权方：合图纹样工作室</p>
-            <p>授权人（签章）：________________</p>
-            <p>日期：{today}</p>
+          <div className="text-center pt-2 border-t border-gray-100">
+            <div className="flex items-center justify-between mt-3">
+              <div className="text-left text-xs text-gray-500">
+                <p>授权方：合图纹样工作室</p>
+                <p>日期：{today}</p>
+              </div>
+              <div className="w-24 h-24 rounded-full border-2 border-red-400 flex items-center justify-center bg-red-50/30 select-none">
+                <div className="text-center">
+                  <p className="text-[10px] text-red-600/80 font-serif leading-tight">合图纹样</p>
+                  <p className="text-[8px] text-red-500/60">HETU PATTERN</p>
+                  <p className="text-[8px] text-red-400/50 mt-0.5">授权专用章</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
