@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 
 const slides = [
-  { src: '/image-one.png', alt: '纹样作品 1' },
+  // TODO: 「和合二仙」竖版图已移除，替换为横版图
   { src: '/image-two.png', alt: '纹样作品 2' },
   { src: '/image-three.png', alt: '纹样作品 3' },
 ];
@@ -43,7 +43,7 @@ export default function CarouselBanner() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[45vh] sm:h-[65vh] lg:h-[80vh] overflow-hidden bg-ink/10"
+      className="relative w-full h-[35vh] sm:h-[45vh] lg:h-[55vh] overflow-hidden bg-ink/10"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >

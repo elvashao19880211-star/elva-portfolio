@@ -7,8 +7,8 @@ export default function AIGenPage() {
 
       {/* Hero */}
       <section className="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-qing/10 text-qing text-sm mb-6">
-          <span className="w-2 h-2 rounded-full bg-qing animate-pulse" />
+        <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-qing text-white text-sm font-semibold mb-6 shadow-lg shadow-qing/25 animate-pulse">
+          <span className="w-2 h-2 rounded-full bg-white animate-ping" />
           即将上线
         </div>
         <h1 className="text-4xl md:text-5xl font-serif text-ink mb-6">

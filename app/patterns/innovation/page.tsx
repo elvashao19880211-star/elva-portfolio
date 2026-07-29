@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Breadcrumb from '../../../components/Breadcrumb';
 import SectionTitle from '../../../components/SectionTitle';
 import PatternDetail from '../../../components/PatternDetail';
+import FavoriteButton from '../../../components/FavoriteButton';
 import innovationPatterns, { type InnovationPattern, STRUCTURES, COLORS, CATEGORIES } from './data';
 
 export default function InnovationPatternsPage() {
@@ -138,11 +139,16 @@ export default function InnovationPatternsPage() {
                   <span className="absolute top-3 left-3 px-2.5 py-1 text-[10px] rounded-full bg-white/90 text-ink/70 font-medium shadow-sm">
                     {item.category}
                   </span>
-                  {item.structure && (
-                    <span className="absolute top-3 right-3 px-2 py-0.5 text-[10px] rounded-full bg-white/80 text-ink/50 shadow-sm">
-                      {item.structure}
-                    </span>
-                  )}
+                  <FavoriteButton
+                    item={{
+                      id: item.id,
+                      title: item.title,
+                      src: item.src,
+                      type: 'innovation',
+                      addedAt: Date.now(),
+                    }}
+                    className="absolute top-3 right-3 p-1.5 rounded-full bg-white/90 shadow-sm"
+                  />
                 </div>
                 <div className="p-3 sm:p-5">
                   <h3 className="text-xs sm:text-base font-serif font-semibold text-ink mb-0.5 sm:mb-1.5 line-clamp-1">

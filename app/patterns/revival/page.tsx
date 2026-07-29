@@ -6,6 +6,7 @@ import Breadcrumb from '../../../components/Breadcrumb';
 import SectionTitle from '../../../components/SectionTitle';
 import FilterSidebar from '../../../components/FilterSidebar';
 import PatternDetail from '../../../components/PatternDetail';
+import FavoriteButton from '../../../components/FavoriteButton';
 import { revivalPatterns, type RevivalPattern } from './data';
 
 const DYNASTY_ORDER: Record<string, number> = {
@@ -86,6 +87,17 @@ export default function RevivalPatternsPage() {
                 <span className="absolute top-3 left-3 px-2.5 py-1 text-[10px] rounded-full bg-white/90 text-ink/70 font-medium shadow-sm">
                   {item.dynasty}
                 </span>
+                {/* 收藏按钮 */}
+                <FavoriteButton
+                  item={{
+                    id: item.id,
+                    title: item.title,
+                    src: item.thumbSrc || item.src,
+                    type: 'revival',
+                    addedAt: Date.now(),
+                  }}
+                  className="absolute top-3 right-3 p-1.5 rounded-full bg-white/90 shadow-sm"
+                />
               </div>
               <div className="p-3 sm:p-5">
                 <h3 className="text-xs sm:text-base font-serif font-semibold text-ink mb-0.5 sm:mb-1.5 line-clamp-1">

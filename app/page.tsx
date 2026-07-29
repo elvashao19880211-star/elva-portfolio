@@ -182,13 +182,9 @@ export default function HomePage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gold/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-ink/10 text-ink text-xs font-medium mb-6">
-            <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <circle cx="8" cy="8" r="6" />
-              <circle cx="8" cy="8" r="3" />
-              <circle cx="8" cy="8" r="1" fill="currentColor" stroke="none" />
-            </svg>
-            AI 智能生成
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-qing text-white text-sm font-bold mb-6 shadow-lg shadow-qing/25 animate-pulse">
+            <span className="w-2 h-2 rounded-full bg-white animate-ping" />
+            AI 智能生成 · 即将上线
           </div>
 
           <h2 className="heading-1 text-ink leading-tight mb-6">
@@ -199,23 +195,9 @@ export default function HomePage() {
             <br />
             AI 为你创作独一无二的东方纹样
           </p>
-          <p className="text-xs text-gray-300 mb-8">
+          <p className="text-xs text-gray-300 mb-2">
             支持联珠、团窠、缠枝等传统结构 · 还原历代配色风格
           </p>
-
-          <a
-            href="/ai-gen"
-            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-xl bg-ink text-white font-serif
-                       text-base transition-all duration-300 hover:bg-ink/90 hover:-translate-y-0.5 hover:shadow-lg"
-          >
-            <svg className="w-5 h-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M10 3v14M3 10h14" strokeLinecap="round" />
-            </svg>
-            开始创作
-            <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M6 3l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
         </div>
       </section>
 

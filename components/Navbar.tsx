@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { label: '复原记录', href: '/heritage' },
   { label: 'AI 纹样', href: '/ai-gen' },
   { label: '企业合作', href: '/cooperation' },
+  { label: '个人中心', href: '/account' },
 ];
 
 export default function Navbar() {
@@ -79,6 +80,7 @@ export default function Navbar() {
               </button>
               {showUserMenu && (
                 <div className="absolute right-0 top-full mt-2 bg-white rounded-xl shadow-lg border border-gray-100 py-2 min-w-[120px] z-50">
+                  <a href="/account" className="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">个人中心</a>
                   <a href="/member" className="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">会员中心</a>
                   <hr className="my-1 border-gray-50" />
                   <button

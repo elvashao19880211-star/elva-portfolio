@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Lightbox from './Lightbox';
+import FavoriteButton from './FavoriteButton';
+import { addPurchase, type FavoriteItem } from '@/lib/userData';
 
 interface BasePattern {
   id: string;
@@ -31,6 +33,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
   const [showPay, setShowPay] = useState(false);
   const [selectedTier, setSelectedTier] = useState('commercial');
   const [showLightbox, setShowLightbox] = useState(false);
+  const [paid, setPaid] = useState(false);
   const isRevival = pattern.type === 'revival' || !!pattern.dynasty;
 
   useEffect(() => {
@@ -53,6 +56,21 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
     setSelectedTier(tier);
     setShowBuy(false);
     setShowPay(true);
+    setPaid(false);
+  };
+
+  const handleConfirmPaid = () => {
+    const price = getPriceText(selectedTier);
+    addPurchase({
+      id: pattern.id,
+      title: pattern.title,
+      src: pattern.src,
+      type: isRevival ? 'revival' : 'innovation',
+      tier: selectedTier as 'personal' | 'commercial' | 'source',
+      price: `¥${price}`,
+      purchasedAt: Date.now(),
+    });
+    setPaid(true);
   };
 
   const getPriceText = (tier: string) => {
@@ -177,13 +195,23 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
             )}
 
             {/* 操作按钮 */}
-            <div className="flex gap-3 mt-auto pt-4 border-t border-gray-100">
+            <div className="flex items-center gap-3 mt-auto pt-4 border-t border-gray-100">
               <button
                 onClick={handleBuy}
                 className="btn-gold flex-1 text-xs py-2.5"
               >
                 购买授权
               </button>
+              <FavoriteButton
+                item={{
+                  id: pattern.id,
+                  title: pattern.title,
+                  src: pattern.src,
+                  type: isRevival ? 'revival' : 'innovation',
+                  addedAt: Date.now(),
+                }}
+                className="p-2 rounded-full hover:bg-red-50 transition-colors"
+              />
             </div>
             <p className="text-[10px] text-gray-200 text-center -mt-2">
               免费预览 · 下载高清无水印需购买
@@ -265,7 +293,28 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               <img src="/qrcode.png" alt="支付宝付款码" className="w-48 h-48 object-contain" />
             </div>
 
-            <p className="text-xs text-gray-400">请使用支付宝扫码支付</p>
+            {!paid ? (
+              <>
+                <p className="text-xs text-gray-400">请使用支付宝扫码支付</p>
+                <button
+                  onClick={handleConfirmPaid}
+                  className="inline-flex items-center gap-2 px-6 py-2.5 mt-4 rounded-xl bg-gold text-white text-sm font-medium hover:bg-amber-600 transition-colors shadow-md"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  我已完成支付
+                </button>
+              </>
+            ) : (
+              <div className="mt-4 px-4 py-3 rounded-xl bg-qing/10 border border-qing/20 text-center">
+                <svg className="w-8 h-8 text-qing mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p className="text-sm font-medium text-ink">支付确认成功！</p>
+                <p className="text-[10px] text-gray-500 mt-1">已记录至「我的纹样」· 客服将尽快联系发送文件</p>
+              </div>
+            )}
             <p className="text-[10px] text-gray-300 mt-1">支付后请联系客服发送文件</p>
 
             <div className="mt-6 pt-4 border-t border-gray-100">
