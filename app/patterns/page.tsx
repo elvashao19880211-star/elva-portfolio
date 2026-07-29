@@ -4,10 +4,12 @@ import Breadcrumb from '../../components/Breadcrumb';
 export default function PatternsPage() {
   return (
     <main className="min-h-screen px-4 sm:px-6 py-16 sm:py-20">
-      <Breadcrumb crumbs={[
-        { label: '首页', href: '/' },
-        { label: '纹样库' },
-      ]} />
+      <div className="max-w-5xl mx-auto">
+        <Breadcrumb crumbs={[
+          { label: '首页', href: '/' },
+          { label: '纹样库' },
+        ]} />
+      </div>
 
       <div className="text-center mb-16">
         <h1 className="text-4xl sm:text-5xl font-serif font-semibold text-ink mb-4">纹样库</h1>
