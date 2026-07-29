@@ -43,7 +43,7 @@ export default function CarouselBanner() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[50vh] sm:h-[65vh] lg:h-[80vh] overflow-hidden bg-ink/10"
+      className="relative w-full h-[55vh] sm:h-[70vh] lg:h-[85vh] overflow-hidden bg-ink/10"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -60,7 +60,7 @@ export default function CarouselBanner() {
             src={slide.src}
             alt={slide.alt}
             fill
-            className="object-contain bg-stone-900"
+            className="object-cover"
             priority={i === 0}
             sizes="100vw"
           />
