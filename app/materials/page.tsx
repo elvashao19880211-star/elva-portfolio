@@ -261,23 +261,23 @@ export default function MaterialsPage() {
       </div>
 
       {/* 搜索栏 */}
-      <div className="max-w-7xl mx-auto mb-5">
-        <div className="relative">
-          <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="max-w-7xl mx-auto mb-5 flex justify-center">
+        <div className="relative w-full max-w-md">
+          <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gold/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="搜索纹样名称、朝代、元素..."
-            className="w-full pl-12 pr-4 py-3 bg-white rounded-xl border border-gray-200 text-sm text-ink placeholder-gray-300
-                       focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/10 transition-all shadow-sm"
+            placeholder="搜索纹样..."
+            className="w-full pl-10 pr-10 py-2.5 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200 text-sm text-ink placeholder-gray-300
+                       focus:outline-none focus:border-gold focus:bg-white focus:shadow-lg focus:shadow-gold/5 transition-all"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-gray-200 text-gray-400 hover:bg-gray-300 hover:text-gray-600 flex items-center justify-center text-xs transition-colors"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gray-200 text-gray-400 hover:bg-gray-300 hover:text-gray-600 flex items-center justify-center text-[10px] transition-colors"
             >
               ✕
             </button>
