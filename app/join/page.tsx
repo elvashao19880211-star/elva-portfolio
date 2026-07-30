@@ -145,7 +145,7 @@ export default function JoinPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {BENEFITS.map((item) => (
-              <div key={item.label} className="group relative rounded-2xl p-6 bg-qing/[0.03] border border-qing/10 shadow-sm hover:shadow-md transition-all duration-300">
+              <div key={item.label} className="group relative rounded-2xl p-6 border shadow-sm hover:shadow-md transition-all duration-300" style={{ backgroundColor: '#f0f6f6', borderColor: '#dce8e8' }}>
                 <span className="block text-2xl text-gold/20 mb-3 group-hover:text-gold/40 transition-colors">{item.icon}</span>
                 <p className="text-sm font-semibold text-ink mb-1.5">{item.label}</p>
                 <p className="text-xs text-gray-400 leading-relaxed">{item.desc}</p>

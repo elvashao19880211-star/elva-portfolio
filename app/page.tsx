@@ -43,50 +43,50 @@ export default function HomePage() {
               subtitle: '单件授权 · 自选许可',
               desc: '严谨复原文物纹样，同时持续创作符合现代审美的创新设计',
               href: '/patterns',
-              accentBg: 'bg-qing/5',
-              iconColor: 'text-qing',
-              dotClass: 'bg-qing/30',
+              washColor: 'rgba(123, 196, 208, 0.05)',
+              iconColor: '#7BC4D0',
+              dotColor: 'rgba(123, 196, 208, 0.3)',
             },
             {
               title: '灵感素材',
               subtitle: '会员订阅 · 无限下载',
               desc: '历代纹样元素检索，年度会员持续上新',
               href: '/materials',
-              accentBg: 'bg-gold/5',
-              iconColor: 'text-gold',
-              dotClass: 'bg-gold/30',
+              washColor: 'rgba(195, 163, 112, 0.05)',
+              iconColor: '#C3A370',
+              dotColor: 'rgba(195, 163, 112, 0.3)',
             },
             {
               title: '签约创作',
               subtitle: '入驻平台 · 共享收益',
               desc: '成为签约设计师，按标准提交作品，获取持续分成',
               href: '/join',
-              accentBg: 'bg-amber-50',
-              iconColor: 'text-amber-700',
-              dotClass: 'bg-amber-400/30',
+              washColor: 'rgba(251, 243, 219, 0.4)',
+              iconColor: '#A16207',
+              dotColor: 'rgba(251, 191, 36, 0.3)',
             },
           ].map((card) => (
             <a
               key={card.title}
               href={card.href}
-              className="group relative overflow-hidden bg-[#FDFBF7] rounded-2xl p-6 sm:p-8 border border-gray-100
-                         transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              className="group relative overflow-hidden rounded-2xl p-6 sm:p-8 border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              style={{ backgroundColor: '#FDFBF7', borderColor: '#f3f4f6' }}
             >
               {/* 中式水墨晕染 */}
-              <div className={`absolute top-0 right-0 w-48 h-48 rounded-full ${card.accentBg} -translate-y-1/3 translate-x-1/4 opacity-70`} />
+              <div className="absolute top-0 right-0 w-48 h-48 rounded-full -translate-y-1/3 translate-x-1/4 opacity-70" style={{ backgroundColor: card.washColor }} />
               {/* 内边框装饰线 */}
-              <div className={`absolute top-4 left-4 right-4 h-px`} style={{ background: 'linear-gradient(to right, transparent, currentColor, transparent)', opacity: 0.06 }} />
+              <div className="absolute top-4 left-4 right-4 h-px" style={{ background: 'linear-gradient(to right, transparent, currentColor, transparent)', opacity: 0.06 }} />
               <div className="relative z-10">
                 {/* 中式点缀 — ◇ — */}
                 <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-5 h-px ${card.dotClass}`} />
-                  <div className={`w-1.5 h-1.5 rotate-45 ${card.dotClass}`} />
-                  <div className={`flex-1 h-px ${card.dotClass}`} />
+                  <div className="w-5 h-px" style={{ backgroundColor: card.dotColor }} />
+                  <div className="w-1.5 h-1.5 rotate-45" style={{ backgroundColor: card.dotColor }} />
+                  <div className="flex-1 h-px" style={{ backgroundColor: card.dotColor }} />
                 </div>
-                <p className={`text-xs font-semibold tracking-wider mb-2 ${card.iconColor} opacity-80`}>{card.subtitle}</p>
+                <p className="text-xs font-semibold tracking-wider mb-2 opacity-80" style={{ color: card.iconColor }}>{card.subtitle}</p>
                 <h3 className="text-xl font-serif font-semibold text-ink mb-2">{card.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{card.desc}</p>
-                <span className={`inline-block mt-5 text-xs font-medium ${card.iconColor} opacity-0 group-hover:opacity-100 transition-opacity`}>
+                <span className="inline-block mt-5 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: card.iconColor }}>
                   进入 →
                 </span>
               </div>
