@@ -235,23 +235,16 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </summary>
-              <div className="mt-2.5 space-y-2">
-                {[
-                  { step: 1, title: '选择许可类型', desc: '个人学习 / 商业许可 / 企业授权，按需选择' },
-                  { step: 2, title: '支付宝扫码支付', desc: '付款时请备注纹样名称，便于核对' },
-                  { step: 3, title: '确认支付完成', desc: '点击「我已支付」，自动记录至个人中心' },
-                  { step: 4, title: '下载与授权', desc: '个人：水印学习图 | 商业：无水印原图 + 授权书 | 企业：客服发送源文件' },
-                ].map(({ step, title, desc }) => (
-                  <div key={step} className="flex gap-2.5 items-start">
-                    <span className="w-[18px] h-[18px] rounded-full bg-gray-100 text-[10px] font-semibold text-gray-500 flex items-center justify-center shrink-0 mt-0.5 leading-none">
-                      {step}
-                    </span>
-                    <div>
-                      <p className="text-[11px] font-medium text-ink/80">{title}</p>
-                      <p className="text-[10px] text-gray-400 leading-relaxed">{desc}</p>
-                    </div>
-                  </div>
-                ))}
+              <div className="mt-2.5 space-y-2.5 text-[11px] leading-relaxed text-ink/70">
+                <p><span className="inline-block w-4 h-4 rounded-full bg-gray-100 text-[10px] font-semibold text-gray-500 text-center leading-4 mr-2">1</span>点击「购买授权」，选择许可类型及相应价格</p>
+                <p><span className="inline-block w-4 h-4 rounded-full bg-gray-100 text-[10px] font-semibold text-gray-500 text-center leading-4 mr-2">2</span>支付宝扫码支付，备注纹样名称</p>
+                <p><span className="inline-block w-4 h-4 rounded-full bg-gray-100 text-[10px] font-semibold text-gray-500 text-center leading-4 mr-2">3</span>支付完成后点击「我已支付」，订单存入个人中心</p>
+                <div className="mt-2 pl-6 space-y-1.5">
+                  <p className="text-[10px] text-gray-400 mb-1">按许可类型下载：</p>
+                  <p className="text-[10px]"><span className="font-medium text-ink/70">个人学习</span> — 直接下载带水印图片</p>
+                  <p className="text-[10px]"><span className="font-medium text-ink/70">商业许可</span> — 下载高清无水印原图，并可填写信息生成授权书</p>
+                  <p className="text-[10px]"><span className="font-medium text-ink/70">企业授权</span> — 提交订单后由客服联系发送PSD源文件及授权协议</p>
+                </div>
               </div>
             </details>
 
