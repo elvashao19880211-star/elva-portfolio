@@ -357,7 +357,6 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                 </button>
               </>
             ) : selectedTier === 'source' ? (
-              {/* ====== 源文件企业授权 → 客服发送 ====== */}
               <div className="mt-4 px-4 py-5 rounded-xl bg-amber-50 border border-amber-200 text-center space-y-3">
                 <svg className="w-8 h-8 text-amber-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -368,7 +367,6 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                 <p className="text-[10px] text-gray-300">如有疑问请联系 hetu@hetu-pattern.com</p>
               </div>
             ) : selectedTier === 'commercial' ? (
-              /* ====== 商业许可 ====== */
               <div className="mt-4 space-y-3">
                 <div className="px-4 py-3 rounded-xl bg-qing/5 border border-qing/20 text-center">
                   <svg className="w-8 h-8 text-qing mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -394,7 +392,6 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                 </button>
               </div>
             ) : (
-              /* ====== 个人学习 → 直接下载（带水印） ====== */
               <div className="mt-4 space-y-3">
                 <div className="px-4 py-3 rounded-xl bg-green-50 border border-green-200 text-center">
                   <svg className="w-8 h-8 text-green-500 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
