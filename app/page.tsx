@@ -18,7 +18,7 @@ export default function HomePage() {
             河图纹样
           </h2>
           <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-xl mx-auto mb-8">
-            专注中国历代经典纹样的研究与创作，以文物考据为基础，建立学术级纹样复原标准，为设计师与品牌方提供可溯源的传统视觉资产。
+            考据为骨，创新为魂。以出土文物与博物馆藏品为原点严谨复原，同时融合现代审美进行再创作，让传统纹样在当代设计中焕发生命力。
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 text-[11px] text-gray-400">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-qing/5 border border-qing/10">
@@ -41,7 +41,7 @@ export default function HomePage() {
             {
               title: '纹样选购',
               subtitle: '独立授权 · 按张购买',
-              desc: '复原纹样与创新设计，个人学习、商业许可、企业授权',
+              desc: '严谨复原文物纹样，同时持续创作符合现代审美的创新设计',
               href: '/patterns',
               accent: 'from-qing/20 to-transparent',
               iconColor: 'text-qing',
