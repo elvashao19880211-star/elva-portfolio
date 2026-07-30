@@ -227,25 +227,28 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
             {/* 购买流程说明 */}
             <details className="group mt-4">
               <summary className="flex items-center gap-1.5 text-[10px] text-gray-400 cursor-pointer hover:text-gold transition-colors list-none">
-                <span>📋 购买流程</span>
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>购买流程说明</span>
                 <svg className="w-3 h-3 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </summary>
-              <div className="mt-2 space-y-2">
+              <div className="mt-2.5 space-y-2">
                 {[
-                  { step: 1, icon: '📌', title: '选择许可类型', desc: '个人学习 ¥9.9-29.9 / 商业许可 ¥399-499 / 企业授权 ¥3,999' },
-                  { step: 2, icon: '💳', title: '支付宝扫码支付', desc: '付款时请备注纹样名称，便于核对' },
-                  { step: 3, icon: '✅', title: '点击「我已支付」', desc: '确认后自动记录至个人中心「已购纹样」' },
-                  { step: 4, icon: '⬇️', title: '下载使用', desc: '个人：带水印学习用图 / 商业：无水印高清图+授权书 / 企业：联系客服发送源文件' },
-                ].map(({ step, icon, title, desc }) => (
+                  { step: 1, title: '选择许可类型', desc: '个人学习 / 商业许可 / 企业授权，按需选择' },
+                  { step: 2, title: '支付宝扫码支付', desc: '付款时请备注纹样名称，便于核对' },
+                  { step: 3, title: '确认支付完成', desc: '点击「我已支付」，自动记录至个人中心' },
+                  { step: 4, title: '下载与授权', desc: '个人：水印学习图 | 商业：无水印原图 + 授权书 | 企业：客服发送源文件' },
+                ].map(({ step, title, desc }) => (
                   <div key={step} className="flex gap-2.5 items-start">
-                    <span className="w-5 h-5 rounded-full bg-gold/10 text-[10px] font-bold text-gold flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="w-[18px] h-[18px] rounded-full bg-gray-100 text-[10px] font-semibold text-gray-500 flex items-center justify-center shrink-0 mt-0.5 leading-none">
                       {step}
                     </span>
                     <div>
-                      <p className="text-[11px] font-medium text-ink/80">{icon} {title}</p>
-                      <p className="text-[10px] text-gray-400">{desc}</p>
+                      <p className="text-[11px] font-medium text-ink/80">{title}</p>
+                      <p className="text-[10px] text-gray-400 leading-relaxed">{desc}</p>
                     </div>
                   </div>
                 ))}
