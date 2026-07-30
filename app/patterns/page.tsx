@@ -19,6 +19,21 @@ export default function PatternsPage() {
         <div className="mt-4 mx-auto w-16 h-0.5 rounded-full bg-gradient-to-r from-qing to-gold" />
       </div>
 
+      {/* 购买方式说明 */}
+      <div className="max-w-5xl mx-auto mb-10 px-4 py-3 bg-gradient-to-r from-qing/5 via-white to-gold/5 border border-qing/20 rounded-xl flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-2 shrink-0">
+          <svg className="w-4 h-4 text-qing" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" />
+          </svg>
+          <span className="text-sm font-semibold text-qing">按张选购</span>
+        </div>
+        <p className="text-[12px] text-ink/70 leading-relaxed">
+          纹样库作品按张定价，支持个人学习、商业许可及企业授权。如需订阅年度素材服务，请前往
+          <Link href="/materials" className="text-gold font-medium hover:underline mx-0.5">素材库</Link>
+          开通会员。
+        </p>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         {/* 复原纹样 */}
         <Link href="/patterns/revival" className="group block">
