@@ -25,7 +25,7 @@ export default function HomePage() {
               出土文物 · 博物馆藏品考据
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/5 border border-gold/10">
-              《中国历代经典纹样》学者考据
+              核心著作《中国历代经典纹样》
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-50 border border-gray-100">
               学术级复原标准
@@ -98,8 +98,8 @@ export default function HomePage() {
               },
               {
                 num: '二',
-                title: '学者考据',
-                desc: '《中国历代经典纹样》专著作者，系统梳理历代纹样谱系与复原方法论',
+                title: '学术沉淀',
+                desc: '以《中国历代经典纹样》为学术基石，十年研究积累，建立纹样复原与创作规范',
               },
               {
                 num: '三',
