@@ -95,39 +95,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ====== 信任与标准 ====== */}
-      <section className="px-4 sm:px-6 py-16 sm:py-20 bg-qing/[0.03]">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {[
-              {
-                num: '一',
-                title: '学术考据',
-                desc: '以出土文物与博物馆藏品为第一手资料，逐一比对、测绘、复原',
-              },
-              {
-                num: '二',
-                title: '学术沉淀',
-                desc: '以《中国历代经典纹样》为学术基石，十年研究积累，建立纹样复原与创作规范',
-              },
-              {
-                num: '三',
-                title: '入驻标准',
-                desc: '签约设计师须提交作品集，经学术审核通过方可上架',
-              },
-            ].map((item) => (
-              <div key={item.title} className="text-center py-3">
-                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-white border border-gold/20 flex items-center justify-center">
-                  <span className="text-lg font-serif font-semibold text-gold">{item.num}</span>
-                </div>
-                <h4 className="text-sm font-semibold text-ink mb-1.5">{item.title}</h4>
-                <p className="text-xs text-gray-400 leading-relaxed max-w-[200px] mx-auto">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* AI 纹样生成 — 首页入口 */}
       <section className="relative px-4 sm:px-6 py-16 sm:py-24 text-center overflow-hidden">
         {/* 装饰 */}
