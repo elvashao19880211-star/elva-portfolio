@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { label: '复原记录', href: '/heritage' },
   { label: 'AI 纹样', href: '/ai-gen' },
   { label: '企业合作', href: '/cooperation' },
+  { label: '签约合作', href: '/join' },
   { label: '个人中心', href: '/account' },
 ];
 
