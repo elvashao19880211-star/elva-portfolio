@@ -3,172 +3,116 @@ export const dynamic = 'force-dynamic';
 import CarouselBanner from '../components/CarouselBanner';
 import Footer from '../components/Footer';
 
-const PATTERN_ICON = (
-  <svg className="w-8 h-8 text-gold" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <circle cx="16" cy="16" r="12" />
-    <circle cx="16" cy="16" r="7" />
-    <circle cx="16" cy="16" r="2.5" fill="currentColor" stroke="none" />
-    <line x1="16" y1="4" x2="16" y2="10" />
-    <line x1="16" y1="22" x2="16" y2="28" />
-    <line x1="4" y1="16" x2="10" y2="16" />
-    <line x1="22" y1="16" x2="28" y2="16" />
-    <line x1="7.5" y1="7.5" x2="11.5" y2="11.5" />
-    <line x1="20.5" y1="20.5" x2="24.5" y2="24.5" />
-    <line x1="24.5" y1="7.5" x2="20.5" y2="11.5" />
-    <line x1="11.5" y1="20.5" x2="7.5" y2="24.5" />
-  </svg>
-);
-
-const MATERIAL_ICON = (
-  <svg className="w-8 h-8 text-gold" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <rect x="7" y="4" width="18" height="24" rx="1" />
-    <line x1="11" y1="10" x2="21" y2="10" />
-    <line x1="11" y1="14" x2="21" y2="14" />
-    <line x1="11" y1="18" x2="17" y2="18" />
-    <path d="M4 8v20a2 2 0 0 0 2 2h20" strokeLinecap="round" />
-  </svg>
-);
-
-const REVIVAL_ICON = (
-  <svg className="w-8 h-8 text-qing" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <path d="M24 4H8a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" />
-    <path d="M16 24v-8" />
-    <circle cx="16" cy="12" r="1.5" fill="currentColor" stroke="none" />
-    <path d="M12 6h8" strokeLinecap="round" />
-  </svg>
-);
-
-const CARDS = [
-  {
-    title: '纹样库',
-    desc: '复原 · 创新 · 定制',
-    href: '/patterns',
-    icon: PATTERN_ICON,
-    bg: 'from-qing/20 to-transparent',
-  },
-  {
-    title: '纹样素材',
-    desc: '元素 · 边饰 · 分类检索',
-    href: '/materials',
-    icon: MATERIAL_ICON,
-    bg: 'from-gold/20 to-transparent',
-  },
-  {
-    title: '复原记录',
-    desc: '考据 · 绘制 · 还原',
-    href: '/heritage',
-    icon: REVIVAL_ICON,
-    bg: 'from-qing/15 to-transparent',
-  },
-];
-
 export default function HomePage() {
   return (
     <main className="min-h-screen">
       <CarouselBanner />
 
-      {/* 品牌简介区 */}
-      <section className="relative overflow-hidden py-16 sm:py-24 px-4 sm:px-6">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-qing/5 rounded-full blur-3xl pointer-events-none translate-x-1/3 -translate-y-1/4" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/5 rounded-full blur-3xl pointer-events-none -translate-x-1/3 translate-y-1/3" />
-
-        <div className="relative z-10 max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-20">
-            {/* 左：文字 */}
-            <div className="flex-shrink-0 text-center md:text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-qing/10 text-qing text-xs font-medium mb-5 sm:mb-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-qing animate-pulse" />
-                河图 · 华夏纹样传承
-              </div>
-              <h2 className="text-[1.6rem] sm:text-3xl lg:text-4xl text-ink leading-tight mb-5 sm:mb-6">
-                以现代中式美学，
-                <br />
-                传承与重生<span className="text-gold">东方纹样</span>
-              </h2>
-              <p className="text-sm sm:text-base text-gray-500 max-w-md">
-                汇聚复原纹样、创新设计与灵感素材，连接设计师与品牌方，让传统之美在当代焕发新意。
-              </p>
-            </div>
-
-            {/* 右：装饰图形 */}
-            <div className="hidden md:flex flex-1 items-center justify-center">
-              <svg viewBox="0 0 320 320" className="w-64 h-64 lg:w-80 lg:h-80 opacity-60">
-                {/* 外框 */}
-                <rect x="20" y="20" width="280" height="280" rx="16" fill="none" stroke="#7BC4D0" strokeWidth="1" opacity="0.3" />
-                <rect x="40" y="40" width="240" height="240" rx="8" fill="none" stroke="#7BC4D0" strokeWidth="1" opacity="0.2" />
-                {/* 圆 */}
-                <circle cx="160" cy="160" r="100" fill="none" stroke="#C3A370" strokeWidth="1" opacity="0.3" />
-                <circle cx="160" cy="160" r="70" fill="none" stroke="#C3A370" strokeWidth="1" opacity="0.2" />
-                {/* 花瓣辐射 */}
-                {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => (
-                  <g key={i} transform={`rotate(${angle} 160 160)`}>
-                    <ellipse cx="160" cy="80" rx="12" ry="35" fill="#7BC4D0" opacity="0.08" />
-                  </g>
-                ))}
-                {/* 中心 */}
-                <circle cx="160" cy="160" r="14" fill="#C3A370" opacity="0.15" />
-                <circle cx="160" cy="160" r="6" fill="#C3A370" opacity="0.3" />
-                {/* 小联珠圈 */}
-                <circle cx="160" cy="160" r="44" fill="none" stroke="#7BC4D0" strokeWidth="0.8" strokeDasharray="2 4" opacity="0.25" />
-              </svg>
-            </div>
+      {/* ====== 品牌主张 ====== */}
+      <section className="relative py-20 sm:py-28 px-4 sm:px-6 text-center overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-qing/5 rounded-full blur-3xl pointer-events-none translate-x-1/3 -translate-y-1/2" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/5 rounded-full blur-3xl pointer-events-none -translate-x-1/3 translate-y-1/2" />
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <p className="text-xs tracking-[0.25em] text-gold/60 uppercase mb-4">HETU PATTERN</p>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-semibold text-ink leading-snug mb-5">
+            合图纹样
+          </h2>
+          <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-xl mx-auto mb-8">
+            专注中国历代经典纹样的研究与创作，以文物考据为基础，建立学术级纹样复原标准，为设计师与品牌方提供可溯源的传统视觉资产。
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3 text-[11px] text-gray-400">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-qing/5 border border-qing/10">
+              《中国历代经典纹样》作者
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/5 border border-gold/10">
+              出土文物 · 博物馆藏品考据
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-50 border border-gray-100">
+              学术复原标准
+            </span>
           </div>
         </div>
       </section>
 
-      {/* 引导卡片 */}
-      <section className="px-4 sm:px-6 pb-16 sm:pb-24 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {CARDS.map((card) => (
+      {/* ====== 核心入口 ====== */}
+      <section className="px-4 sm:px-6 pb-16 sm:pb-28 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          {[
+            {
+              title: '纹样选购',
+              subtitle: '独立授权 · 按张购买',
+              desc: '复原纹样与创新设计，个人学习、商业许可、企业授权',
+              href: '/patterns',
+              accent: 'from-qing/20 to-transparent',
+              iconColor: 'text-qing',
+              borderColor: 'border-qing/20',
+            },
+            {
+              title: '灵感素材',
+              subtitle: '会员订阅 · 无限下载',
+              desc: '历代纹样元素检索，年度会员持续上新',
+              href: '/materials',
+              accent: 'from-gold/20 to-transparent',
+              iconColor: 'text-gold',
+              borderColor: 'border-gold/20',
+            },
+            {
+              title: '签约创作',
+              subtitle: '入驻平台 · 共享收益',
+              desc: '成为签约设计师，按标准提交作品，获取持续分成',
+              href: '/join',
+              accent: 'from-amber-100/40 to-transparent',
+              iconColor: 'text-amber-600',
+              borderColor: 'border-amber-200',
+            },
+          ].map((card) => (
             <a
               key={card.title}
               href={card.href}
-              className="group relative overflow-hidden bg-white rounded-2xl p-5 sm:p-7 border border-gray-100
-                         transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              className="group relative overflow-hidden bg-white rounded-2xl p-6 sm:p-8 border border-gray-100
+                         transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-transparent"
             >
-              {/* 装饰色块 */}
-              <div
-                className={`absolute top-0 right-0 w-32 h-32 rounded-full bg-gradient-to-br ${card.bg} -translate-y-1/2 translate-x-1/2 transition-transform duration-500 group-hover:scale-125`}
-              />
+              <div className={`absolute top-0 right-0 w-40 h-40 rounded-full bg-gradient-to-br ${card.accent} -translate-y-1/3 translate-x-1/3 transition-transform duration-500 group-hover:scale-150`} />
               <div className="relative z-10">
-                <span className="block mb-4">{card.icon}</span>
-                <h3 className="text-lg font-serif font-semibold text-ink mb-1.5 group-hover:text-gold transition-colors">
-                  {card.title}
-                </h3>
-                <p className="text-gray-400 text-sm">{card.desc}</p>
+                <p className={`text-xs font-semibold tracking-wide mb-3 ${card.iconColor}`}>{card.subtitle}</p>
+                <h3 className="text-xl font-serif font-semibold text-ink mb-2">{card.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{card.desc}</p>
+                <span className={`inline-block mt-5 text-xs font-medium ${card.iconColor} opacity-0 group-hover:opacity-100 transition-opacity`}>
+                  进入 →
+                </span>
               </div>
             </a>
           ))}
         </div>
       </section>
 
-      {/* 特色简介 */}
-      <section className="relative px-4 sm:px-6 py-16 sm:py-20 bg-qing/5">
+      {/* ====== 信任与标准 ====== */}
+      <section className="px-4 sm:px-6 py-16 sm:py-20 bg-qing/[0.03]">
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             {[
               {
-                num: '10+',
-                label: '复原纹样',
-                desc: '基于出土文物的精确复原',
+                num: '一',
+                title: '学术考据',
+                desc: '以出土文物与博物馆藏品为第一手资料，逐一比对、测绘、复原',
               },
               {
-                num: '9+',
-                label: '创新设计',
-                desc: '传统元素的现代转译',
+                num: '二',
+                title: '著作出版',
+                desc: '《中国历代经典纹样》专业著作，系统梳理历代纹样谱系',
               },
               {
-                num: '14',
-                label: '素材分类',
-                desc: '覆盖历代纹样元素库',
+                num: '三',
+                title: '入驻标准',
+                desc: '签约设计师须提交作品集，经学术审核通过方可上架',
               },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center py-3 sm:py-0">
-                <div className="text-3xl sm:text-5xl font-serif font-bold text-gold mb-1">
-                  {stat.num}
+            ].map((item) => (
+              <div key={item.title} className="text-center py-3">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-white border border-gold/20 flex items-center justify-center">
+                  <span className="text-lg font-serif font-semibold text-gold">{item.num}</span>
                 </div>
-                <div className="text-sm font-medium text-ink mb-1">{stat.label}</div>
-                <div className="text-xs text-gray-400">{stat.desc}</div>
+                <h4 className="text-sm font-semibold text-ink mb-1.5">{item.title}</h4>
+                <p className="text-xs text-gray-400 leading-relaxed max-w-[200px] mx-auto">{item.desc}</p>
               </div>
             ))}
           </div>
