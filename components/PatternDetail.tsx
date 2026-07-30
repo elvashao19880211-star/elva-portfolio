@@ -228,28 +228,25 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
             )}
 
             {/* 购买流程说明 */}
-            <details className="group mt-4">
-              <summary className="flex items-center gap-1.5 text-[10px] text-gray-400 cursor-pointer hover:text-gold transition-colors list-none">
+            <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50/50 p-4">
+              <h4 className="text-xs font-semibold text-amber-800 mb-2.5 flex items-center gap-1.5">
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>购买流程说明</span>
-                <svg className="w-3 h-3 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="mt-2.5 space-y-2.5 text-[11px] leading-relaxed text-ink/70">
-                <p><span className="inline-block w-4 h-4 rounded-full bg-gray-100 text-[10px] font-semibold text-gray-500 text-center leading-4 mr-2">1</span>点击「购买授权」，选择许可类型及相应价格</p>
-                <p><span className="inline-block w-4 h-4 rounded-full bg-gray-100 text-[10px] font-semibold text-gray-500 text-center leading-4 mr-2">2</span>支付宝扫码支付，备注纹样名称</p>
-                <p><span className="inline-block w-4 h-4 rounded-full bg-gray-100 text-[10px] font-semibold text-gray-500 text-center leading-4 mr-2">3</span>支付完成后点击「我已支付」，订单存入个人中心</p>
-                <div className="mt-2 pl-6 space-y-1.5">
-                  <p className="text-[10px] text-gray-400 mb-1">按许可类型下载：</p>
-                  <p className="text-[10px]"><span className="font-medium text-ink/70">个人学习</span> — 直接下载带水印图片</p>
-                  <p className="text-[10px]"><span className="font-medium text-ink/70">商业许可</span> — 下载高清无水印原图，并可填写信息生成授权书</p>
-                  <p className="text-[10px]"><span className="font-medium text-ink/70">企业授权</span> — 提交订单后由客服联系发送PSD源文件及授权协议</p>
+                购买流程
+              </h4>
+              <div className="space-y-2 text-[11px] leading-relaxed text-ink/70">
+                <p><span className="inline-block w-[18px] h-[18px] rounded-full bg-amber-200 text-[10px] font-semibold text-amber-700 text-center leading-[18px] mr-2">1</span>点击「购买授权」，选择许可类型及对应价格</p>
+                <p><span className="inline-block w-[18px] h-[18px] rounded-full bg-amber-200 text-[10px] font-semibold text-amber-700 text-center leading-[18px] mr-2">2</span>支付宝扫码支付，注明纹样名称</p>
+                <p><span className="inline-block w-[18px] h-[18px] rounded-full bg-amber-200 text-[10px] font-semibold text-amber-700 text-center leading-[18px] mr-2">3</span>支付后点击「我已支付」，订单存入个人中心</p>
+                <div className="mt-2.5 pt-2.5 border-t border-amber-200 space-y-1.5">
+                  <p className="text-[10px] font-medium text-amber-700 mb-1">各许可类型交付内容：</p>
+                  <p className="text-[10px]">个人学习 — 直接下载带水印图片</p>
+                  <p className="text-[10px]">商业许可 — 高清无水印原图 + 授权书</p>
+                  <p className="text-[10px]">企业授权 — PSD源文件发送至所填邮箱</p>
                 </div>
               </div>
-            </details>
+            </div>
 
             <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
               <button
