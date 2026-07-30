@@ -259,7 +259,7 @@ export default function MaterialsPage() {
           <span className="text-sm font-semibold text-gold">会员制订阅</span>
         </div>
         <p className="text-[12px] text-ink/70 leading-relaxed">
-          素材库采用年度会员制，开通后会员期内无限下载全部素材。如需购买单件成品纹样，请前往
+          素材库采用年度会员制，开通后会员期内无限下载全部素材。内容持续上新，会员无需额外付费。如需购买单件成品纹样，请前往
           <Link href="/patterns" className="text-qing font-medium hover:underline mx-0.5">纹样库</Link>
           按张选购。
         </p>
