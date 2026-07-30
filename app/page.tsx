@@ -22,13 +22,13 @@ export default function HomePage() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 text-[11px] text-gray-400">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-qing/5 border border-qing/10">
-              《中国历代经典纹样》作者
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/5 border border-gold/10">
               出土文物 · 博物馆藏品考据
             </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/5 border border-gold/10">
+              《中国历代经典纹样》研究体系
+            </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-50 border border-gray-100">
-              学术复原标准
+              学术级复原标准
             </span>
           </div>
         </div>
@@ -98,8 +98,8 @@ export default function HomePage() {
               },
               {
                 num: '二',
-                title: '著作出版',
-                desc: '《中国历代经典纹样》专业著作，系统梳理历代纹样谱系',
+                title: '研究体系',
+                desc: '以《中国历代经典纹样》为核心学术框架，建立纹样复原与创作规范',
               },
               {
                 num: '三',
