@@ -25,7 +25,7 @@ export default function PatternsPage() {
           <svg className="w-4 h-4 text-qing" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" />
           </svg>
-          <span className="text-sm font-semibold text-qing">单独购买</span>
+          <span className="text-sm font-semibold text-qing">独立作品</span>
         </div>
         <p className="text-[12px] text-ink/70 leading-relaxed">
           纹样库作品开通单独购买，支持个人学习、商业许可及企业授权三种方式。如需订阅年度素材服务，请前往
