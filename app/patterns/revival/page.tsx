@@ -52,11 +52,13 @@ export default function RevivalPatternsPage() {
 
   return (
     <main className="min-h-screen px-4 sm:px-6 py-12">
+      <div className="max-w-6xl mx-auto">
       <Breadcrumb crumbs={[
         { label: '首页', href: '/' },
         { label: '纹样库', href: '/patterns' },
         { label: '复原纹样' },
       ]} />
+      </div>
       <SectionTitle title="复原纹样" subtitle="按朝代筛选 · 点击作品查看细节" />
 
       <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl mx-auto">
