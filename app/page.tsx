@@ -39,8 +39,8 @@ export default function HomePage() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {[
             {
-              title: '纹样选购',
-              subtitle: '独立授权 · 按张购买',
+              title: '纹样库',
+              subtitle: '单件授权 · 自选许可',
               desc: '严谨复原文物纹样，同时持续创作符合现代审美的创新设计',
               href: '/patterns',
               accent: 'from-qing/20 to-transparent',
