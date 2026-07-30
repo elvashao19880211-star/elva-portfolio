@@ -50,9 +50,9 @@ const TIER_CONFIG: Record<PurchaseTier, {
   },
   source: {
     label: '源文件企业授权',
-    desc: 'PSD源文件 · 修改权 · 永久',
+    desc: 'PSD源文件 · 修改权 · 永久 · 客服联系发送',
     getPrice: () => '3,999',
-    showTier: (r) => !r,
+    showTier: () => true,
   },
 };
 
@@ -357,16 +357,15 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                 </button>
               </>
             ) : selectedTier === 'source' ? (
-              /* ====== 源文件企业授权 → 联系客服 ====== */
+              {/* ====== 源文件企业授权 → 客服发送 ====== */}
               <div className="mt-4 px-4 py-5 rounded-xl bg-amber-50 border border-amber-200 text-center space-y-3">
                 <svg className="w-8 h-8 text-amber-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <p className="text-sm font-semibold text-ink">订单已提交</p>
-                <p className="text-xs text-gray-500">我们将确认支付后与您联系，发送PSD源文件及企业授权协议</p>
-                <div className="text-xs text-gray-600 pt-1">
-                  <p>📧 hetu@hetu-pattern.com</p>
-                </div>
+                <p className="text-xs text-gray-500">确认支付后，PSD源文件及企业授权协议将发送至您填写的邮箱</p>
+                <p className="text-[10px] text-gray-400">{buyerEmail}</p>
+                <p className="text-[10px] text-gray-300">如有疑问请联系 hetu@hetu-pattern.com</p>
               </div>
             ) : selectedTier === 'commercial' ? (
               /* ====== 商业许可 ====== */
