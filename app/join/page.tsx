@@ -74,8 +74,8 @@ export default function JoinPage() {
             签约创作
           </h1>
           <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-md mx-auto">
-            我们相信每一位认真对待传统的人，都值得被看见。<br />
-            加入河图，以学术标准为根基，共同创作面向当代的华夏纹样。
+            河图是一个专注中国纹样的创作工作室。我们严谨考据，也拥抱当代审美。<br />
+            欢迎有同样追求的设计师加入，一起做点好作品。
           </p>
         </div>
       </section>
