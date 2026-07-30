@@ -25,10 +25,10 @@ export default function PatternsPage() {
           <svg className="w-4 h-4 text-qing" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" />
           </svg>
-          <span className="text-sm font-semibold text-qing">按张选购</span>
+          <span className="text-sm font-semibold text-qing">独立授权</span>
         </div>
         <p className="text-[12px] text-ink/70 leading-relaxed">
-          纹样库作品按张定价，支持个人学习、商业许可及企业授权。如需订阅年度素材服务，请前往
+          每件纹样作品独立定价与授权，支持个人学习、商业许可及企业授权三种方式。如需订阅年度素材服务，请前往
           <Link href="/materials" className="text-gold font-medium hover:underline mx-0.5">素材库</Link>
           开通会员。
         </p>
