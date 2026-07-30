@@ -224,7 +224,35 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               </div>
             )}
 
-            <div className="flex items-center gap-3 mt-auto pt-4 border-t border-gray-100">
+            {/* 购买流程说明 */}
+            <details className="group mt-4">
+              <summary className="flex items-center gap-1.5 text-[10px] text-gray-400 cursor-pointer hover:text-gold transition-colors list-none">
+                <span>📋 购买流程</span>
+                <svg className="w-3 h-3 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div className="mt-2 space-y-2">
+                {[
+                  { step: 1, icon: '📌', title: '选择许可类型', desc: '个人学习 ¥9.9-29.9 / 商业许可 ¥399-499 / 企业授权 ¥3,999' },
+                  { step: 2, icon: '💳', title: '支付宝扫码支付', desc: '付款时请备注纹样名称，便于核对' },
+                  { step: 3, icon: '✅', title: '点击「我已支付」', desc: '确认后自动记录至个人中心「已购纹样」' },
+                  { step: 4, icon: '⬇️', title: '下载使用', desc: '个人：带水印学习用图 / 商业：无水印高清图+授权书 / 企业：联系客服发送源文件' },
+                ].map(({ step, icon, title, desc }) => (
+                  <div key={step} className="flex gap-2.5 items-start">
+                    <span className="w-5 h-5 rounded-full bg-gold/10 text-[10px] font-bold text-gold flex items-center justify-center shrink-0 mt-0.5">
+                      {step}
+                    </span>
+                    <div>
+                      <p className="text-[11px] font-medium text-ink/80">{icon} {title}</p>
+                      <p className="text-[10px] text-gray-400">{desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </details>
+
+            <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
               <button
                 onClick={() => setShowBuy(true)}
                 className="btn-gold flex-1 text-xs py-2.5"
