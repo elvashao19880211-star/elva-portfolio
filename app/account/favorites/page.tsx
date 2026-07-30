@@ -17,6 +17,7 @@ export default function FavoritesPage() {
   const [showPay, setShowPay] = useState(false);
   const [paid, setPaid] = useState(false);
   const [tier, setTier] = useState<'commercial' | 'personal'>('commercial');
+  const [buyerEmail, setBuyerEmail] = useState('');
 
   useEffect(() => {
     setFavorites(getFavorites());
@@ -69,6 +70,7 @@ export default function FavoritesPage() {
   };
 
   const handleConfirmPaid = () => {
+    if (!buyerEmail.trim()) return;
     selectedItems.forEach((item) => {
       const prices = PRICES[item.type] || PRICES.innovation;
       addPurchase({
@@ -79,6 +81,7 @@ export default function FavoritesPage() {
         tier,
         price: `¥${prices[tier] || prices.commercial}`,
         purchasedAt: Date.now(),
+        email: buyerEmail.trim(),
       });
     });
     selectedItems.forEach((item) => removeFavorite(item.id));
@@ -291,12 +294,29 @@ export default function FavoritesPage() {
               <img src="/qrcode.png" alt="支付宝付款码" className="w-44 h-44 object-contain" />
             </div>
 
+            {!paid && (
+              <div className="mb-4 text-left">
+                <label className="text-[11px] text-gray-500 mb-1 block">联系方式（邮箱）</label>
+                <input
+                  type="email"
+                  value={buyerEmail}
+                  onChange={(e) => setBuyerEmail(e.target.value)}
+                  placeholder="请输入您的邮箱，用于接收文件"
+                  className="w-full px-3 py-2 rounded-lg border border-gray-200 text-xs text-ink placeholder-gray-300 focus:outline-none focus:border-gold transition-colors"
+                />
+              </div>
+            )}
+
             {!paid ? (
               <>
                 <p className="text-xs text-gray-400">请使用支付宝扫码支付</p>
                 <button
                   onClick={handleConfirmPaid}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 mt-4 rounded-xl bg-gold text-white text-sm font-medium hover:bg-amber-600 transition-colors shadow-md"
+                  disabled={!buyerEmail.trim()}
+                  className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-medium transition-colors shadow-md
+                    ${buyerEmail.trim()
+                      ? 'bg-gold text-white hover:bg-amber-600'
+                      : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
