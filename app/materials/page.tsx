@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Breadcrumb from '../../components/Breadcrumb';
 import Lightbox from '../../components/Lightbox';
 import { ELEMENT_TREE, type ElementNode } from './data';
@@ -248,6 +249,21 @@ export default function MaterialsPage() {
         title="纹样素材"
         subtitle="朝代 · 载体 · 元素 · 结构 · 颜色 —— 五维精准筛选"
       />
+
+      {/* 会员制度说明 */}
+      <div className="max-w-7xl mx-auto mb-5 px-4 py-3 bg-gradient-to-r from-gold/5 via-white to-qing/5 border border-gold/20 rounded-xl flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-2 shrink-0">
+          <svg className="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span className="text-sm font-semibold text-gold">会员制订阅</span>
+        </div>
+        <p className="text-[12px] text-ink/70 leading-relaxed">
+          素材库采用年度会员制，开通后会员期内无限下载全部素材。如需购买单件成品纹样，请前往
+          <Link href="/patterns" className="text-qing font-medium hover:underline mx-0.5">纹样库</Link>
+          按张选购。
+        </p>
+      </div>
 
       {/* 会员按钮 */}
       <div className="max-w-7xl mx-auto mb-6 flex justify-end">
