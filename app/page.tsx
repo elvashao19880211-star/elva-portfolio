@@ -43,48 +43,45 @@ export default function HomePage() {
               subtitle: '单件授权 · 自选许可',
               desc: '严谨复原文物纹样，同时持续创作符合现代审美的创新设计',
               href: '/patterns',
-              accent: 'from-qing/[0.06] to-transparent',
+              accentBg: 'bg-qing/5',
               iconColor: 'text-qing',
-              borderColor: 'border-qing/20',
-              dotColor: 'bg-qing/30',
+              dotClass: 'bg-qing/30',
             },
             {
               title: '灵感素材',
               subtitle: '会员订阅 · 无限下载',
               desc: '历代纹样元素检索，年度会员持续上新',
               href: '/materials',
-              accent: 'from-gold/[0.06] to-transparent',
+              accentBg: 'bg-gold/5',
               iconColor: 'text-gold',
-              borderColor: 'border-gold/20',
-              dotColor: 'bg-gold/30',
+              dotClass: 'bg-gold/30',
             },
             {
               title: '签约创作',
               subtitle: '入驻平台 · 共享收益',
               desc: '成为签约设计师，按标准提交作品，获取持续分成',
               href: '/join',
-              accent: 'from-amber-100/20 to-transparent',
+              accentBg: 'bg-amber-50',
               iconColor: 'text-amber-700',
-              borderColor: 'border-amber-200',
-              dotColor: 'bg-amber-400/30',
+              dotClass: 'bg-amber-400/30',
             },
           ].map((card) => (
             <a
               key={card.title}
               href={card.href}
               className="group relative overflow-hidden bg-[#FDFBF7] rounded-2xl p-6 sm:p-8 border border-gray-100
-                         transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-transparent"
+                         transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
             >
-              {/* 中式底纹 — 水墨晕染 */}
-              <div className={`absolute top-0 right-0 w-48 h-48 rounded-full bg-gradient-to-br ${card.accent} -translate-y-1/3 translate-x-1/4 opacity-70`} />
+              {/* 中式水墨晕染 */}
+              <div className={`absolute top-0 right-0 w-48 h-48 rounded-full ${card.accentBg} -translate-y-1/3 translate-x-1/4 opacity-70`} />
               {/* 内边框装饰线 */}
-              <div className={`absolute top-4 left-4 right-4 h-px bg-gradient-to-r from-transparent via-current to-transparent ${card.iconColor} opacity-[0.08]`} />
+              <div className={`absolute top-4 left-4 right-4 h-px`} style={{ background: 'linear-gradient(to right, transparent, currentColor, transparent)', opacity: 0.06 }} />
               <div className="relative z-10">
-                {/* 中式点缀 — 菱形 + 线 */}
+                {/* 中式点缀 — ◇ — */}
                 <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-5 h-px ${card.dotColor}`} />
-                  <div className={`w-1.5 h-1.5 rotate-45 ${card.dotColor}`} />
-                  <div className={`flex-1 h-px ${card.dotColor}`} />
+                  <div className={`w-5 h-px ${card.dotClass}`} />
+                  <div className={`w-1.5 h-1.5 rotate-45 ${card.dotClass}`} />
+                  <div className={`flex-1 h-px ${card.dotClass}`} />
                 </div>
                 <p className={`text-xs font-semibold tracking-wider mb-2 ${card.iconColor} opacity-80`}>{card.subtitle}</p>
                 <h3 className="text-xl font-serif font-semibold text-ink mb-2">{card.title}</h3>
