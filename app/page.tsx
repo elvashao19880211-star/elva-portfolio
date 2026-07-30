@@ -15,7 +15,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-3xl mx-auto">
           <p className="text-xs tracking-[0.25em] text-gold/60 uppercase mb-4">HETU PATTERN</p>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-semibold text-ink leading-snug mb-5">
-            合图纹样
+            河图纹样
           </h2>
           <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-xl mx-auto mb-8">
             专注中国历代经典纹样的研究与创作，以文物考据为基础，建立学术级纹样复原标准，为设计师与品牌方提供可溯源的传统视觉资产。
@@ -25,7 +25,7 @@ export default function HomePage() {
               出土文物 · 博物馆藏品考据
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/5 border border-gold/10">
-              《中国历代经典纹样》研究体系
+              《中国历代经典纹样》学者考据
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-50 border border-gray-100">
               学术级复原标准
@@ -98,8 +98,8 @@ export default function HomePage() {
               },
               {
                 num: '二',
-                title: '研究体系',
-                desc: '以《中国历代经典纹样》为核心学术框架，建立纹样复原与创作规范',
+                title: '学者考据',
+                desc: '《中国历代经典纹样》专著作者，系统梳理历代纹样谱系与复原方法论',
               },
               {
                 num: '三',
