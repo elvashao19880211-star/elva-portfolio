@@ -22,6 +22,7 @@ export interface PurchaseItem {
   tier: 'personal' | 'commercial' | 'source';
   price: string;
   purchasedAt: number;
+  email?: string;
 }
 
 // ========== 收藏 ==========

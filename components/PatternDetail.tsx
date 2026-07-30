@@ -65,6 +65,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
   const [showAuthDoc, setShowAuthDoc] = useState(false);
   const [authData, setAuthData] = useState({ name: '', company: '', purpose: '' });
   const [orderSubmitted, setOrderSubmitted] = useState(false);
+  const [buyerEmail, setBuyerEmail] = useState('');
   const isRevival = pattern.type === 'revival' || !!pattern.dynasty;
 
   useEffect(() => {
@@ -87,6 +88,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
   };
 
   const handleSubmitOrder = () => {
+    if (!buyerEmail.trim()) return;
     const cfg = TIER_CONFIG[selectedTier];
     const price = cfg.getPrice(isRevival);
     addPurchase({
@@ -97,6 +99,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
       tier: selectedTier,
       price: `¥${price}`,
       purchasedAt: Date.now(),
+      email: buyerEmail.trim(),
     });
     setOrderSubmitted(true);
   };
@@ -319,6 +322,18 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
             <p className="text-xs text-gray-500 mb-1">{getLabelText(selectedTier)}</p>
             <p className="text-[10px] text-gray-400 mb-5">订单号：HETU-{Date.now().toString(36).toUpperCase()}</p>
 
+            {/* 买家联系方式 */}
+            <div className="mb-4 text-left">
+              <label className="text-[11px] text-gray-500 mb-1 block">联系方式（邮箱）</label>
+              <input
+                type="email"
+                value={buyerEmail}
+                onChange={(e) => setBuyerEmail(e.target.value)}
+                placeholder="请输入您的邮箱，用于接收文件及授权书"
+                className="w-full px-3 py-2 rounded-lg border border-gray-200 text-xs text-ink placeholder-gray-300 focus:outline-none focus:border-gold transition-colors"
+              />
+            </div>
+
             <div className="bg-gray-50 rounded-xl p-4 inline-block mb-4">
               <img src="/qrcode.png" alt="支付宝付款码" className="w-48 h-48 object-contain" />
             </div>
@@ -329,7 +344,11 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                 <p className="text-[10px] text-gray-400 mt-1">支付时请备注纹样名称</p>
                 <button
                   onClick={handleSubmitOrder}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 mt-4 rounded-xl bg-gold text-white text-sm font-medium hover:bg-amber-600 transition-colors shadow-md"
+                  disabled={!buyerEmail.trim()}
+                  className={`inline-flex items-center gap-2 px-6 py-2.5 mt-4 rounded-xl text-sm font-medium transition-colors shadow-md
+                    ${buyerEmail.trim()
+                      ? 'bg-gold text-white hover:bg-amber-600'
+                      : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
