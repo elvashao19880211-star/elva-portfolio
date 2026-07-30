@@ -40,9 +40,9 @@ const STEPS = [
 ];
 
 const BENEFITS = [
-  { label: '平台推广', desc: '首页推荐 · 社交媒体曝光', icon: '◆' },
-  { label: '收益分成', desc: '按约获得作品授权收入', icon: '◇' },
-  { label: '学术支持', desc: '考据资料 · 复原标准共享', icon: '◎' },
+  { label: '平台推广', desc: '首页推荐 · 社交媒体曝光', icon: '◇' },
+  { label: '收益分成', desc: '按约获得作品授权收入', icon: '○' },
+  { label: '学术支持', desc: '考据资料 · 复原标准共享', icon: '□' },
 ];
 
 export default function JoinPage() {
