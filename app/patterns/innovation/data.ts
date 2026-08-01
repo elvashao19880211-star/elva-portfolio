@@ -7,9 +7,9 @@ export interface InnovationPattern {
   category: string;       // 分类
   inspiration?: string;   // 灵感来源
   elements?: string[];    // 构成元素
-  structure?: string;     // 结构
+  structure?: string;     // 结构：自由/适合/二方连续/四方连续/角隅/组合/开光
   structureL1?: string;
-  structureL2?: string;：自由/适合/二方连续/四方连续/角隅/组合/开光
+  structureL2?: string;
   colors?: string[];      // 颜色
   description: string;
   detail?: string;        // 设计说明
@@ -174,7 +174,12 @@ export const CATEGORIES = [
 ] as const;
 
 // 结构与颜色（与素材库一致）
-export const STRUCTURES = ['自由', '适合', '角隅', '二方连续', '四方连续', '组合', '开光'] as const;
+export const STRUCTURES = ['单独纹样', '二方连续', '四方连续'] as const;
+export const STRUCTURE_L2: Record<string, readonly string[]> = {
+  '单独纹样': ['自由纹样', '适合纹样', '角隅纹样'] as const,
+  '二方连续': ['散点式', '直立式', '波线式', '折线式', '综合式'] as const,
+  '四方连续': ['散点式', '连缀式', '重叠式'] as const,
+};
 export const COLORS = ['青蓝', '赤红', '黄金', '白素', '黑墨', '绿翠', '紫绀', '赭褐', '烟灰', '银素', '樱粉', '多色'] as const;
 
 export default innovationPatterns;
