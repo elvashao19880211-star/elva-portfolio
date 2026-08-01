@@ -7,7 +7,9 @@ export interface InnovationPattern {
   category: string;       // 分类
   inspiration?: string;   // 灵感来源
   elements?: string[];    // 构成元素
-  structure?: string;     // 结构：自由/适合/二方连续/四方连续/角隅/组合/开光
+  structure?: string;     // 结构
+  structureL1?: string;
+  structureL2?: string;：自由/适合/二方连续/四方连续/角隅/组合/开光
   colors?: string[];      // 颜色
   description: string;
   detail?: string;        // 设计说明

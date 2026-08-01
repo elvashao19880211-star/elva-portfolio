@@ -6,12 +6,13 @@ import Breadcrumb from '../../../components/Breadcrumb';
 import SectionTitle from '../../../components/SectionTitle';
 import PatternDetail from '../../../components/PatternDetail';
 import FavoriteButton from '../../../components/FavoriteButton';
-import innovationPatterns, { type InnovationPattern, STRUCTURES, COLORS, CATEGORIES } from './data';
+import innovationPatterns, { type InnovationPattern, STRUCTURES, STRUCTURE_L2, COLORS, CATEGORIES } from './data';
 
 export default function InnovationPatternsPage() {
   const [selected, setSelected] = useState<InnovationPattern | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
-  const [structureFilter, setStructureFilter] = useState<string | null>(null);
+  const [structureL1, setStructureL1] = useState<string | null>(null);
+  const [structureL2, setStructureL2] = useState<string | null>(null);
   const [colorFilter, setColorFilter] = useState<string | null>(null);
 
   const categories = CATEGORIES;
@@ -19,12 +20,13 @@ export default function InnovationPatternsPage() {
   const filtered = useMemo(() => {
     let result = innovationPatterns;
     if (categoryFilter) result = result.filter((p) => p.category === categoryFilter);
-    if (structureFilter) result = result.filter((p) => p.structure === structureFilter);
+    if (structureL1) result = result.filter((p) => p.structureL1 === structureL1);
+    if (structureL2) result = result.filter((p) => p.structureL2 === structureL2);
     if (colorFilter) result = result.filter((p) => p.colors?.includes(colorFilter));
     return result;
-  }, [categoryFilter, structureFilter, colorFilter]);
+  }, [categoryFilter, structureL1, structureL2, colorFilter]);
 
-  const hasFilters = !!categoryFilter || !!structureFilter || !!colorFilter;
+  const hasFilters = !!categoryFilter || !!structureL1 || !!colorFilter;
 
   return (
     <main className="min-h-screen px-4 sm:px-6 py-12">
@@ -69,9 +71,12 @@ export default function InnovationPatternsPage() {
                 {STRUCTURES.map((s) => (
                   <button
                     key={s}
-                    onClick={() => setStructureFilter(structureFilter === s ? null : s)}
+                    onClick={() => {
+                      setStructureL1(structureL1 === s ? null : s);
+                      setStructureL2(null);
+                    }}
                     className={`px-2.5 py-1 rounded-full text-xs transition-all ${
-                      structureFilter === s
+                      structureL1 === s
                         ? 'bg-gold/15 text-gold font-medium border border-gold/30'
                         : 'bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-ink border border-transparent'
                     }`}
@@ -80,6 +85,23 @@ export default function InnovationPatternsPage() {
                   </button>
                 ))}
               </div>
+              {structureL1 && STRUCTURE_L2[structureL1] && (
+                <div className="flex flex-wrap gap-1.5 mt-1.5 ml-2">
+                  {STRUCTURE_L2[structureL1].map((s2: string) => (
+                    <button
+                      key={s2}
+                      onClick={() => setStructureL2(structureL2 === s2 ? null : s2)}
+                      className={`px-2.5 py-1 rounded-full text-xs transition-all ${
+                        structureL2 === s2
+                          ? 'bg-gold/15 text-gold font-medium border border-gold/30'
+                          : 'bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-ink border border-transparent'
+                      }`}
+                    >
+                      {s2}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* 颜色 */}
@@ -107,7 +129,8 @@ export default function InnovationPatternsPage() {
               <button
                 onClick={() => {
                   setCategoryFilter(null);
-                  setStructureFilter(null);
+                  setStructureL1(null);
+                  setStructureL2(null);
                   setColorFilter(null);
                 }}
                 className="text-[10px] text-gray-300 hover:text-red-400 transition-colors"

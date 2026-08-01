@@ -6,6 +6,8 @@ export interface RevivalPattern {
   era?: string;
   culture?: string;
   structure?: string;
+  structureL1?: string;
+  structureL2?: string;
   elements?: string[];
   colors?: string[];
   description: string;

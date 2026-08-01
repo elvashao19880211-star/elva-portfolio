@@ -33,31 +33,24 @@ const DYNASTY_ORDER: Record<string, number> = {
   '现代': 21,
 };
 
-// 结构大类
-const STRUCTURE_CATEGORIES = ['四方连续', '二方连续', '单独', '适合'];
-
-function getStructureCat(structure: string): string {
-  for (const cat of STRUCTURE_CATEGORIES) {
-    if (structure.startsWith(cat)) return cat;
-  }
-  return '其他';
-}
+// 新结构体系
+const STRUCTURE_L1 = ['单独纹样', '二方连续', '四方连续'];
+const STRUCTURE_L2: Record<string, string[]> = {
+  '单独纹样': ['自由纹样', '适合纹样', '角隅纹样'],
+  '二方连续': ['散点式', '直立式', '波线式', '折线式', '综合式'],
+  '四方连续': ['散点式', '连缀式', '重叠式'],
+};
 
 export default function RevivalPatternsPage() {
   const [selected, setSelected] = useState<RevivalPattern | null>(null);
   const [dynastyFilter, setDynastyFilter] = useState<string | null>(null);
-  const [structureFilter, setStructureFilter] = useState<string | null>(null);
+  const [structureL1, setStructureL1] = useState<string | null>(null);
+  const [structureL2, setStructureL2] = useState<string | null>(null);
   const [elementFilter, setElementFilter] = useState<string | null>(null);
 
   const dynasties = useMemo(() => {
     const set = new Set(revivalPatterns.map((p) => p.dynasty));
     return Array.from(set).sort((a, b) => (DYNASTY_ORDER[a] || 99) - (DYNASTY_ORDER[b] || 99));
-  }, []);
-
-  // 结构分类
-  const structureCats = useMemo(() => {
-    const cats = new Set(revivalPatterns.filter(p => p.structure).map(p => getStructureCat(p.structure)));
-    return Array.from(cats).sort();
   }, []);
 
   // 热门元素 Top 20
@@ -72,10 +65,11 @@ export default function RevivalPatternsPage() {
   const filtered = useMemo(() => {
     let list = revivalPatterns;
     if (dynastyFilter) list = list.filter((p) => p.dynasty === dynastyFilter);
-    if (structureFilter) list = list.filter((p) => p.structure && getStructureCat(p.structure) === structureFilter);
+    if (structureL1) list = list.filter((p) => p.structureL1 === structureL1);
+    if (structureL2) list = list.filter((p) => p.structureL2 === structureL2);
     if (elementFilter) list = list.filter((p) => (p.elements || []).includes(elementFilter));
     return list;
-  }, [dynastyFilter, structureFilter, elementFilter]);
+  }, [dynastyFilter, structureL1, structureL2, elementFilter]);
 
   return (
     <main className="min-h-screen px-4 sm:px-6 py-12">
@@ -92,13 +86,43 @@ export default function RevivalPatternsPage() {
         {/* 多维筛选栏 */}
         <aside className="hidden lg:block w-44 shrink-0 space-y-6">
           <FilterSidebar label="按朝代" options={dynasties} selected={dynastyFilter} onChange={setDynastyFilter} desktopOnly />
-          <FilterSidebar label="按结构" options={structureCats} selected={structureFilter} onChange={setStructureFilter} desktopOnly />
+          <FilterSidebar
+            label="按结构"
+            options={STRUCTURE_L1}
+            selected={structureL1}
+            onChange={(v) => { setStructureL1(v); setStructureL2(null); }}
+            desktopOnly
+          />
+          {structureL1 && (
+            <FilterSidebar
+              label={`${structureL1}`}
+              options={STRUCTURE_L2[structureL1] || []}
+              selected={structureL2}
+              onChange={setStructureL2}
+              desktopOnly
+            />
+          )}
           <FilterSidebar label="按元素" options={popularElements} selected={elementFilter} onChange={setElementFilter} desktopOnly />
         </aside>
         {/* 手机端筛选 */}
         <div className="lg:hidden space-y-0 mb-4">
           <FilterSidebar label="按朝代" options={dynasties} selected={dynastyFilter} onChange={setDynastyFilter} mobileOnly />
-          <FilterSidebar label="按结构" options={structureCats} selected={structureFilter} onChange={setStructureFilter} mobileOnly />
+          <FilterSidebar
+            label="按结构"
+            options={STRUCTURE_L1}
+            selected={structureL1}
+            onChange={(v) => { setStructureL1(v); setStructureL2(null); }}
+            mobileOnly
+          />
+          {structureL1 && (
+            <FilterSidebar
+              label={`${structureL1}`}
+              options={STRUCTURE_L2[structureL1] || []}
+              selected={structureL2}
+              onChange={setStructureL2}
+              mobileOnly
+            />
+          )}
           <FilterSidebar label="按元素" options={popularElements} selected={elementFilter} onChange={setElementFilter} mobileOnly />
         </div>
 
