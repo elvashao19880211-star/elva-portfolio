@@ -33,22 +33,49 @@ const DYNASTY_ORDER: Record<string, number> = {
   '现代': 21,
 };
 
+// 结构大类
+const STRUCTURE_CATEGORIES = ['四方连续', '二方连续', '单独', '适合'];
+
+function getStructureCat(structure: string): string {
+  for (const cat of STRUCTURE_CATEGORIES) {
+    if (structure.startsWith(cat)) return cat;
+  }
+  return '其他';
+}
+
 export default function RevivalPatternsPage() {
   const [selected, setSelected] = useState<RevivalPattern | null>(null);
   const [dynastyFilter, setDynastyFilter] = useState<string | null>(null);
+  const [structureFilter, setStructureFilter] = useState<string | null>(null);
+  const [elementFilter, setElementFilter] = useState<string | null>(null);
 
   const dynasties = useMemo(() => {
     const set = new Set(revivalPatterns.map((p) => p.dynasty));
     return Array.from(set).sort((a, b) => (DYNASTY_ORDER[a] || 99) - (DYNASTY_ORDER[b] || 99));
   }, []);
 
-  const filtered = useMemo(
-    () =>
-      dynastyFilter
-        ? revivalPatterns.filter((p) => p.dynasty === dynastyFilter)
-        : revivalPatterns,
-    [dynastyFilter]
-  );
+  // 结构分类
+  const structureCats = useMemo(() => {
+    const cats = new Set(revivalPatterns.filter(p => p.structure).map(p => getStructureCat(p.structure)));
+    return Array.from(cats).sort();
+  }, []);
+
+  // 热门元素 Top 20
+  const popularElements = useMemo(() => {
+    const count: Record<string, number> = {};
+    revivalPatterns.forEach(p => {
+      (p.elements || []).forEach(e => { count[e] = (count[e] || 0) + 1; });
+    });
+    return Object.entries(count).sort((a, b) => b[1] - a[1]).slice(0, 20).map(([k]) => k);
+  }, []);
+
+  const filtered = useMemo(() => {
+    let list = revivalPatterns;
+    if (dynastyFilter) list = list.filter((p) => p.dynasty === dynastyFilter);
+    if (structureFilter) list = list.filter((p) => p.structure && getStructureCat(p.structure) === structureFilter);
+    if (elementFilter) list = list.filter((p) => (p.elements || []).includes(elementFilter));
+    return list;
+  }, [dynastyFilter, structureFilter, elementFilter]);
 
   return (
     <main className="min-h-screen px-4 sm:px-6 py-12">
@@ -59,15 +86,21 @@ export default function RevivalPatternsPage() {
         { label: '复原纹样' },
       ]} />
       </div>
-      <SectionTitle title="复原纹样" subtitle="按朝代筛选 · 点击作品查看细节" />
+      <SectionTitle title="复原纹样" subtitle="朝代 · 结构 · 元素  多维度筛选" />
 
       <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl mx-auto">
-        <FilterSidebar
-          label="按朝代"
-          options={dynasties}
-          selected={dynastyFilter}
-          onChange={setDynastyFilter}
-        />
+        {/* 多维筛选栏 */}
+        <aside className="hidden lg:block w-44 shrink-0 space-y-6">
+          <FilterSidebar label="按朝代" options={dynasties} selected={dynastyFilter} onChange={setDynastyFilter} desktopOnly />
+          <FilterSidebar label="按结构" options={structureCats} selected={structureFilter} onChange={setStructureFilter} desktopOnly />
+          <FilterSidebar label="按元素" options={popularElements} selected={elementFilter} onChange={setElementFilter} desktopOnly />
+        </aside>
+        {/* 手机端筛选 */}
+        <div className="lg:hidden space-y-0 mb-4">
+          <FilterSidebar label="按朝代" options={dynasties} selected={dynastyFilter} onChange={setDynastyFilter} mobileOnly />
+          <FilterSidebar label="按结构" options={structureCats} selected={structureFilter} onChange={setStructureFilter} mobileOnly />
+          <FilterSidebar label="按元素" options={popularElements} selected={elementFilter} onChange={setElementFilter} mobileOnly />
+        </div>
 
         <div className="flex-1 grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6 items-start">
           {filtered.map((item) => (
