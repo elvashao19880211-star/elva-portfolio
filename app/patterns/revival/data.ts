@@ -465,9 +465,8 @@ export const revivalPatterns: RevivalPattern[] = [
     "dynasty": "新石器时代",
     "era": "",
     "culture": "",
-    "elements": [
-      "传统纹样"
-    ],
+"structure": "二方连续/散点式",
+    "elements": ["旋涡纹", "变形鸟纹"],
     "description": "",
     "detail": "",
     "src": "/images/revival/新石器时代-旋涡纹.png",
@@ -1457,14 +1456,12 @@ export const revivalPatterns: RevivalPattern[] = [
     "dynasty": "现代",
     "era": "",
     "culture": "",
-    "elements": [
-      "传统纹样"
-    ],
+    "elements": ["小团花", "天华锦骨架"],
     "description": "",
     "detail": "",
     "src": "/images/revival/现代-菱形天华锦（成都博物馆）.png",
     "thumbSrc": "/images/revival/thumbs/现代-菱形天华锦（成都博物馆）.png",
-    "structure": "几何框架"
+    "structure": "四方连续/几何连缀"
   },
   {
     "id": "revival-117",
@@ -1485,9 +1482,8 @@ export const revivalPatterns: RevivalPattern[] = [
     "dynasty": "西周",
     "era": "",
     "culture": "",
-    "elements": [
-      "传统纹样"
-    ],
+"structure": "二方连续/波线式",
+    "elements": ["波曲纹"],
     "description": "",
     "detail": "",
     "src": "/images/revival/西周-波曲纹.png",
@@ -1499,9 +1495,8 @@ export const revivalPatterns: RevivalPattern[] = [
     "dynasty": "西周",
     "era": "",
     "culture": "",
-    "elements": [
-      "传统纹样"
-    ],
+"structure": "二方连续/散点式",
+    "elements": ["窃曲纹", "波曲纹"],
     "description": "",
     "detail": "",
     "src": "/images/revival/西周-窃曲纹.png",
@@ -1513,11 +1508,8 @@ export const revivalPatterns: RevivalPattern[] = [
     "dynasty": "西魏",
     "era": "",
     "culture": "",
-    "elements": [
-      "莲花",
-      "忍冬",
-      "藻井"
-    ],
+    "elements": ["忍冬纹", "莲花纹", "火焰纹"],
+    "structure": "单独/适合/角隅",
     "description": "",
     "detail": "",
     "src": "/images/revival/西魏-第285窟莲花忍冬藻井.png",
@@ -1584,13 +1576,11 @@ export const revivalPatterns: RevivalPattern[] = [
     "dynasty": "魏晋南北朝",
     "era": "",
     "culture": "",
-    "elements": [
-      "鸟纹"
-    ],
+    "elements": ["鸟纹", "花纹"],
     "description": "",
     "detail": "",
     "src": "/images/revival/魏晋南北朝-双头鸟纹.png",
     "thumbSrc": "/images/revival/thumbs/魏晋南北朝-双头鸟纹.png",
-    "structure": "禽鸟造型"
+    "structure": "单独/自由对称"
   }
 ];
