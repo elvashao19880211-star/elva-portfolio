@@ -590,9 +590,9 @@ export const revivalPatterns: RevivalPattern[] = [
     "detail": "",
     "src": "/images/revival/新石器时代-鱼纹.png",
     "thumbSrc": "/images/revival/thumbs/新石器时代-鱼纹.png",
-    "structure": "四方连续/规则散点",
+    "structure": "二方连续/散点式",
   
-    "structureL1": "四方连续",
+    "structureL1": "二方连续",
     "structureL2": "散点式",
   },
   {
