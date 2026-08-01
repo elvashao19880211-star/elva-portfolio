@@ -129,6 +129,8 @@ const innovationPatterns: InnovationPattern[] = [
     category: '神兽纹',
     structure: '单独/自由式',
     colors: ['绿翠'],
+    inspiration: '麒麟踏海传统意象',
+    elements: ['麒麟纹', '海水纹', '云纹'],
     description: '神兽类绿麒麟踏海望月创新设计',
     src: '/images/innovation/神兽-绿麒麟踏海望月-适合-绿翠.png',
   },
