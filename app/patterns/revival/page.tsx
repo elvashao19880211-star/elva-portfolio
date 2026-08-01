@@ -69,7 +69,7 @@ export default function RevivalPatternsPage() {
           onChange={setDynastyFilter}
         />
 
-        <div className="flex-1 grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6">
+        <div className="flex-1 grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6 items-start">
           {filtered.map((item) => (
             <div
               key={item.id}
