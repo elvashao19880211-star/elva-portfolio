@@ -7,7 +7,7 @@ import SectionTitle from '../../../components/SectionTitle';
 import FilterSidebar from '../../../components/FilterSidebar';
 import PatternDetail from '../../../components/PatternDetail';
 import FavoriteButton from '../../../components/FavoriteButton';
-import { revivalPatterns, type RevivalPattern } from './data';
+import { revivalPatterns, type RevivalPattern, ELEMENT_CATEGORIES } from './data';
 
 const DYNASTY_ORDER: Record<string, number> = {
   '新石器时代': 1,
@@ -41,11 +41,19 @@ const STRUCTURE_L2: Record<string, string[]> = {
   '四方连续': ['散点式', '连缀式', '重叠式'],
 };
 
+// 元素按大类分组 {cat: [elements...]}
+const ELEMENT_BY_CAT = Object.fromEntries(
+  ELEMENT_CATEGORIES.map((g) => [g.cat, g.elements as readonly string[]])
+) as Record<string, readonly string[]>;
+const ELEMENT_CATS = ELEMENT_CATEGORIES.map((g) => g.cat);
+const ALL_ELEMENTS = ELEMENT_CATEGORIES.flatMap((g) => g.elements as readonly string[]);
+
 export default function RevivalPatternsPage() {
   const [selected, setSelected] = useState<RevivalPattern | null>(null);
   const [dynastyFilter, setDynastyFilter] = useState<string | null>(null);
   const [structureL1, setStructureL1] = useState<string | null>(null);
   const [structureL2, setStructureL2] = useState<string | null>(null);
+  const [elementCat, setElementCat] = useState<string | null>(null);
   const [elementFilter, setElementFilter] = useState<string | null>(null);
 
   const dynasties = useMemo(() => {
@@ -53,23 +61,18 @@ export default function RevivalPatternsPage() {
     return Array.from(set).sort((a, b) => (DYNASTY_ORDER[a] || 99) - (DYNASTY_ORDER[b] || 99));
   }, []);
 
-  // 热门元素 Top 20
-  const popularElements = useMemo(() => {
-    const count: Record<string, number> = {};
-    revivalPatterns.forEach(p => {
-      (p.elements || []).forEach(e => { count[e] = (count[e] || 0) + 1; });
-    });
-    return Object.entries(count).sort((a, b) => b[1] - a[1]).slice(0, 20).map(([k]) => k);
-  }, []);
-
   const filtered = useMemo(() => {
     let list = revivalPatterns;
     if (dynastyFilter) list = list.filter((p) => p.dynasty === dynastyFilter);
     if (structureL1) list = list.filter((p) => p.structureL1 === structureL1);
     if (structureL2) list = list.filter((p) => p.structureL2 === structureL2);
+    if (elementCat) {
+      const catElems = ELEMENT_BY_CAT[elementCat] || [];
+      list = list.filter((p) => (p.elements || []).some((e) => catElems.includes(e)));
+    }
     if (elementFilter) list = list.filter((p) => (p.elements || []).includes(elementFilter));
     return list;
-  }, [dynastyFilter, structureL1, structureL2, elementFilter]);
+  }, [dynastyFilter, structureL1, structureL2, elementCat, elementFilter]);
 
   return (
     <main className="min-h-screen px-4 sm:px-6 py-12">
@@ -80,11 +83,11 @@ export default function RevivalPatternsPage() {
         { label: '复原纹样' },
       ]} />
       </div>
-      <SectionTitle title="复原纹样" subtitle="朝代 · 结构 · 元素  多维度筛选" />
+      <SectionTitle title="复原纹样" subtitle="朝代 · 结构 · 元素大类  多维度级联筛选" />
 
       <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-6xl mx-auto">
         {/* 多维筛选栏 */}
-        <aside className="hidden lg:block w-44 shrink-0 space-y-6">
+        <aside className="hidden lg:block w-44 shrink-0 space-y-5 overflow-y-auto max-h-[calc(100vh-8rem)] sticky top-24 pb-4">
           <FilterSidebar label="按朝代" options={dynasties} selected={dynastyFilter} onChange={setDynastyFilter} desktopOnly />
           <FilterSidebar
             label="按结构"
@@ -102,7 +105,22 @@ export default function RevivalPatternsPage() {
               desktopOnly
             />
           )}
-          <FilterSidebar label="按元素" options={popularElements} selected={elementFilter} onChange={setElementFilter} desktopOnly />
+          <FilterSidebar
+            label="元素大类"
+            options={ELEMENT_CATS}
+            selected={elementCat}
+            onChange={(v) => { setElementCat(v); setElementFilter(null); }}
+            desktopOnly
+          />
+          {elementCat && (
+            <FilterSidebar
+              label={`${elementCat}`}
+              options={Array.from(ELEMENT_BY_CAT[elementCat] || [])}
+              selected={elementFilter}
+              onChange={setElementFilter}
+              desktopOnly
+            />
+          )}
         </aside>
         {/* 手机端筛选 */}
         <div className="lg:hidden space-y-0 mb-4">
@@ -123,10 +141,25 @@ export default function RevivalPatternsPage() {
               mobileOnly
             />
           )}
-          <FilterSidebar label="按元素" options={popularElements} selected={elementFilter} onChange={setElementFilter} mobileOnly />
+          <FilterSidebar
+            label="元素大类"
+            options={ELEMENT_CATS}
+            selected={elementCat}
+            onChange={(v) => { setElementCat(v); setElementFilter(null); }}
+            mobileOnly
+          />
+          {elementCat && (
+            <FilterSidebar
+              label={`${elementCat}`}
+              options={Array.from(ELEMENT_BY_CAT[elementCat] || [])}
+              selected={elementFilter}
+              onChange={setElementFilter}
+              mobileOnly
+            />
+          )}
         </div>
 
-        <div className="flex-1 grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6 items-start">
+        <div className="w-full lg:flex-1 grid grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6">
           {filtered.map((item) => (
             <div
               key={item.id}

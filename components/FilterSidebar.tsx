@@ -1,10 +1,15 @@
+'use client';
+
+import { useState } from 'react';
+
 interface FilterSidebarProps {
   label: string;
   options: string[];
   selected: string | null;
   onChange: (value: string | null) => void;
-  mobileOnly?: boolean;   // true = only show mobile view
-  desktopOnly?: boolean;  // true = only show desktop view (no outer aside)
+  mobileOnly?: boolean;
+  desktopOnly?: boolean;
+  defaultOpen?: boolean;
 }
 
 export default function FilterSidebar({
@@ -14,110 +19,149 @@ export default function FilterSidebar({
   onChange,
   mobileOnly = false,
   desktopOnly = false,
+  defaultOpen = false,
 }: FilterSidebarProps) {
+  const [open, setOpen] = useState(defaultOpen);
+
+  const chevron = (
+    <svg
+      className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+      fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" />
+    </svg>
+  );
+
   const renderList = () => (
     <>
-      <h3 className="text-sm font-serif font-semibold text-ink mb-3">{label}</h3>
-      <ul className="space-y-1">
-        <li>
-          <button
-            onClick={() => onChange(null)}
-            className={`w-full text-left px-4 py-2 rounded-xl text-sm transition-all duration-200 ${
-              selected === null
-                ? 'bg-ink text-white shadow-sm'
-                : 'text-gray-500 hover:bg-gray-100 hover:text-ink'
-            }`}
-          >
-            全部
-          </button>
-        </li>
-        {options.map((opt) => (
-          <li key={opt}>
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center justify-between w-full text-left mb-3 group"
+      >
+        <h3 className="text-sm font-serif font-semibold text-ink/80 group-hover:text-ink transition-colors">
+          {label}
+        </h3>
+        {chevron}
+      </button>
+      {open && (
+        <ul className="space-y-1">
+          <li>
             <button
-              onClick={() => onChange(opt)}
+              onClick={() => onChange(null)}
               className={`w-full text-left px-4 py-2 rounded-xl text-sm transition-all duration-200 ${
-                selected === opt
-                  ? 'bg-gold/15 text-gold font-medium border border-gold/20'
+                selected === null
+                  ? 'bg-ink text-white shadow-sm'
                   : 'text-gray-500 hover:bg-gray-100 hover:text-ink'
               }`}
             >
-              {opt}
+              全部
             </button>
           </li>
-        ))}
-      </ul>
+          {options.map((opt) => (
+            <li key={opt}>
+              <button
+                onClick={() => onChange(opt)}
+                className={`w-full text-left px-4 py-2 rounded-xl text-sm transition-all duration-200 ${
+                  selected === opt
+                    ? 'bg-gold/15 text-gold font-medium border border-gold/20'
+                    : 'text-gray-500 hover:bg-gray-100 hover:text-ink'
+                }`}
+              >
+                {opt}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 
-  // 纯桌面模式（不含外框，由父级包）
   if (desktopOnly) {
     return <div className="hidden lg:block">{renderList()}</div>;
   }
 
-  // 纯手机模式
   if (mobileOnly) {
     return (
       <div className="lg:hidden mb-3">
         <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none items-center">
-          <h3 className="text-xs font-serif font-semibold text-ink shrink-0 mr-1">{label}</h3>
           <button
-            onClick={() => onChange(null)}
-            className={`shrink-0 px-3 py-1.5 rounded-full text-xs transition-all duration-200 whitespace-nowrap ${
-              selected === null
-                ? 'bg-ink text-white shadow-sm'
-                : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-            }`}
+            onClick={() => setOpen(!open)}
+            className="flex items-center gap-0.5 shrink-0 mr-1"
           >
-            全部
+            <h3 className="text-xs font-serif font-semibold text-ink/70">{label}</h3>
+            {chevron}
           </button>
-          {options.map((opt) => (
-            <button
-              key={opt}
-              onClick={() => onChange(opt)}
-              className={`shrink-0 px-3 py-1.5 rounded-full text-xs transition-all duration-200 whitespace-nowrap ${
-                selected === opt
-                  ? 'bg-gold/15 text-gold font-medium border border-gold/30'
-                  : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-              }`}
-            >
-              {opt}
-            </button>
-          ))}
+          {open && (
+            <>
+              <button
+                onClick={() => onChange(null)}
+                className={`shrink-0 px-3 py-1.5 rounded-full text-xs transition-all duration-200 whitespace-nowrap ${
+                  selected === null
+                    ? 'bg-ink text-white shadow-sm'
+                    : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                }`}
+              >
+                全部
+              </button>
+              {options.map((opt) => (
+                <button
+                  key={opt}
+                  onClick={() => onChange(opt)}
+                  className={`shrink-0 px-3 py-1.5 rounded-full text-xs transition-all duration-200 whitespace-nowrap ${
+                    selected === opt
+                      ? 'bg-gold/15 text-gold font-medium border border-gold/30'
+                      : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                  }`}
+                >
+                  {opt}
+                </button>
+              ))}
+            </>
+          )}
         </div>
       </div>
     );
   }
 
-  // 默认：完整侧边栏
   return (
     <>
       <aside className="hidden lg:block w-44 shrink-0">{renderList()}</aside>
       <div className="lg:hidden mb-4">
-        <h3 className="text-xs font-serif font-semibold text-ink mb-2">{label}</h3>
-        <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+        <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none items-center">
           <button
-            onClick={() => onChange(null)}
-            className={`shrink-0 px-3 py-1.5 rounded-full text-xs transition-all duration-200 whitespace-nowrap ${
-              selected === null
-                ? 'bg-ink text-white shadow-sm'
-                : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-            }`}
+            onClick={() => setOpen(!open)}
+            className="flex items-center gap-0.5 shrink-0 mr-1"
           >
-            全部
+            <h3 className="text-xs font-serif font-semibold text-ink/70">{label}</h3>
+            {chevron}
           </button>
-          {options.map((opt) => (
-            <button
-              key={opt}
-              onClick={() => onChange(opt)}
-              className={`shrink-0 px-3 py-1.5 rounded-full text-xs transition-all duration-200 whitespace-nowrap ${
-                selected === opt
-                  ? 'bg-gold/15 text-gold font-medium border border-gold/30'
-                  : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-              }`}
-            >
-              {opt}
-            </button>
-          ))}
+          {open && (
+            <>
+              <button
+                onClick={() => onChange(null)}
+                className={`shrink-0 px-3 py-1.5 rounded-full text-xs transition-all duration-200 whitespace-nowrap ${
+                  selected === null
+                    ? 'bg-ink text-white shadow-sm'
+                    : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                }`}
+              >
+                全部
+              </button>
+              {options.map((opt) => (
+                <button
+                  key={opt}
+                  onClick={() => onChange(opt)}
+                  className={`shrink-0 px-3 py-1.5 rounded-full text-xs transition-all duration-200 whitespace-nowrap ${
+                    selected === opt
+                      ? 'bg-gold/15 text-gold font-medium border border-gold/30'
+                      : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                  }`}
+                >
+                  {opt}
+                </button>
+              ))}
+            </>
+          )}
         </div>
       </div>
     </>
