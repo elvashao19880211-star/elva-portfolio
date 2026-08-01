@@ -159,7 +159,7 @@ export default function RevivalPatternsPage() {
           )}
         </div>
 
-        <div className="w-full lg:flex-1 grid grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6">
+        <div className="w-full lg:flex-1 grid grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6 items-start">
           {filtered.map((item) => (
             <div
               key={item.id}

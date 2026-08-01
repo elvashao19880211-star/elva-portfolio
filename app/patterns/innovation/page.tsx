@@ -142,7 +142,7 @@ export default function InnovationPatternsPage() {
         </aside>
 
         {/* 作品网格 */}
-        <div className="w-full lg:flex-1 grid grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6">
+        <div className="w-full lg:flex-1 grid grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6 items-start">
           {filtered.length === 0 ? (
             <p className="col-span-full text-gray-400 text-center py-20">暂无匹配作品</p>
           ) : (
