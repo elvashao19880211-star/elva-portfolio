@@ -441,7 +441,7 @@ export default function MaterialsPage() {
         <div className="lg:hidden space-y-2">
           <MobileScroll title="朝代" options={[...DYNASTIES]} selected={dynasty} onSelect={setDynasty} />
           <MobileScroll title="载体" options={[...CARRIERS]} selected={carrier} onSelect={setCarrier} />
-          <FilterSidebar label="按结构" options={[...STRUCTURES]} selected={structure} onChange={setStructure} mobileOnly />
+          <MobileScroll title="结构" options={[...STRUCTURES]} selected={structure} onSelect={setStructure} />
           <MobileScroll title="颜色" options={[...COLORS]} selected={color} onSelect={setColor} />
         </div>
 
