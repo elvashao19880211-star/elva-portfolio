@@ -27,6 +27,7 @@ async function processOne(inputPath, outputPath) {
   const meta = await sharp(inputPath).metadata();
   const palette = await extractPalette(inputPath, 4);
   palette.push([255, 255, 255]); // white
+  palette.push([255, 255, 255]); // 白色占比 2/6，纯色底也能看见
 
   const wmInfo = await sharp(WATERMARK).metadata();
   const wmW = Math.round((wmInfo.width || 150) * SCALE);
