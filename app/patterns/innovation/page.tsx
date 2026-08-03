@@ -215,7 +215,7 @@ export default function InnovationPatternsPage() {
               >
                 <div className="relative w-full aspect-square overflow-hidden bg-stone-50">
                   <Image
-                    src={item.src}
+                    src={item.thumbSrc || item.src}
                     alt={item.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
