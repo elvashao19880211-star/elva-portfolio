@@ -700,7 +700,7 @@ function renderCard(item: MaterialItem, setLightbox: (lb: { src: string; title: 
     >
       <div className="relative w-full aspect-square overflow-hidden bg-stone-50">
         <Image
-          src={item.src}
+          src={item.src.replace('/images/materials/', '/images/materials/thumbs/')}
           alt={item.title}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"

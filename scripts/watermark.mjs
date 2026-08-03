@@ -6,7 +6,7 @@ const WATERMARK = path.resolve('_incoming/网站水印图.png');
 const ORIGINALS = path.resolve('originals');
 const PUBLIC = path.resolve('public/images');
 
-const OPACITY = 0.38;
+const OPACITY = 0.45;
 const SCALE = 1.5;
 const SPACING_X = 500;
 const SPACING_Y = 800;
@@ -100,9 +100,9 @@ async function processDir(label) {
 }
 
 async function main() {
-  console.log(`🖋️  河图纹样水印 · 规整网格\n   透明度 ${OPACITY * 100}% · 间距 ${SPACING_X}x${SPACING_Y} · 自适应5色+白\n`);
-  await processDir('revival');
-  await processDir('innovation');
+  console.log(`🖋️  河图纹样水印 · 规整网格
+   透明度 ${OPACITY * 100}% · 间距 ${SPACING_X}x${SPACING_Y} · 自适应5色+白\n`);
+  await processDir('materials');
   console.log('\n🎉 全部完成');
 }
 
