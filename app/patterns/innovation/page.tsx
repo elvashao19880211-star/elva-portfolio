@@ -236,9 +236,6 @@ export default function InnovationPatternsPage() {
                   <h3 className="text-xs sm:text-base font-serif font-semibold text-ink mb-0.5 sm:mb-1.5 line-clamp-1">
                     {item.title}
                   </h3>
-                  <p className="text-gray-500 text-[11px] sm:text-sm line-clamp-2 leading-relaxed">
-                    {item.description}
-                  </p>
                   <div className="flex flex-wrap gap-1 sm:gap-1.5 mt-1.5 sm:mt-3">
                     {item.elements?.slice(0, 3).map((el) => (
                       <span key={el} className="px-2 py-0.5 text-[11px] rounded-full bg-qing/15 text-ink/60">
