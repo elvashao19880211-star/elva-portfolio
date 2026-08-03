@@ -304,17 +304,6 @@ const materials: MaterialItem[] = [
     src: '/images/materials/唐代-壁画-牡丹纹-自由-多色 (2).png',
   },
   {
-    id: 'mat-m006',
-    title: '牡丹纹',
-    dynasty: '唐代',
-    carrier: '壁画',
-    elements: ["mudan"],
-    structure: '自由',
-    colors: ["多色"],
-    description: '唐代壁画，牡丹纹，自由排布，多色配色',
-    src: '/images/materials/唐代-壁画-牡丹纹-自由-多色-(2).png',
-  },
-  {
     id: 'mat-m007',
     title: '牡丹纹',
     dynasty: '唐代',
