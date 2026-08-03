@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C3A370" />
+      <stop offset="100%" style="stop-color:#A8874E" />
+    </linearGradient>
+  </defs>
+
+  <!-- 印章外框 — 方形印章风格 -->
+  <rect x="10" y="10" width="180" height="180" rx="8" fill="none" stroke="#C3A370" stroke-width="2"/>
+  <rect x="16" y="16" width="168" height="168" rx="5" fill="none" stroke="#C3A370" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- 回纹边框 — 四角 -->
+  <!-- 左上角 -->
+  <path d="M24 24 L24 36 L36 36 L36 42 L24 42 L24 50" fill="none" stroke="#C3A370" stroke-width="1.2" opacity="0.5"/>
+  <!-- 右上角 -->
+  <path d="M176 24 L176 36 L164 36 L164 42 L176 42 L176 50" fill="none" stroke="#C3A370" stroke-width="1.2" opacity="0.5"/>
+  <!-- 左下角 -->
+  <path d="M24 176 L24 164 L36 164 L36 158 L24 158 L24 150" fill="none" stroke="#C3A370" stroke-width="1.2" opacity="0.5"/>
+  <!-- 右下角 -->
+  <path d="M176 176 L176 164 L164 164 L164 158 L176 158 L176 150" fill="none" stroke="#C3A370" stroke-width="1.2" opacity="0.5"/>
+
+  <!-- 上部装饰线 -->
+  <line x1="50" y1="46" x2="150" y2="46" stroke="#3F9EAC" stroke-width="1" opacity="0.3"/>
+
+  <!-- "河图" 大字 — 竖向排列 👇 -->
+  <text x="70" y="100" text-anchor="end" dominant-baseline="central"
+        font-family="'Noto Serif SC', 'STKaiti', 'KaiTi', serif"
+        font-size="52" font-weight="600" fill="#3F9EAC">
+    河
+  </text>
+  <text x="75" y="145" text-anchor="end" dominant-baseline="central"
+        font-family="'Noto Serif SC', 'STKaiti', 'KaiTi', serif"
+        font-size="46" font-weight="400" fill="#C3A370">
+    图
+  </text>
+
+  <!-- 右侧竖线装饰 -->
+  <line x1="85" y1="58" x2="85" y2="145" stroke="#3F9EAC" stroke-width="0.8" opacity="0.2"/>
+
+  <!-- 右侧英文/罗马字 -->
+  <text x="140" y="82" text-anchor="start"
+        font-family="serif" font-style="italic"
+        font-size="11" fill="#3A506B" letter-spacing="0.5" opacity="0.6">
+    HÉ TÚ
+  </text>
+  <text x="140" y="97" text-anchor="start"
+        font-family="serif" font-style="italic"
+        font-size="8" fill="#3A506B" opacity="0.35">
+    Chinese Patterns
+  </text>
+
+  <!-- 底部小字 -->
+  <text x="100" y="178" text-anchor="middle"
+        font-family="'Noto Sans SC', sans-serif"
+        font-size="6.5" fill="#9CA3AF" letter-spacing="2">
+    以千年纹样 续华夏脉络
+  </text>
+</svg>

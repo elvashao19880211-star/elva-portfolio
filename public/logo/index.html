@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>河图 Logo</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Serif SC', 'STSong', serif;
+  background: #F5F3EE;
+  color: #3A506B;
+  padding: 40px 20px;
+}
+h1 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #3F9EAC;
+  margin-bottom: 8px;
+}
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #9CA3AF;
+  margin-bottom: 40px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 36px 30px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  border: 1px solid rgba(63,158,172,0.1);
+}
+.card img {
+  max-height: 100px;
+  width: auto;
+  margin: 0 auto 16px;
+  display: block;
+}
+.card h2 {
+  font-size: 15px;
+  margin-bottom: 4px;
+  color: #3F9EAC;
+}
+.card p {
+  font-size: 12px;
+  color: #9CA3AF;
+  line-height: 1.6;
+}
+.card .demo-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin: 20px auto 0;
+}
+.card .demo-item {
+  background: #F9F5F0;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  min-width: 80px;
+}
+.card .demo-item svg {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 6px;
+}
+.card .demo-item span {
+  font-size: 10px;
+  color: #9CA3AF;
+}
+</style>
+</head>
+<body>
+<h1>河图 · 品牌 Logo</h1>
+<p class="subtitle">印章回纹风格 · 天青与淡金</p>
+
+<div class="grid">
+  <div class="card">
+    <img src="/logo/logo-horizontal.svg" alt="横版 Logo" />
+    <h2>横版 — 网站导航栏</h2>
+    <p>左侧印章徽标 + 右侧文字"河图·华夏纹样传承"<br/>适配导航栏高度，占据空间小</p>
+  </div>
+
+  <div class="card">
+    <img src="/logo/logo-square.svg" alt="方形 Logo" style="max-height:150px" />
+    <h2>方形 — App 图标 / 收藏夹 / 水印</h2>
+    <p>印章式竖排"河图"，回纹四角装饰<br/>米白底色，适合做 PWA 启动图标和页签 favicon</p>
+  </div>
+</div>
+</body>
+</html>
