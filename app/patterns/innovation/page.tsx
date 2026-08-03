@@ -221,9 +221,6 @@ export default function InnovationPatternsPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <span className="absolute top-3 left-3 px-2.5 py-1 text-[10px] rounded-full bg-white/90 text-ink/70 font-medium shadow-sm">
-                    {item.category}
-                  </span>
                   <FavoriteButton
                     item={{
                       id: item.id,
