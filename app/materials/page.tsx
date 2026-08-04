@@ -7,7 +7,6 @@ import Breadcrumb from '../../components/Breadcrumb';
 import Lightbox from '../../components/Lightbox';
 import NewThisMonth from '../../components/NewThisMonth';
 import ActiveFilters from '../../components/ActiveFilters';
-import FilterSidebar from '../../components/FilterSidebar';
 import { ELEMENT_TREE, type ElementNode } from './data';
 
 // 预构建祖先映射：每个元素 ID → 其所有祖先 ID（含自身）
@@ -407,13 +406,18 @@ export default function MaterialsPage() {
               </AccordionSection>
 
               {/* 结构 */}
-              <FilterSidebar
-                label="按结构"
-                options={[...STRUCTURES]}
-                selected={structure}
-                onChange={setStructure}
-                desktopOnly
-              />
+              <AccordionSection title="结构" hasSelection={!!structure}>
+                <div className="flex flex-col gap-0.5">
+                  <FilterBtn active={!structure} onClick={() => setStructure(null)} isAll>
+                    全部
+                  </FilterBtn>
+                  {STRUCTURES.map((s) => (
+                    <FilterBtn key={s} active={structure === s} onClick={() => setStructure(structure === s ? null : s)}>
+                      {s}
+                    </FilterBtn>
+                  ))}
+                </div>
+              </AccordionSection>
 
               {/* 颜色 */}
               <AccordionSection title="颜色" hasSelection={!!color}>
