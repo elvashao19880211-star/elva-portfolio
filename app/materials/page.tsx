@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Breadcrumb from '../../components/Breadcrumb';
 import Lightbox from '../../components/Lightbox';
 import NewThisMonth from '../../components/NewThisMonth';
+import ActiveFilters from '../../components/ActiveFilters';
 import FilterSidebar from '../../components/FilterSidebar';
 import { ELEMENT_TREE, type ElementNode } from './data';
 
