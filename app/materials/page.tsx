@@ -7,7 +7,6 @@ import Breadcrumb from '../../components/Breadcrumb';
 import Lightbox from '../../components/Lightbox';
 import NewThisMonth from '../../components/NewThisMonth';
 import ActiveFilters from '../../components/ActiveFilters';
-import FilterSidebar from '../../components/FilterSidebar';
 import { ELEMENT_TREE, type ElementNode } from './data';
 
 // 预构建祖先映射：每个元素 ID → 其所有祖先 ID（含自身）
@@ -417,20 +416,30 @@ export default function MaterialsPage() {
               </AccordionSection>
 
               {/* 结构 */}
-              <FilterSidebar
-                label="按结构"
-                options={[...STRUCTURE_L1]}
-                selected={structureL1}
-                onChange={(v) => { setStructureL1(v); setStructureL2(null); }}
-              />
-              {structureL1 && (STRUCTURE_L2[structureL1]?.length ?? 0) > 0 && (
-                <FilterSidebar
-                  label={`${structureL1}`}
-                  options={[...(STRUCTURE_L2[structureL1] || [])]}
-                  selected={structureL2}
-                  onChange={setStructureL2}
-                />
-              )}
+              <AccordionSection title="结构" hasSelection={!!structureL1}>
+                <div className="flex flex-col gap-0.5">
+                  <FilterBtn active={!structureL1} onClick={() => setStructureL1(null)} isAll>
+                    全部
+                  </FilterBtn>
+                  {STRUCTURE_L1.map((l1) => (
+                    <FilterBtn key={l1} active={structureL1 === l1 && !structureL2} onClick={() => setStructureL1(structureL1 === l1 ? null : l1)}>
+                      {l1}
+                    </FilterBtn>
+                  ))}
+                </div>
+                {structureL1 && (STRUCTURE_L2[structureL1]?.length ?? 0) > 0 && (
+                  <div className="ml-3 mt-1 pt-1 border-l border-gray-100">
+                    <div className="text-[10px] text-gray-400 mb-1 px-2">{structureL1}</div>
+                    <div className="flex flex-col gap-0.5">
+                      {STRUCTURE_L2[structureL1]!.map((l2) => (
+                        <FilterBtn key={l2} active={structureL2 === l2} onClick={() => setStructureL2(structureL2 === l2 ? null : l2)}>
+                          {l2}
+                        </FilterBtn>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </AccordionSection>
 
               {/* 颜色 */}
               <AccordionSection title="颜色" hasSelection={!!color}>
