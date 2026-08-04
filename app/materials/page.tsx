@@ -7,6 +7,7 @@ import Breadcrumb from '../../components/Breadcrumb';
 import Lightbox from '../../components/Lightbox';
 import NewThisMonth from '../../components/NewThisMonth';
 import ActiveFilters from '../../components/ActiveFilters';
+import FilterSidebar from '../../components/FilterSidebar';
 import { ELEMENT_TREE, type ElementNode } from './data';
 
 // 预构建祖先映射：每个元素 ID → 其所有祖先 ID（含自身）
@@ -26,7 +27,9 @@ import SectionTitle from '../../components/SectionTitle';
 import materials, {
   DYNASTIES,
   CARRIERS,
-  STRUCTURES,
+  STRUCTURE_L1,
+  STRUCTURE_L2,
+  STRUCTURE_TRANSITION,
   COLORS,
   DYNASTY_ALIASES,
   flattenElements,
@@ -168,7 +171,8 @@ export default function MaterialsPage() {
   const [dynasty, setDynasty] = useState<string | null>(null);
   const [carrier, setCarrier] = useState<string | null>(null);
   const [elementIds, setElementIds] = useState<Set<string>>(new Set());
-  const [structure, setStructure] = useState<string | null>(null);
+  const [structureL1, setStructureL1] = useState<string | null>(null);
+  const [structureL2, setStructureL2] = useState<string | null>(null);
   const [color, setColor] = useState<string | null>(null);
   // 当前展开查看二级元素的一级分类
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
@@ -189,7 +193,8 @@ export default function MaterialsPage() {
     setDynasty(null);
     setCarrier(null);
     setElementIds(new Set());
-    setStructure(null);
+    setStructureL1(null);
+    setStructureL2(null);
     setColor(null);
     setSearchQuery('');
   };
@@ -197,7 +202,7 @@ export default function MaterialsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showNewOnly, setShowNewOnly] = useState(false);
 
-  const hasFilters = dynasty || carrier || elementIds.size > 0 || structure || color || !!searchQuery;
+  const hasFilters = dynasty || carrier || elementIds.size > 0 || structureL1 || color || !!searchQuery;
 
   // 当前展开的一级元素的二级子项
   const expandedChildren = useMemo(() => {
@@ -220,7 +225,12 @@ export default function MaterialsPage() {
         })
       );
     }
-    if (structure) result = result.filter((m) => m.structure === structure);
+    if (structureL1) result = result.filter((m) => {
+      const mapped = STRUCTURE_TRANSITION[m.structure as keyof typeof STRUCTURE_TRANSITION];
+      if (!mapped) return false;
+      if (!structureL2) return mapped[0] === structureL1;
+      return mapped[0] === structureL1 && mapped[1] === structureL2;
+    });
     if (color) result = result.filter((m) => m.colors.includes(color));
     // 搜索：匹配标题、朝代、元素名称
     if (searchQuery) {
@@ -242,7 +252,7 @@ export default function MaterialsPage() {
       );
     }
     return result;
-  }, [dynasty, carrier, elementIds, structure, color, expandedCategory, searchQuery, showNewOnly]);
+  }, [dynasty, carrier, elementIds, structureL1, structureL2, color, expandedCategory, searchQuery, showNewOnly]);
 
   return (
     <main className="min-h-screen px-4 sm:px-6 py-12">
@@ -319,7 +329,8 @@ export default function MaterialsPage() {
             ...(dynasty ? [{ key: 'dynasty', label: '朝代', value: dynasty, onClear: () => setDynasty(null) }] : []),
             ...(carrier ? [{ key: 'carrier', label: '载体', value: carrier, onClear: () => setCarrier(null) }] : []),
             ...(elementIds.size > 0 ? [{ key: 'elements', label: '元素', value: `${elementIds.size}个元素`, onClear: () => setElementIds(new Set()) }] : []),
-            ...(structure ? [{ key: 'structure', label: '结构', value: structure, onClear: () => setStructure(null) }] : []),
+            ...(structureL1 && !structureL2 ? [{ key: 'structureL1', label: '结构', value: structureL1, onClear: () => setStructureL1(null) }] : []),
+            ...(structureL1 && structureL2 ? [{ key: 'structureL2', label: '结构', value: `${structureL1} / ${structureL2}`, onClear: () => setStructureL2(null) }] : []),
             ...(color ? [{ key: 'color', label: '颜色', value: color, onClear: () => setColor(null) }] : []),
             ...(showNewOnly ? [{ key: 'new', label: '上新', value: '本月上新', onClear: () => setShowNewOnly(false) }] : []),
             ...(searchQuery ? [{ key: 'search', label: '搜索', value: `"${searchQuery}"`, onClear: () => setSearchQuery('') }] : []),
@@ -406,18 +417,20 @@ export default function MaterialsPage() {
               </AccordionSection>
 
               {/* 结构 */}
-              <AccordionSection title="结构" hasSelection={!!structure}>
-                <div className="flex flex-col gap-0.5">
-                  <FilterBtn active={!structure} onClick={() => setStructure(null)} isAll>
-                    全部
-                  </FilterBtn>
-                  {STRUCTURES.map((s) => (
-                    <FilterBtn key={s} active={structure === s} onClick={() => setStructure(structure === s ? null : s)}>
-                      {s}
-                    </FilterBtn>
-                  ))}
-                </div>
-              </AccordionSection>
+              <FilterSidebar
+                label="按结构"
+                options={[...STRUCTURE_L1]}
+                selected={structureL1}
+                onChange={(v) => { setStructureL1(v); setStructureL2(null); }}
+              />
+              {structureL1 && (STRUCTURE_L2[structureL1]?.length ?? 0) > 0 && (
+                <FilterSidebar
+                  label={`${structureL1}`}
+                  options={[...(STRUCTURE_L2[structureL1] || [])]}
+                  selected={structureL2}
+                  onChange={setStructureL2}
+                />
+              )}
 
               {/* 颜色 */}
               <AccordionSection title="颜色" hasSelection={!!color}>
@@ -446,7 +459,6 @@ export default function MaterialsPage() {
         <div className="lg:hidden space-y-2">
           <MobileScroll title="朝代" options={[...DYNASTIES]} selected={dynasty} onSelect={setDynasty} />
           <MobileScroll title="载体" options={[...CARRIERS]} selected={carrier} onSelect={setCarrier} />
-          <MobileScroll title="结构" options={[...STRUCTURES]} selected={structure} onSelect={setStructure} />
           <MobileScroll title="颜色" options={[...COLORS]} selected={color} onSelect={setColor} />
         </div>
 
@@ -456,12 +468,14 @@ export default function MaterialsPage() {
             dynasty={dynasty}
             carrier={carrier}
             elementIds={elementIds}
-            structure={structure}
+            structureL1={structureL1}
+            structureL2={structureL2}
             color={color}
             onRemoveDynasty={() => setDynasty(null)}
             onRemoveCarrier={() => setCarrier(null)}
             onRemoveElement={(id) => toggleElement(id)}
-            onRemoveStructure={() => setStructure(null)}
+            onRemoveStructureL1={() => setStructureL1(null)}
+            onRemoveStructureL2={() => setStructureL2(null)}
             onRemoveColor={() => setColor(null)}
             count={filtered.length}
           />
@@ -654,22 +668,23 @@ function MobileScroll({
 }
 
 function ActiveChips({
-  dynasty, carrier, elementIds, structure, color,
+  dynasty, carrier, elementIds, structureL1, structureL2, color,
   onRemoveDynasty, onRemoveCarrier, onRemoveElement,
-  onRemoveStructure, onRemoveColor, count,
+  onRemoveStructureL1, onRemoveStructureL2, onRemoveColor, count,
 }: {
   dynasty: string | null; carrier: string | null; elementIds: Set<string>;
-  structure: string | null; color: string | null;
+  structureL1: string | null; structureL2: string | null; color: string | null;
   onRemoveDynasty: () => void; onRemoveCarrier: () => void;
   onRemoveElement: (id: string) => void;
-  onRemoveStructure: () => void; onRemoveColor: () => void;
+  onRemoveStructureL1: () => void; onRemoveStructureL2: () => void; onRemoveColor: () => void;
   count: number;
 }) {
   return (
     <div className="flex items-center flex-wrap gap-1.5 mb-5 text-[11px]">
       {dynasty && <Chip label={dynasty} onRemove={onRemoveDynasty} />}
       {carrier && <Chip label={carrier} onRemove={onRemoveCarrier} />}
-      {structure && <Chip label={structure} onRemove={onRemoveStructure} />}
+      {structureL1 && !structureL2 && <Chip label={structureL1} onRemove={onRemoveStructureL1} />}
+      {structureL1 && structureL2 && <Chip label={`${structureL1} / ${structureL2}`} onRemove={onRemoveStructureL2} />}
       {color && <Chip label={color} onRemove={onRemoveColor} />}
       {Array.from(elementIds).map((eid) => (
         <Chip key={eid} label={elementLabelMap.get(eid) ?? eid} onRemove={() => onRemoveElement(eid)} />

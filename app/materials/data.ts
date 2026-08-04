@@ -27,10 +27,20 @@ export const CARRIERS = [
   '壁画', '石刻', '金银器', '玉器', '木器', '掐丝珐琅', '建筑', '其他',
 ] as const;
 
-/** 结构 */
-export const STRUCTURES = [
-  '自由', '适合', '角隅', '二方连续', '四方连续', '组合', '开光',
-] as const;
+/** 结构 — 两级分类 */
+export const STRUCTURE_L1 = ['单独纹样', '二方连续', '四方连续'] as const;
+export const STRUCTURE_L2: Record<string, readonly string[]> = {
+  '单独纹样': ['自由纹样', '适合纹样', '角隅纹样'],
+  '二方连续': ['散点式', '直立式', '波线式', '折线式', '综合式'],
+  '四方连续': ['散点式', '连缀式', '重叠式'],
+};
+
+/** 旧结构 → 新 L1/L2 过渡映射（等表格到后更新） */
+export const STRUCTURE_TRANSITION: Record<string, readonly [string, string] | null> = {
+  '自由': ['单独纹样', '自由纹样'],
+  '适合': ['单独纹样', '适合纹样'],
+  '角隅': ['单独纹样', '角隅纹样'],
+};
 
 /** 颜色 */
 export const COLORS = [
