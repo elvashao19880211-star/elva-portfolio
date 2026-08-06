@@ -28,7 +28,6 @@ import materials, {
   CARRIERS,
   STRUCTURE_L1,
   STRUCTURE_L2,
-  STRUCTURE_TRANSITION,
   COLORS,
   DYNASTY_ALIASES,
   flattenElements,
@@ -225,10 +224,9 @@ export default function MaterialsPage() {
       );
     }
     if (structureL1) result = result.filter((m) => {
-      const mapped = STRUCTURE_TRANSITION[m.structure as keyof typeof STRUCTURE_TRANSITION];
-      if (!mapped) return false;
-      if (!structureL2) return mapped[0] === structureL1;
-      return mapped[0] === structureL1 && mapped[1] === structureL2;
+      if (!m.structureL1) return false;
+      if (!structureL2) return m.structureL1 === structureL1;
+      return m.structureL1 === structureL1 && m.structureL2 === structureL2;
     });
     if (color) result = result.filter((m) => m.colors.includes(color));
     // 搜索：匹配标题、朝代、元素名称
