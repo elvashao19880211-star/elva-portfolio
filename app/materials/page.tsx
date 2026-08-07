@@ -713,7 +713,9 @@ function renderCard(item: MaterialItem, setLightbox: (lb: { src: string; title: 
             {item.dynasty}
           </span>
         </div>
-        <p className="text-[11px] text-gray-400 line-clamp-1">{item.description}</p>
+        <p className="text-[11px] text-gray-400 line-clamp-1">
+          {item.description.includes('，') ? item.description.split('，').slice(0, -1).join('，') : item.description}
+        </p>
         <div className="flex flex-wrap gap-1 mt-2">
           {item.elements.slice(0, 3).map((eid) => (
             <span key={eid} className="px-1.5 py-0.5 text-[10px] rounded bg-gray-100 text-gray-500">
