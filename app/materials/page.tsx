@@ -25,7 +25,6 @@ const getAncestors = (id: string) => ancestorMap.get(id) ?? new Set<string>();
 import SectionTitle from '../../components/SectionTitle';
 import materials, {
   DYNASTIES,
-  CARRIERS,
   STRUCTURE_L1,
   STRUCTURE_L2,
   COLORS,
@@ -167,7 +166,6 @@ function ElementTreeItem({
 /* ========== 主页面 ========== */
 export default function MaterialsPage() {
   const [dynasty, setDynasty] = useState<string | null>(null);
-  const [carrier, setCarrier] = useState<string | null>(null);
   const [elementIds, setElementIds] = useState<Set<string>>(new Set());
   const [structureL1, setStructureL1] = useState<string | null>(null);
   const [structureL2, setStructureL2] = useState<string | null>(null);
@@ -189,7 +187,6 @@ export default function MaterialsPage() {
 
   const clearAll = () => {
     setDynasty(null);
-    setCarrier(null);
     setElementIds(new Set());
     setStructureL1(null);
     setStructureL2(null);
@@ -200,7 +197,7 @@ export default function MaterialsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showNewOnly, setShowNewOnly] = useState(false);
 
-  const hasFilters = dynasty || carrier || elementIds.size > 0 || structureL1 || color || !!searchQuery;
+  const hasFilters = dynasty || elementIds.size > 0 || structureL1 || color || !!searchQuery;
 
   // 当前展开的一级元素的二级子项
   const expandedChildren = useMemo(() => {
@@ -212,7 +209,6 @@ export default function MaterialsPage() {
   const filtered = useMemo(() => {
     let result = materials;
     if (dynasty) result = result.filter((m) => m.dynasty === dynasty || DYNASTY_ALIASES[m.dynasty] === dynasty);
-    if (carrier) result = result.filter((m) => m.carrier === carrier);
     if (elementIds.size > 0) {
       result = result.filter((m) =>
         m.elements.some((eid) => {
@@ -249,7 +245,7 @@ export default function MaterialsPage() {
       );
     }
     return result;
-  }, [dynasty, carrier, elementIds, structureL1, structureL2, color, expandedCategory, searchQuery, showNewOnly]);
+  }, [dynasty, elementIds, structureL1, structureL2, color, expandedCategory, searchQuery, showNewOnly]);
 
   return (
     <main className="min-h-screen px-4 sm:px-6 py-12">
@@ -258,7 +254,7 @@ export default function MaterialsPage() {
       </div>
       <SectionTitle
         title="纹样素材"
-        subtitle="朝代 · 载体 · 元素 · 结构 · 颜色 —— 五维精准筛选"
+        subtitle="朝代 · 元素 · 结构 · 颜色 —— 四维精准筛选"
       />
 
       <div className="max-w-7xl mx-auto mb-4 flex justify-center">
@@ -324,7 +320,6 @@ export default function MaterialsPage() {
         <ActiveFilters
           chips={[
             ...(dynasty ? [{ key: 'dynasty', label: '朝代', value: dynasty, onClear: () => setDynasty(null) }] : []),
-            ...(carrier ? [{ key: 'carrier', label: '载体', value: carrier, onClear: () => setCarrier(null) }] : []),
             ...(elementIds.size > 0 ? [{ key: 'elements', label: '元素', value: `${elementIds.size}个元素`, onClear: () => setElementIds(new Set()) }] : []),
             ...(structureL1 && !structureL2 ? [{ key: 'structureL1', label: '结构', value: structureL1, onClear: () => setStructureL1(null) }] : []),
             ...(structureL1 && structureL2 ? [{ key: 'structureL2', label: '结构', value: `${structureL1} / ${structureL2}`, onClear: () => setStructureL2(null) }] : []),
@@ -378,20 +373,6 @@ export default function MaterialsPage() {
                   {DYNASTIES.map((d) => (
                     <FilterBtn key={d} active={dynasty === d} onClick={() => setDynasty(dynasty === d ? null : d)}>
                       {d}
-                    </FilterBtn>
-                  ))}
-                </div>
-              </AccordionSection>
-
-              {/* 载体 */}
-              <AccordionSection title="载体" hasSelection={!!carrier}>
-                <div className="flex flex-col gap-0.5">
-                  <FilterBtn active={!carrier} onClick={() => setCarrier(null)} isAll>
-                    全部
-                  </FilterBtn>
-                  {CARRIERS.map((c) => (
-                    <FilterBtn key={c} active={carrier === c} onClick={() => setCarrier(carrier === c ? null : c)}>
-                      {c}
                     </FilterBtn>
                   ))}
                 </div>
@@ -465,7 +446,6 @@ export default function MaterialsPage() {
         {/* ===== 移动端横滑筛选 ===== */}
         <div className="lg:hidden space-y-2">
           <MobileScroll title="朝代" options={[...DYNASTIES]} selected={dynasty} onSelect={setDynasty} />
-          <MobileScroll title="载体" options={[...CARRIERS]} selected={carrier} onSelect={setCarrier} />
           <MobileScroll title="颜色" options={[...COLORS]} selected={color} onSelect={setColor} />
         </div>
 
@@ -473,13 +453,11 @@ export default function MaterialsPage() {
         <div className="flex-1 min-w-0">
           <ActiveChips
             dynasty={dynasty}
-            carrier={carrier}
             elementIds={elementIds}
             structureL1={structureL1}
             structureL2={structureL2}
             color={color}
             onRemoveDynasty={() => setDynasty(null)}
-            onRemoveCarrier={() => setCarrier(null)}
             onRemoveElement={(id) => toggleElement(id)}
             onRemoveStructureL1={() => setStructureL1(null)}
             onRemoveStructureL2={() => setStructureL2(null)}
@@ -675,13 +653,13 @@ function MobileScroll({
 }
 
 function ActiveChips({
-  dynasty, carrier, elementIds, structureL1, structureL2, color,
-  onRemoveDynasty, onRemoveCarrier, onRemoveElement,
+  dynasty, elementIds, structureL1, structureL2, color,
+  onRemoveDynasty, onRemoveElement,
   onRemoveStructureL1, onRemoveStructureL2, onRemoveColor, count,
 }: {
-  dynasty: string | null; carrier: string | null; elementIds: Set<string>;
+  dynasty: string | null; elementIds: Set<string>;
   structureL1: string | null; structureL2: string | null; color: string | null;
-  onRemoveDynasty: () => void; onRemoveCarrier: () => void;
+  onRemoveDynasty: () => void;
   onRemoveElement: (id: string) => void;
   onRemoveStructureL1: () => void; onRemoveStructureL2: () => void; onRemoveColor: () => void;
   count: number;
@@ -689,7 +667,6 @@ function ActiveChips({
   return (
     <div className="flex items-center flex-wrap gap-1.5 mb-5 text-[11px]">
       {dynasty && <Chip label={dynasty} onRemove={onRemoveDynasty} />}
-      {carrier && <Chip label={carrier} onRemove={onRemoveCarrier} />}
       {structureL1 && !structureL2 && <Chip label={structureL1} onRemove={onRemoveStructureL1} />}
       {structureL1 && structureL2 && <Chip label={`${structureL1} / ${structureL2}`} onRemove={onRemoveStructureL2} />}
       {color && <Chip label={color} onRemove={onRemoveColor} />}
