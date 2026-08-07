@@ -714,7 +714,7 @@ function renderCard(item: MaterialItem, setLightbox: (lb: { src: string; title: 
           </span>
         </div>
         <p className="text-[11px] text-gray-400 line-clamp-1">
-          {item.description.includes('，') ? item.description.split('，').slice(0, -1).join('，') : item.description}
+          {(() => { const p = item.description.split('，'); return [p[0], p[2]].filter(Boolean).join('，'); })()}
         </p>
         <div className="flex flex-wrap gap-1 mt-2">
           {item.elements.slice(0, 3).map((eid) => (
