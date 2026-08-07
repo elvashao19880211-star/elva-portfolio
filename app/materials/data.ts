@@ -144,6 +144,7 @@ export const ELEMENT_TREE: ElementNode[] = [
   {
     id: 'ziran', label: '自然纹', children: [
       { id: 'yun', label: '云纹', children: [
+        { id: 'yunwen', label: '云纹' },
         { id: 'yunlei', label: '云雷纹' },
         { id: 'sanjiao', label: '三角云纹' },
         { id: 'yunqi', label: '云气纹' },
@@ -151,6 +152,7 @@ export const ELEMENT_TREE: ElementNode[] = [
         { id: 'duoyun', label: '朵云纹' },
         { id: 'huoyanyun', label: '火焰云纹' },
         { id: 'siheyun', label: '四合云纹' },
+        { id: 'sihuayunwen', label: '四合云纹' },
         { id: 'dieyun', label: '叠云纹' },
         { id: 'yulin', label: '鱼鳞云纹' },
         { id: 'tuanyun', label: '团云纹' },
