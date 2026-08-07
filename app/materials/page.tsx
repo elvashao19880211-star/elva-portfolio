@@ -743,11 +743,6 @@ function renderCard(item: MaterialItem, setLightbox: (lb: { src: string; title: 
               {elementLabelMap.get(eid) ?? eid}
             </span>
           ))}
-          {item.colors.slice(0, 2).map((c) => (
-            <span key={c} className="px-1.5 py-0.5 text-[10px] rounded bg-qing/10 text-qing">
-              {c}
-            </span>
-          ))}
         </div>
       </div>
     </div>
