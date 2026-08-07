@@ -55,11 +55,15 @@ export const ELEMENT_TREE: ElementNode[] = [
         { id: 'lianzhuduima', label: '联珠对马纹' },
       ]},
       { id: 'tuwen', label: '兔纹' },
+      { id: 'luwen', label: '鹿纹' },
       { id: 'niao', label: '鸟纹', children: [
+{ id: 'duiniao', label: '对鸟纹' },
+{ id: 'niaowen', label: '鸟纹' },
         { id: 'duiniaotuanqun', label: '对鸟团窠纹' },
         { id: 'haidongqing', label: '海东青捕大雁纹' },
       ]},
       { id: 'shizi', label: '狮子纹' },
+{ id: 'shiziwen', label: '狮子纹' },
       { id: 'chan', label: '蝉纹' },
       { id: 'yuwen', label: '鱼纹' },
       { id: 'wawen', label: '蛙纹' },
@@ -69,6 +73,7 @@ export const ELEMENT_TREE: ElementNode[] = [
       ]},
       { id: 'hudie', label: '蝴蝶纹' },
       { id: 'tuanqunlu', label: '团窠鹿纹' },
+{ id{ id: 'tuanke', label: '团窠纹' },
     ],
   },
   {
@@ -79,10 +84,13 @@ export const ELEMENT_TREE: ElementNode[] = [
       { id: 'sijihua', label: '四季花纹' },
       { id: 'chanzhi', label: '缠枝纹' },
       { id: 'juancao', label: '卷草纹' },
+{ id: 'juanchaowen', label: '卷草纹' },
       { id: 'hulu', label: '葫芦纹' },
       { id: 'meihua', label: '梅花纹' },
       { id: 'lian', label: '莲纹' },
+{ id: 'lianwen', label: '莲纹' },
       { id: 'shiliu', label: '石榴纹' },
+{ id: 'shiliuwen', label: '石榴纹' },
       { id: 'haishiliu', label: '海石榴纹' },
       { id: 'huahui', label: '花卉纹' },
       { id: 'mudanlian', label: '牡丹莲纹' },
@@ -158,6 +166,7 @@ export const ELEMENT_TREE: ElementNode[] = [
         { id: 'tuanyun', label: '团云纹' },
         { id: 'ruyisihe', label: '如意四合云纹' },
         { id: 'ruyiwen', label: '如意纹' },
+{ id: 'ruyi', label: '如意纹' },
       ]},
       { id: 'shui', label: '水纹', children: [
         { id: 'haishuijiangya', label: '海水江崖纹' },
@@ -165,6 +174,7 @@ export const ELEMENT_TREE: ElementNode[] = [
         { id: 'hailang', label: '海浪水纹' },
       ]},
       { id: 'huo', label: '火纹', children: [
+{ id: 'huowen', label: '火纹' },
         { id: 'wowen', label: '涡纹' },
         { id: 'beiguang', label: '背光火焰纹' },
         { id: 'shanxing', label: '山形火焰纹' },
@@ -177,12 +187,14 @@ export const ELEMENT_TREE: ElementNode[] = [
       { id: 'chi', label: '螭纹' },
       { id: 'shoumian', label: '兽面纹' },
       { id: 'long', label: '龙纹', children: [
+{ id: 'longwen', label: '龙纹' },
         { id: 'zhenglong', label: '正龙纹' },
       ]},
       { id: 'feng', label: '凤纹' },
       { id: 'qilin', label: '麒麟纹' },
       { id: 'sishen', label: '四神纹' },
       { id: 'mojie', label: '摩羯纹' },
+{ id: 'mojiewen', label: '摩羯纹' },
     ],
   },
   {
@@ -205,6 +217,7 @@ export const ELEMENT_TREE: ElementNode[] = [
   {
     id: 'qiwu', label: '器物纹', children: [
       { id: 'deng', label: '灯纹' },
+{ id: 'gongdeng', label: '宫灯纹' },
       { id: 'bogu', label: '博古纹' },
       { id: 'anbaxian', label: '暗八仙纹' },
       { id: 'zabao', label: '杂宝纹' },
