@@ -73,7 +73,7 @@ export const ELEMENT_TREE: ElementNode[] = [
       ]},
       { id: 'hudie', label: '蝴蝶纹' },
       { id: 'tuanqunlu', label: '团窠鹿纹' },
-{ id{ id: 'tuanke', label: '团窠纹' },
+      { id: 'tuanke', label: '团窠纹' },
     ],
   },
   {
