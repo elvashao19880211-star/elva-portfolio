@@ -80,6 +80,14 @@ export default function Footer() {
             <a href="/refund" className="text-white/40 hover:text-gold transition-colors text-[10px]">退款政策</a>
             <a href="/copyright" className="text-white/40 hover:text-gold transition-colors text-[10px]">版权声明</a>
           </div>
+          <a
+            href="https://beian.miit.gov.cn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/40 hover:text-gold transition-colors text-[10px]"
+          >
+            京ICP备2026049809号
+          </a>
         </div>
       </div>
     </footer>
