@@ -66,6 +66,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
   const [authData, setAuthData] = useState({ name: '', company: '', purpose: '' });
   const [orderSubmitted, setOrderSubmitted] = useState(false);
   const [buyerEmail, setBuyerEmail] = useState('');
+  const [paying, setPaying] = useState(false);
   const isRevival = pattern.type === 'revival' || !!pattern.dynasty;
 
   useEffect(() => {
@@ -102,6 +103,44 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
       email: buyerEmail.trim(),
     });
     setOrderSubmitted(true);
+  };
+
+  const handleAlipayPay = async () => {
+    if (!buyerEmail.trim() || paying) return;
+    setPaying(true);
+    try {
+      const cfg = TIER_CONFIG[selectedTier];
+      const price = cfg.getPrice(isRevival);
+      const amount = Number(price.replace(/,/g, ''));
+      const res = await fetch('/api/payment/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'pattern',
+          planId: pattern.id,
+          tier: selectedTier,
+          title: `${pattern.title}（${cfg.label}）`,
+          amount,
+          userEmail: buyerEmail.trim(),
+        }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => null);
+        alert(err?.error || '创建支付订单失败，请重试');
+        setPaying(false);
+        return;
+      }
+      const data = await res.json();
+      if (!data.payUrl) {
+        alert('支付跳转链接生成失败，请重试');
+        setPaying(false);
+        return;
+      }
+      window.location.href = data.payUrl;
+    } catch (e) {
+      alert('支付请求失败，请重试');
+      setPaying(false);
+    }
   };
 
   const handleDownload = (clean: boolean = false) => {
@@ -331,27 +370,29 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               />
             </div>
 
-            <div className="bg-gray-50 rounded-xl p-4 inline-block mb-4">
-              <img src="/qrcode.png" alt="支付宝付款码" className="w-48 h-48 object-contain" />
-            </div>
-
             {!orderSubmitted ? (
               <>
-                <p className="text-xs text-gray-500">请使用支付宝扫码支付</p>
-                <p className="text-[10px] text-gray-400 mt-1">支付时请备注纹样名称</p>
                 <button
-                  onClick={handleSubmitOrder}
-                  disabled={!buyerEmail.trim()}
-                  className={`inline-flex items-center gap-2 px-6 py-2.5 mt-4 rounded-xl text-sm font-medium transition-colors shadow-md
-                    ${buyerEmail.trim()
-                      ? 'bg-gold text-white hover:bg-amber-600'
-                      : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
+                  onClick={handleAlipayPay}
+                  disabled={!buyerEmail.trim() || paying}
+                  className={`w-full py-3 rounded-xl bg-qing text-white text-sm font-semibold transition-colors shadow-md flex items-center justify-center gap-2
+                    ${buyerEmail.trim() && !paying ? 'hover:bg-qing/90' : 'opacity-60 cursor-not-allowed'}`}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-                  我已支付
+                  {paying ? '正在跳转支付宝…' : '前往支付宝支付'}
                 </button>
+                <p className="text-[10px] text-gray-400 mt-2">支付完成后将自动开通下载权限</p>
+                <div className="mt-3 pt-3 border-t border-gray-100">
+                  <button
+                    onClick={handleSubmitOrder}
+                    disabled={!buyerEmail.trim()}
+                    className={`text-xs ${buyerEmail.trim() ? 'text-gray-400 underline hover:text-gray-600' : 'text-gray-300'}`}
+                  >
+                    已支付但未自动开通？点击手动确认
+                  </button>
+                </div>
               </>
             ) : selectedTier === 'source' ? (
               <div className="mt-4 px-4 py-5 rounded-xl bg-amber-50 border border-amber-200 text-center space-y-3">
