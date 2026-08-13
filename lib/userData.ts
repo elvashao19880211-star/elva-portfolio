@@ -83,3 +83,27 @@ export function addPurchase(item: PurchaseItem): void {
 export function hasPurchased(id: string): boolean {
   return getPurchases().some((p) => p.id === id);
 }
+
+// ========== 待支付（支付跳转前暂存，支付成功跳回后转正） ==========
+
+const PENDING_KEY = 'hetu_pending_purchase';
+
+export function savePendingPurchase(item: PurchaseItem): void {
+  try {
+    localStorage.setItem(PENDING_KEY, JSON.stringify(item));
+  } catch {
+    // ignore
+  }
+}
+
+export function commitPendingPurchase(): void {
+  try {
+    const raw = localStorage.getItem(PENDING_KEY);
+    if (!raw) return;
+    const item = JSON.parse(raw) as PurchaseItem;
+    addPurchase(item);
+    localStorage.removeItem(PENDING_KEY);
+  } catch {
+    // ignore
+  }
+}

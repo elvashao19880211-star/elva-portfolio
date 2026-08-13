@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Lightbox from './Lightbox';
 import FavoriteButton from './FavoriteButton';
-import { addPurchase } from '@/lib/userData';
+import { addPurchase, savePendingPurchase, commitPendingPurchase } from '@/lib/userData';
 
 interface BasePattern {
   id: string;
@@ -81,6 +81,11 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
     };
   }, [onClose]);
 
+  useEffect(() => {
+    // 兑底：若上次支付成功但结果页未转正，这里补转正
+    commitPendingPurchase();
+  }, []);
+
   const handleSelectTier = (tier: PurchaseTier) => {
     setSelectedTier(tier);
     setShowBuy(false);
@@ -136,6 +141,17 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
         setPaying(false);
         return;
       }
+      // 跳转前先暂存待支付，支付成功跳回结果页后转正
+      savePendingPurchase({
+        id: pattern.id,
+        title: pattern.title,
+        src: pattern.src,
+        type: isRevival ? 'revival' : 'innovation',
+        tier: selectedTier,
+        price: `¥${price}`,
+        purchasedAt: Date.now(),
+        email: buyerEmail.trim(),
+      });
       window.location.href = data.payUrl;
     } catch (e) {
       alert('支付请求失败，请重试');

@@ -37,6 +37,17 @@ export async function GET(req: NextRequest) {
             .then(function(d){
               if (d && d.status === 'paid') {
                 clearInterval(timer);
+                try {
+                  var pending = localStorage.getItem('hetu_pending_purchase');
+                  if (pending) {
+                    var item = JSON.parse(pending);
+                    var list = JSON.parse(localStorage.getItem('hetu_purchases') || '[]');
+                    var dup = list.some(function(p){ return p.id === item.id && p.tier === item.tier; });
+                    if (!dup) list.push(item);
+                    localStorage.setItem('hetu_purchases', JSON.stringify(list));
+                    localStorage.removeItem('hetu_pending_purchase');
+                  }
+                } catch(e) {}
                 location.reload();
               } else if (tries >= 30) {
                 clearInterval(timer);
