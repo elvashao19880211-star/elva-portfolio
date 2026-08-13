@@ -8,8 +8,8 @@ import { getOrder, markOrderPaid } from '@/lib/orderStore';
  */
 export async function POST(req: NextRequest) {
   try {
-    const publicKey = process.env.ALIPAY_PUBLIC_KEY;
-    const appId = process.env.ALIPAY_APP_ID;
+    const publicKey = (process.env.ALIPAY_PUBLIC_KEY || '').trim();
+    const appId = (process.env.ALIPAY_APP_ID || '').trim();
     if (!publicKey) {
       return new Response('failure', { status: 503 });
     }

@@ -6,8 +6,8 @@ const SITE_URL = 'https://www.hetu-pattern.com';
 
 export async function POST(req: NextRequest) {
   try {
-    const appId = process.env.ALIPAY_APP_ID;
-    const privateKey = process.env.ALIPAY_PRIVATE_KEY;
+    const appId = (process.env.ALIPAY_APP_ID || '').trim();
+    const privateKey = (process.env.ALIPAY_PRIVATE_KEY || '').trim();
     if (!appId || !privateKey) {
       return NextResponse.json(
         { error: '支付服务未配置（缺少 ALIPAY_APP_ID 或 ALIPAY_PRIVATE_KEY）' },
