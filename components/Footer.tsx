@@ -92,8 +92,9 @@ export default function Footer() {
             href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502062393"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/40 hover:text-gold transition-colors text-[10px]"
+            className="inline-flex items-center gap-1 text-white/40 hover:text-gold transition-colors text-[10px]"
           >
+            <img src="/beian.png" alt="公安备案图标" className="w-3.5 h-3.5" />
             京公网安备 11010502062393号
           </a>
         </div>
