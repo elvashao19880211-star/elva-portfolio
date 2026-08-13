@@ -88,6 +88,14 @@ export default function Footer() {
           >
             京ICP备2026049809号
           </a>
+          <a
+            href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502062393"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/40 hover:text-gold transition-colors text-[10px]"
+          >
+            京公网安备 11010502062393号
+          </a>
         </div>
       </div>
     </footer>
