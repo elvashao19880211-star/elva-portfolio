@@ -56,10 +56,14 @@ export default function MemberPage() {
         setPaying(false);
         return;
       }
-      const html = await res.text();
-      document.open();
-      document.write(html);
-      document.close();
+      const data = await res.json();
+      if (!data.payUrl) {
+        alert('支付跳转链接生成失败，请重试');
+        setPaying(false);
+        return;
+      }
+      // 直接跳转到支付宝收银台
+      window.location.href = data.payUrl;
     } catch (e) {
       alert('支付请求失败，请重试');
       setPaying(false);

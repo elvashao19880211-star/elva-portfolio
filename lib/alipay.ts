@@ -131,8 +131,49 @@ ${inputs}
 </html>`;
 }
 
-function escapeHtml(s: string): string {
+export function escapeHtml(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+/**
+ * 生成电脑网站支付跳转 URL（GET 方式，前端直接 window.location 跳转）
+ */
+export function buildPagePayUrl(params: {
+  appId: string;
+  privateKey: string;
+  outTradeNo: string;
+  totalAmount: string;
+  subject: string;
+  notifyUrl: string;
+  returnUrl: string;
+}): string {
+  const bizContent = JSON.stringify({
+    out_trade_no: params.outTradeNo,
+    total_amount: params.totalAmount,
+    subject: params.subject,
+    product_code: 'FAST_INSTANT_TRADE_PAY',
+  });
+
+  const common: Record<string, string> = {
+    app_id: params.appId,
+    method: 'alipay.trade.page.pay',
+    format: 'JSON',
+    charset: 'utf-8',
+    sign_type: 'RSA2',
+    timestamp: alipayTimestamp(),
+    version: '1.0',
+    notify_url: params.notifyUrl,
+    return_url: params.returnUrl,
+    biz_content: bizContent,
+  };
+
+  const signValue = sign(common, params.privateKey);
+
+  const query = Object.keys(common)
+    .map((k) => `${k}=${encodeURIComponent(common[k])}`)
+    .join('&');
+
+  return `${ALIPAY_GATEWAY}?${query}&sign=${encodeURIComponent(signValue)}`;
 }
 
 /**

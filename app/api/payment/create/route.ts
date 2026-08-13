@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { buildPagePayForm } from '@/lib/alipay';
+import { buildPagePayUrl } from '@/lib/alipay';
 import { createOrder } from '@/lib/orderStore';
 
 const SITE_URL = 'https://www.hetu-pattern.com';
@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
       createdAt: new Date().toISOString(),
     });
 
-    const html = buildPagePayForm({
+    const payUrl = buildPagePayUrl({
       appId,
       privateKey,
       outTradeNo,
@@ -67,9 +67,7 @@ export async function POST(req: NextRequest) {
       returnUrl: `${SITE_URL}/api/payment/return?out_trade_no=${outTradeNo}`,
     });
 
-    return new NextResponse(html, {
-      headers: { 'Content-Type': 'text/html; charset=utf-8' },
-    });
+    return NextResponse.json({ payUrl, outTradeNo });
   } catch (e: any) {
     console.error('payment/create error:', e?.message || e);
     return NextResponse.json({ error: '创建支付订单失败' }, { status: 500 });
