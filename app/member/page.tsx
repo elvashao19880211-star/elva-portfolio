@@ -9,7 +9,8 @@ export default function MemberPage() {
   const [user, setUser] = useState<{ nickname: string; email?: string } | null>(null);
   const [loading, setLoading] = useState(true);
   const [showPay, setShowPay] = useState(false);
-  const [payInfo, setPayInfo] = useState<{ title: string; price: string }>({ title: '', price: '' });
+  const [payInfo, setPayInfo] = useState<{ title: string; price: string; planId: string; amount: number }>({ title: '', price: '', planId: '', amount: 0 });
+  const [paying, setPaying] = useState(false);
 
   useEffect(() => {
     fetch('/api/auth/session')
@@ -24,8 +25,45 @@ export default function MemberPage() {
   const handleUpgrade = (planId: string) => {
     const plan = MEMBER_PLANS.find(p => p.id === planId);
     if (!plan) return;
-    setPayInfo({ title: `${plan.name} · ¥${plan.price}${plan.period}`, price: `¥${plan.price}${plan.period}` });
+    setPayInfo({
+      title: `${plan.name} · ¥${plan.price}${plan.period}`,
+      price: `¥${plan.price}${plan.period}`,
+      planId: plan.id,
+      amount: plan.price,
+    });
     setShowPay(true);
+  };
+
+  const handlePay = async () => {
+    if (paying || !payInfo.planId) return;
+    setPaying(true);
+    try {
+      const res = await fetch('/api/payment/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'member',
+          planId: payInfo.planId,
+          tier: payInfo.planId === 'personal' ? 'personal' : 'commercial',
+          title: payInfo.title,
+          amount: payInfo.amount,
+          userEmail: user?.email || undefined,
+        }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => null);
+        alert(err?.error || '创建支付订单失败，请重试');
+        setPaying(false);
+        return;
+      }
+      const html = await res.text();
+      document.open();
+      document.write(html);
+      document.close();
+    } catch (e) {
+      alert('支付请求失败，请重试');
+      setPaying(false);
+    }
   };
 
   return (
@@ -162,18 +200,20 @@ export default function MemberPage() {
       {showPay && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onClick={() => setShowPay(false)}>
           <div className="bg-white rounded-2xl max-w-sm w-full p-8 shadow-2xl text-center" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-lg font-serif font-semibold text-ink mb-1">支付宝扫码支付</h3>
+            <h3 className="text-lg font-serif font-semibold text-ink mb-1">支付宝支付</h3>
             <p className="text-sm text-gray-500 mb-3">{payInfo.title}</p>
-            {/* 金额醒目提示 */}
             <div className="bg-qing/5 border border-qing/20 rounded-xl px-4 py-3 mb-5">
-              <p className="text-xs text-qing/70 mb-1">请输入以下金额</p>
+              <p className="text-xs text-qing/70 mb-1">应付金额</p>
               <p className="text-2xl font-bold text-qing tracking-wide">{payInfo.price}</p>
             </div>
-            <div className="bg-gray-50 rounded-xl p-4 mb-4">
-              <img src="/qrcode.png" alt="支付宝付款码" className="w-48 h-48 mx-auto" />
-            </div>
-            <p className="text-xs text-gray-400 mb-3">使用支付宝扫一扫，输入上方金额完成支付</p>
-            <p className="text-[10px] text-gray-300 mb-2">支付后请联系客服开通/发送文件</p>
+            <button
+              onClick={handlePay}
+              disabled={paying}
+              className="w-full py-3 bg-qing text-white rounded-xl text-sm font-medium hover:bg-qing/90 transition-colors disabled:opacity-60 mb-3"
+            >
+              {paying ? '正在跳转…' : '立即支付'}
+            </button>
+            <p className="text-[10px] text-gray-400 mb-3">将跳转支付宝完成支付，支付后自动开通</p>
             <div className="mb-5 pt-3 border-t border-gray-100">
               <p className="text-[10px] text-gray-500 leading-relaxed">
                 会员有效期365天 · 到期需续费<br />
