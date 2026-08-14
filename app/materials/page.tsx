@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Breadcrumb from '../../components/Breadcrumb';
@@ -175,6 +175,73 @@ export default function MaterialsPage() {
   const [lightbox, setLightbox] = useState<{ src: string; title: string } | null>(null);
   const [showMembership, setShowMembership] = useState(false);
   const [memberTier, setMemberTier] = useState<'personal' | 'commercial'>('personal');
+  const [user, setUser] = useState<{ nickname?: string; email?: string; memberTier?: string; memberExpiresAt?: string } | null>(null);
+  const [paying, setPaying] = useState(false);
+
+  const isMember = !!user && !!user.memberExpiresAt && new Date(user.memberExpiresAt).getTime() > Date.now();
+
+  useEffect(() => {
+    fetch('/api/auth/session')
+      .then((r) => r.json())
+      .then((d) => { if (d.user) setUser(d.user); })
+      .catch(() => {});
+  }, []);
+
+  const handleDownload = () => {
+    if (!lightbox) return;
+    if (isMember) {
+      const link = document.createElement('a');
+      link.href = lightbox.src;
+      link.download = `${lightbox.title || '素材'}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      setLightbox(null);
+      setShowMembership(true);
+    }
+  };
+
+  const handleMembershipPay = async () => {
+    if (paying) return;
+    if (!user?.email) {
+      window.location.href = '/login?redirect=/materials';
+      return;
+    }
+    setPaying(true);
+    try {
+      const amount = memberTier === 'personal' ? 159 : 899;
+      const title = memberTier === 'personal' ? '素材库会员 · 个人/学习 ¥159/年' : '素材库会员 · 商用 ¥899/年';
+      const res = await fetch('/api/payment/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'member',
+          planId: memberTier,
+          tier: memberTier,
+          title,
+          amount,
+          userEmail: user.email,
+        }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => null);
+        alert(err?.error || '创建支付订单失败，请重试');
+        setPaying(false);
+        return;
+      }
+      const data = await res.json();
+      if (!data.payUrl) {
+        alert('支付跳转链接生成失败，请重试');
+        setPaying(false);
+        return;
+      }
+      window.location.href = data.payUrl;
+    } catch (e) {
+      alert('支付请求失败，请重试');
+      setPaying(false);
+    }
+  };
 
   const toggleElement = (id: string) => {
     setElementIds((prev) => {
@@ -522,6 +589,8 @@ export default function MaterialsPage() {
           src={lightbox.src}
           title={lightbox.title}
           onClose={() => setLightbox(null)}
+          onDownload={handleDownload}
+          downloadLabel={isMember ? '下载无水印图' : '下载需开通会员'}
         />
       )}
 
@@ -564,16 +633,19 @@ export default function MaterialsPage() {
               </div>
             </div>
 
-            {/* 二维码支付 */}
+            {/* 支付宝支付 */}
             <div className="mt-6 text-center">
               <p className="text-xs text-gray-500 mb-3">
                 选择 <span className="font-medium text-ink">{memberTier === 'personal' ? '个人/学习会员 ¥159/年' : '商用会员 ¥899/年'}</span>
               </p>
-              <div className="bg-gray-50 rounded-xl p-4 inline-block mb-3">
-                <img src="/qrcode.png" alt="支付宝付款码" className="w-48 h-48 object-contain" />
-              </div>
-              <p className="text-xs text-gray-400">请使用支付宝扫码支付</p>
-              <p className="text-[10px] text-gray-300 mt-1">支付后请联系客服开通会员</p>
+              <button
+                onClick={handleMembershipPay}
+                disabled={paying}
+                className="w-full py-3 bg-qing text-white rounded-xl text-sm font-medium hover:bg-qing/90 transition-colors disabled:opacity-60"
+              >
+                {paying ? '正在跳转支付宝…' : user?.email ? '支付宝支付 · 立即开通' : '登录后开通会员'}
+              </button>
+              <p className="text-[10px] text-gray-300 mt-2">支付完成后自动开通会员 · 365天有效</p>
             </div>
 
             <div className="mt-5 pt-4 border-t border-gray-100">

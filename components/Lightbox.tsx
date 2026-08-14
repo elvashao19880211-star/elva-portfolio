@@ -6,9 +6,11 @@ interface LightboxProps {
   src: string;
   title: string;
   onClose: () => void;
+  onDownload?: () => void;
+  downloadLabel?: string;
 }
 
-export default function Lightbox({ src, title, onClose }: LightboxProps) {
+export default function Lightbox({ src, title, onClose, onDownload, downloadLabel }: LightboxProps) {
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -44,8 +46,18 @@ export default function Lightbox({ src, title, onClose }: LightboxProps) {
           alt={title}
           className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
         />
-        {title && (
-          <p className="text-white/80 text-center mt-4 text-sm font-serif">{title}</p>
+        {(title || onDownload) && (
+          <div className="mt-4 flex flex-col items-center gap-3">
+            {title && <p className="text-white/80 text-center text-sm font-serif">{title}</p>}
+            {onDownload && (
+              <button
+                onClick={onDownload}
+                className="px-6 py-2.5 bg-gold text-white rounded-xl text-sm font-medium hover:bg-amber-600 transition-colors shadow-lg"
+              >
+                {downloadLabel || '下载无水印图'}
+              </button>
+            )}
+          </div>
         )}
       </div>
     </div>
