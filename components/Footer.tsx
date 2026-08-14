@@ -58,8 +58,7 @@ export default function Footer() {
               找到我
             </h5>
             <div className="space-y-2 text-xs text-white/50">
-              <p>小红书：@Elva纹样设计</p>
-              <p>微信：elva_pattern</p>
+              <p>小红书：@河图纹画</p>
             </div>
           </div>
         </div>
@@ -72,7 +71,7 @@ export default function Footer() {
           <p className="text-white/40 text-[10px] max-w-2xl mx-auto leading-relaxed">
             本站所有纹样作品（含复原纹样、创新设计、素材图片及相关文字说明）均为原创智力成果，
             受《中华人民共和国著作权法》保护。未经权利人书面许可，禁止以任何形式复制、转载、修改、传播或用于商业用途。
-            侵权必究。授权合作请联系 <span className="text-gold/80">elva_pattern</span>。
+            侵权必究。授权合作请联系 <span className="text-gold/80">小红书 @河图纹画</span>。
           </p>
           <div className="flex items-center justify-center gap-4 pt-1">
             <a href="/terms" className="text-white/40 hover:text-gold transition-colors text-[10px]">用户协议</a>
