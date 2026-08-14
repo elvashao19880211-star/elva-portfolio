@@ -104,7 +104,12 @@ export default function MemberPage() {
               <>
                 <p className="text-sm font-medium text-ink">{user.nickname}</p>
                 {isMemberActive(user) ? (
-                  <p className="text-xs text-gold mt-0.5">会员有效至 {formatDate(user.memberExpiresAt!)}</p>
+                  <p className="inline-flex items-center gap-1 text-xs text-gold mt-1 font-medium">
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
+                    </svg>
+                    会员有效至 {formatDate(user.memberExpiresAt!)}
+                  </p>
                 ) : (
                   <p className="text-xs text-gray-400 mt-0.5">未开通会员</p>
                 )}

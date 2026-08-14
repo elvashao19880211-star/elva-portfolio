@@ -17,8 +17,18 @@ function mergePurchases(server: PurchaseItem[], local: PurchaseItem[]): Purchase
   return Array.from(map.values()).sort((a, b) => b.purchasedAt - a.purchasedAt);
 }
 
+function formatDate(iso: string): string {
+  const d = new Date(iso);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+function isMemberActive(user: { memberExpiresAt?: string } | null): boolean {
+  if (!user?.memberExpiresAt) return false;
+  return new Date(user.memberExpiresAt).getTime() > Date.now();
+}
+
 export default function AccountPage() {
-  const [user, setUser] = useState<{ nickname: string } | null>(null);
+  const [user, setUser] = useState<{ nickname: string; email?: string; memberTier?: string; memberExpiresAt?: string } | null>(null);
   const [loading, setLoading] = useState(true);
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
   const [purchases, setPurchases] = useState<PurchaseItem[]>([]);
@@ -63,6 +73,20 @@ export default function AccountPage() {
               <h3 className="text-sm font-semibold text-ink">
                 {loading ? '加载中...' : user ? user.nickname : '未登录'}
               </h3>
+              {user && isMemberActive(user) ? (
+                <div className="mt-1.5 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gold/10 text-gold text-[10px] font-medium">
+                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
+                  </svg>
+                  会员 · 至 {formatDate(user.memberExpiresAt!)}
+                </div>
+              ) : (
+                user && (
+                  <Link href="/member" className="mt-1 inline-flex items-center gap-0.5 text-[10px] text-qing hover:underline">
+                    开通会员
+                  </Link>
+                )
+              )}
               {!loading && !user && (
                 <Link href="/login" className="text-xs text-gold hover:underline mt-1">
                   登录/注册 →
