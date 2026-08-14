@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -27,9 +27,37 @@ function isMemberActive(user: { memberExpiresAt?: string } | null): boolean {
   return new Date(user.memberExpiresAt).getTime() > Date.now();
 }
 
+function compressAvatar(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new window.Image();
+      img.onload = () => {
+        const size = 256;
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) { reject(new Error('canvas')); return; }
+        const min = Math.min(img.width, img.height);
+        const sx = (img.width - min) / 2;
+        const sy = (img.height - min) / 2;
+        ctx.drawImage(img, sx, sy, min, min, 0, 0, size, size);
+        resolve(canvas.toDataURL('image/webp', 0.82));
+      };
+      img.onerror = () => reject(new Error('image'));
+      img.src = reader.result as string;
+    };
+    reader.onerror = () => reject(new Error('read'));
+    reader.readAsDataURL(file);
+  });
+}
+
 export default function AccountPage() {
-  const [user, setUser] = useState<{ nickname: string; email?: string; memberTier?: string; memberExpiresAt?: string } | null>(null);
+  const [user, setUser] = useState<{ nickname: string; email?: string; memberTier?: string; memberExpiresAt?: string; avatar?: string } | null>(null);
   const [loading, setLoading] = useState(true);
+  const [avatarUploading, setAvatarUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
   const [purchases, setPurchases] = useState<PurchaseItem[]>([]);
 
@@ -55,6 +83,32 @@ export default function AccountPage() {
       .catch(() => setPurchases(local));
   }, []);
 
+  async function handleAvatarChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setAvatarUploading(true);
+    try {
+      const dataUrl = await compressAvatar(file);
+      const res = await fetch('/api/auth/avatar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ avatar: dataUrl }),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setUser((u) => (u ? { ...u, avatar: dataUrl } : u));
+        alert('头像已更新');
+      } else {
+        alert(data.error || '更新失败');
+      }
+    } catch {
+      alert('更新失败，请重试');
+    } finally {
+      setAvatarUploading(false);
+      e.target.value = '';
+    }
+  }
+
   return (
     <main className="min-h-screen bg-[#F5F3EE] px-4 sm:px-6 py-8">
       <div className="max-w-6xl mx-auto">
@@ -67,9 +121,34 @@ export default function AccountPage() {
           {/* 用户卡片 */}
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-4">
             <div className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-qing to-gold flex items-center justify-center text-white text-2xl font-serif font-bold mb-3 shadow-sm">
-                {user ? user.nickname.charAt(0).toUpperCase() : '?'}
+              <div
+                className="relative group cursor-pointer"
+                onClick={() => { if (user && !avatarUploading) fileInputRef.current?.click(); }}
+              >
+                {user?.avatar ? (
+                  <img
+                    src={user.avatar}
+                    alt="头像"
+                    className="w-16 h-16 rounded-full object-cover mb-3 shadow-sm"
+                  />
+                ) : (
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-qing to-gold flex items-center justify-center text-white text-2xl font-serif font-bold mb-3 shadow-sm">
+                    {user ? user.nickname.charAt(0).toUpperCase() : '?'}
+                  </div>
+                )}
+                {user && (
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-2 py-0.5 text-[10px] text-white bg-black/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    {avatarUploading ? '上传中…' : '更换头像'}
+                  </div>
+                )}
               </div>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleAvatarChange}
+              />
               <h3 className="text-sm font-semibold text-ink">
                 {loading ? '加载中...' : user ? user.nickname : '未登录'}
               </h3>

@@ -10,6 +10,7 @@ export interface User {
   createdAt: string;
   memberTier?: string;      // 会员档位（personal / commercial）
   memberExpiresAt?: string; // 会员到期时间（ISO）
+  avatar?: string;          // 头像（base64 data URL）
 }
 
 // ============================================================
@@ -71,6 +72,13 @@ class JsonUserStore {
     const base = cur > now ? cur : now;
     u.memberTier = tier;
     u.memberExpiresAt = new Date(base + days * 86400000).toISOString();
+    await this.save();
+    return true;
+  }
+  async updateAvatar(id: string, avatar: string): Promise<boolean> {
+    const u = this.users.find(x => x.id === id);
+    if (!u) return false;
+    u.avatar = avatar;
     await this.save();
     return true;
   }
@@ -153,6 +161,20 @@ class RedisUserStore {
       const base = cur > now ? cur : now;
       user.memberTier = tier;
       user.memberExpiresAt = new Date(base + days * 86400000).toISOString();
+      await redis.set(`user:${id}`, JSON.stringify(user));
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  async updateAvatar(id: string, avatar: string): Promise<boolean> {
+    try {
+      const redis = await this.getClient();
+      const data = await redis.get(`user:${id}`);
+      if (!data) return false;
+      const user: User = typeof data === 'string' ? JSON.parse(data) : data;
+      user.avatar = avatar;
       await redis.set(`user:${id}`, JSON.stringify(user));
       return true;
     } catch {
@@ -258,4 +280,9 @@ export async function activateMember(
 ): Promise<boolean> {
   await ensureInit();
   return store.activateMember(email, tier, days);
+}
+
+export async function updateUserAvatar(id: string, avatar: string): Promise<boolean> {
+  await ensureInit();
+  return store.updateAvatar(id, avatar);
 }

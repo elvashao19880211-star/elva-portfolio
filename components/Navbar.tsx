@@ -19,7 +19,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [user, setUser] = useState<{ nickname: string } | null>(null);
+  const [user, setUser] = useState<{ nickname: string; email?: string; memberTier?: string; memberExpiresAt?: string; avatar?: string } | null>(null);
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   useEffect(() => {
@@ -27,6 +27,8 @@ export default function Navbar() {
       if (d.user) setUser(d.user);
     }).catch(() => {});
   }, [pathname]);
+
+  const isMember = !!user?.memberExpiresAt && new Date(user.memberExpiresAt).getTime() > Date.now();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100" data-nav-version="v2-session">
@@ -72,12 +74,22 @@ export default function Navbar() {
                 onClick={() => setShowUserMenu(!showUserMenu)}
                 className="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-gray-50 transition-colors"
               >
-                <div className="w-7 h-7 rounded-full bg-qing flex items-center justify-center">
-                  <span className="text-white text-xs font-medium">
-                    {user.nickname.charAt(0)}
-                  </span>
-                </div>
+                {user.avatar ? (
+                  <img src={user.avatar} alt={user.nickname} className="w-7 h-7 rounded-full object-cover" />
+                ) : (
+                  <div className="w-7 h-7 rounded-full bg-qing flex items-center justify-center">
+                    <span className="text-white text-xs font-medium">
+                      {user.nickname.charAt(0)}
+                    </span>
+                  </div>
+                )}
                 <span className="text-sm text-ink">{user.nickname}</span>
+                {isMember && (
+                  <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-gold/10 text-gold text-[10px] font-medium">
+                    <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4 4 5-7 5 7 4-4-1.5 10h-15L3 8z"/></svg>
+                    会员
+                  </span>
+                )}
               </button>
               {showUserMenu && (
                 <div className="absolute right-0 top-full mt-2 bg-white rounded-xl shadow-lg border border-gray-100 py-2 min-w-[120px] z-50">
@@ -161,10 +173,20 @@ export default function Navbar() {
           {user ? (
             <>
               <div className="flex items-center gap-2 px-4 py-2.5 text-sm text-ink">
-                <div className="w-6 h-6 rounded-full bg-qing flex items-center justify-center">
-                  <span className="text-white text-[10px] font-medium">{user.nickname.charAt(0)}</span>
-                </div>
+                {user.avatar ? (
+                  <img src={user.avatar} alt={user.nickname} className="w-6 h-6 rounded-full object-cover" />
+                ) : (
+                  <div className="w-6 h-6 rounded-full bg-qing flex items-center justify-center">
+                    <span className="text-white text-[10px] font-medium">{user.nickname.charAt(0)}</span>
+                  </div>
+                )}
                 {user.nickname}
+                {isMember && (
+                  <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-gold/10 text-gold text-[10px] font-medium">
+                    <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4 4 5-7 5 7 4-4-1.5 10h-15L3 8z"/></svg>
+                    会员
+                  </span>
+                )}
               </div>
               <button
                 onClick={async () => {
