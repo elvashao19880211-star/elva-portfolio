@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Image from 'next/image';
 
 interface LightboxProps {
   src: string;
@@ -40,12 +41,15 @@ export default function Lightbox({ src, title, onClose, onDownload, downloadLabe
         className="relative max-w-[92vw] max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={src}
-          alt={title}
-          className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
-        />
+        <div className="relative w-[92vw] h-[80vh]">
+          <Image
+            src={src}
+            alt={title}
+            fill
+            className="object-contain rounded-lg shadow-2xl"
+            sizes="92vw"
+          />
+        </div>
         {(title || onDownload) && (
           <div className="mt-4 flex flex-col items-center gap-3">
             {title && <p className="text-white/80 text-center text-sm font-serif">{title}</p>}
