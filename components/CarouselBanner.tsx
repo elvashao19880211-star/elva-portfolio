@@ -4,9 +4,9 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 
 const slides = [
-  { src: '/images/revival/初唐-四人飞天.png', alt: '初唐·四人飞天' },
-  { src: '/images/revival/明代-摩羯纹.png', alt: '明代·摩羯纹' },
-  { src: '/images/banner/唐代-花鸟纹.png', alt: '唐代·花鸟纹' },
+  { src: '/images/banner/初唐-四人飞天.png', alt: '初唐·四人飞天' },
+  { src: '/images/banner/明代-摩羯纹.png', alt: '明代·摩羯纹' },
+  { src: '/images/banner/清代-宫灯纹.png', alt: '清代·宫灯纹' },
 ];
 
 export default function CarouselBanner() {
