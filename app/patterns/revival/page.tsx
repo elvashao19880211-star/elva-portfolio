@@ -249,7 +249,7 @@ export default function RevivalPatternsPage() {
                     type: 'revival',
                     addedAt: Date.now(),
                   }}
-                  className="absolute top-3 right-3 p-1.5 rounded-full bg-white/90 shadow-sm"
+                  className="absolute bottom-3 right-3 p-1.5"
                 />
               </div>
               <div className="p-3 sm:p-5">
