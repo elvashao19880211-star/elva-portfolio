@@ -146,7 +146,7 @@ export default function CooperationPage() {
         </div>
       </section>
 
-      {/* ===== 合作案例 ===== */}
+      {/* ===== 合作案例（暂缓展示：案例不多且未获授权公开）=====
       <section className="px-4 sm:px-6 py-16 sm:py-20 max-w-6xl mx-auto">
         <h2 className="text-3xl font-serif font-semibold text-ink text-center mb-4">合作案例</h2>
         <p className="text-gray-500 text-center mb-14 max-w-lg mx-auto">
@@ -192,6 +192,7 @@ export default function CooperationPage() {
           ))}
         </div>
       </section>
+      */}
 
       {/* ===== 联系与询盘表单 ===== */}
       <section className="px-4 sm:px-6 py-16 sm:py-20 bg-gradient-to-br from-qing/5 to-gold/5">

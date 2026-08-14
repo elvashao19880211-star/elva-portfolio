@@ -27,7 +27,7 @@ export default function HomePage() {
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/5 border border-gold/10">
               核心著作《中国历代经典纹样》
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-50 border border-gray-100">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-ink/5 border border-ink/10">
               学术级复原标准
             </span>
           </div>
