@@ -14,3 +14,6 @@ temp-pkg/
 *.tsbuildinfo
 _check.js
 "how --stat 8dd986d"
+.env
+.env.local
+.env*.local

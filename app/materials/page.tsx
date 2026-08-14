@@ -187,18 +187,33 @@ export default function MaterialsPage() {
       .catch(() => {});
   }, []);
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!lightbox) return;
-    if (isMember) {
+    if (!isMember) {
+      setLightbox(null);
+      setShowMembership(true);
+      return;
+    }
+    try {
+      const filename = lightbox.src.split('/').pop() || '素材.png';
+      const res = await fetch(`/api/materials/download?name=materials/${encodeURIComponent(filename)}`);
+      const d = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        if (res.status === 401 || res.status === 403) {
+          setLightbox(null);
+          setShowMembership(true);
+        }
+        alert(d.error || '下载失败，请稍后再试');
+        return;
+      }
       const link = document.createElement('a');
-      link.href = lightbox.src;
-      link.download = `${lightbox.title || '素材'}.png`;
+      link.href = d.url;
+      link.download = filename;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-    } else {
-      setLightbox(null);
-      setShowMembership(true);
+    } catch {
+      alert('下载失败，请稍后再试');
     }
   };
 
