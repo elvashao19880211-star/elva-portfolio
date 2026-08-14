@@ -4,9 +4,9 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 
 const slides = [
-  // TODO: 「和合二仙」竖版图已移除，替换为横版图
-  { src: '/image-two.png', alt: '纹样作品 2' },
-  { src: '/image-three.png', alt: '纹样作品 3' },
+  { src: '/images/revival/初唐-四人飞天.png', alt: '初唐·四人飞天' },
+  { src: '/images/revival/明代-摩羯纹.png', alt: '明代·摩羯纹' },
+  { src: '/images/banner/唐代-花鸟纹.png', alt: '唐代·花鸟纹' },
 ];
 
 export default function CarouselBanner() {
