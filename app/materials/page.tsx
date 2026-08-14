@@ -222,6 +222,7 @@ export default function MaterialsPage() {
           title,
           amount,
           userEmail: user.email,
+          backUrl: '/materials',
         }),
       });
       if (!res.ok) {

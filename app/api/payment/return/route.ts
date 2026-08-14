@@ -11,6 +11,8 @@ export async function GET(req: NextRequest) {
   let status: 'success' | 'pending' = 'pending';
   let title = '支付结果';
   let type: 'member' | 'pattern' = 'member';
+  let backHref = '/member';
+  let backText = '返回会员中心';
 
   if (outTradeNo) {
     const order = await getOrder(outTradeNo);
@@ -18,11 +20,18 @@ export async function GET(req: NextRequest) {
       title = order.title;
       type = order.type;
       if (order.status === 'paid') status = 'success';
+      if (order.backUrl) {
+        backHref = order.backUrl;
+        backText = '返回继续操作';
+      } else if (type === 'member') {
+        backHref = '/member';
+        backText = '返回会员中心';
+      } else {
+        backHref = '/patterns/revival';
+        backText = '返回纹样作品';
+      }
     }
   }
-
-  const backHref = type === 'member' ? '/member' : '/patterns/revival';
-  const backText = type === 'member' ? '返回会员中心' : '返回纹样作品';
 
   // pending 时嵌入轮询脚本，支付到账后自动刷新
   const pollScript = status === 'pending' && outTradeNo

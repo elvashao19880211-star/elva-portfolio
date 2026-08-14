@@ -15,6 +15,7 @@ export interface Order {
   userEmail?: string;
   src?: string;               // 纹样图片路径（pattern 类型）
   patternType?: 'revival' | 'innovation'; // 纹样类型
+  backUrl?: string;            // 支付完成后跳回地址（可选，默认按类型）
   createdAt: string;
   paidAt?: string;
 }
