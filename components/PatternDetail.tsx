@@ -182,18 +182,42 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
     }
   };
 
-  const handleDownload = (clean: boolean = false) => {
-    let url = pattern.src;
-    if (clean) {
-      // 商业/会员下载 → 使用无水印版本
-      url = pattern.src.replace('/revival/', '/revival-clean/').replace('/innovation/', '/innovation-clean/');
+  const handleDownload = async (clean: boolean = false) => {
+    const filename = pattern.src.split('/').pop() || `${pattern.title || '纹样'}.png`;
+
+    if (!clean) {
+      // 水印版：直接下载公开图
+      const link = document.createElement('a');
+      link.href = pattern.src;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      return;
     }
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `${pattern.title || '纹样'}.png`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+
+    // 无水印：走 OSS 签名 URL（登录 + 已购校验）
+    try {
+      const category = pattern.src.includes('/revival/') ? 'revival' : 'innovation';
+      const res = await fetch(
+        `/api/patterns/download?name=${encodeURIComponent(category + '/' + filename)}`
+      );
+      const data = await res.json();
+      if (!res.ok) {
+        if (res.status === 401) alert('请先登录账号');
+        else if (data.code === 'NOT_OWNED') alert('尚未购买该纹样，请先购买授权');
+        else alert(data.error || '下载失败');
+        return;
+      }
+      const link = document.createElement('a');
+      link.href = data.url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch {
+      alert('下载失败，请重试');
+    }
   };
 
   const getPriceText = (tier: PurchaseTier) => TIER_CONFIG[tier].getPrice(isRevival);
@@ -493,9 +517,9 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
-                  下载图片（无水印）
+                  下载图片（带水印）
                 </button>
-                <p className="text-[10px] text-gray-400">水印仅供参考学习，不含商业使用权</p>
+                <p className="text-[10px] text-gray-400">带水印版本，仅供个人学习参考，不含商业使用权</p>
               </div>
             )}
 
