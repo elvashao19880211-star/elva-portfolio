@@ -18,13 +18,15 @@ export async function POST(req: NextRequest) {
     const body = await req.json().catch(() => null);
     if (!body) return NextResponse.json({ error: '请求体无效' }, { status: 400 });
 
-    const { type, planId, tier, title, amount, userEmail } = body as {
+    const { type, planId, tier, title, amount, userEmail, src, patternType } = body as {
       type?: 'member' | 'pattern';
       planId?: string;
       tier?: string;
       title?: string;
       amount?: number;
       userEmail?: string;
+      src?: string;
+      patternType?: 'revival' | 'innovation';
     };
 
     if (type !== 'member' && type !== 'pattern') {
@@ -54,6 +56,8 @@ export async function POST(req: NextRequest) {
       amount: Number(totalAmount),
       status: 'pending',
       userEmail: userEmail || undefined,
+      src: src || undefined,
+      patternType: patternType || undefined,
       createdAt: new Date().toISOString(),
     });
 

@@ -5,8 +5,18 @@ import Breadcrumb from '../../components/Breadcrumb';
 import SectionTitle from '../../components/SectionTitle';
 import { MEMBER_PLANS, PATTERN_PRICING, ENTERPRISE_SERVICE } from './data';
 
+function isMemberActive(user: { memberExpiresAt?: string }): boolean {
+  if (!user.memberExpiresAt) return false;
+  return new Date(user.memberExpiresAt).getTime() > Date.now();
+}
+
+function formatDate(iso: string): string {
+  const d = new Date(iso);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
 export default function MemberPage() {
-  const [user, setUser] = useState<{ nickname: string; email?: string } | null>(null);
+  const [user, setUser] = useState<{ nickname: string; email?: string; memberTier?: string; memberExpiresAt?: string } | null>(null);
   const [loading, setLoading] = useState(true);
   const [showPay, setShowPay] = useState(false);
   const [payInfo, setPayInfo] = useState<{ title: string; price: string; planId: string; amount: number }>({ title: '', price: '', planId: '', amount: 0 });
@@ -91,7 +101,14 @@ export default function MemberPage() {
             {loading ? (
               <p className="text-sm text-gray-300">加载中...</p>
             ) : user ? (
-              <p className="text-sm font-medium text-ink">{user.nickname}</p>
+              <>
+                <p className="text-sm font-medium text-ink">{user.nickname}</p>
+                {isMemberActive(user) ? (
+                  <p className="text-xs text-gold mt-0.5">会员有效至 {formatDate(user.memberExpiresAt!)}</p>
+                ) : (
+                  <p className="text-xs text-gray-400 mt-0.5">未开通会员</p>
+                )}
+              </>
             ) : (
               <p className="text-sm text-gray-400">未登录 · 请先注册</p>
             )}

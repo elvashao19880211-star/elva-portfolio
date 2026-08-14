@@ -8,6 +8,8 @@ export interface User {
   passwordHash: string;
   nickname: string;
   createdAt: string;
+  memberTier?: string;      // 会员档位（personal / commercial）
+  memberExpiresAt?: string; // 会员到期时间（ISO）
 }
 
 // ============================================================
@@ -60,6 +62,17 @@ class JsonUserStore {
   async create(user: User): Promise<void> {
     this.users.push(user);
     await this.save();
+  }
+  async activateMember(email: string, tier: string, days: number): Promise<boolean> {
+    const u = this.users.find(x => x.email?.toLowerCase() === email.toLowerCase());
+    if (!u) return false;
+    const now = Date.now();
+    const cur = u.memberExpiresAt ? new Date(u.memberExpiresAt).getTime() : 0;
+    const base = cur > now ? cur : now;
+    u.memberTier = tier;
+    u.memberExpiresAt = new Date(base + days * 86400000).toISOString();
+    await this.save();
+    return true;
   }
 }
 
@@ -124,6 +137,26 @@ class RedisUserStore {
       await redis.set(`user:nickname:${user.nickname}`, user.id);
     } catch (e: any) {
       throw new Error(`Redis写入失败: ${e.message || e}`);
+    }
+  }
+
+  async activateMember(email: string, tier: string, days: number): Promise<boolean> {
+    try {
+      const redis = await this.getClient();
+      const id = await redis.get(`user:email:${email.toLowerCase()}`);
+      if (!id) return false;
+      const data = await redis.get(`user:${id}`);
+      if (!data) return false;
+      const user: User = typeof data === 'string' ? JSON.parse(data) : data;
+      const now = Date.now();
+      const cur = user.memberExpiresAt ? new Date(user.memberExpiresAt).getTime() : 0;
+      const base = cur > now ? cur : now;
+      user.memberTier = tier;
+      user.memberExpiresAt = new Date(base + days * 86400000).toISOString();
+      await redis.set(`user:${id}`, JSON.stringify(user));
+      return true;
+    } catch {
+      return false;
     }
   }
 }
@@ -216,4 +249,13 @@ export async function getUserById(id: string): Promise<Omit<User, 'passwordHash'
   if (!user) return null;
   const { passwordHash: _, ...safeUser } = user;
   return safeUser;
+}
+
+export async function activateMember(
+  email: string,
+  tier: string,
+  days: number
+): Promise<boolean> {
+  await ensureInit();
+  return store.activateMember(email, tier, days);
 }

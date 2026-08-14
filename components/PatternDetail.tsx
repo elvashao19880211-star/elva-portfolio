@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Lightbox from './Lightbox';
 import FavoriteButton from './FavoriteButton';
-import { addPurchase, savePendingPurchase, commitPendingPurchase } from '@/lib/userData';
+import { addPurchase, savePendingPurchase, commitPendingPurchase, hasPurchased } from '@/lib/userData';
 
 interface BasePattern {
   id: string;
@@ -67,6 +67,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
   const [orderSubmitted, setOrderSubmitted] = useState(false);
   const [buyerEmail, setBuyerEmail] = useState('');
   const [paying, setPaying] = useState(false);
+  const [owned, setOwned] = useState(false);
   const isRevival = pattern.type === 'revival' || !!pattern.dynasty;
 
   useEffect(() => {
@@ -85,6 +86,23 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
     // 兑底：若上次支付成功但结果页未转正，这里补转正
     commitPendingPurchase();
   }, []);
+
+  useEffect(() => {
+    // 已购状态：先查本地（手动确认），再查服务端（支付宝支付）
+    if (hasPurchased(pattern.id)) {
+      setOwned(true);
+      return;
+    }
+    const email = localStorage.getItem('hetu_buyer_email');
+    if (!email) return;
+    fetch(`/api/payment/owned?email=${encodeURIComponent(email)}`)
+      .then((r) => r.json())
+      .then((d) => {
+        const hit = d.patterns?.find((p: { id: string }) => p.id === pattern.id);
+        if (hit) setOwned(true);
+      })
+      .catch(() => {});
+  }, [pattern.id]);
 
   const handleSelectTier = (tier: PurchaseTier) => {
     setSelectedTier(tier);
@@ -107,6 +125,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
       purchasedAt: Date.now(),
       email: buyerEmail.trim(),
     });
+    localStorage.setItem('hetu_buyer_email', buyerEmail.trim());
     setOrderSubmitted(true);
   };
 
@@ -127,6 +146,8 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
           title: `${pattern.title}（${cfg.label}）`,
           amount,
           userEmail: buyerEmail.trim(),
+          src: pattern.src,
+          patternType: isRevival ? 'revival' : 'innovation',
         }),
       });
       if (!res.ok) {
@@ -141,6 +162,8 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
         setPaying(false);
         return;
       }
+      // 记住买家邮箱（用于已购状态查询）
+      localStorage.setItem('hetu_buyer_email', buyerEmail.trim());
       // 跳转前先暂存待支付，支付成功跳回结果页后转正
       savePendingPurchase({
         id: pattern.id,
@@ -304,12 +327,24 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
             </div>
 
             <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
-              <button
-                onClick={() => setShowBuy(true)}
-                className="btn-gold flex-1 text-xs py-2.5"
-              >
-                购买授权
-              </button>
+              {owned ? (
+                <button
+                  onClick={() => handleDownload(true)}
+                  className="btn-gold flex-1 text-xs py-2.5 flex items-center justify-center gap-1.5"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  已购 · 下载无水印图
+                </button>
+              ) : (
+                <button
+                  onClick={() => setShowBuy(true)}
+                  className="btn-gold flex-1 text-xs py-2.5"
+                >
+                  购买授权
+                </button>
+              )}
               <FavoriteButton
                 item={{
                   id: pattern.id,
@@ -322,7 +357,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               />
             </div>
             <p className="text-[10px] text-gray-300 text-center -mt-2">
-              免费预览 · 下载无水印需购买
+              {owned ? '已购 · 可直接下载' : '免费预览 · 下载无水印需购买'}
             </p>
           </div>
         </div>

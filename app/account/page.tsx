@@ -7,6 +7,16 @@ import { usePathname } from 'next/navigation';
 import Breadcrumb from '../../components/Breadcrumb';
 import { getFavorites, getPurchases, type FavoriteItem, type PurchaseItem } from '@/lib/userData';
 
+function mergePurchases(server: PurchaseItem[], local: PurchaseItem[]): PurchaseItem[] {
+  const map = new Map<string, PurchaseItem>();
+  for (const p of server) map.set(`${p.id}-${p.tier}`, p);
+  for (const p of local) {
+    const key = `${p.id}-${p.tier}`;
+    if (!map.has(key)) map.set(key, p);
+  }
+  return Array.from(map.values()).sort((a, b) => b.purchasedAt - a.purchasedAt);
+}
+
 export default function AccountPage() {
   const [user, setUser] = useState<{ nickname: string } | null>(null);
   const [loading, setLoading] = useState(true);
@@ -23,7 +33,16 @@ export default function AccountPage() {
       .catch(() => setLoading(false));
 
     setFavorites(getFavorites());
-    setPurchases(getPurchases());
+
+    // 已购：服务端权威 + localStorage 兜底合并
+    const local = getPurchases();
+    fetch('/api/purchases')
+      .then((r) => r.json())
+      .then((d) => {
+        const server: PurchaseItem[] = Array.isArray(d.purchases) ? d.purchases : [];
+        setPurchases(mergePurchases(server, local));
+      })
+      .catch(() => setPurchases(local));
   }, []);
 
   return (

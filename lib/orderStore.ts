@@ -13,6 +13,8 @@ export interface Order {
   amount: number;           // 金额（元）
   status: 'pending' | 'paid' | 'closed';
   userEmail?: string;
+  src?: string;               // 纹样图片路径（pattern 类型）
+  patternType?: 'revival' | 'innovation'; // 纹样类型
   createdAt: string;
   paidAt?: string;
 }
@@ -63,6 +65,12 @@ class JsonOrderStore {
     await this.save();
     return o;
   }
+  async listPaidPatternsByEmail(email: string): Promise<Order[]> {
+    const e = email.toLowerCase();
+    return this.orders.filter(
+      (o) => o.type === 'pattern' && o.status === 'paid' && o.userEmail?.toLowerCase() === e
+    );
+  }
 }
 
 class RedisOrderStore {
@@ -99,7 +107,31 @@ class RedisOrderStore {
     o.paidAt = new Date().toISOString();
     const redis = await this.getClient();
     await redis.set(`order:${no}`, JSON.stringify(o));
+    // 维护邮箱索引（纹样购买权益查询用）
+    if (o.type === 'pattern' && o.userEmail) {
+      try {
+        await redis.sadd(`email:${o.userEmail.toLowerCase()}:patterns`, no);
+      } catch {}
+    }
     return o;
+  }
+  async listPaidPatternsByEmail(email: string): Promise<Order[]> {
+    try {
+      const redis = await this.getClient();
+      const nos = await redis.smembers(`email:${email.toLowerCase()}:patterns`);
+      if (!nos || !nos.length) return [];
+      const orders: Order[] = [];
+      for (const no of nos) {
+        const data = await redis.get(`order:${no}`);
+        if (data) {
+          const o = typeof data === 'string' ? JSON.parse(data) as Order : data as Order;
+          if (o.status === 'paid') orders.push(o);
+        }
+      }
+      return orders;
+    } catch {
+      return [];
+    }
   }
 }
 
@@ -125,4 +157,9 @@ export async function getOrder(no: string): Promise<Order | null> {
 export async function markOrderPaid(no: string): Promise<Order | null> {
   await ensureInit();
   return store.markPaid(no);
+}
+
+export async function getPaidPatternsByEmail(email: string): Promise<Order[]> {
+  await ensureInit();
+  return store.listPaidPatternsByEmail(email);
 }

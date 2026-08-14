@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server';
 import { verifyNotify } from '@/lib/alipay';
 import { getOrder, markOrderPaid } from '@/lib/orderStore';
+import { activateMember } from '@/lib/userStore';
 
 /**
  * 支付宝异步通知回调（POST）
@@ -49,6 +50,13 @@ export async function POST(req: NextRequest) {
     if (order.status !== 'paid') {
       await markOrderPaid(outTradeNo);
       console.log('payment/notify 支付成功:', outTradeNo, order.title);
+
+      // 会员订单：支付成功后自动开通会员权益
+      if (order.type === 'member' && order.userEmail) {
+        const tier = order.tier || order.planId || 'personal';
+        const ok = await activateMember(order.userEmail, tier, 365);
+        console.log('payment/notify 激活会员:', order.userEmail, tier, ok ? '成功' : '失败');
+      }
     }
 
     return new Response('success');
