@@ -221,18 +221,8 @@ export default function InnovationPatternsPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <FavoriteButton
-                    item={{
-                      id: item.id,
-                      title: item.title,
-                      src: item.src,
-                      type: 'innovation',
-                      addedAt: Date.now(),
-                    }}
-                    className="absolute bottom-3 right-3 p-1.5"
-                  />
                 </div>
-                <div className="p-3 sm:p-5">
+                <div className="p-3 sm:p-5 relative">
                   <h3 className="text-xs sm:text-base font-serif font-semibold text-ink mb-0.5 sm:mb-1.5 line-clamp-1">
                     {item.title}
                   </h3>
@@ -248,6 +238,16 @@ export default function InnovationPatternsPage() {
                       </span>
                     ))}
                   </div>
+                  <FavoriteButton
+                    item={{
+                      id: item.id,
+                      title: item.title,
+                      src: item.src,
+                      type: 'innovation',
+                      addedAt: Date.now(),
+                    }}
+                    className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3"
+                  />
                 </div>
               </div>
             ))
