@@ -628,7 +628,7 @@ function AuthorizationDoc({
           <div className="bg-qing/5 rounded-xl p-4 border border-qing/10 space-y-1">
             <p><span className="font-semibold">授权编号：</span>{authId}</p>
             <p><span className="font-semibold">授权日期：</span>{today}</p>
-            <p><span className="font-semibold">授权方：</span>河图纹样工作室</p>
+            <p><span className="font-semibold">授权方：</span>河图纹画工作室</p>
           </div>
 
           <div className="bg-gold/5 rounded-xl p-4 border border-gold/10 space-y-1">
@@ -672,7 +672,7 @@ function AuthorizationDoc({
           <div className="bg-amber-50 rounded-xl p-4 border border-amber-100 text-xs">
             <p className="font-semibold text-amber-800 mb-1">⚠️ 重要提示</p>
             <p className="text-amber-700">
-              本授权为非独占许可，著作权归河图纹样工作室所有。如发现将纹样注册商标的行为，
+              本授权为非独占许可，著作权归河图纹画工作室所有。如发现将纹样注册商标的行为，
               本授权自动终止，工作室保留追诉权利。
             </p>
           </div>
@@ -680,12 +680,12 @@ function AuthorizationDoc({
           <div className="text-center pt-2 border-t border-gray-100">
             <div className="flex items-center justify-between mt-3">
               <div className="text-left text-xs text-gray-500">
-                <p>授权方：河图纹样工作室</p>
+                <p>授权方：河图纹画工作室</p>
                 <p>日期：{today}</p>
               </div>
               <div className="w-24 h-24 rounded-full border-2 border-red-400 flex items-center justify-center bg-red-50/30 select-none">
                 <div className="text-center">
-                  <p className="text-[10px] text-red-600/80 font-serif leading-tight">河图纹样</p>
+                  <p className="text-[10px] text-red-600/80 font-serif leading-tight">河图纹画</p>
                   <p className="text-[8px] text-red-500/60">HETU PATTERN</p>
                   <p className="text-[8px] text-red-400/50 mt-0.5">授权专用章</p>
                 </div>

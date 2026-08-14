@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: '用户协议 - 河图纹样',
+  title: '用户协议 - 河图纹画',
 };
 
 export default function TermsPage() {
@@ -15,7 +15,7 @@ export default function TermsPage() {
         <div className="prose prose-sm max-w-none text-gray-700 space-y-6">
           <section>
             <h2 className="text-lg font-serif font-semibold text-ink mt-8 mb-3">一、协议范围</h2>
-            <p>本协议是您（以下简称"用户"）与河图纹样网站（www.hetu-pattern.com，以下简称"本站"）之间关于使用本站服务所订立的协议。注册或使用本站即表示您同意本协议全部条款。</p>
+            <p>本协议是您（以下简称"用户"）与河图纹画网站（www.hetu-pattern.com，以下简称"本站"）之间关于使用本站服务所订立的协议。注册或使用本站即表示您同意本协议全部条款。</p>
           </section>
 
           <section>

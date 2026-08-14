@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: '退款政策 - 河图纹样',
+  title: '退款政策 - 河图纹画',
 };
 
 export default function RefundPage() {

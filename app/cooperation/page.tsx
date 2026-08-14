@@ -288,7 +288,7 @@ export default function CooperationPage() {
       {/* ===== Footer ===== */}
       <footer className="bg-ink text-white text-center py-10 px-6">
         <p className="text-gold font-medium mb-2">传承东方纹样之美</p>
-        <p className="text-white/50 text-sm">© {new Date().getFullYear()} 河图纹样 · 纹样定制与品牌合作</p>
+        <p className="text-white/50 text-sm">© {new Date().getFullYear()} 河图纹画 · 纹样定制与品牌合作</p>
       </footer>
     </main>
   );

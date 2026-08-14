@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: '隐私政策 - 河图纹样',
+  title: '隐私政策 - 河图纹画',
 };
 
 export default function PrivacyPage() {

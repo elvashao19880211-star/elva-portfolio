@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: '版权声明 - 河图纹样',
+  title: '版权声明 - 河图纹画',
 };
 
 export default function CopyrightPage() {

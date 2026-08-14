@@ -67,7 +67,7 @@ export default function CommunityPage() {
       </div>
 
       <p className="text-center text-xs text-gray-300 mt-16">
-        内容持续更新 · 有问题欢迎在小红书 @河图纹样 留言
+        内容持续更新 · 有问题欢迎在小红书 @河图纹画 留言
       </p>
     </main>
   );

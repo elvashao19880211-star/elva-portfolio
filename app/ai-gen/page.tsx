@@ -17,7 +17,7 @@ export default function AIGenPage() {
           AI 纹样生成器
         </h1>
         <p className="text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
-          正在基于河图纹样库训练专属模型，让每个人都能通过选择朝代、结构、主题，
+          正在基于河图纹画库训练专属模型，让每个人都能通过选择朝代、结构、主题，
           一键生成独一无二的传统纹样。
         </p>
       </section>
