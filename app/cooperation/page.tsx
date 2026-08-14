@@ -274,11 +274,7 @@ export default function CooperationPage() {
             <div className="flex justify-center gap-8">
               <div className="text-center">
                 <span className="block text-2xl mb-1">📮</span>
-                <span className="text-xs text-gray-400">小红书：@Elva纹样设计</span>
-              </div>
-              <div className="text-center">
-                <span className="block text-2xl mb-1">💬</span>
-                <span className="text-xs text-gray-400">微信：elva_pattern</span>
+                <span className="text-xs text-gray-400">小红书：@河图纹画</span>
               </div>
               <div className="text-center">
                 <span className="block text-2xl mb-1">📧</span>
