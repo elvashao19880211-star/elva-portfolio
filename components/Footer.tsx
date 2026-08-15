@@ -40,7 +40,7 @@ export default function Footer() {
             </h5>
             <ul className="space-y-2">
               {[
-                { label: '交流区', href: '/community' },
+                { label: '纹样知识库', href: '/community' },
                 { label: '合作咨询', href: '/cooperation' },
               ].map((l) => (
                 <li key={l.label}>
