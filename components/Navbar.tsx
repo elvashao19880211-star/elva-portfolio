@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const NAV_LINKS = [
   { label: '首页', href: '/' },
@@ -35,10 +36,13 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-20">
         {/* Logo */}
         <a href="/" className="shrink-0">
-          <img
-            src="/logo/logo-dragon.png"
+          <Image
+            src="/logo/logo-dragon.webp"
             alt="河图"
+            width={256}
+            height={256}
             className="h-9 sm:h-10 w-auto"
+            priority
           />
         </a>
 
