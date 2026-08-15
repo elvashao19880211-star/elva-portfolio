@@ -268,7 +268,7 @@ const materials: MaterialItem[] = [
     structureL2: '角隅纹样',
     colors: ["多色"],
     description: '北凉壁画，飞天纹，单独排布，多色配色',
-    src: '/images/materials/北凉-壁画-飞天纹-单独-多色.png',
+    src: '/images/materials/北凉-壁画-飞天纹-单独-多色.webp',
   },
   {
     id: 'mat-m001',
@@ -281,7 +281,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["多色"],
     description: '唐代壁画，宝相花，适合离心排布，多色配色',
-    src: '/images/materials/唐代-壁画-宝相花-适合离心-多色.png',
+    src: '/images/materials/唐代-壁画-宝相花-适合离心-多色.webp',
   },
   {
     id: 'mat-m002',
@@ -294,7 +294,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["多色"],
     description: '唐代壁画，方形小宝相纹，四方连续排布，多色配色',
-    src: '/images/materials/唐代-壁画-方形小宝相纹-四方连续-多色.png',
+    src: '/images/materials/唐代-壁画-方形小宝相纹-四方连续-多色.webp',
   },
   {
     id: 'mat-m003',
@@ -307,7 +307,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["赭褐"],
     description: '唐代壁画，方形小宝相纹，四方连续排布，赭褐配色',
-    src: '/images/materials/唐代-壁画-方形小宝相纹-四方连续-赭褐.png',
+    src: '/images/materials/唐代-壁画-方形小宝相纹-四方连续-赭褐.webp',
   },
   {
     id: 'mat-m004',
@@ -320,7 +320,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["多色"],
     description: '唐代壁画，朵型宝相花，适合排布，多色配色',
-    src: '/images/materials/唐代-壁画-朵型宝相花-适合-多色.png',
+    src: '/images/materials/唐代-壁画-朵型宝相花-适合-多色.webp',
   },
   {
     id: 'mat-m005',
@@ -333,7 +333,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["多色"],
     description: '唐代壁画，牡丹纹，自由排布，多色配色',
-    src: '/images/materials/唐代-壁画-牡丹纹-自由-多色 (2).png',
+    src: '/images/materials/唐代-壁画-牡丹纹-自由-多色 (2).webp',
   },
   {
     id: 'mat-m007',
@@ -346,7 +346,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["多色"],
     description: '唐代壁画，牡丹纹，自由排布，多色配色',
-    src: '/images/materials/唐代-壁画-牡丹纹-自由-多色.png',
+    src: '/images/materials/唐代-壁画-牡丹纹-自由-多色.webp',
   },
   {
     id: 'mat-m008',
@@ -359,7 +359,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["赭褐"],
     description: '唐代方砖，牡丹莲纹，组合排布，赭褐配色',
-    src: '/images/materials/唐代-方砖-牡丹莲纹-组合-赭褐.png',
+    src: '/images/materials/唐代-方砖-牡丹莲纹-组合-赭褐.webp',
   },
   {
     id: 'mat-m009',
@@ -372,7 +372,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["绿翠"],
     description: '唐代漆器，对鸟团窠，四方连续排布，绿翠配色',
-    src: '/images/materials/唐代-漆器-对鸟团窠-四方连续-绿翠.png',
+    src: '/images/materials/唐代-漆器-对鸟团窠-四方连续-绿翠.webp',
   },
   {
     id: 'mat-m010',
@@ -385,7 +385,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["黄金"],
     description: '唐代漆器，方形花卉纹样，四方连续排布，黄金配色',
-    src: '/images/materials/唐代-漆器-方形花卉纹样-四方连续-黄金.png',
+    src: '/images/materials/唐代-漆器-方形花卉纹样-四方连续-黄金.webp',
   },
   {
     id: 'mat-m011',
@@ -398,7 +398,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["赤红"],
     description: '唐代织物，团花纹，四方连续排布，赤红配色',
-    src: '/images/materials/唐代-织物-团花纹-四方连续-赤红.png',
+    src: '/images/materials/唐代-织物-团花纹-四方连续-赤红.webp',
   },
   {
     id: 'mat-m012',
@@ -411,7 +411,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["赭褐"],
     description: '唐代织物，团花纹，四方连续排布，赭褐配色',
-    src: '/images/materials/唐代-织物-团花纹-四方连续-赭褐.png',
+    src: '/images/materials/唐代-织物-团花纹-四方连续-赭褐.webp',
   },
   {
     id: 'mat-m013',
@@ -424,7 +424,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["赭褐"],
     description: '唐代织物，小宝相纹，四方连续排布，赭褐配色',
-    src: '/images/materials/唐代-织物-小宝相纹-四方连续-赭褐.png',
+    src: '/images/materials/唐代-织物-小宝相纹-四方连续-赭褐.webp',
   },
   {
     id: 'mat-m014',
@@ -437,7 +437,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["赭褐"],
     description: '唐代织物，方形小宝相，四方连续排布，赭褐配色',
-    src: '/images/materials/唐代-织物-方形小宝相-四方连续-赭褐.png',
+    src: '/images/materials/唐代-织物-方形小宝相-四方连续-赭褐.webp',
   },
   {
     id: 'mat-m015',
@@ -450,7 +450,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["绿翠"],
     description: '唐代织物，方形小宝相纹，四方连续排布，绿翠配色',
-    src: '/images/materials/唐代-织物-方形小宝相纹-四方连续-绿翠.png',
+    src: '/images/materials/唐代-织物-方形小宝相纹-四方连续-绿翠.webp',
   },
   {
     id: 'mat-m016',
@@ -463,7 +463,7 @@ const materials: MaterialItem[] = [
     structureL2: '连缀式',
     colors: ["黄金"],
     description: '唐代织物，联珠对马纹，四方连续排布，黄金配色',
-    src: '/images/materials/唐代-织物-联珠对马纹-四方连续-黄金.png',
+    src: '/images/materials/唐代-织物-联珠对马纹-四方连续-黄金.webp',
   },
   {
     id: 'mat-m017',
@@ -476,7 +476,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["赭褐"],
     description: '唐代金银器，六出团花纹，适合排布，赭褐配色',
-    src: '/images/materials/唐代-金银器-六出团花纹-适合-赭褐.png',
+    src: '/images/materials/唐代-金银器-六出团花纹-适合-赭褐.webp',
   },
   {
     id: 'mat-m018',
@@ -489,7 +489,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["黄金"],
     description: '唐代金银器，团窠鹿纹，适合排布，黄金配色',
-    src: '/images/materials/唐代-金银器-团窠鹿纹-适合-黄金.png',
+    src: '/images/materials/唐代-金银器-团窠鹿纹-适合-黄金.webp',
   },
   {
     id: 'mat-m019',
@@ -502,7 +502,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["黄金"],
     description: '唐代金银器，团花纹，适合排布，黄金配色',
-    src: '/images/materials/唐代-金银器-团花纹-适合均衡-黄金.png',
+    src: '/images/materials/唐代-金银器-团花纹-适合均衡-黄金.webp',
   },
   {
     id: 'mat-m020',
@@ -515,7 +515,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["黄金"],
     description: '唐代金银器，摩羯纹，适合排布，黄金配色',
-    src: '/images/materials/唐代-金银器-摩羯纹-适合-黄金.png',
+    src: '/images/materials/唐代-金银器-摩羯纹-适合-黄金.webp',
   },
   {
     id: 'mat-m021',
@@ -528,7 +528,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["青蓝"],
     description: '唐代金银器，牡丹纹，适合排布，青蓝配色',
-    src: '/images/materials/唐代-金银器-牡丹纹-适合-青蓝.png',
+    src: '/images/materials/唐代-金银器-牡丹纹-适合-青蓝.webp',
   },
   {
     id: 'mat-m022',
@@ -541,7 +541,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["黄金"],
     description: '唐代金银器，狮子纹，适合排布，黄金配色',
-    src: '/images/materials/唐代-金银器-狮子纹-适合-黄金.png',
+    src: '/images/materials/唐代-金银器-狮子纹-适合-黄金.webp',
   },
   {
     id: 'mat-m023',
@@ -554,7 +554,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["黄金"],
     description: '唐代金银器，鸳鸯团窠纹，适合排布，黄金配色',
-    src: '/images/materials/唐代-金银器-鸳鸯团窠纹-适合-黄金.png',
+    src: '/images/materials/唐代-金银器-鸳鸯团窠纹-适合-黄金.webp',
   },
   {
     id: 'mat-m024',
@@ -567,7 +567,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["樱粉"],
     description: '宋代壁画，牡丹纹，自由排布，樱粉配色',
-    src: '/images/materials/宋代-壁画-牡丹纹-自由-樱粉.png',
+    src: '/images/materials/宋代-壁画-牡丹纹-自由-樱粉.webp',
   },
   {
     id: 'mat-m025',
@@ -580,7 +580,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["赤红"],
     description: '宋代壁画，石榴纹，自由排布，赤红配色',
-    src: '/images/materials/宋代-壁画-石榴纹-自由-赤红.png',
+    src: '/images/materials/宋代-壁画-石榴纹-自由-赤红.webp',
   },
   {
     id: 'mat-m026',
@@ -593,7 +593,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["多色"],
     description: '宋代画本，麒麟，自由排布，多色配色',
-    src: '/images/materials/宋代-画本-麒麟-自由-多色.png',
+    src: '/images/materials/宋代-画本-麒麟-自由-多色.webp',
   },
   {
     id: 'mat-m027',
@@ -606,7 +606,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["多色"],
     description: '宋代陶瓷，团花，自由排布，多色配色',
-    src: '/images/materials/宋代-陶瓷-团花-自由均衡-多色.png',
+    src: '/images/materials/宋代-陶瓷-团花-自由均衡-多色.webp',
   },
   {
     id: 'mat-m028',
@@ -619,7 +619,7 @@ const materials: MaterialItem[] = [
     structureL2: '连缀式',
     colors: ["多色"],
     description: '战国织物，麒麟，四方连续排布，多色配色',
-    src: '/images/materials/战国-织物-麒麟-四方连续-多色.png',
+    src: '/images/materials/战国-织物-麒麟-四方连续-多色.webp',
   },
   {
     id: 'mat-m029',
@@ -632,7 +632,7 @@ const materials: MaterialItem[] = [
     structureL2: '折线式',
     colors: ["绿翠"],
     description: '战国青铜器，三角云纹，二方连续排布，绿翠配色',
-    src: '/images/materials/战国-青铜器-三角云纹-二方连续-绿翠.png',
+    src: '/images/materials/战国-青铜器-三角云纹-二方连续-绿翠.webp',
   },
   {
     id: 'mat-m030',
@@ -645,7 +645,7 @@ const materials: MaterialItem[] = [
     structureL2: '折线式',
     colors: ["绿翠"],
     description: '战国青铜器，卷云纹，二方连续排布，绿翠配色',
-    src: '/images/materials/战国-青铜器-卷云纹-二方连续-绿翠.png',
+    src: '/images/materials/战国-青铜器-卷云纹-二方连续-绿翠.webp',
   },
   {
     id: 'mat-m031',
@@ -658,7 +658,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["多色"],
     description: '明代水陆画，团云，自由排布，多色配色',
-    src: '/images/materials/明代-水陆画-团云-自由-多色.png',
+    src: '/images/materials/明代-水陆画-团云-自由-多色.webp',
   },
   {
     id: 'mat-m032',
@@ -671,7 +671,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["黄金"],
     description: '明代水陆画，火焰云纹，自由排布，黄金配色',
-    src: '/images/materials/明代-水陆画-火焰云纹-自由-黄金 (2).png',
+    src: '/images/materials/明代-水陆画-火焰云纹-自由-黄金 (2).webp',
   },
   {
     id: 'mat-m033',
@@ -684,7 +684,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["黄金"],
     description: '明代水陆画，火焰云纹，自由排布，黄金配色',
-    src: '/images/materials/明代-水陆画-火焰云纹-自由-黄金.png',
+    src: '/images/materials/明代-水陆画-火焰云纹-自由-黄金.webp',
   },
   {
     id: 'mat-m034',
@@ -697,7 +697,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["黄金"],
     description: '明代织物，变型云雷纹，四方连续排布，黄金配色',
-    src: '/images/materials/明代-织物-变型云雷纹-四方连续-黄金.png',
+    src: '/images/materials/明代-织物-变型云雷纹-四方连续-黄金.webp',
   },
   {
     id: 'mat-m035',
@@ -710,7 +710,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["黄金"],
     description: '明代织物，变形四合云纹，四方连续排布，黄金配色',
-    src: '/images/materials/明代-织物-变形四合云纹-四方连续-黄金.png',
+    src: '/images/materials/明代-织物-变形四合云纹-四方连续-黄金.webp',
   },
   {
     id: 'mat-m036',
@@ -723,7 +723,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["黄金"],
     description: '明代织物，团云纹，四方连续排布，黄金配色',
-    src: '/images/materials/明代-织物-团云纹-四方连续-黄金.png',
+    src: '/images/materials/明代-织物-团云纹-四方连续-黄金.webp',
   },
   {
     id: 'mat-m037',
@@ -736,7 +736,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["绿翠"],
     description: '明代织物，杂宝团纹，四方连续排布，绿翠配色',
-    src: '/images/materials/明代-织物-杂宝团纹-四方连续-绿翠.png',
+    src: '/images/materials/明代-织物-杂宝团纹-四方连续-绿翠.webp',
   },
   {
     id: 'mat-m038',
@@ -749,7 +749,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["绿翠"],
     description: '明代织物，杂宝团花纹，四方连续排布，绿翠配色',
-    src: '/images/materials/明代-织物-杂宝团花纹-四方连续-绿翠.png',
+    src: '/images/materials/明代-织物-杂宝团花纹-四方连续-绿翠.webp',
   },
   {
     id: 'mat-m039',
@@ -762,7 +762,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["多色"],
     description: '明代织物，牡丹纹，四方连续排布，多色配色',
-    src: '/images/materials/明代-织物-牡丹纹-四方连续-多色.png',
+    src: '/images/materials/明代-织物-牡丹纹-四方连续-多色.webp',
   },
   {
     id: 'mat-m040',
@@ -775,7 +775,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["多色"],
     description: '明代陶瓷，如意四合云纹，自由排布，多色配色',
-    src: '/images/materials/明代-陶瓷-如意四合云纹-自由-多色.png',
+    src: '/images/materials/明代-陶瓷-如意四合云纹-自由-多色.webp',
   },
   {
     id: 'mat-m041',
@@ -788,7 +788,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["青蓝"],
     description: '明清织物，四合如意云纹，四方连续排布，青蓝配色',
-    src: '/images/materials/明清-织物-四合如意云纹-四方连续-青蓝.png',
+    src: '/images/materials/明清-织物-四合如意云纹-四方连续-青蓝.webp',
   },
   {
     id: 'mat-m042',
@@ -801,7 +801,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["黑墨"],
     description: '汉代漆器，云气纹，适合排布，黑墨配色',
-    src: '/images/materials/汉代-漆器-云气纹-适合-黑墨.png',
+    src: '/images/materials/汉代-漆器-云气纹-适合-黑墨.webp',
   },
   {
     id: 'mat-m043',
@@ -814,7 +814,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["赭褐"],
     description: '汉代漆器，卷云纹，二方连续排布，赭褐配色',
-    src: '/images/materials/汉代-漆器-卷云纹-二方连续-赭褐.png',
+    src: '/images/materials/汉代-漆器-卷云纹-二方连续-赭褐.webp',
   },
   {
     id: 'mat-m044',
@@ -827,7 +827,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["赭褐"],
     description: '汉代画像砖，麒麟纹，自由排布，赭褐配色',
-    src: '/images/materials/汉代-画像砖-麒麟纹-自由-赭褐.png',
+    src: '/images/materials/汉代-画像砖-麒麟纹-自由-赭褐.webp',
   },
   {
     id: 'mat-m045',
@@ -840,7 +840,7 @@ const materials: MaterialItem[] = [
     structureL2: '连缀式',
     colors: ["多色"],
     description: '汉代织物，乘云绣，四方连续排布，多色配色',
-    src: '/images/materials/汉代-织物-乘云绣-四方连续-多色.png',
+    src: '/images/materials/汉代-织物-乘云绣-四方连续-多色.webp',
   },
   {
     id: 'mat-m046',
@@ -853,7 +853,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["赭褐"],
     description: '汉代织物，麒麟纹，四方连续排布，赭褐配色',
-    src: '/images/materials/汉代-织物-麒麟纹-四方连续-赭褐.png',
+    src: '/images/materials/汉代-织物-麒麟纹-四方连续-赭褐.webp',
   },
   {
     id: 'mat-m047',
@@ -866,7 +866,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["赭褐"],
     description: '清代家具装饰，变形如意云纹，自由排布，赭褐配色',
-    src: '/images/materials/清代-家具装饰-变形如意云纹-自由-赭褐.png',
+    src: '/images/materials/清代-家具装饰-变形如意云纹-自由-赭褐.webp',
   },
   {
     id: 'mat-m048',
@@ -879,7 +879,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["多色"],
     description: '清代掐丝珐琅，宝相花纹，适合排布，多色配色',
-    src: '/images/materials/清代-掐丝珐琅-宝相花纹-适合-多色.png',
+    src: '/images/materials/清代-掐丝珐琅-宝相花纹-适合-多色.webp',
   },
   {
     id: 'mat-m049',
@@ -892,7 +892,7 @@ const materials: MaterialItem[] = [
     structureL2: '连缀式',
     colors: ["青蓝"],
     description: '清代掐丝珐琅，鱼鳞云纹，四方连续排布，青蓝配色',
-    src: '/images/materials/清代-掐丝珐琅-鱼鳞云纹-四方连续-青蓝.png',
+    src: '/images/materials/清代-掐丝珐琅-鱼鳞云纹-四方连续-青蓝.webp',
   },
   {
     id: 'mat-m050',
@@ -905,7 +905,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["赭褐"],
     description: '清代木器，勾莲纹，适合排布，赭褐配色',
-    src: '/images/materials/清代-木器-勾莲纹-适合-赭褐.png',
+    src: '/images/materials/清代-木器-勾莲纹-适合-赭褐.webp',
   },
   {
     id: 'mat-m051',
@@ -918,7 +918,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["赤红"],
     description: '清代木器，卷云纹，四方连续排布，赤红配色',
-    src: '/images/materials/清代-木器-卷云纹-四方连续-赤红.png',
+    src: '/images/materials/清代-木器-卷云纹-四方连续-赤红.webp',
   },
   {
     id: 'mat-m052',
@@ -931,7 +931,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["赤红"],
     description: '清代木器，蝠纹，适合排布，赤红配色',
-    src: '/images/materials/清代-木器-蝠纹-适合-赤红.png',
+    src: '/images/materials/清代-木器-蝠纹-适合-赤红.webp',
   },
   {
     id: 'mat-m053',
@@ -944,7 +944,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["绿翠"],
     description: '清代竹盒装饰，变型卷云纹，四方连续排布，绿翠配色',
-    src: '/images/materials/清代-竹盒装饰-变型卷云纹-四方连续-绿翠.png',
+    src: '/images/materials/清代-竹盒装饰-变型卷云纹-四方连续-绿翠.webp',
   },
   {
     id: 'mat-m054',
@@ -957,7 +957,7 @@ const materials: MaterialItem[] = [
     structureL2: '重叠式',
     colors: ["多色"],
     description: '清代织物，三多佛手柑纹，四方连续排布，多色配色',
-    src: '/images/materials/清代-织物-三多佛手柑纹-四方连续-多色.png',
+    src: '/images/materials/清代-织物-三多佛手柑纹-四方连续-多色.webp',
   },
   {
     id: 'mat-m055',
@@ -970,7 +970,7 @@ const materials: MaterialItem[] = [
     structureL2: '重叠式',
     colors: ["多色"],
     description: '清代织物，三多石榴纹，四方连续排布，多色配色',
-    src: '/images/materials/清代-织物-三多石榴纹-四方连续-多色.png',
+    src: '/images/materials/清代-织物-三多石榴纹-四方连续-多色.webp',
   },
   {
     id: 'mat-m056',
@@ -983,7 +983,7 @@ const materials: MaterialItem[] = [
     structureL2: '重叠式',
     colors: ["多色"],
     description: '清代织物，三多纹福寿纹，四方连续排布，多色配色',
-    src: '/images/materials/清代-织物-三多纹-福寿纹-四方连续-多色.png',
+    src: '/images/materials/清代-织物-三多纹-福寿纹-四方连续-多色.webp',
   },
   {
     id: 'mat-m057',
@@ -996,7 +996,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["多色"],
     description: '清代织物，八角宫灯纹，自由排布，多色配色',
-    src: '/images/materials/清代-织物-八角宫灯纹-自由-多色.png',
+    src: '/images/materials/清代-织物-八角宫灯纹-自由-多色.webp',
   },
   {
     id: 'mat-m058',
@@ -1009,7 +1009,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["多色"],
     description: '清代织物，团花，适合排布，多色配色',
-    src: '/images/materials/清代-织物-团花-适合均衡-多色.png',
+    src: '/images/materials/清代-织物-团花-适合均衡-多色.webp',
   },
   {
     id: 'mat-m059',
@@ -1022,7 +1022,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["多色"],
     description: '清代织物，团花八吉祥纹，适合排布，多色配色',
-    src: '/images/materials/清代-织物-团花八吉祥纹-适合-多色.png',
+    src: '/images/materials/清代-织物-团花八吉祥纹-适合-多色.webp',
   },
   {
     id: 'mat-m060',
@@ -1035,7 +1035,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["多色"],
     description: '清代织物，如意云纹，自由排布，多色配色',
-    src: '/images/materials/清代-织物-如意云纹-自由-多色 (2).png',
+    src: '/images/materials/清代-织物-如意云纹-自由-多色 (2).webp',
   },
   {
     id: 'mat-m061',
@@ -1048,7 +1048,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["多色"],
     description: '清代织物，如意云纹，自由排布，多色配色',
-    src: '/images/materials/清代-织物-如意云纹-自由-多色.png',
+    src: '/images/materials/清代-织物-如意云纹-自由-多色.webp',
   },
   {
     id: 'mat-m062',
@@ -1061,7 +1061,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["多色"],
     description: '清代织物，宫灯纹，自由排布，多色配色',
-    src: '/images/materials/清代-织物-宫灯纹-自由-多色.png',
+    src: '/images/materials/清代-织物-宫灯纹-自由-多色.webp',
   },
   {
     id: 'mat-m063',
@@ -1074,7 +1074,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["黄金"],
     description: '清代织物，正龙纹，适合排布，黄金配色',
-    src: '/images/materials/清代-织物-正龙纹-适合-黄金.png',
+    src: '/images/materials/清代-织物-正龙纹-适合-黄金.webp',
   },
   {
     id: 'mat-m064',
@@ -1087,7 +1087,7 @@ const materials: MaterialItem[] = [
     structureL2: '连缀式',
     colors: ["赤红"],
     description: '清代织物，牡丹纹，四方连续排布，赤红配色',
-    src: '/images/materials/清代-织物-牡丹纹-四方连续-赤红.png',
+    src: '/images/materials/清代-织物-牡丹纹-四方连续-赤红.webp',
   },
   {
     id: 'mat-m065',
@@ -1100,7 +1100,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["青蓝"],
     description: '清代织物，狮子纹，适合排布，青蓝配色',
-    src: '/images/materials/清代-织物-狮子纹-适合-青蓝.png',
+    src: '/images/materials/清代-织物-狮子纹-适合-青蓝.webp',
   },
   {
     id: 'mat-m066',
@@ -1113,7 +1113,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["绿翠"],
     description: '清代陶瓷，卷草纹，自由排布，绿翠配色',
-    src: '/images/materials/清代-陶瓷-卷草纹-自由-绿翠.png',
+    src: '/images/materials/清代-陶瓷-卷草纹-自由-绿翠.webp',
   },
   {
     id: 'mat-m067',
@@ -1126,7 +1126,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["绿翠"],
     description: '清代陶瓷，叠云纹，自由排布，绿翠配色',
-    src: '/images/materials/清代-陶瓷-叠云纹-自由-绿翠.png',
+    src: '/images/materials/清代-陶瓷-叠云纹-自由-绿翠.webp',
   },
   {
     id: 'mat-m068',
@@ -1139,7 +1139,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["多色"],
     description: '清代陶瓷，吉庆万福纹，单独排布，多色配色',
-    src: '/images/materials/清代-陶瓷-吉庆万福纹-单独-多色.png',
+    src: '/images/materials/清代-陶瓷-吉庆万福纹-单独-多色.webp',
   },
   {
     id: 'mat-m069',
@@ -1152,7 +1152,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["青蓝"],
     description: '清代陶瓷，圈圈团云纹，自由排布，青蓝配色',
-    src: '/images/materials/清代-陶瓷-圈圈团云纹-自由-青蓝.png',
+    src: '/images/materials/清代-陶瓷-圈圈团云纹-自由-青蓝.webp',
   },
   {
     id: 'mat-m070',
@@ -1165,7 +1165,7 @@ const materials: MaterialItem[] = [
     structureL2: '适合纹样',
     colors: ["多色"],
     description: '清代陶瓷，牡丹纹，开光排布，多色配色',
-    src: '/images/materials/清代-陶瓷-牡丹纹-开光-多色.png',
+    src: '/images/materials/清代-陶瓷-牡丹纹-开光-多色.webp',
   },
   {
     id: 'mat-m071',
@@ -1178,7 +1178,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["青蓝"],
     description: '清代陶瓷，牡丹纹，自由排布，青蓝配色',
-    src: '/images/materials/清代-陶瓷-牡丹纹-自由-青蓝.png',
+    src: '/images/materials/清代-陶瓷-牡丹纹-自由-青蓝.webp',
   },
   {
     id: 'mat-m072',
@@ -1191,7 +1191,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["青蓝"],
     description: '清代陶瓷，麒麟，自由排布，青蓝配色',
-    src: '/images/materials/清代-陶瓷-麒麟-自由-青蓝.png',
+    src: '/images/materials/清代-陶瓷-麒麟-自由-青蓝.webp',
   },
   {
     id: 'mat-m076',
@@ -1204,7 +1204,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["赤红"],
     description: '辽代织物，团花纹，四方连续排布，赤红配色',
-    src: '/images/materials/辽代-织物-团花纹-四方连续-赤红.png',
+    src: '/images/materials/辽代-织物-团花纹-四方连续-赤红.webp',
   },
   {
     id: 'mat-m077',
@@ -1217,7 +1217,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["赤红"],
     description: '辽代织物，宝相花纹，四方连续排布，赤红配色',
-    src: '/images/materials/辽代-织物-宝相花纹-四方连续-赤红.png',
+    src: '/images/materials/辽代-织物-宝相花纹-四方连续-赤红.webp',
   },
   {
     id: 'mat-m078',
@@ -1230,7 +1230,7 @@ const materials: MaterialItem[] = [
     structureL2: '散点式',
     colors: ["黄金"],
     description: '金代织物，海东青捕大雁纹，四方连续排布，黄金配色',
-    src: '/images/materials/金代-织物-海东青捕大雁纹-四方连续-黄金.png',
+    src: '/images/materials/金代-织物-海东青捕大雁纹-四方连续-黄金.webp',
   },
   {
     id: 'mat-m079',
@@ -1243,7 +1243,7 @@ const materials: MaterialItem[] = [
     structureL2: '自由纹样',
     colors: ["多色"],
     description: '魏晋南北朝壁画，飞天纹，单独排布，多色配色',
-    src: '/images/materials/魏晋南北朝-壁画-飞天纹-单独-多色.png',
+    src: '/images/materials/魏晋南北朝-壁画-飞天纹-单独-多色.webp',
   },
 ];;
 

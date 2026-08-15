@@ -2,11 +2,15 @@ export const dynamic = 'force-dynamic';
 
 import CarouselBanner from '../components/CarouselBanner';
 import Footer from '../components/Footer';
+import Fireworks from '../components/Fireworks';
 
 export default function HomePage() {
   return (
     <main className="min-h-screen">
-      <CarouselBanner />
+      <div className="relative">
+        <CarouselBanner />
+        <Fireworks />
+      </div>
 
       {/* ====== 品牌主张 ====== */}
       <section className="relative py-20 sm:py-28 px-4 sm:px-6 text-center overflow-hidden">

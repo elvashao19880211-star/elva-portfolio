@@ -199,8 +199,9 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
     // 无水印：走 OSS 签名 URL（登录 + 已购校验）
     try {
       const category = pattern.src.includes('/revival/') ? 'revival' : 'innovation';
+      const ossFilename = filename.replace(/\.webp$/i, '.png');
       const res = await fetch(
-        `/api/patterns/download?name=${encodeURIComponent(category + '/' + filename)}`
+        `/api/patterns/download?name=${encodeURIComponent(category + '/' + ossFilename)}`
       );
       const data = await res.json();
       if (!res.ok) {
@@ -211,7 +212,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
       }
       const link = document.createElement('a');
       link.href = data.url;
-      link.download = filename;
+      link.download = ossFilename;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

@@ -195,7 +195,7 @@ export default function MaterialsPage() {
       return;
     }
     try {
-      const filename = lightbox.src.split('/').pop() || '素材.png';
+      const filename = (lightbox.src.split('/').pop() || '素材.png').replace(/\.webp$/i, '.png');
       const res = await fetch(`/api/materials/download?name=materials/${encodeURIComponent(filename)}`);
       const d = await res.json().catch(() => ({}));
       if (!res.ok) {

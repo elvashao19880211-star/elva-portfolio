@@ -74,7 +74,7 @@ export const caseStudies: CaseStudy[] = [
     client: '某高端丝绸品牌',
     description: '为品牌定制唐代风格联珠纹，应用于真丝丝巾与家居产品线',
     detail: '以唐代对鹿联珠团窠纹样为基础，根据品牌视觉体系调整配色方案。最终纹样保留了盛唐联珠纹的饱满结构与双鹿对称的吉祥寓意，色彩上以品牌标志色代替原有绯地，形成传统与品牌识别度的统一。',
-    imageSrc: '/images/revival/唐-对鹿联珠团窠.png',
+    imageSrc: '/images/revival/唐-对鹿联珠团窠.webp',
     year: '2026',
   },
   {
@@ -83,7 +83,7 @@ export const caseStudies: CaseStudy[] = [
     category: '纹样定制',
     description: '基于汉代云气纹开发的文创系列纹样，涵盖笔记本、帆布包、手机壳等品类',
     detail: '从马王堆出土的「乘云绣」中提取云气纹元素，简化线条以适应印刷工艺。在保留汉代云气流动感的同时，降低线条密度，使纹样在小面积产品上依然清晰可辨。',
-    imageSrc: '/images/revival/汉-云气安乐锦.png',
+    imageSrc: '/images/revival/汉-云气安乐锦.webp',
     year: '2026',
   },
   {
@@ -93,7 +93,7 @@ export const caseStudies: CaseStudy[] = [
     client: '某高端茶具品牌',
     description: '以清代云蝠纹为灵感，联合开发限量茶具系列',
     detail: '云蝠纹的五蝠捧寿构图与茶具的圆形器型高度契合。将蝙蝠与祥云纹样围绕茶壶与茶杯的弧形表面重新排列，每件产品上纹样的位置都经过单独调配。',
-    imageSrc: '/images/revival/清-云蝠纹.png',
+    imageSrc: '/images/revival/清-云蝠纹.webp',
     year: '2025',
   },
 ];
