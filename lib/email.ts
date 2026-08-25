@@ -29,7 +29,8 @@ function sign(params: Record<string, string>, accessKeySecret: string): string {
 
 export async function sendVerificationCode(
   to: string,
-  code: string
+  code: string,
+  purpose: 'register' | 'reset' = 'register'
 ): Promise<{ success: boolean; error?: string }> {
   const keyId = process.env.ALI_ACCESS_KEY_ID?.trim();
   const keySecret = process.env.ALI_ACCESS_KEY_SECRET?.trim();
@@ -52,11 +53,11 @@ export async function sendVerificationCode(
     ReplyToAddress: 'false',
     AddressType: '1',
     ToAddress: to,
-    Subject: '验证码 - 河图·华夏纹样传承',
+    Subject: purpose === 'reset' ? '重置密码 - 河图·华夏纹样传承' : '验证码 - 河图·华夏纹样传承',
     HtmlBody: `<div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px">
       <div style="text-align:center;margin-bottom:24px"><span style="font-size:32px">🏮</span></div>
-      <h2 style="color:#3A506B;text-align:center;margin-bottom:8px">验证你的邮箱</h2>
-      <p style="color:#666;text-align:center;font-size:14px;margin-bottom:24px">你正在注册河图·华夏纹样传承账号</p>
+      <h2 style="color:#3A506B;text-align:center;margin-bottom:8px">${purpose === 'reset' ? '重置你的密码' : '验证你的邮箱'}</h2>
+      <p style="color:#666;text-align:center;font-size:14px;margin-bottom:24px">${purpose === 'reset' ? '你正在重置河图·华夏纹样传承账号的密码' : '你正在注册河图·华夏纹样传承账号'}</p>
       <div style="background:#f7f8fa;border-radius:12px;padding:24px;text-align:center;margin-bottom:24px">
         <span style="font-size:12px;color:#999;display:block;margin-bottom:8px">验证码</span>
         <span style="font-size:36px;font-weight:bold;letter-spacing:8px;color:#3A506B;font-family:monospace">${code}</span>

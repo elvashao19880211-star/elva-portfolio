@@ -9,7 +9,7 @@ function LoginForm() {
   const searchParams = useSearchParams();
   const redirect = searchParams.get('redirect') || '/';
 
-  const [mode, setMode] = useState<'login' | 'register'>('login');
+  const [mode, setMode] = useState<'login' | 'register' | 'forgot'>('login');
   const [account, setAccount] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -90,6 +90,83 @@ function LoginForm() {
       setError('网络错误');
     } finally {
       setSendingCode(false);
+    }
+  };
+
+  // 忘记密码：发送重置验证码
+  const handleSendResetCode = async () => {
+    setError('');
+    if (!email) {
+      setError('请先填写邮箱');
+      return;
+    }
+
+    setSendingCode(true);
+    try {
+      const res = await fetch('/api/auth/send-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, purpose: 'reset' }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || '发送失败');
+        return;
+      }
+
+      setVerificationToken(data.token);
+      setCodeSent(true);
+      if (data.hint) setError(`[开发模式] ${data.hint}`);
+    } catch {
+      setError('网络错误');
+    } finally {
+      setSendingCode(false);
+    }
+  };
+
+  // 忘记密码：提交重置
+  const handleResetPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    if (!email) { setError('请填写邮箱'); return; }
+    if (!verificationCode) { setError('请输入验证码'); return; }
+    if (password !== confirmPassword) { setError('两次密码不一致'); return; }
+    if (password.length < 6) { setError('新密码至少6位'); return; }
+
+    setLoading(true);
+    try {
+      const res = await fetch('/api/auth/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          password,
+          code: verificationCode,
+          token: verificationToken,
+        }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || '重置失败');
+        return;
+      }
+
+      // 重置成功 → 提示并切回登录
+      setError('');
+      alert('密码已重置，请使用新密码登录');
+      setMode('login');
+      setPassword('');
+      setConfirmPassword('');
+      setVerificationCode('');
+      setVerificationToken('');
+      setCodeSent(false);
+    } catch {
+      setError('网络错误，请重试');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -174,29 +251,31 @@ function LoginForm() {
             <span className="text-white text-2xl font-serif font-bold">河</span>
           </div>
           <h1 className="heading-3 text-ink">
-            {mode === 'login' ? '欢迎回来' : '加入河图'}
+            {mode === 'login' ? '欢迎回来' : mode === 'register' ? '加入河图' : '重置密码'}
           </h1>
           <p className="body-sm text-gray-400 mt-1">
-            {mode === 'login' ? '登录后浏览完整纹样库' : '注册即可免费预览所有纹样'}
+            {mode === 'login' ? '登录后浏览完整纹样库' : mode === 'register' ? '注册即可免费预览所有纹样' : '通过邮箱验证码设置新密码'}
           </p>
         </div>
 
-        {/* 切换 */}
-        <div className="flex bg-gray-100 rounded-xl p-1 mb-6">
-          {(['login', 'register'] as const).map((m) => (
-            <button
-              key={m}
-              onClick={() => { setMode(m); setError(''); }}
-              className={`flex-1 py-2 text-sm rounded-lg transition-all ${
-                mode === m ? 'bg-white shadow-sm text-ink font-medium' : 'text-gray-400 hover:text-ink'
-              }`}
-            >
-              {m === 'login' ? '登录' : '注册'}
-            </button>
-          ))}
-        </div>
+        {/* 切换（忘记密码模式隐藏） */}
+        {mode !== 'forgot' && (
+          <div className="flex bg-gray-100 rounded-xl p-1 mb-6">
+            {(['login', 'register'] as const).map((m) => (
+              <button
+                key={m}
+                onClick={() => { setMode(m); setError(''); }}
+                className={`flex-1 py-2 text-sm rounded-lg transition-all ${
+                  mode === m ? 'bg-white shadow-sm text-ink font-medium' : 'text-gray-400 hover:text-ink'
+                }`}
+              >
+                {m === 'login' ? '登录' : '注册'}
+              </button>
+            ))}
+          </div>
+        )}
 
-        <form onSubmit={mode === 'login' ? handleLogin : handleRegister} className="space-y-4">
+        <form onSubmit={mode === 'login' ? handleLogin : mode === 'register' ? handleRegister : handleResetPassword} className="space-y-4">
           {/* 昵称（仅注册） */}
           {mode === 'register' && (
             <div>
@@ -225,6 +304,44 @@ function LoginForm() {
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
               />
             </div>
+          ) : mode === 'forgot' ? (
+            /* 忘记密码：邮箱 + 验证码 */
+            <>
+              <div>
+                <label className="text-xs text-gray-500 mb-1.5 block">邮箱 <span className="text-red-400">*</span></label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); setCodeSent(false); }}
+                  placeholder="your@email.com"
+                  required
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs text-gray-500 mb-1.5 block">邮箱验证码 <span className="text-red-400">*</span></label>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={verificationCode}
+                    onChange={(e) => setVerificationCode(e.target.value)}
+                    placeholder="6位数字"
+                    maxLength={6}
+                    required
+                    className="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleSendResetCode}
+                    disabled={sendingCode || codeSent}
+                    className="px-4 py-3 rounded-xl bg-qing text-white text-xs font-medium hover:bg-qing/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all whitespace-nowrap"
+                  >
+                    {sendingCode ? '发送中...' : codeSent ? '已发送' : '发送验证码'}
+                  </button>
+                </div>
+              </div>
+            </>
           ) : (
             /* 注册：邮箱和手机号任选 */
             <>
@@ -301,13 +418,13 @@ function LoginForm() {
           )}
 
           <div>
-            <label className="text-xs text-gray-500 mb-1.5 block">密码 <span className="text-red-400">*</span></label>
+            <label className="text-xs text-gray-500 mb-1.5 block">{mode === 'forgot' ? '新密码' : '密码'} <span className="text-red-400">*</span></label>
             <div className="relative">
               <input
                 type={showPwd ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder={mode === 'login' ? '输入密码' : '设置密码（至少6位）'}
+                placeholder={mode === 'login' ? '输入密码' : mode === 'forgot' ? '设置新密码（至少6位）' : '设置密码（至少6位）'}
                 required
                 minLength={6}
                 className="w-full px-4 py-3 pr-12 rounded-xl border border-gray-200 focus:border-qing focus:ring-1 focus:ring-qing/30 outline-none text-sm transition-all"
@@ -332,7 +449,15 @@ function LoginForm() {
             </div>
           </div>
 
-          {mode === 'register' && (
+          {mode === 'login' && (
+            <div className="flex justify-end -mt-1">
+              <button type="button" onClick={() => { setMode('forgot'); setError(''); }} className="text-xs text-qing hover:underline">
+                忘记密码？
+              </button>
+            </div>
+          )}
+
+          {(mode === 'register' || mode === 'forgot') && (
             <div>
               <label className="text-xs text-gray-500 mb-1.5 block">确认密码 <span className="text-red-400">*</span></label>
               <div className="relative">
@@ -390,16 +515,26 @@ function LoginForm() {
           )}
 
           <button type="submit" disabled={loading} className="btn-ink w-full text-sm disabled:opacity-60">
-            {loading ? '处理中...' : mode === 'login' ? '登录' : '创建账号'}
+            {loading ? '处理中...' : mode === 'login' ? '登录' : mode === 'register' ? '创建账号' : '重置密码'}
           </button>
         </form>
 
         <p className="text-center text-xs text-gray-300 mt-6">
           {mode === 'login' ? (
             <>
-              还没有账号？{' '}
+              <button onClick={() => { setMode('forgot'); setError(''); }} className="text-qing hover:underline">
+                忘记密码？
+              </button>
+              {' · '}
               <button onClick={() => setMode('register')} className="text-qing hover:underline">
                 立即注册
+              </button>
+            </>
+          ) : mode === 'forgot' ? (
+            <>
+              想起密码了？{' '}
+              <button onClick={() => setMode('login')} className="text-qing hover:underline">
+                返回登录
               </button>
             </>
           ) : (

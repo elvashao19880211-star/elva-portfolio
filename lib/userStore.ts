@@ -82,6 +82,13 @@ class JsonUserStore {
     await this.save();
     return true;
   }
+  async updatePassword(id: string, passwordHash: string): Promise<boolean> {
+    const u = this.users.find(x => x.id === id);
+    if (!u) return false;
+    u.passwordHash = passwordHash;
+    await this.save();
+    return true;
+  }
 }
 
 class RedisUserStore {
@@ -175,6 +182,19 @@ class RedisUserStore {
       if (!data) return false;
       const user: User = typeof data === 'string' ? JSON.parse(data) : data;
       user.avatar = avatar;
+      await redis.set(`user:${id}`, JSON.stringify(user));
+      return true;
+    } catch {
+      return false;
+    }
+  }
+  async updatePassword(id: string, passwordHash: string): Promise<boolean> {
+    try {
+      const redis = await this.getClient();
+      const data = await redis.get(`user:${id}`);
+      if (!data) return false;
+      const user: User = typeof data === 'string' ? JSON.parse(data) : data;
+      user.passwordHash = passwordHash;
       await redis.set(`user:${id}`, JSON.stringify(user));
       return true;
     } catch {
@@ -285,4 +305,29 @@ export async function activateMember(
 export async function updateUserAvatar(id: string, avatar: string): Promise<boolean> {
   await ensureInit();
   return store.updateAvatar(id, avatar);
+}
+
+/** 检查邮箱是否已注册（忘记密码发送验证码前用） */
+export async function userExistsByEmail(email: string): Promise<boolean> {
+  await ensureInit();
+  return !!(await store.findByEmail(email));
+}
+
+/** 重置密码（忘记密码流程，已验证验证码后调用） */
+export async function resetPassword(
+  email: string,
+  newPassword: string
+): Promise<{ success: boolean; error?: string }> {
+  await ensureInit();
+  const useEmail = email?.trim().toLowerCase();
+  if (!useEmail) return { success: false, error: '请填写邮箱' };
+  if (!newPassword || newPassword.length < 6) return { success: false, error: '新密码至少6位' };
+
+  const user = await store.findByEmail(useEmail);
+  if (!user) return { success: false, error: '该邮箱尚未注册' };
+
+  const passwordHash = await hashPassword(newPassword);
+  const ok = await store.updatePassword(user.id, passwordHash);
+  if (!ok) return { success: false, error: '密码更新失败，请重试' };
+  return { success: true };
 }
