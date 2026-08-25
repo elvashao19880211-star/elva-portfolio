@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Noto_Serif_SC, Noto_Sans_SC } from "next/font/google"
 import "./globals.css"
 import Navbar from "../components/Navbar"
+import ContactWidget from "../components/ContactWidget"
 
 const notoSerif = Noto_Serif_SC({
   subsets: ["latin"],
@@ -46,6 +47,7 @@ export default function RootLayout({
       <body className="font-sans">
         <Navbar />
         <main className="pt-20">{children}</main>
+        <ContactWidget />
         <script
           dangerouslySetInnerHTML={{
             __html: `

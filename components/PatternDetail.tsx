@@ -18,6 +18,7 @@ interface BasePattern {
   colors?: string[];
   description: string;
   detail?: string;
+  author?: string;
   src: string;
   category?: string;
   inspiration?: string;
@@ -278,6 +279,16 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                 )}
               </div>
               <h2 className="text-xl font-serif font-semibold text-ink">{pattern.title}</h2>
+              {pattern.author && (
+                <div className="mt-2 flex items-center gap-1.5 text-xs text-gray-500">
+                  <svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  <span>作者：<span className="text-ink font-medium">{pattern.author}</span></span>
+                  <span className="text-gray-300">·</span>
+                  <span>版权归作者所有，未经授权禁止商用</span>
+                </div>
+              )}
             </div>
 
             {pattern.structure && (
