@@ -249,18 +249,30 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
             </svg>
           </button>
 
-          {/* 左侧：大图 */}
-          <div
-            className="relative w-full md:w-1/2 min-h-[280px] md:min-h-[460px] bg-stone-50 cursor-zoom-in group"
-            onClick={() => setShowLightbox(true)}
-          >
-            <Image
-              src={pattern.src}
-              alt={pattern.title}
-              fill
-              className="object-contain p-4"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+          {/* 左侧：大图 + 作者署名 */}
+          <div className="w-full md:w-1/2 flex flex-col bg-stone-50">
+            <div
+              className="relative flex-1 min-h-[280px] md:min-h-[460px] cursor-zoom-in group"
+              onClick={() => setShowLightbox(true)}
+            >
+              <Image
+                src={pattern.src}
+                alt={pattern.title}
+                fill
+                className="object-contain p-4"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            {pattern.author && (
+              <div className="px-4 py-3 bg-white border-t border-gray-100 flex items-center justify-center gap-1.5 text-xs text-gray-500">
+                <svg className="w-3.5 h-3.5 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                <span>作者：<span className="text-ink font-medium">{pattern.author}</span></span>
+                <span className="text-gray-300">·</span>
+                <span>版权归作者所有，未经授权禁止商用</span>
+              </div>
+            )}
           </div>
 
           {/* 右侧：信息 */}
@@ -279,16 +291,6 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                 )}
               </div>
               <h2 className="text-xl font-serif font-semibold text-ink">{pattern.title}</h2>
-              {pattern.author && (
-                <div className="mt-2 flex items-center gap-1.5 text-xs text-gray-500">
-                  <svg className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                  <span>作者：<span className="text-ink font-medium">{pattern.author}</span></span>
-                  <span className="text-gray-300">·</span>
-                  <span>版权归作者所有，未经授权禁止商用</span>
-                </div>
-              )}
             </div>
 
             {pattern.structure && (
