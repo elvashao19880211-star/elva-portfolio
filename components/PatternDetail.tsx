@@ -351,7 +351,22 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               </div>
             )}
 
-            {/* 购买流程说明 */}
+            {/* 来源说明 / 购买流程 */}
+            {isNonCommercial ? (
+              <div className="mt-5 rounded-xl border border-gray-200 bg-gray-50/70 p-4">
+                <h4 className="text-xs font-semibold text-ink/70 mb-2 flex items-center gap-1.5">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  来源说明
+                </h4>
+                <p className="text-[11px] leading-relaxed text-ink/60">
+                  {pattern.derivative
+                    ? '本作品为基于传统纹样的再创作，仅供展示学习，不作商业用途。'
+                    : '本纹样依据考古复原一手稿件绘制，仅供学习研究，不作商业用途。'}
+                </p>
+              </div>
+            ) : (
             <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50/50 p-4">
               <h4 className="text-xs font-semibold text-amber-800 mb-2.5 flex items-center gap-1.5">
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -371,6 +386,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                 </div>
               </div>
             </div>
+            )}
 
             <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-100">
               {isNonCommercial ? (
