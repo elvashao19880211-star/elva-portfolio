@@ -412,11 +412,15 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               />
             </div>
             {isNonCommercial ? (
-              !pattern.derivative && (
-                <p className="text-xs text-gray-400 text-center -mt-1.5">
-                  本纹样依据考古复原一手稿件绘制，不作商业用途。
+              <div className="text-xs text-gray-400 text-center -mt-1.5 leading-relaxed">
+                {!pattern.derivative && (
+                  <p>本纹样依据考古复原一手稿件绘制，不作商业用途。</p>
+                )}
+                <p>
+                  如需同类纹样定制设计，欢迎
+                  <a href="mailto:studio@hetu-pattern.com" className="text-qing hover:underline">咨询</a>
                 </p>
-              )
+              </div>
             ) : (
               <p className="text-xs text-gray-300 text-center -mt-1.5">
                 {owned ? '已购 · 可直接下载' : '免费预览 · 下载无水印需购买'}
