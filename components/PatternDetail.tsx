@@ -72,7 +72,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
   const [paying, setPaying] = useState(false);
   const [owned, setOwned] = useState(false);
   const isRevival = pattern.type === 'revival' || !!pattern.dynasty;
-  const isNonCommercial = !!pattern.nonCommercial;
+  const isNonCommercial = !!pattern.nonCommercial || !!pattern.derivative;
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
