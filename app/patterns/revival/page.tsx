@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import Breadcrumb from '../../../components/Breadcrumb';
 import SectionTitle from '../../../components/SectionTitle';
@@ -52,6 +52,16 @@ const ALL_ELEMENTS = ELEMENT_CATEGORIES.flatMap((g) => g.elements as readonly st
 
 export default function RevivalPatternsPage() {
   const [selected, setSelected] = useState<RevivalPattern | null>(null);
+
+  // 支持 ?id=xxx 直达特定纹样详情（如首页 banner 跳转）
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    if (id) {
+      const p = revivalPatterns.find((x) => x.id === id);
+      if (p) setSelected(p);
+    }
+  }, []);
   const [dynastyFilter, setDynastyFilter] = useState<string | null>(null);
   const [structureL1, setStructureL1] = useState<string | null>(null);
   const [structureL2, setStructureL2] = useState<string | null>(null);

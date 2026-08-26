@@ -2,14 +2,16 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const slides = [
-  { src: '/images/banner/初唐-四人飞天.webp', alt: '初唐·四人飞天' },
-  { src: '/images/banner/明代-摩羯纹.webp', alt: '明代·摩羯纹' },
-  { src: '/images/banner/清代-宫灯纹.webp', alt: '清代·宫灯纹' },
+  { src: '/images/banner/初唐-四人飞天.webp', alt: '初唐·四人飞天', href: '/patterns/revival?id=revival-6' },
+  { src: '/images/banner/明代-摩羯纹.webp', alt: '明代·摩羯纹', href: '/patterns/revival?id=revival-49' },
+  { src: '/images/banner/清代-宫灯纹.webp', alt: '清代·宫灯纹', href: '/patterns/revival?id=revival-89' },
 ];
 
 export default function CarouselBanner() {
+  const router = useRouter();
   const [current, setCurrent] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -50,10 +52,11 @@ export default function CarouselBanner() {
       {slides.map((slide, i) => (
         <div
           key={i}
-          className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+          onClick={() => router.push(slide.href)}
+          className={`absolute inset-0 transition-all duration-700 ease-in-out cursor-pointer ${
             i === current
               ? 'opacity-100 scale-100'
-              : 'opacity-0 scale-105'
+              : 'opacity-0 scale-105 pointer-events-none'
           }`}
         >
           <Image
