@@ -234,7 +234,7 @@ export default function InnovationPatternsPage() {
                       </span>
                     ))}
                     {item.colors?.slice(0, 2).map((c) => (
-                      <span key={c} className="hidden sm:inline-block px-2 py-0.5 text-xs rounded-full bg-gold/10 text-ink/50">
+                      <span key={c} className="inline-block px-2 py-0.5 text-xs rounded-full bg-gold/10 text-ink/50">
                         {c}
                       </span>
                     ))}

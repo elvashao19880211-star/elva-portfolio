@@ -262,7 +262,7 @@ export default function RevivalPatternsPage() {
                 {item.elements && item.elements.length > 0 && (
                   <div className="flex flex-wrap gap-1 sm:gap-1.5 mt-1.5 sm:mt-3">
                     {item.elements.slice(0, 2).map((el) => (
-                      <span key={el} className="hidden sm:inline-block px-2 py-0.5 text-xs rounded-full bg-qing/15 text-ink/60">
+                      <span key={el} className="inline-block px-2 py-0.5 text-xs rounded-full bg-qing/15 text-ink/60">
                         {el}
                       </span>
                     ))}
