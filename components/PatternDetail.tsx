@@ -414,11 +414,11 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
             {isNonCommercial ? (
               <div className="flex items-start gap-3 -mt-1.5">
                 <div className="flex-1 text-xs text-gray-400 text-center leading-relaxed">
-                  {!pattern.derivative && (
-                    <p>本纹样依据考古复原一手稿件绘制，不作商业用途。</p>
-                  )}
                   <p>
-                    如需同类纹样定制设计，欢迎
+                    {pattern.derivative
+                      ? '本作品为基于传统纹样的二创'
+                      : '本纹样依据考古复原一手稿件绘制'}
+                    {' · '}如需同类设计，欢迎
                     <a href="/cooperation" className="text-qing hover:underline">咨询</a>
                   </p>
                 </div>
