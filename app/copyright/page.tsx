@@ -19,7 +19,7 @@ export default function CopyrightPage() {
             <p className="mt-2">本站在各产品页面标注的版权信息具有法律效力。未经书面授权，任何人不得主张本站纹样的版权。</p>
           </section>
 
-          <section className="bg-red-50 border border-red-200 rounded-xl p-5">
+          <section>
             <h2 className="font-serif font-semibold text-red-700 text-lg mb-3">二、商标禁令</h2>
             <p className="text-red-700">
               禁止以任何形式、在任何地区，将纹样或其主要识别部分注册为商标，或作为未注册商标用于品牌标识。一经发现，我方有权立即终止授权，并追偿因侵权造成的全部损失。
