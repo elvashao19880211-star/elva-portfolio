@@ -418,7 +418,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                 )}
                 <p>
                   如需同类纹样定制设计，欢迎
-                  <a href="mailto:studio@hetu-pattern.com" className="text-qing hover:underline">咨询</a>
+                  <a href="/cooperation" className="text-qing hover:underline">咨询</a>
                 </p>
               </div>
             ) : (
