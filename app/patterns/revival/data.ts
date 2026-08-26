@@ -15,6 +15,7 @@ export interface RevivalPattern {
   src: string;
   thumbSrc?: string;
   isNew?: boolean;
+  nonCommercial?: boolean; // 无商业处理（仅供学习展示，无购买）
 }
 
 export const revivalPatterns: RevivalPattern[] = [
@@ -28,6 +29,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/初唐-四人飞天.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/初唐-四人飞天.png",
     "structure": "单独/自由式",
   
@@ -44,6 +46,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/初唐-葡萄石榴藻井.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/初唐-葡萄石榴藻井.png",
     "structure": "适合/对称式",
   
@@ -60,6 +63,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/北凉-第272窟忍冬藻井.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/北凉-第272窟忍冬藻井.png",
     "structure": "适合/离心式/角隅式",
   
@@ -92,6 +96,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/唐代-卷草纹.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/唐代-卷草纹.png",
     "structure": "二方连续/波线式",
   
@@ -156,6 +161,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/唐代-团花纹.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/唐代-团花纹.png",
     "structure": "四方连续/规则散点",
   
@@ -188,6 +194,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/唐代-对马纹.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/唐代-对马纹.png",
     "structure": "四方连续/几何连缀",
   
@@ -316,6 +323,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/唐代-石榴纹藻井.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/唐代-石榴纹藻井.png",
     "structure": "单独/适合/角隅式/离心式",
   
@@ -476,6 +484,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/宋代-太极鱼鳞纹.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/宋代-太极鱼鳞纹.png",
     "structure": "四方连续/重叠式",
   
@@ -687,6 +696,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/明代-四季花纹.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/明代-四季花纹.png",
   
     "structureL1": "四方连续",
@@ -702,6 +712,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/明代-夔龙球路纹.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/明代-夔龙球路纹.png",
     "structure": "四方连续/几何连缀",
   
@@ -735,6 +746,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/明代-杂宝团花纹.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/明代-杂宝团花纹.png",
     "structure": "四方连续/不规则散点",
   
@@ -752,6 +764,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/明代-杂宝纹.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/明代-杂宝纹.png",
   
     "structureL1": "四方连续",
@@ -783,6 +796,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/明代-缠枝梅花.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/明代-缠枝梅花.png",
     "structure": "四方连续/波形连缀",
   
@@ -1007,6 +1021,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/汉代-鱼蛙纹.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/汉代-鱼蛙纹.png",
     "structure": "四方连续/错位散点",
   
@@ -1103,6 +1118,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/清代-八吉祥团花纹.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/清代-八吉祥团花纹.png",
     "structure": "四方连续/规则散点",
   
@@ -1233,6 +1249,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/清代-卷草莲纹.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/清代-卷草莲纹.png",
     "structure": "单独/适合对称/角隅对称",
   
@@ -1425,6 +1442,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/清代-松鼠葡萄纹.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/清代-松鼠葡萄纹.png",
     "structure": "四方连续/连缀式",
   
@@ -1569,6 +1587,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/清代-缠枝四季花纹.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/清代-缠枝四季花纹.png",
     "structure": "四方连续/缠绕连缀",
   
@@ -1793,6 +1812,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/现代-菱形天华锦（成都博物馆）.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/现代-菱形天华锦（成都博物馆）.png",
     "structure": "四方连续/几何连缀",
   
@@ -1809,6 +1829,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/盛唐-第319窟宝相花藻井.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/盛唐-第319窟宝相花藻井.png",
     "structure": "适合/离心式/角隅式",
   
@@ -1858,6 +1879,7 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/西魏-第285窟莲花忍冬藻井.webp",
+    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/西魏-第285窟莲花忍冬藻井.png",
     "structure": "团窠",
   
@@ -2003,6 +2025,7 @@ export const revivalPatterns: RevivalPattern[] = [
     description: '',
     detail: '',
     src: '/images/revival/现代-亭台楼阁纹.webp',
+    nonCommercial: true,
     thumbSrc: '/images/revival/thumbs/现代-亭台楼阁纹.png',
     structure: '四方连续/不规则散点',
     structureL1: '四方连续',
@@ -2035,6 +2058,7 @@ export const revivalPatterns: RevivalPattern[] = [
     description: '',
     detail: '',
     src: '/images/revival/辽代-菱格雁蝶纹.webp',
+    nonCommercial: true,
     thumbSrc: '/images/revival/thumbs/辽代-菱格雁蝶纹.png',
     structure: '四方连续/几何连缀',
     structureL1: '四方连续',
@@ -2051,6 +2075,7 @@ export const revivalPatterns: RevivalPattern[] = [
     description: '',
     detail: '',
     src: '/images/revival/魏晋南北朝-复合菱纹.webp',
+    nonCommercial: true,
     thumbSrc: '/images/revival/thumbs/魏晋南北朝-复合菱纹.png',
     structure: '四方连续/几何连缀',
     structureL1: '四方连续',
@@ -2066,6 +2091,7 @@ export const revivalPatterns: RevivalPattern[] = [
     structureL2: '重叠式',
     elements: ['卐字纹', '龙纹'],
     src: '/images/revival/元代-卐字地龙纹.webp',
+    nonCommercial: true,
     thumbSrc: '/images/revival/thumbs/元代-卐字地龙纹.png',
     isNew: true,
   },
@@ -2078,6 +2104,7 @@ export const revivalPatterns: RevivalPattern[] = [
     structureL2: '重叠式',
     elements: ['柿蒂纹', '卷草纹'],
     src: '/images/revival/元代-柿蒂窠.webp',
+    nonCommercial: true,
     thumbSrc: '/images/revival/thumbs/元代-柿蒂窠.png',
     isNew: true,
   },

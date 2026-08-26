@@ -14,6 +14,7 @@ export interface InnovationPattern {
   description: string;
   detail?: string;        // 设计说明
   author?: string;        // 署名作者
+  derivative?: boolean;   // 二创标注
   src: string;
   isNew?: boolean;
 }
@@ -31,6 +32,7 @@ const innovationPatterns: InnovationPattern[] = [
     detail: '以唐代团窠四叶结构为原型，将花瓣形态几何化处理。四片叶子呈十字对称展开，外轮廓以简洁线条勾勒，中心留白形成视觉焦点。整体兼具古典韵律与现代极简。',
     author: '河图纹画',
     src: '/images/innovation/四叶纹.webp',
+    derivative: true,
     structureL1: '四方连续',
     structureL2: '散点式',
   },
@@ -46,6 +48,7 @@ const innovationPatterns: InnovationPattern[] = [
     detail: '借鉴宋代八达晕锦的结构逻辑，以中心几何图形为核，向外多层嵌套扩展。通过不同几何形状的叠加与色彩渐变，创造出具有空间纵深感的现代织锦效果。',
     author: '河图纹画',
     src: '/images/innovation/天华锦纹.webp',
+    derivative: true,
   
     structureL1: '四方连续',
     structureL2: '连缀式',
@@ -62,6 +65,7 @@ const innovationPatterns: InnovationPattern[] = [
     detail: '将传统宝相花的圆形团窠结构转化为方形框架。花瓣以几何块面重新演绎，保留宝相层层绽放的节奏感，同时融入现代图形的秩序与精确性。',
     author: '河图纹画',
     src: '/images/innovation/方形小宝相纹.webp',
+    derivative: true,
   
     structureL1: '四方连续',
     structureL2: '散点式',
@@ -78,6 +82,7 @@ const innovationPatterns: InnovationPattern[] = [
     detail: '融合宋代球路纹的圆形连续结构与汉代双鱼纹的吉祥寓意。球路圆环相互交织形成连绵骨骼，双鱼纹嵌入圆形单元之中，既有秩序感又暗含流动的生机。',
     author: '河图纹画',
     src: '/images/innovation/球路吉鱼纹.webp',
+    derivative: true,
   
     structureL1: '四方连续',
     structureL2: '重叠式',
@@ -110,6 +115,7 @@ const innovationPatterns: InnovationPattern[] = [
     detail: '以葫芦外形为底，内部填充金钱纹，两者皆为传统吉祥符号。葫芦谐音「福禄」，金钱寓意财富，组合后在保留民俗文化内核的同时，以现代平面构成手法赋予新的视觉语言。',
     author: '河图纹画',
     src: '/images/innovation/葫芦金钱纹.webp',
+    derivative: true,
   
     structureL1: '四方连续',
     structureL2: '散点式',
@@ -142,6 +148,7 @@ const innovationPatterns: InnovationPattern[] = [
     detail: '以唐代马纹的矫健姿态为灵感，将奔马形象以简约剪影风格呈现。马身融入如意云纹的流线元素，奔跑的动势通过水平的线条节奏来强化。整体活泼灵动，不失东方韵味。',
     author: '河图纹画',
     src: '/images/innovation/如意小马哒哒纹.webp',
+    derivative: true,
   
     structureL1: '四方连续',
     structureL2: '重叠式',
@@ -158,6 +165,7 @@ const innovationPatterns: InnovationPattern[] = [
     detail: '融合唐代狮子纹的威猛与敦煌祥云的飘逸。狮子形象以块面概括，鬃毛化作翻卷的云纹。整体在刚与柔之间寻找平衡，既有守护的力度，又不失东方的含蓄美感。',
     author: '河图纹画',
     src: '/images/innovation/狮子云纹.webp',
+    derivative: true,
   
     structureL1: '四方连续',
     structureL2: '散点式',
