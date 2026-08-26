@@ -177,7 +177,7 @@ export default function FavoritesPage() {
                             : 'text-gray-500 hover:text-ink'
                         }`}
                       >
-                        个人非商用
+                        个人学习许可
                       </button>
                     )}
                   </div>
@@ -186,7 +186,7 @@ export default function FavoritesPage() {
                       ? '仅支持商业许可'
                       : effectiveTier === 'commercial'
                         ? '高清无水印 · 非授权不可商用'
-                        : '无水印 · 仅供个人非商用'}
+                        : '无水印 · 仅供个人学习使用'}
                   </span>
                 </div>
               </div>
@@ -293,7 +293,7 @@ export default function FavoritesPage() {
           <div className="bg-white rounded-2xl max-w-sm w-full p-8 shadow-2xl text-center" onClick={(e) => e.stopPropagation()}>
             <h3 className="text-lg font-serif font-semibold text-ink mb-1">确认订单</h3>
             <p className="text-xs text-gray-400 mb-2">
-              {selectedItems.length} 件 · {effectiveTier === 'commercial' ? '商业许可' : '个人非商用'}
+              {selectedItems.length} 件 · {effectiveTier === 'commercial' ? '商业许可' : '个人学习许可'}
             </p>
 
             <div className="bg-qing/5 border border-qing/20 rounded-xl px-4 py-3 mb-5">

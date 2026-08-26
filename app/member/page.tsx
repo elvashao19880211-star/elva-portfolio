@@ -181,7 +181,7 @@ export default function MemberPage() {
             <h4 className="text-sm font-serif font-semibold text-ink mb-4">复原纹样</h4>
             <div className="space-y-2 text-xs text-gray-500">
               <div className="flex justify-between py-1.5 border-b border-gray-50">
-                <span>个人非商用（无水印）</span>
+                <span>个人学习许可（无水印）</span>
                 <span className="font-medium text-gold">¥{PATTERN_PRICING.revival.personal.price}/幅</span>
               </div>
               <div className="flex justify-between py-1.5 border-b border-gray-50">

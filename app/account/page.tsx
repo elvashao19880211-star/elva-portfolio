@@ -260,7 +260,7 @@ export default function AccountPage() {
                           item.tier === 'commercial' ? 'bg-gold/10 text-gold' :
                           'bg-purple-50 text-purple-500'
                         }`}>
-                          {item.tier === 'personal' ? '个人非商用' : item.tier === 'commercial' ? '商业许可' : '企业授权'}
+                          {item.tier === 'personal' ? '个人学习许可' : item.tier === 'commercial' ? '商业许可' : '企业源文件授权'}
                         </span>
                         <span className="text-xs text-gray-400">
                           {new Date(item.purchasedAt).toLocaleDateString('zh-CN')}

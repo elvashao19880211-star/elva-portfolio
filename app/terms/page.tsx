@@ -28,7 +28,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-serif font-semibold text-ink mt-8 mb-3">三、内容版权与授权</h2>
             <p>3.1 本站所有纹样作品的<b>版权归创作者所有</b>。用户购买的是使用权许可，而非版权所有权。</p>
-            <p>3.2 所有授权均为<b>非独家许可</b>。同一纹样可持续授权给不同客户。</p>
+            <p>3.2 所有授权均为<b>非独家许可</b>。同一纹样可同时授权给多个被授权人使用。</p>
             <p>3.3 <b>不提供买断授权</b>。不存在任何形式的版权买断。</p>
             <p>3.4 各授权级别的具体权利与限制，请参见各产品页面的授权说明。</p>
           </section>

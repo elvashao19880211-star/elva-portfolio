@@ -40,20 +40,20 @@ const TIER_CONFIG: Record<PurchaseTier, {
   showTier: (isRev: boolean) => boolean;
 }> = {
   personal: {
-    label: '个人非商用 / 临摹',
-    desc: '无水印 · 非商业用途',
+    label: '个人学习许可',
+    desc: '含水印 · 不得用于营利用途',
     getPrice: () => '19.9',
     showTier: (r) => r, // 仅复原库可用
   },
   commercial: {
     label: '标准商业许可',
-    desc: '高清无水印 · 不限印刷量 · 非独家',
+    desc: '无水印 + 授权书 · 不可出版 / 实体商品',
     getPrice: (r) => r ? '399' : '499',
     showTier: () => true,
   },
   source: {
-    label: '源文件企业授权',
-    desc: 'PSD源文件 · 修改权 · 永久 · 客服联系发送',
+    label: '企业源文件授权',
+    desc: 'PSD源文件 + 修改权 · 含实体商品 · 永久',
     getPrice: () => '3,999',
     showTier: () => true,
   },
@@ -366,10 +366,13 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                 <p><span className="inline-block w-[18px] h-[18px] rounded-full bg-amber-200 text-xs font-semibold text-amber-700 text-center leading-[18px] mr-2">3</span>支付后点击「我已支付」，订单存入个人中心</p>
                 <div className="mt-2.5 pt-2.5 border-t border-amber-200 space-y-1.5">
                   <p className="text-xs font-medium text-amber-700 mb-1">各许可类型交付内容：</p>
-                  <p className="text-xs">个人非商用 — 直接下载无水印图片</p>
-                  <p className="text-xs">商业许可 — 高清无水印原图 + 授权书</p>
-                  <p className="text-xs">企业授权 — PSD源文件发送至所填邮箱</p>
+                  <p className="text-xs">个人学习许可 — 含水印图片，不得用于营利用途</p>
+                  <p className="text-xs">标准商业许可 — 无水印原图 + 授权书，不可出版 / 实体商品</p>
+                  <p className="text-xs">企业源文件授权 — PSD源文件 + 修改权，含实体商品，永久有效</p>
                 </div>
+                <p className="text-xs text-amber-700 pt-1">
+                  <a href="/copyright" className="hover:underline">查看完整授权条款 →</a>
+                </p>
               </div>
             </div>
             )}
@@ -468,6 +471,9 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
             <button onClick={() => setShowBuy(false)} className="btn-outline w-full text-sm mt-6">取消</button>
             <p className="text-xs text-gray-500 text-center mt-3 leading-relaxed">
               版权归创作者所有 · 您购买的是使用权许可 · 禁止转卖文件、子授权、注册商标
+            </p>
+            <p className="text-xs text-center mt-2">
+              <a href="/copyright" className="text-qing hover:underline">查看完整授权条款 →</a>
             </p>
           </div>
         </div>
@@ -717,7 +723,7 @@ function AuthorizationDoc({
           <div className="bg-gray-50 rounded-xl p-4 space-y-2">
             <p><span className="font-semibold">作品名称：</span>{pattern.title}</p>
             <p><span className="font-semibold">作品类型：</span>{pattern.type === 'revival' || pattern.dynasty ? '复原纹样' : '创新纹样'}</p>
-            <p><span className="font-semibold">授权类型：</span>标准商业许可（非独家）</p>
+            <p><span className="font-semibold">授权类型：</span>标准商业许可</p>
             <p><span className="font-semibold">授权费用：</span>¥{price}</p>
             {authData.purpose && <p><span className="font-semibold">用途：</span>{authData.purpose}</p>}
           </div>
