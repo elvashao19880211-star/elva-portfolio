@@ -24,7 +24,7 @@ export default function HomePage() {
           <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-xl mx-auto mb-8">
             考据为骨，创新为魂。以出土文物与博物馆藏品为原点严谨复原，同时融合现代审美进行再创作，让传统纹样在当代设计中焕发生命力。
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3 text-[11px] text-gray-400">
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-gray-400">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-qing/5 border border-qing/10">
               出土文物 · 博物馆藏品考据
             </span>

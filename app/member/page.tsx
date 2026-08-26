@@ -239,9 +239,9 @@ export default function MemberPage() {
             >
               {paying ? '正在跳转…' : '立即支付'}
             </button>
-            <p className="text-[10px] text-gray-400 mb-3">将跳转支付宝完成支付，支付后自动开通</p>
+            <p className="text-xs text-gray-400 mb-3">将跳转支付宝完成支付，支付后自动开通</p>
             <div className="mb-5 pt-3 border-t border-gray-100">
-              <p className="text-[10px] text-gray-500 leading-relaxed">
+              <p className="text-xs text-gray-500 leading-relaxed">
                 会员有效期365天 · 到期需续费<br />
                 到期后已使用的素材可继续使用
               </p>

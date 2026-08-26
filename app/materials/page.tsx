@@ -124,7 +124,7 @@ function ElementTreeItem({
         {hasChildren ? (
           <button
             onClick={() => setExpanded(!expanded)}
-            className="w-4 h-4 flex items-center justify-center text-gray-300 hover:text-ink text-[9px] shrink-0"
+            className="w-4 h-4 flex items-center justify-center text-gray-300 hover:text-ink text-xs shrink-0"
           >
             {expanded ? '▾' : '▸'}
           </button>
@@ -133,7 +133,7 @@ function ElementTreeItem({
         )}
         <button
           onClick={handleLabelClick}
-          className={`text-left px-1 py-0.5 rounded text-[11px] transition-colors truncate flex-1 ${
+          className={`text-left px-1 py-0.5 rounded text-xs transition-colors truncate flex-1 ${
             isExpandedCat
               ? 'bg-gold/10 text-gold font-semibold'
               : isSelected
@@ -390,7 +390,7 @@ export default function MaterialsPage() {
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gray-200 text-gray-400 hover:bg-gray-300 hover:text-gray-600 flex items-center justify-center text-[10px] transition-colors"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gray-200 text-gray-400 hover:bg-gray-300 hover:text-gray-600 flex items-center justify-center text-xs transition-colors"
             >
               ✕
             </button>
@@ -425,7 +425,7 @@ export default function MaterialsPage() {
               {hasFilters && (
                 <button
                   onClick={clearAll}
-                  className="text-[10px] text-gray-300 hover:text-red-400 transition-colors px-1.5 py-0.5 rounded hover:bg-red-50"
+                  className="text-xs text-gray-300 hover:text-red-400 transition-colors px-1.5 py-0.5 rounded hover:bg-red-50"
                 >
                   ✕ 清除
                 </button>
@@ -491,7 +491,7 @@ export default function MaterialsPage() {
                 </div>
                 {structureL1 && (STRUCTURE_L2[structureL1]?.length ?? 0) > 0 && (
                   <div className="ml-3 mt-1 pt-1 border-l border-gray-100">
-                    <div className="text-[10px] text-gray-400 mb-1 px-2">{structureL1}</div>
+                    <div className="text-xs text-gray-400 mb-1 px-2">{structureL1}</div>
                     <div className="flex flex-col gap-0.5">
                       {STRUCTURE_L2[structureL1]!.map((l2) => (
                         <FilterBtn key={l2} active={structureL2 === l2} onClick={() => setStructureL2(structureL2 === l2 ? null : l2)}>
@@ -510,7 +510,7 @@ export default function MaterialsPage() {
                     <button
                       key={c}
                       onClick={() => setColor(color === c ? null : c)}
-                      className={`flex items-center gap-1.5 px-2 py-1 rounded-full text-[11px] transition-all ${
+                      className={`flex items-center gap-1.5 px-2 py-1 rounded-full text-xs transition-all ${
                         color === c
                           ? 'bg-gray-100 ring-1 ring-gold/40 shadow-sm'
                           : 'hover:bg-gray-50'
@@ -552,13 +552,13 @@ export default function MaterialsPage() {
           {expandedChildren.length > 0 && (
             <div className="mb-4 p-3 bg-white rounded-xl border border-gray-100 shadow-sm">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-[11px] text-gray-400">
+                <span className="text-xs text-gray-400">
                   {ELEMENT_TREE.find((n) => n.id === expandedCategory)?.label} · 二级分类
                 </span>
                 {expandedChildren.some((c) => elementIds.has(c.id)) && (
                   <button
                     onClick={() => expandedChildren.forEach((c) => elementIds.has(c.id) && toggleElement(c.id))}
-                    className="text-[10px] text-gray-300 hover:text-red-400"
+                    className="text-xs text-gray-300 hover:text-red-400"
                   >
                     清除
                   </button>
@@ -661,11 +661,11 @@ export default function MaterialsPage() {
               >
                 {paying ? '正在跳转支付宝…' : user?.email ? '支付宝支付 · 立即开通' : '登录后开通会员'}
               </button>
-              <p className="text-[10px] text-gray-300 mt-2">支付完成后自动开通会员 · 365天有效</p>
+              <p className="text-xs text-gray-300 mt-2">支付完成后自动开通会员 · 365天有效</p>
             </div>
 
             <div className="mt-5 pt-4 border-t border-gray-100">
-              <p className="text-[10px] text-gray-500 leading-relaxed">
+              <p className="text-xs text-gray-500 leading-relaxed">
                 会员有效期365天 · 到期需续费<br />
                 会员到期后已用于产品的素材可继续使用<br />
                 源文件不包含在会员权益内
@@ -686,7 +686,7 @@ function FilterBtn({ active, onClick, children, isAll }: { active: boolean; onCl
   return (
     <button
       onClick={onClick}
-      className={`text-left text-[11px] px-2 py-1 rounded-md transition-colors ${
+      className={`text-left text-xs px-2 py-1 rounded-md transition-colors ${
         active
           ? isAll
             ? 'bg-ink/5 text-ink font-medium'
@@ -712,11 +712,11 @@ function MobileScroll({
 }) {
   return (
     <div>
-      <h3 className="text-[11px] font-serif font-semibold text-ink mb-1">{title}</h3>
+      <h3 className="text-xs font-serif font-semibold text-ink mb-1">{title}</h3>
       <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none">
         <button
           onClick={() => onSelect(null)}
-          className={`shrink-0 px-2.5 py-1 rounded-full text-[11px] whitespace-nowrap transition-colors ${
+          className={`shrink-0 px-2.5 py-1 rounded-full text-xs whitespace-nowrap transition-colors ${
             !selected ? 'bg-ink text-white shadow-sm' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
           }`}
         >
@@ -726,7 +726,7 @@ function MobileScroll({
           <button
             key={o}
             onClick={() => onSelect(selected === o ? null : o)}
-            className={`shrink-0 px-2.5 py-1 rounded-full text-[11px] whitespace-nowrap transition-colors ${
+            className={`shrink-0 px-2.5 py-1 rounded-full text-xs whitespace-nowrap transition-colors ${
               selected === o
                 ? 'bg-gold/15 text-gold font-medium border border-gold/30'
                 : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
@@ -753,7 +753,7 @@ function ActiveChips({
   count: number;
 }) {
   return (
-    <div className="flex items-center flex-wrap gap-1.5 mb-5 text-[11px]">
+    <div className="flex items-center flex-wrap gap-1.5 mb-5 text-xs">
       {dynasty && <Chip label={dynasty} onRemove={onRemoveDynasty} />}
       {structureL1 && !structureL2 && <Chip label={structureL1} onRemove={onRemoveStructureL1} />}
       {structureL1 && structureL2 && <Chip label={`${structureL1} / ${structureL2}`} onRemove={onRemoveStructureL2} />}
@@ -797,16 +797,16 @@ function renderCard(item: MaterialItem, setLightbox: (lb: { src: string; title: 
       <div className="p-3">
         <div className="flex items-center justify-between gap-2 mb-1">
           <h4 className="text-sm font-medium text-ink truncate">{item.title}</h4>
-          <span className="shrink-0 px-1.5 py-0.5 text-[10px] rounded bg-gold/15 text-gold font-medium">
+          <span className="shrink-0 px-1.5 py-0.5 text-xs rounded bg-gold/15 text-gold font-medium">
             {item.dynasty}
           </span>
         </div>
-        <p className="text-[11px] text-gray-400 line-clamp-1">
+        <p className="text-xs text-gray-400 line-clamp-1">
           {(() => { const p = item.description.split('，'); return [p[0], p[2]].filter(Boolean).join('，'); })()}
         </p>
         <div className="flex flex-wrap gap-1 mt-2">
           {item.elements.slice(0, 3).map((eid) => (
-            <span key={eid} className="px-1.5 py-0.5 text-[10px] rounded bg-gray-100 text-gray-500">
+            <span key={eid} className="px-1.5 py-0.5 text-xs rounded bg-gray-100 text-gray-500">
               {elementLabelMap.get(eid) ?? eid}
             </span>
           ))}

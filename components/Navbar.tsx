@@ -88,7 +88,7 @@ export default function Navbar() {
                 )}
                 <span className="text-sm text-ink">{user.nickname}</span>
                 {isMember && (
-                  <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-gold/10 text-gold text-[10px] font-medium">
+                  <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-gold/10 text-gold text-xs font-medium">
                     <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4 4 5-7 5 7 4-4-1.5 10h-15L3 8z"/></svg>
                     会员
                   </span>
@@ -180,12 +180,12 @@ export default function Navbar() {
                   <img src={user.avatar} alt={user.nickname} className="w-6 h-6 rounded-full object-cover" />
                 ) : (
                   <div className="w-6 h-6 rounded-full bg-qing flex items-center justify-center">
-                    <span className="text-white text-[10px] font-medium">{user.nickname.charAt(0)}</span>
+                    <span className="text-white text-xs font-medium">{user.nickname.charAt(0)}</span>
                   </div>
                 )}
                 {user.nickname}
                 {isMember && (
-                  <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-gold/10 text-gold text-[10px] font-medium">
+                  <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-gold/10 text-gold text-xs font-medium">
                     <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4 4 5-7 5 7 4-4-1.5 10h-15L3 8z"/></svg>
                     会员
                   </span>

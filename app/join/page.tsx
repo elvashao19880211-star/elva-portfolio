@@ -179,7 +179,7 @@ export default function JoinPage() {
               <span className="text-sm text-ink font-medium tracking-wide">studio@hetu-pattern.com</span>
             </div>
 
-            <p className="text-[11px] text-gray-400 mt-5">邮件请注明「签约申请」及您的姓名或工作室名称</p>
+            <p className="text-xs text-gray-400 mt-5">邮件请注明「签约申请」及您的姓名或工作室名称</p>
           </div>
         </div>
       </section>

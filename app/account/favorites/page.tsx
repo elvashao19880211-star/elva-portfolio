@@ -181,7 +181,7 @@ export default function FavoritesPage() {
                       </button>
                     )}
                   </div>
-                  <span className="text-[10px] text-gray-400 ml-auto">
+                  <span className="text-xs text-gray-400 ml-auto">
                     {hasInnovation
                       ? '仅支持商业许可'
                       : effectiveTier === 'commercial'
@@ -228,7 +228,7 @@ export default function FavoritesPage() {
                       >
                         {item.title}
                       </Link>
-                      <p className="text-[11px] text-gray-400 mt-1">
+                      <p className="text-xs text-gray-400 mt-1">
                         {item.type === 'revival' ? '复原纹样' : '创新纹样'}
                       </p>
                     </div>
@@ -269,7 +269,7 @@ export default function FavoritesPage() {
                     </span>
 
                     <div className="text-right">
-                      <p className="text-[10px] text-gray-400">合计</p>
+                      <p className="text-xs text-gray-400">合计</p>
                       <p className="text-xl font-bold text-gold">¥{totalPrice}</p>
                     </div>
 
@@ -307,7 +307,7 @@ export default function FavoritesPage() {
 
             {!paid && (
               <div className="mb-4 text-left">
-                <label className="text-[11px] text-gray-500 mb-1 block">联系方式（邮箱）</label>
+                <label className="text-xs text-gray-500 mb-1 block">联系方式（邮箱）</label>
                 <input
                   type="email"
                   value={buyerEmail}
@@ -341,7 +341,7 @@ export default function FavoritesPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <p className="text-sm font-medium text-ink">支付确认成功！</p>
-                <p className="text-[10px] text-gray-500 mt-1">已记录至「个人中心」</p>
+                <p className="text-xs text-gray-500 mt-1">已记录至「个人中心」</p>
               </div>
             )}
 
@@ -375,7 +375,7 @@ function SideMenuItem({ href, icon, label, count, active }: {
       <span className={active ? 'text-qing' : 'text-gray-400'}>{icon}</span>
       <span>{label}</span>
       {count !== undefined && count > 0 && (
-        <span className="ml-auto bg-red-500 text-white text-[10px] min-w-[18px] h-[18px] rounded-full flex items-center justify-center px-1">
+        <span className="ml-auto bg-red-500 text-white text-xs min-w-[18px] h-[18px] rounded-full flex items-center justify-center px-1">
           {count}
         </span>
       )}

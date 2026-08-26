@@ -126,7 +126,7 @@ export default function RevivalPatternsPage() {
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gray-200 text-gray-400 hover:bg-gray-300 hover:text-gray-600 flex items-center justify-center text-[10px] transition-colors"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gray-200 text-gray-400 hover:bg-gray-300 hover:text-gray-600 flex items-center justify-center text-xs transition-colors"
             >
               ✕
             </button>
@@ -248,7 +248,7 @@ export default function RevivalPatternsPage() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 {/* 朝代水标 */}
-                <span className="absolute top-3 left-3 px-2.5 py-1 text-[10px] rounded-full bg-white/90 text-ink/70 font-medium shadow-sm">
+                <span className="absolute top-3 left-3 px-2.5 py-1 text-xs rounded-full bg-white/90 text-ink/70 font-medium shadow-sm">
                   {item.dynasty}
                 </span>
               </div>
@@ -256,18 +256,18 @@ export default function RevivalPatternsPage() {
                 <h3 className="text-xs sm:text-base font-serif font-semibold text-ink mb-0.5 sm:mb-1.5 line-clamp-1">
                   {item.title}
                 </h3>
-                <p className="text-gray-500 text-[11px] sm:text-sm line-clamp-2 leading-relaxed">
+                <p className="text-gray-500 text-xs sm:text-sm line-clamp-2 leading-relaxed">
                   {item.description}
                 </p>
                 {item.elements && item.elements.length > 0 && (
                   <div className="flex flex-wrap gap-1 sm:gap-1.5 mt-1.5 sm:mt-3">
                     {item.elements.slice(0, 2).map((el) => (
-                      <span key={el} className="hidden sm:inline-block px-2 py-0.5 text-[11px] rounded-full bg-qing/15 text-ink/60">
+                      <span key={el} className="hidden sm:inline-block px-2 py-0.5 text-xs rounded-full bg-qing/15 text-ink/60">
                         {el}
                       </span>
                     ))}
                     {item.elements.length > 2 && (
-                      <span className="text-[11px] text-gray-400">+{item.elements.length - 2}</span>
+                      <span className="text-xs text-gray-400">+{item.elements.length - 2}</span>
                     )}
                   </div>
                 )}

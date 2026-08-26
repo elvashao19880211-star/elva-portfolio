@@ -264,7 +264,7 @@ export default function CooperationPage() {
               {submitted ? '✅ 已收到！我会尽快联系您' : '提交咨询'}
             </button>
 
-            <p className="text-[10px] text-gray-300 text-center mt-3">
+            <p className="text-xs text-gray-300 text-center mt-3">
               ⚡ 轻量版 · 咨询暂未接入后端存储（后续可对接邮件或 CRM）
             </p>
           </form>

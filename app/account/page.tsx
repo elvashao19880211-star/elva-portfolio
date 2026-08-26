@@ -137,7 +137,7 @@ export default function AccountPage() {
                   </div>
                 )}
                 {user && (
-                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-2 py-0.5 text-[10px] text-white bg-black/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-2 py-0.5 text-xs text-white bg-black/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                     {avatarUploading ? '上传中…' : '更换头像'}
                   </div>
                 )}
@@ -153,7 +153,7 @@ export default function AccountPage() {
                 {loading ? '加载中...' : user ? user.nickname : '未登录'}
               </h3>
               {user && isMemberActive(user) ? (
-                <div className="mt-1.5 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gold/10 text-gold text-[10px] font-medium">
+                <div className="mt-1.5 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gold/10 text-gold text-xs font-medium">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
                   </svg>
@@ -161,7 +161,7 @@ export default function AccountPage() {
                 </div>
               ) : (
                 user && (
-                  <Link href="/member" className="mt-1 inline-flex items-center gap-0.5 text-[10px] text-qing hover:underline">
+                  <Link href="/member" className="mt-1 inline-flex items-center gap-0.5 text-xs text-qing hover:underline">
                     开通会员
                   </Link>
                 )
@@ -177,11 +177,11 @@ export default function AccountPage() {
             <div className="grid grid-cols-2 gap-2 mt-4 pt-4 border-t border-gray-50">
               <div className="text-center">
                 <p className="text-lg font-bold text-ink">{purchases.length}</p>
-                <p className="text-[10px] text-gray-400">已购</p>
+                <p className="text-xs text-gray-400">已购</p>
               </div>
               <div className="text-center">
                 <p className="text-lg font-bold text-ink">{favorites.length}</p>
-                <p className="text-[10px] text-gray-400">收藏</p>
+                <p className="text-xs text-gray-400">收藏</p>
               </div>
             </div>
           </div>
@@ -255,14 +255,14 @@ export default function AccountPage() {
                         {item.title}
                       </h4>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className={`text-[10px] px-1.5 py-0.5 rounded font-medium ${
+                        <span className={`text-xs px-1.5 py-0.5 rounded font-medium ${
                           item.tier === 'personal' ? 'bg-blue-50 text-blue-500' :
                           item.tier === 'commercial' ? 'bg-gold/10 text-gold' :
                           'bg-purple-50 text-purple-500'
                         }`}>
                           {item.tier === 'personal' ? '个人非商用' : item.tier === 'commercial' ? '商业许可' : '企业授权'}
                         </span>
-                        <span className="text-[10px] text-gray-400">
+                        <span className="text-xs text-gray-400">
                           {new Date(item.purchasedAt).toLocaleDateString('zh-CN')}
                         </span>
                       </div>
@@ -279,7 +279,7 @@ export default function AccountPage() {
                           link.click();
                           document.body.removeChild(link);
                         }}
-                        className="text-[10px] text-qing hover:underline mt-0.5"
+                        className="text-xs text-qing hover:underline mt-0.5"
                       >
                         再次下载
                       </button>
@@ -347,7 +347,7 @@ function SidebarMenuItem({ href, icon, label, count, active }: {
       <span className={isActive ? 'text-qing' : 'text-gray-400'}>{icon}</span>
       <span>{label}</span>
       {count !== undefined && count > 0 && (
-        <span className="ml-auto bg-red-500 text-white text-[10px] min-w-[18px] h-[18px] rounded-full flex items-center justify-center px-1">
+        <span className="ml-auto bg-red-500 text-white text-xs min-w-[18px] h-[18px] rounded-full flex items-center justify-center px-1">
           {count}
         </span>
       )}
@@ -375,7 +375,7 @@ function QuickLink({ href, icon, title, desc, color }: {
       </div>
       <div>
         <p className="text-sm font-medium text-ink">{title}</p>
-        <p className="text-[11px] text-gray-400">{desc}</p>
+        <p className="text-xs text-gray-400">{desc}</p>
       </div>
     </Link>
   );

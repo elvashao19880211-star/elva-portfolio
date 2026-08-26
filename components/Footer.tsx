@@ -68,22 +68,22 @@ export default function Footer() {
           <p className="text-white/70 text-xs">
             © {new Date().getFullYear()} 河图 · 华夏纹样传承 版权所有
           </p>
-          <p className="text-white/40 text-[10px] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-white/40 text-xs max-w-2xl mx-auto leading-relaxed">
             本站所有纹样作品（含复原纹样、创新设计、素材图片及相关文字说明）均为原创智力成果，
             受《中华人民共和国著作权法》保护。未经权利人书面许可，禁止以任何形式复制、转载、修改、传播或用于商业用途。
             侵权必究。授权合作请联系 <span className="text-gold/80">小红书 @河图纹画</span>。
           </p>
           <div className="flex items-center justify-center gap-4 pt-1">
-            <a href="/terms" className="text-white/40 hover:text-gold transition-colors text-[10px]">用户协议</a>
-            <a href="/privacy" className="text-white/40 hover:text-gold transition-colors text-[10px]">隐私政策</a>
-            <a href="/refund" className="text-white/40 hover:text-gold transition-colors text-[10px]">退款政策</a>
-            <a href="/copyright" className="text-white/40 hover:text-gold transition-colors text-[10px]">版权声明</a>
+            <a href="/terms" className="text-white/40 hover:text-gold transition-colors text-xs">用户协议</a>
+            <a href="/privacy" className="text-white/40 hover:text-gold transition-colors text-xs">隐私政策</a>
+            <a href="/refund" className="text-white/40 hover:text-gold transition-colors text-xs">退款政策</a>
+            <a href="/copyright" className="text-white/40 hover:text-gold transition-colors text-xs">版权声明</a>
           </div>
           <a
             href="https://beian.miit.gov.cn/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/40 hover:text-gold transition-colors text-[10px]"
+            className="text-white/40 hover:text-gold transition-colors text-xs"
           >
             京ICP备2026049809号
           </a>
@@ -91,7 +91,7 @@ export default function Footer() {
             href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502062393"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-white/40 hover:text-gold transition-colors text-[10px]"
+            className="inline-flex items-center gap-1 text-white/40 hover:text-gold transition-colors text-xs"
           >
             <img src="/beian.png" alt="公安备案图标" className="w-3.5 h-3.5" />
             京公网安备 11010502062393号

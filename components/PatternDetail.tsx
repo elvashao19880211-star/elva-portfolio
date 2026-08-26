@@ -360,15 +360,15 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                 </svg>
                 购买流程
               </h4>
-              <div className="space-y-2 text-[11px] leading-relaxed text-ink/70">
-                <p><span className="inline-block w-[18px] h-[18px] rounded-full bg-amber-200 text-[10px] font-semibold text-amber-700 text-center leading-[18px] mr-2">1</span>点击「购买授权」，选择许可类型及对应价格</p>
-                <p><span className="inline-block w-[18px] h-[18px] rounded-full bg-amber-200 text-[10px] font-semibold text-amber-700 text-center leading-[18px] mr-2">2</span>支付宝扫码支付，注明纹样名称</p>
-                <p><span className="inline-block w-[18px] h-[18px] rounded-full bg-amber-200 text-[10px] font-semibold text-amber-700 text-center leading-[18px] mr-2">3</span>支付后点击「我已支付」，订单存入个人中心</p>
+              <div className="space-y-2 text-xs leading-relaxed text-ink/70">
+                <p><span className="inline-block w-[18px] h-[18px] rounded-full bg-amber-200 text-xs font-semibold text-amber-700 text-center leading-[18px] mr-2">1</span>点击「购买授权」，选择许可类型及对应价格</p>
+                <p><span className="inline-block w-[18px] h-[18px] rounded-full bg-amber-200 text-xs font-semibold text-amber-700 text-center leading-[18px] mr-2">2</span>支付宝扫码支付，注明纹样名称</p>
+                <p><span className="inline-block w-[18px] h-[18px] rounded-full bg-amber-200 text-xs font-semibold text-amber-700 text-center leading-[18px] mr-2">3</span>支付后点击「我已支付」，订单存入个人中心</p>
                 <div className="mt-2.5 pt-2.5 border-t border-amber-200 space-y-1.5">
-                  <p className="text-[10px] font-medium text-amber-700 mb-1">各许可类型交付内容：</p>
-                  <p className="text-[10px]">个人非商用 — 直接下载无水印图片</p>
-                  <p className="text-[10px]">商业许可 — 高清无水印原图 + 授权书</p>
-                  <p className="text-[10px]">企业授权 — PSD源文件发送至所填邮箱</p>
+                  <p className="text-xs font-medium text-amber-700 mb-1">各许可类型交付内容：</p>
+                  <p className="text-xs">个人非商用 — 直接下载无水印图片</p>
+                  <p className="text-xs">商业许可 — 高清无水印原图 + 授权书</p>
+                  <p className="text-xs">企业授权 — PSD源文件发送至所填邮箱</p>
                 </div>
               </div>
             </div>
@@ -411,13 +411,17 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                 className="p-2 rounded-full hover:bg-red-50 transition-colors"
               />
             </div>
-            <p className="text-[10px] text-gray-300 text-center -mt-2">
-              {isNonCommercial
-                ? (pattern.derivative
-                    ? '基于传统纹样的再创作 · 仅供展示学习'
-                    : '依据考古复原一手稿件绘制 · 仅供学习欣赏')
-                : owned ? '已购 · 可直接下载' : '免费预览 · 下载无水印需购买'}
-            </p>
+            {isNonCommercial ? (
+              !pattern.derivative && (
+                <p className="text-xs text-gray-400 text-center -mt-1.5">
+                  本纹样依据考古复原一手稿件绘制，不作商业用途。
+                </p>
+              )
+            ) : (
+              <p className="text-xs text-gray-300 text-center -mt-1.5">
+                {owned ? '已购 · 可直接下载' : '免费预览 · 下载无水印需购买'}
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -452,7 +456,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
             </div>
 
             <button onClick={() => setShowBuy(false)} className="btn-outline w-full text-sm mt-6">取消</button>
-            <p className="text-[10px] text-gray-500 text-center mt-3 leading-relaxed">
+            <p className="text-xs text-gray-500 text-center mt-3 leading-relaxed">
               版权归创作者所有 · 您购买的是使用权许可 · 禁止转卖文件、子授权、注册商标
             </p>
           </div>
@@ -466,11 +470,11 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
             <p className="text-xs text-gray-400 mb-1">支付</p>
             <p className="text-xl font-serif font-semibold text-ink mb-2">¥{getPriceText(selectedTier)}/幅</p>
             <p className="text-xs text-gray-500 mb-1">{getLabelText(selectedTier)}</p>
-            <p className="text-[10px] text-gray-400 mb-5">订单号：HETU-{Date.now().toString(36).toUpperCase()}</p>
+            <p className="text-xs text-gray-400 mb-5">订单号：HETU-{Date.now().toString(36).toUpperCase()}</p>
 
             {/* 买家联系方式 */}
             <div className="mb-4 text-left">
-              <label className="text-[11px] text-gray-500 mb-1 block">联系方式（邮箱）</label>
+              <label className="text-xs text-gray-500 mb-1 block">联系方式（邮箱）</label>
               <input
                 type="email"
                 value={buyerEmail}
@@ -493,7 +497,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                   </svg>
                   {paying ? '正在跳转支付宝…' : '前往支付宝支付'}
                 </button>
-                <p className="text-[10px] text-gray-400 mt-2">支付完成后将自动开通下载权限</p>
+                <p className="text-xs text-gray-400 mt-2">支付完成后将自动开通下载权限</p>
                 <div className="mt-3 pt-3 border-t border-gray-100">
                   <button
                     onClick={handleSubmitOrder}
@@ -511,8 +515,8 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                 </svg>
                 <p className="text-sm font-semibold text-ink">订单已提交</p>
                 <p className="text-xs text-gray-500">确认支付后，PSD源文件及企业授权协议将发送至您填写的邮箱</p>
-                <p className="text-[10px] text-gray-400">{buyerEmail}</p>
-                <p className="text-[10px] text-gray-300">如有疑问请联系 studio@hetu-pattern.com</p>
+                <p className="text-xs text-gray-400">{buyerEmail}</p>
+                <p className="text-xs text-gray-300">如有疑问请联系 studio@hetu-pattern.com</p>
               </div>
             ) : selectedTier === 'commercial' ? (
               <div className="mt-4 space-y-3">
@@ -521,7 +525,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <p className="text-sm font-semibold text-ink">支付确认成功</p>
-                  <p className="text-[10px] text-gray-500 mt-1">已记录至「个人中心」</p>
+                  <p className="text-xs text-gray-500 mt-1">已记录至「个人中心」</p>
                 </div>
                 <button onClick={() => handleDownload(true)} className="w-full py-3 rounded-xl bg-qing text-white text-sm font-semibold hover:bg-qing/90 transition-colors shadow-md flex items-center justify-center gap-2">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -546,7 +550,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <p className="text-sm font-semibold text-ink">支付确认成功</p>
-                  <p className="text-[10px] text-gray-500 mt-1">已记录至「个人中心」</p>
+                  <p className="text-xs text-gray-500 mt-1">已记录至「个人中心」</p>
                 </div>
                 <button onClick={handleDownload} className="w-full py-3 rounded-xl bg-qing text-white text-sm font-semibold hover:bg-qing/90 transition-colors shadow-md flex items-center justify-center gap-2">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -554,12 +558,12 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
                   </svg>
                   下载图片（带水印）
                 </button>
-                <p className="text-[10px] text-gray-400">带水印版本，仅供个人学习参考，不含商业使用权</p>
+                <p className="text-xs text-gray-400">带水印版本，仅供个人学习参考，不含商业使用权</p>
               </div>
             )}
 
             <div className="mt-6 pt-4 border-t border-gray-100">
-              <p className="text-[10px] text-gray-500 leading-relaxed">
+              <p className="text-xs text-gray-500 leading-relaxed">
                 版权归创作者所有 · 购买即同意授权条款<br />
                 禁止转卖文件、子授权、注册商标<br />
                 如发现将纹样注册商标，授权自动终止并保留追诉权利
@@ -635,7 +639,7 @@ export default function PatternDetail({ pattern, onClose }: PatternDetailProps) 
               </button>
             </div>
 
-            <p className="text-[10px] text-gray-400 text-center mt-4">
+            <p className="text-xs text-gray-400 text-center mt-4">
               填写后点击"生成"，即可获得个性化授权书
             </p>
           </div>
@@ -744,9 +748,9 @@ function AuthorizationDoc({
               </div>
               <div className="w-24 h-24 rounded-full border-2 border-red-400 flex items-center justify-center bg-red-50/30 select-none">
                 <div className="text-center">
-                  <p className="text-[10px] text-red-600/80 font-serif leading-tight">河图纹画</p>
-                  <p className="text-[8px] text-red-500/60">HETU PATTERN</p>
-                  <p className="text-[8px] text-red-400/50 mt-0.5">授权专用章</p>
+                  <p className="text-xs text-red-600/80 font-serif leading-tight">河图纹画</p>
+                  <p className="text-xs text-red-500/60">HETU PATTERN</p>
+                  <p className="text-xs text-red-400/50 mt-0.5">授权专用章</p>
                 </div>
               </div>
             </div>

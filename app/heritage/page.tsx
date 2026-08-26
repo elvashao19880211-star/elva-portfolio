@@ -175,10 +175,10 @@ export default function HeritagePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-8 right-4 sm:right-8">
                 <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
-                  <span className="inline-block px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs rounded-full bg-gold text-white font-medium">
+                  <span className="inline-block px-2 sm:px-3 py-0.5 sm:py-1 text-xs rounded-full bg-gold text-white font-medium">
                     {selected.dynasty}代
                   </span>
-                  <span className="text-white/70 text-[10px] sm:text-xs">{selected.date}</span>
+                  <span className="text-white/70 text-xs">{selected.date}</span>
                 </div>
                 <h2 className="text-lg sm:text-3xl font-serif font-semibold text-white">{selected.title}</h2>
                 <p className="text-white/70 text-xs sm:text-sm mt-0.5 sm:mt-1 max-w-2xl line-clamp-2 sm:line-clamp-none">{selected.description}</p>
@@ -354,7 +354,7 @@ export default function HeritagePage() {
 
             {/* 底部 */}
             <div className="px-4 sm:px-8 py-3 sm:py-4 border-t border-gray-100 text-center">
-              <p className="text-[10px] sm:text-xs text-gray-400">
+              <p className="text-xs text-gray-400">
                 {selected.date} · {selected.category} · 共 {selected.processSteps.length} 步复原步骤 · 参考 {selected.references.length} 件文物
               </p>
             </div>

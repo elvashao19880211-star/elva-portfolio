@@ -70,7 +70,7 @@ export default function InnovationPatternsPage() {
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gray-200 text-gray-400 hover:bg-gray-300 hover:text-gray-600 flex items-center justify-center text-[10px] transition-colors"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-gray-200 text-gray-400 hover:bg-gray-300 hover:text-gray-600 flex items-center justify-center text-xs transition-colors"
             >
               ✕
             </button>
@@ -194,7 +194,7 @@ export default function InnovationPatternsPage() {
                   setStructureL2(null);
                   setColorFilter(null);
                 }}
-                className="text-[10px] text-gray-300 hover:text-red-400 transition-colors"
+                className="text-xs text-gray-300 hover:text-red-400 transition-colors"
               >
                 清除全部筛选
               </button>
@@ -229,12 +229,12 @@ export default function InnovationPatternsPage() {
                   </h3>
                   <div className="flex flex-wrap gap-1 sm:gap-1.5 mt-1.5 sm:mt-3">
                     {item.elements?.slice(0, 3).map((el) => (
-                      <span key={el} className="px-2 py-0.5 text-[11px] rounded-full bg-qing/15 text-ink/60">
+                      <span key={el} className="px-2 py-0.5 text-xs rounded-full bg-qing/15 text-ink/60">
                         {el}
                       </span>
                     ))}
                     {item.colors?.slice(0, 2).map((c) => (
-                      <span key={c} className="hidden sm:inline-block px-2 py-0.5 text-[11px] rounded-full bg-gold/10 text-ink/50">
+                      <span key={c} className="hidden sm:inline-block px-2 py-0.5 text-xs rounded-full bg-gold/10 text-ink/50">
                         {c}
                       </span>
                     ))}

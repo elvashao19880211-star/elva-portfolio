@@ -70,7 +70,7 @@ export default function ContactWidget() {
 
           {/* 底部提示 */}
           <div className="px-4 pb-4">
-            <p className="text-[10px] text-gray-400 leading-relaxed">
+            <p className="text-xs text-gray-400 leading-relaxed">
               工作时间：工作日 9:00 - 18:00<br />
               通常 24 小时内回复
             </p>
