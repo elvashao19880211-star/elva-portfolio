@@ -17,7 +17,7 @@ export default function ContactWidget() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-[95] flex flex-col items-end gap-3">
+    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3">
       {/* 展开面板 */}
       {open && (
         <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 w-72 overflow-hidden animate-slideDown">
