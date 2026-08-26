@@ -36,7 +36,8 @@ export default function InnovationPatternsPage() {
         (p.elements || []).some((e) => e.toLowerCase().includes(q))
       );
     }
-    return result;
+    // 排序：可购买的在前，二创（仅供展示）的排后
+    return [...result].sort((a, b) => (a.derivative ? 1 : 0) - (b.derivative ? 1 : 0));
   }, [categoryFilter, structureL1, structureL2, colorFilter, showNewOnly, searchQuery]);
 
   const hasFilters = !!categoryFilter || !!structureL1 || !!colorFilter;

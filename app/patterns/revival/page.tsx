@@ -84,7 +84,8 @@ export default function RevivalPatternsPage() {
         (p.elements || []).some((e) => e.toLowerCase().includes(q))
       );
     }
-    return list;
+    // 排序：可购买的在前，无商业处理（仅供展示）的排后
+    return [...list].sort((a, b) => (a.nonCommercial ? 1 : 0) - (b.nonCommercial ? 1 : 0));
   }, [dynastyFilter, structureL1, structureL2, elementCat, elementFilter, showNewOnly, searchQuery]);
 
   return (
