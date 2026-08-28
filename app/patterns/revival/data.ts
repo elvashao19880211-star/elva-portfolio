@@ -29,7 +29,6 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/初唐-四人飞天.webp",
-    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/初唐-四人飞天.png",
     "structure": "单独/自由式",
   
@@ -46,7 +45,6 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/初唐-葡萄石榴藻井.webp",
-    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/初唐-葡萄石榴藻井.png",
     "structure": "适合/对称式",
   
@@ -161,7 +159,6 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/唐代-团花纹.webp",
-    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/唐代-团花纹.png",
     "structure": "四方连续/规则散点",
   
@@ -194,7 +191,6 @@ export const revivalPatterns: RevivalPattern[] = [
     "description": "",
     "detail": "",
     "src": "/images/revival/唐代-对马纹.webp",
-    "nonCommercial": true,
     "thumbSrc": "/images/revival/thumbs/唐代-对马纹.png",
     "structure": "四方连续/几何连缀",
   
@@ -2091,7 +2087,6 @@ export const revivalPatterns: RevivalPattern[] = [
     structureL2: '重叠式',
     elements: ['卐字纹', '龙纹'],
     src: '/images/revival/元代-卐字地龙纹.webp',
-    nonCommercial: true,
     thumbSrc: '/images/revival/thumbs/元代-卐字地龙纹.png',
     isNew: true,
   },
