@@ -185,6 +185,21 @@ const innovationPatterns: InnovationPattern[] = [
     structureL1: '单独纹样',
     structureL2: '自由纹样',
 },
+  {
+    id: 'innov-011',
+    title: '球路杂宝龙纹',
+    category: '几何纹',
+    structure: '四方连续/连缀式',
+    colors: ['青蓝'],
+    inspiration: '球路骨架与杂宝龙纹组合',
+    elements: ['球路纹', '杂宝纹', '龙纹'],
+    description: '球路杂宝龙纹创新设计',
+    author: '河图纹画',
+    src: '/images/innovation/球路杂宝龙纹.webp',
+  
+    structureL1: '四方连续',
+    structureL2: '连缀式',
+},
 ];
 
 // 分类取自素材库元素一级分类
