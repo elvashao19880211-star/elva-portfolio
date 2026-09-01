@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Noto_Serif_SC, Noto_Sans_SC } from "next/font/google"
+import { Analytics } from "@vercel/analytics/react"
 import "./globals.css"
 import Navbar from "../components/Navbar"
 import ContactWidget from "../components/ContactWidget"
@@ -50,6 +51,7 @@ export default function RootLayout({
         <main className="pt-20">{children}</main>
         <ContactWidget />
         <BackToTop />
+        <Analytics />
         <script
           dangerouslySetInnerHTML={{
             __html: `
