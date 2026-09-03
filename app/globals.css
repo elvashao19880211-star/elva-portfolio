@@ -160,3 +160,11 @@ body {
   letter-spacing: 0.02em;
   color: #999;
 }
+
+/* ===== Õº∆¨∑¿±£¥Ê£®≈‰∫œ components/ImageProtect.tsx£©===== */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
