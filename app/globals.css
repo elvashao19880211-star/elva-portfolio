@@ -161,7 +161,7 @@ body {
   color: #999;
 }
 
-/* ===== Õº∆¨∑¿±£¥Ê£®≈‰∫œ components/ImageProtect.tsx£©===== */
+/* ===== image anti-save (components/ImageProtect.tsx) ===== */
 img {
   -webkit-user-drag: none;
   user-select: none;
