@@ -1,0 +1,25 @@
+{
+  "name": "河图纹画 · 华夏纹样传承",
+  "short_name": "河图",
+  "description": "传统纹样复原 · 创新设计 · 品牌合作 —— 以千年纹样，续华夏脉络",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F5F3EE",
+  "theme_color": "#3F9EAC",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "/logo/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo/logo-dragon.webp",
+      "sizes": "256x256",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ]
+}
