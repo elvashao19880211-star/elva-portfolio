@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
 
     // ===== 限流（防批量注册 / 验证码爆破）=====
     const ip = getClientIp(req);
-    const ipLimit = await rateLimit(`reg:ip:${ip}`, 5, 3600);
+    const ipLimit = await rateLimit(`reg:ip:${ip}`, 20, 3600);
     if (!ipLimit.allowed) {
       return NextResponse.json(
         { error: '注册请求过于频繁，请稍后再试', retryAfter: ipLimit.retryAfter },

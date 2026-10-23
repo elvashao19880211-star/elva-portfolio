@@ -17,8 +17,8 @@ export async function POST(req: NextRequest) {
     const emailKey = email.trim().toLowerCase();
     const ip = getClientIp(req);
 
-    // 同一 IP：每小时最多 10 次
-    const ipLimit = await rateLimit(`sc:ip:${ip}`, 10, 3600);
+    // 同一 IP：每小时最多 30 次（宽鬆，避免同 WiFi 多人注册误伤）
+    const ipLimit = await rateLimit(`sc:ip:${ip}`, 30, 3600);
     if (!ipLimit.allowed) {
       return NextResponse.json(
         { error: '请求过于频繁，请稍后再试', retryAfter: ipLimit.retryAfter },
