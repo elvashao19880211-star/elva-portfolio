@@ -58,7 +58,7 @@ export default function RevivalPatternsPage() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
     if (id) {
-      const p = revivalPatterns.find((x) => x.id === id);
+      const p = revivalPatterns.find((x) => x.id === id && !x.hidden);
       if (p) setSelected(p);
     }
   }, []);
@@ -71,12 +71,12 @@ export default function RevivalPatternsPage() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const dynasties = useMemo(() => {
-    const set = new Set(revivalPatterns.map((p) => p.dynasty));
+    const set = new Set(revivalPatterns.filter((p) => !p.hidden).map((p) => p.dynasty));
     return Array.from(set).sort((a, b) => (DYNASTY_ORDER[a] || 99) - (DYNASTY_ORDER[b] || 99));
   }, []);
 
   const filtered = useMemo(() => {
-    let list = revivalPatterns;
+    let list = revivalPatterns.filter((p) => !p.hidden);
     if (dynastyFilter) list = list.filter((p) => p.dynasty === dynastyFilter);
     if (structureL1) list = list.filter((p) => p.structureL1 === structureL1);
     if (structureL2) list = list.filter((p) => p.structureL2 === structureL2);

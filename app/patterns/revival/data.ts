@@ -16,6 +16,7 @@ export interface RevivalPattern {
   thumbSrc?: string;
   isNew?: boolean;
   nonCommercial?: boolean; // 无商业处理（仅供学习展示，无购买）
+  hidden?: boolean;         // 下架隐藏（站内不展示，数据保留可恢复）
 }
 
 export const revivalPatterns: RevivalPattern[] = [
@@ -37,6 +38,7 @@ export const revivalPatterns: RevivalPattern[] = [
   },
   {
     "id": "revival-7",
+    "nonCommercial": true,
     "title": "葡萄石榴藻井",
     "dynasty": "初唐",
     "era": "",
@@ -1866,6 +1868,7 @@ export const revivalPatterns: RevivalPattern[] = [
   },
   {
     "id": "revival-120",
+    "hidden": true,
     "title": "第285窟莲花忍冬藻井",
     "dynasty": "西魏",
     "era": "",
