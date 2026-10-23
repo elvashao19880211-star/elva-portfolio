@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { resetPassword } from '@/lib/userStore';
 import { verifyCode } from '@/lib/verificationStore';
+import { rateLimit, getClientIp } from '@/lib/rateLimit';
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,6 +15,27 @@ export async function POST(req: NextRequest) {
     }
     if (!code || !token) {
       return NextResponse.json({ error: '请输入邮箱验证码' }, { status: 400 });
+    }
+
+    // ===== 限流（防验证码爆破 / 账号接管）=====
+    const emailKey = email.trim().toLowerCase();
+    const ip = getClientIp(req);
+
+    // 同一 IP：每小时最多 10 次重置请求
+    const ipLimit = await rateLimit(`rp:ip:${ip}`, 10, 3600);
+    if (!ipLimit.allowed) {
+      return NextResponse.json(
+        { error: '请求过于频繁，请稍后再试', retryAfter: ipLimit.retryAfter },
+        { status: 429 }
+      );
+    }
+    // 同一邮箱：15 分钟内最多尝试 5 次验证码（防 6 位码爆破）
+    const tryLimit = await rateLimit(`rp:try:${emailKey}`, 5, 900);
+    if (!tryLimit.allowed) {
+      return NextResponse.json(
+        { error: '验证码错误次数过多，请 15 分钟后再试', retryAfter: tryLimit.retryAfter },
+        { status: 429 }
+      );
     }
 
     if (!verifyCode(email, code, token)) {
