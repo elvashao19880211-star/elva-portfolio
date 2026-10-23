@@ -4,8 +4,8 @@ import bcrypt from 'bcryptjs';
 // ⚠️ 安全：生产环境必须设置 AUTH_SECRET，否则会回退到公开的默认密钥（登录态可被伪造）
 const ENV_SECRET = process.env.AUTH_SECRET || '';
 if (!ENV_SECRET && process.env.NODE_ENV === 'production') {
-  console.error(
-    '[安全告警] 未设置 AUTH_SECRET 环境变量！登录凭证正在使用不安全的默认密钥，请立即到 Vercel 配置 AUTH_SECRET。'
+  throw new Error(
+    '[安全] 未设置 AUTH_SECRET 环境变量，拒绝使用不安全的默认密钥。请在 Vercel 环境变量中配置后重新部署。'
   );
 }
 const SECRET = ENV_SECRET || 'hetu-pattern-local-dev-secret-2026';

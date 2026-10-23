@@ -3,8 +3,8 @@ import crypto from 'crypto';
 // ⚠️ 安全：生产环境必须设置 JWT_SECRET，否则会回退到公开的默认密钥（验证码令牌可被伪造）
 const ENV_SECRET = process.env.JWT_SECRET || '';
 if (!ENV_SECRET && process.env.NODE_ENV === 'production') {
-  console.error(
-    '[安全告警] 未设置 JWT_SECRET 环境变量！验证码令牌正在使用不安全的默认密钥，请立即到 Vercel 配置 JWT_SECRET。'
+  throw new Error(
+    '[安全] 未设置 JWT_SECRET 环境变量，拒绝使用不安全的默认密钥。请在 Vercel 环境变量中配置后重新部署。'
   );
 }
 const SECRET = ENV_SECRET || 'hetu-verify-secret-2026';
