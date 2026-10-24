@@ -70,7 +70,7 @@ export default function HomePage() {
               dotColor: 'rgba(251, 191, 36, 0.3)',
             },
             {
-              title: '我的著作',
+              title: '书籍推荐',
               subtitle: '江苏人民出版社 · 2025',
               desc: '《中国历代经典纹样》——从新石器到明清的纹样演变与解读',
               href: '#book',
@@ -108,11 +108,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 我的著作 — 作者背书 */}
+      {/* 书籍推荐 — 作者背书 */}
       <section id="book" className="px-4 sm:px-6 pb-16 sm:pb-24 max-w-6xl mx-auto scroll-mt-24">
           <div className="text-center mb-8">
             <p className="text-xs font-semibold tracking-wider mb-2" style={{ color: '#C3A370' }}>著作出版</p>
-            <h2 className="text-2xl sm:text-3xl font-serif font-semibold text-ink">我的著作</h2>
+            <h2 className="text-2xl sm:text-3xl font-serif font-semibold text-ink">书籍推荐</h2>
             <p className="text-sm text-gray-400 mt-3">河图纹画主理人 · 邵爱涵</p>
           </div>
 
