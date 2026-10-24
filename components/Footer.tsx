@@ -66,7 +66,7 @@ export default function Footer() {
         {/* 版权声明 */}
         <div className="pt-6 border-t border-white/10 text-center space-y-2">
           <p className="text-white/70 text-xs">
-            © {new Date().getFullYear()} 河图 · 华夏纹样传承 版权所有
+            © {new Date().getFullYear()} 北京德明兴利科技有限公司 · 河图纹画 版权所有
           </p>
           <p className="text-white/40 text-xs max-w-2xl mx-auto leading-relaxed">
             本站所有纹样作品（含复原纹样、创新设计、素材图片及相关文字说明）均为原创智力成果，

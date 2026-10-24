@@ -265,7 +265,7 @@ export default function CooperationPage() {
             </button>
 
             <p className="text-xs text-gray-300 text-center mt-3">
-              ⚡ 轻量版 · 咨询暂未接入后端存储（后续可对接邮件或 CRM）
+              提交后我们会在 1-2 个工作日内与您联系
             </p>
           </form>
 
@@ -283,13 +283,20 @@ export default function CooperationPage() {
               </div>
             </div>
           </div>
+
+          {/* 合作主体 */}
+          <div className="mt-12 pt-8 border-t border-gray-200 text-center">
+            <p className="text-xs tracking-widest text-gray-400 mb-2">合作主体</p>
+            <p className="text-base font-medium text-ink mb-1">北京德明兴利科技有限公司</p>
+            <p className="text-xs text-gray-400 mt-2">「河图纹画」为北京德明兴利科技有限公司旗下品牌 · 可开具增值税发票</p>
+          </div>
         </div>
       </section>
 
       {/* ===== Footer ===== */}
       <footer className="bg-ink text-white text-center py-10 px-6">
         <p className="text-gold font-medium mb-2">传承东方纹样之美</p>
-        <p className="text-white/50 text-sm">© {new Date().getFullYear()} 河图纹画 · 纹样定制与品牌合作</p>
+        <p className="text-white/50 text-sm">© {new Date().getFullYear()} 北京德明兴利科技有限公司 · 河图纹画</p>
       </footer>
     </main>
   );

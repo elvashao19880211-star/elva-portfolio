@@ -144,12 +144,8 @@ export default function HomePage() {
               <h3 className="text-2xl font-serif font-semibold text-ink mb-3">中国历代经典纹样</h3>
               <p className="text-sm text-gray-400 mb-5">江苏人民出版社 · 2025 年出版 · ISBN 9787214269690</p>
 
-              <p className="text-sm text-gray-500 leading-relaxed mb-4">
+              <p className="text-sm text-gray-500 leading-relaxed mb-6">
                 从新石器到明清，按历代脉络梳理经典纹样的起源与演变。鸟纹、兽面纹、宝相花、缠枝…… 每一笔都是时代的注脚。
-              </p>
-
-              <p className="text-sm text-gray-400 leading-relaxed mb-6">
-                <span className="text-ink font-medium">邵爱涵</span>，河图纹画主理人、传统纹样研究者。曾与北京联合大学合作，参与北京市通州区博物馆藏唐俑服饰、北京八角村辽金墓壁画的复原工作。曾任京东国际部设计师品牌部负责人、资深时尚买手。
               </p>
 
               <div className="flex flex-wrap gap-3">
