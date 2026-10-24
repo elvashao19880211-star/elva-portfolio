@@ -37,7 +37,7 @@ export default function PatternsPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         {/* 复原纹样 */}
         <Link href="/patterns/revival" className="group block">
-          <div className="relative h-[440px] sm:h-[500px] rounded-2xl overflow-hidden bg-gradient-to-br from-qing/20 to-ink/10 border border-gray-200 hover:border-qing/40 transition-all duration-500">
+          <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden bg-gradient-to-br from-qing/20 to-ink/10 border border-gray-200 hover:border-qing/40 transition-all duration-500">
             <div className="absolute inset-0 bg-gradient-to-br from-qing/30 via-transparent to-ink/20 
                             group-hover:from-qing/40 group-hover:via-qing/10 transition-all duration-500" />
             {/* 装饰圆 */}
@@ -45,11 +45,6 @@ export default function PatternsPage() {
             <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-gold/10" />
 
             <div className="relative z-10 flex flex-col items-center justify-center h-full p-8 text-center">
-              <img
-                src="/images/icons/revival-icon.webp"
-                alt="复原纹样"
-                className="w-48 h-48 sm:w-60 sm:h-60 mb-5 object-contain"
-              />
               <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-ink group-hover:text-gold transition-colors duration-300">
                 复原纹样
               </h2>
@@ -71,7 +66,7 @@ export default function PatternsPage() {
 
         {/* 创新纹样 */}
         <Link href="/patterns/innovation" className="group block">
-          <div className="relative h-[440px] sm:h-[500px] rounded-2xl overflow-hidden bg-gradient-to-br from-gold/20 to-qing/10 border border-gray-200 hover:border-gold/40 transition-all duration-500">
+          <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden bg-gradient-to-br from-gold/20 to-qing/10 border border-gray-200 hover:border-gold/40 transition-all duration-500">
             <div className="absolute inset-0 bg-gradient-to-br from-gold/30 via-transparent to-qing/20
                             group-hover:from-gold/40 group-hover:via-gold/10 transition-all duration-500" />
             {/* 装饰圆 */}
@@ -79,11 +74,6 @@ export default function PatternsPage() {
             <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-qing/10" />
 
             <div className="relative z-10 flex flex-col items-center justify-center h-full p-8 text-center">
-              <img
-                src="/images/icons/innovation-icon.webp"
-                alt="创新纹样"
-                className="w-48 h-48 sm:w-60 sm:h-60 mb-5 object-contain"
-              />
               <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-ink group-hover:text-gold transition-colors duration-300">
                 创新纹样
               </h2>
