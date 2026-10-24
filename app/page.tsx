@@ -99,6 +99,75 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 我的著作 — 作者背书 */}
+      <section className="px-4 sm:px-6 pb-16 sm:pb-24 max-w-6xl mx-auto">
+        <div className="text-center mb-8">
+          <p className="text-xs font-semibold tracking-wider mb-2" style={{ color: '#C3A370' }}>著作出版</p>
+          <h2 className="text-2xl sm:text-3xl font-serif font-semibold text-ink">我的著作</h2>
+        </div>
+
+        <div
+          className="relative overflow-hidden rounded-2xl border p-6 sm:p-10"
+          style={{ backgroundColor: '#FDFBF7', borderColor: '#f3f4f6' }}
+        >
+          <div className="absolute top-0 right-0 w-56 h-56 rounded-full -translate-y-1/3 translate-x-1/4 opacity-70" style={{ backgroundColor: 'rgba(195, 163, 112, 0.06)' }} />
+
+          <div className="relative z-10 grid grid-cols-1 sm:grid-cols-[260px_1fr] gap-8 sm:gap-10 items-center">
+            {/* 封面 */}
+            <div className="mx-auto">
+              <img
+                src="/images/book/cover.webp"
+                alt="《中国历代经典纹样》书籍封面"
+                className="w-[200px] sm:w-[240px] rounded-lg shadow-xl"
+                loading="lazy"
+              />
+            </div>
+
+            {/* 信息 */}
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-5 h-px" style={{ backgroundColor: 'rgba(195, 163, 112, 0.3)' }} />
+                <div className="w-1.5 h-1.5 rotate-45" style={{ backgroundColor: 'rgba(195, 163, 112, 0.3)' }} />
+                <div className="flex-1 h-px" style={{ backgroundColor: 'rgba(195, 163, 112, 0.3)' }} />
+              </div>
+
+              <h3 className="text-2xl font-serif font-semibold text-ink mb-3">中国历代经典纹样</h3>
+              <p className="text-sm text-gray-400 mb-5">江苏人民出版社 · 2025 年出版 · ISBN 9787214269690</p>
+
+              <p className="text-sm text-gray-500 leading-relaxed mb-4">
+                从新石器到明清，按历代脉络梳理经典纹样的起源与演变。鸟纹、兽面纹、宝相花、缠枝…… 每一笔都是时代的注脚。
+              </p>
+
+              <p className="text-sm text-gray-400 leading-relaxed mb-6">
+                <span className="text-ink font-medium">邵爱涵（小青龙）</span>，传统纹样研究者、纹样科普博主。曾与北京联合大学合作，参与北京市通州区博物馆藏唐俑服饰、北京八角村辽金墓壁画的复原工作。曾任京东国际部设计师品牌部负责人、资深时尚买手。
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="https://detail.tmall.com/item.htm?id=917990429883"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-medium transition-transform hover:-translate-y-0.5 shadow-lg shadow-qing/20"
+                  style={{ backgroundColor: '#3F9EAC' }}
+                >
+                  去天猫购买
+                  <span className="text-xs opacity-80">→</span>
+                </a>
+                <a
+                  href="https://book.douban.com/subject/37332799/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium border transition-colors hover:bg-gray-50"
+                  style={{ borderColor: '#e5e7eb', color: '#6b7280' }}
+                >
+                  豆瓣读者评价
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* AI 纹样生成 — 首页入口 */}
       <section className="relative px-4 sm:px-6 py-16 sm:py-24 text-center overflow-hidden">
         {/* 装饰 */}
