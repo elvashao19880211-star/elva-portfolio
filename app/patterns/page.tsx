@@ -45,7 +45,11 @@ export default function PatternsPage() {
             <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-gold/10" />
 
             <div className="relative z-10 flex flex-col items-center justify-center h-full p-8 text-center">
-              <span className="text-6xl mb-6 block">🏮</span>
+              <img
+                src="/images/icons/revival-icon.webp"
+                alt="复原纹样"
+                className="w-16 h-16 sm:w-20 sm:h-20 mb-6 object-contain"
+              />
               <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-ink group-hover:text-gold transition-colors duration-300">
                 复原纹样
               </h2>
@@ -75,7 +79,11 @@ export default function PatternsPage() {
             <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-qing/10" />
 
             <div className="relative z-10 flex flex-col items-center justify-center h-full p-8 text-center">
-              <span className="text-6xl mb-6 block">✨</span>
+              <img
+                src="/images/icons/innovation-icon.webp"
+                alt="创新纹样"
+                className="w-16 h-16 sm:w-20 sm:h-20 mb-6 object-contain"
+              />
               <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-ink group-hover:text-gold transition-colors duration-300">
                 创新纹样
               </h2>
