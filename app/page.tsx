@@ -40,7 +40,7 @@ export default function HomePage() {
 
       {/* ====== 核心入口 ====== */}
       <section className="px-4 sm:px-6 pb-16 sm:pb-28 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {[
             {
               title: '纹样作品库',
@@ -68,6 +68,15 @@ export default function HomePage() {
               washColor: 'rgba(251, 243, 219, 0.4)',
               iconColor: '#A16207',
               dotColor: 'rgba(251, 191, 36, 0.3)',
+            },
+            {
+              title: '我的著作',
+              subtitle: '江苏人民出版社 · 2025',
+              desc: '《中国历代经典纹样》——从新石器到明清的纹样演变与解读',
+              href: '#book',
+              washColor: 'rgba(195, 163, 112, 0.06)',
+              iconColor: '#8B6F3F',
+              dotColor: 'rgba(195, 163, 112, 0.35)',
             },
           ].map((card) => (
             <a
@@ -100,11 +109,12 @@ export default function HomePage() {
       </section>
 
       {/* 我的著作 — 作者背书 */}
-      <section className="px-4 sm:px-6 pb-16 sm:pb-24 max-w-6xl mx-auto">
-        <div className="text-center mb-8">
-          <p className="text-xs font-semibold tracking-wider mb-2" style={{ color: '#C3A370' }}>著作出版</p>
-          <h2 className="text-2xl sm:text-3xl font-serif font-semibold text-ink">我的著作</h2>
-        </div>
+      <section id="book" className="px-4 sm:px-6 pb-16 sm:pb-24 max-w-6xl mx-auto scroll-mt-24">
+          <div className="text-center mb-8">
+            <p className="text-xs font-semibold tracking-wider mb-2" style={{ color: '#C3A370' }}>著作出版</p>
+            <h2 className="text-2xl sm:text-3xl font-serif font-semibold text-ink">我的著作</h2>
+            <p className="text-sm text-gray-400 mt-3">河图纹画主理人 · 邵爱涵</p>
+          </div>
 
         <div
           className="relative overflow-hidden rounded-2xl border p-6 sm:p-10"
@@ -139,7 +149,7 @@ export default function HomePage() {
               </p>
 
               <p className="text-sm text-gray-400 leading-relaxed mb-6">
-                <span className="text-ink font-medium">邵爱涵（小青龙）</span>，传统纹样研究者、纹样科普博主。曾与北京联合大学合作，参与北京市通州区博物馆藏唐俑服饰、北京八角村辽金墓壁画的复原工作。曾任京东国际部设计师品牌部负责人、资深时尚买手。
+                <span className="text-ink font-medium">邵爱涵</span>，河图纹画主理人、传统纹样研究者。曾与北京联合大学合作，参与北京市通州区博物馆藏唐俑服饰、北京八角村辽金墓壁画的复原工作。曾任京东国际部设计师品牌部负责人、资深时尚买手。
               </p>
 
               <div className="flex flex-wrap gap-3">
@@ -152,15 +162,6 @@ export default function HomePage() {
                 >
                   去天猫购买
                   <span className="text-xs opacity-80">→</span>
-                </a>
-                <a
-                  href="https://book.douban.com/subject/37332799/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium border transition-colors hover:bg-gray-50"
-                  style={{ borderColor: '#e5e7eb', color: '#6b7280' }}
-                >
-                  豆瓣读者评价
                 </a>
               </div>
             </div>
