@@ -109,7 +109,7 @@ export default function HomePage() {
       </section>
 
       {/* 书籍推荐 — 作者背书 */}
-      <section id="book" className="px-4 sm:px-6 pb-16 sm:pb-24 max-w-6xl mx-auto scroll-mt-24">
+      <section id="book" className="relative px-6 sm:px-10 py-10 sm:py-14 mb-16 sm:mb-24 max-w-6xl mx-auto scroll-mt-24 rounded-3xl" style={{ background: 'linear-gradient(180deg, rgba(195, 163, 112, 0.13) 0%, rgba(195, 163, 112, 0.05) 55%, rgba(255, 255, 255, 0) 100%)' }}>
           <div className="text-center mb-8">
             <p className="text-xs font-semibold tracking-wider mb-2" style={{ color: '#C3A370' }}>著作出版</p>
             <h2 className="text-2xl sm:text-3xl font-serif font-semibold text-ink">书籍推荐</h2>
@@ -118,7 +118,7 @@ export default function HomePage() {
 
         <div
           className="relative overflow-hidden rounded-2xl border p-6 sm:p-10"
-          style={{ backgroundColor: '#FDFBF7', borderColor: '#f3f4f6' }}
+          style={{ backgroundColor: '#FFFFFF', borderColor: '#f0e9db' }}
         >
           <div className="absolute top-0 right-0 w-56 h-56 rounded-full -translate-y-1/3 translate-x-1/4 opacity-70" style={{ backgroundColor: 'rgba(195, 163, 112, 0.06)' }} />
 
