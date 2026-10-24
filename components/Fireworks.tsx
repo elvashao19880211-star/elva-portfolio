@@ -20,6 +20,14 @@ export default function Fireworks() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const [burst, setBurst] = useState(0);
+  // 移动端关闭：小屏或触摸设备不渲染烟花（省 CPU，避免手机卡顿）
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    const isSmall = window.matchMedia('(max-width: 768px)').matches;
+    const isTouchMobile = navigator.maxTouchPoints > 0 && window.innerWidth < 1024;
+    setEnabled(!isSmall && !isTouchMobile);
+  }, []);
 
   const launch = useCallback(() => {
     const canvas = canvasRef.current;
@@ -99,17 +107,22 @@ export default function Fireworks() {
 
   // 首次进入自动迎宾一波
   useEffect(() => {
+    if (!enabled) return;
     const timers = [300, 700, 1100, 1500, 1900].map((d) => setTimeout(launch, d));
     return () => timers.forEach(clearTimeout);
-  }, [launch]);
+  }, [launch, enabled]);
 
   // 手动触发（点击按钮）
   useEffect(() => {
+    if (!enabled) return;
     if (burst > 0) {
       const timers = [0, 180, 360].map((d) => setTimeout(launch, d));
       return () => timers.forEach(clearTimeout);
     }
-  }, [burst, launch]);
+  }, [burst, launch, enabled]);
+
+  // 移动端直接不渲染（连按钮也去掉）
+  if (!enabled) return null;
 
   return (
     <>
