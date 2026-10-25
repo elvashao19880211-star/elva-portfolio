@@ -24,7 +24,7 @@ const notoSans = Noto_Sans_SC({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.hetu-pattern.com"),
   title: {
-    default: "河图纹画 · 中国传统纹样复原与创新设计",
+    default: "河图纹画 · 华夏纹样传承",
     template: "%s | 河图纹画",
   },
   description:
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     locale: "zh_CN",
     url: "https://www.hetu-pattern.com",
     siteName: "河图纹画",
-    title: "河图纹画 · 中国传统纹样复原与创新设计",
+    title: "河图纹画 · 华夏纹样传承",
     description:
       "考据出土文物与博物馆藏品严谨复原历代纹样，提供纹样素材库、单件授权与定制设计服务。",
     images: [
