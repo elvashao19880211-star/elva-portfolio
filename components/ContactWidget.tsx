@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
  */
 export default function ContactWidget() {
   const [open, setOpen] = useState(false);
+  const [showWechat, setShowWechat] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -47,6 +48,46 @@ export default function ContactWidget() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </a>
+
+            {/* 微信 */}
+            <button
+              onClick={() => setShowWechat(!showWechat)}
+              className="w-full flex items-center gap-3 p-3 rounded-xl bg-green-50/60 border border-green-100 hover:bg-green-50 transition-colors group text-left"
+            >
+              <span className="w-9 h-9 rounded-full flex items-center justify-center text-white shrink-0" style={{ backgroundColor: '#07C160' }}>
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8.7 3C4.9 3 1.8 5.6 1.8 8.8c0 1.8 1 3.4 2.6 4.5l-.7 2.1 2.5-1.3c.7.2 1.5.3 2.3.3h.4c-.1-.4-.2-.9-.2-1.3 0-2.9 2.8-5.2 6.3-5.2h.4C14.8 4.6 11.9 3 8.7 3zM6.3 6.1c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9zm4.4 0c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9zM15.9 9.4c-3.3 0-6 2.2-6 4.9s2.7 4.9 6 4.9c.7 0 1.4-.1 2-.3l2.2 1.1-.6-1.8c1.4-1 2.3-2.5 2.3-4 0-2.6-2.6-4.8-5.9-4.8zm-2.1 2.4c.4 0 .8.3.8.8 0 .4-.4.8-.8.8-.4 0-.8-.3-.8-.8 0-.4.4-.8.8-.8zm4.2 0c.4 0 .8.3.8.8 0 .4-.4.8-.8.8-.4 0-.8-.3-.8-.8 0-.4.4-.8.8-.8z" />
+                </svg>
+              </span>
+              <div className="min-w-0">
+                <p className="text-xs font-medium text-ink">微信（推荐）</p>
+                <p className="text-xs truncate" style={{ color: '#07C160' }}>ElvaHTWH</p>
+              </div>
+              <svg
+                className={`w-4 h-4 text-gray-300 ml-auto shrink-0 transition-transform ${showWechat ? 'rotate-90' : 'group-hover:translate-x-0.5'}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* 微信二维码（展开） */}
+            {showWechat && (
+              <div className="flex flex-col items-center px-3 pb-3 rounded-xl bg-green-50/60 border border-green-100">
+                <img
+                  src="/images/wechat-qr.webp"
+                  alt="微信二维码 ElvaHTWH"
+                  className="w-44 h-44 rounded-lg bg-white p-1.5 shadow-sm"
+                />
+                <p className="text-xs text-gray-500 mt-2 text-center leading-relaxed">
+                  扫码添加微信
+                  <br />
+                  或搜索微信号 <span className="font-medium text-ink">ElvaHTWH</span>
+                </p>
+              </div>
+            )}
 
             {/* 邮箱 */}
             <a
