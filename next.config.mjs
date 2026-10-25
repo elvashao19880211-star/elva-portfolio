@@ -17,6 +17,11 @@ const nextConfig = {
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
         ],
       },
+      {
+        // 纹样图片一律禁止搜索引擎索引（页面仍正常收录）
+        source: '/images/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow, noimageindex' }],
+      },
     ];
   },
 };
