@@ -18,9 +18,9 @@ export default function HomePage() {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/5 rounded-full blur-3xl pointer-events-none -translate-x-1/3 translate-y-1/2" />
         <div className="relative z-10 max-w-3xl mx-auto">
           <p className="text-xs tracking-[0.25em] text-gold/60 uppercase mb-4">HETU PATTERN</p>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-semibold text-ink leading-snug mb-5">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-semibold text-ink leading-snug mb-5">
             河图纹画
-          </h2>
+          </h1>
           <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-xl mx-auto mb-8">
             考据为骨，创新为魂。以出土文物与博物馆藏品为原点严谨复原，同时融合现代审美进行再创作，让传统纹样在当代设计中焕发生命力。
           </p>

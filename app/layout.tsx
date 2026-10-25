@@ -22,8 +22,30 @@ const notoSans = Noto_Sans_SC({
 })
 
 export const metadata: Metadata = {
-  title: "河图 · 华夏纹样传承",
-  description: "传统纹样复原 · 创新设计 · 品牌合作 · 纹样库与交流平台 —— 以千年纹样，续华夏脉络",
+  metadataBase: new URL("https://www.hetu-pattern.com"),
+  title: {
+    default: "河图纹画 · 中国传统纹样复原与创新设计",
+    template: "%s | 河图纹画",
+  },
+  description:
+    "河图纹画 —— 中国传统纹样复原、创新设计与品牌合作平台。考据出土文物与博物馆藏品严谨复原历代纹样，提供纹样素材库、单件授权与定制设计服务。",
+  keywords: [
+    "中国传统纹样",
+    "纹样复原",
+    "纹样设计",
+    "传统纹样素材",
+    "敦煌纹样",
+    "唐代纹样",
+    "宋代纹样",
+    "纹样库",
+    "纹样下载",
+    "纹样授权",
+    "中国古代纹样",
+    "中国历代经典纹样",
+    "纹样定制",
+    "品牌纹样设计",
+    "传统纹样设计",
+  ],
   manifest: "/manifest.json",
   icons: {
     icon: "/logo/logo-dragon.webp",
@@ -33,6 +55,26 @@ export const metadata: Metadata = {
     capable: true,
     statusBarStyle: "default",
     title: "河图",
+  },
+  openGraph: {
+    type: "website",
+    locale: "zh_CN",
+    url: "https://www.hetu-pattern.com",
+    siteName: "河图纹画",
+    title: "河图纹画 · 中国传统纹样复原与创新设计",
+    description:
+      "考据出土文物与博物馆藏品严谨复原历代纹样，提供纹样素材库、单件授权与定制设计服务。",
+    images: [
+      {
+        url: "/images/banner/初唐-四人飞天.webp",
+        width: 1200,
+        height: 630,
+        alt: "河图纹画 · 中国传统纹样",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "/",
   },
 }
 
@@ -54,6 +96,44 @@ export default function RootLayout({
         <BackToTop />
         <Analytics />
         <ImageProtect />
+        {/* 结构化数据：帮助百度/Google 理解站点身份与书籍信息 */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://www.hetu-pattern.com/#organization",
+                  name: "河图纹画",
+                  url: "https://www.hetu-pattern.com",
+                  logo: "https://www.hetu-pattern.com/logo/logo-dragon.webp",
+                  description: "中国传统纹样复原、创新设计与品牌合作平台",
+                  founder: { "@type": "Person", name: "邵爱涵" },
+                  address: { "@type": "PostalAddress", addressCountry: "CN" },
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.hetu-pattern.com/#website",
+                  url: "https://www.hetu-pattern.com",
+                  name: "河图纹画",
+                  inLanguage: "zh-CN",
+                  publisher: { "@id": "https://www.hetu-pattern.com/#organization" },
+                },
+                {
+                  "@type": "Book",
+                  name: "中国历代经典纹样",
+                  author: { "@type": "Person", name: "邵爱涵" },
+                  publisher: { "@type": "Organization", name: "江苏人民出版社" },
+                  isbn: "9787214269690",
+                  datePublished: "2025",
+                  inLanguage: "zh-CN",
+                },
+              ],
+            }),
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
