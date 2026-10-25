@@ -23,6 +23,11 @@ const notoSans = Noto_Sans_SC({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.hetu-pattern.com"),
+  verification: {
+    other: {
+      "baidu-site-verification": "codeva-evBK6oWt1Y",
+    },
+  },
   title: {
     default: "河图纹画 · 华夏纹样传承",
     template: "%s | 河图纹画",
