@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { Noto_Serif_SC, Noto_Sans_SC } from "next/font/google"
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/next"
 import ImageProtect from "../components/ImageProtect"
 import "./globals.css"
 import Navbar from "../components/Navbar"
