@@ -27,12 +27,28 @@ export default function CopyrightPage() {
           </section>
 
           <section>
-            <h2 className="font-serif font-semibold text-ink text-lg mb-3">三、授权性质</h2>
+            <h2 className="font-serif font-semibold text-red-700 text-lg mb-3">三、AI 训练与数据使用禁令</h2>
+            <p className="text-red-700 mb-2">
+              未经权利人书面许可，禁止将本站任何纹样作品（包括但不限于复原纹样、创新设计、纹样素材及其衍生图片）用于以下用途：
+            </p>
+            <ul className="list-disc pl-5 space-y-1 text-red-700">
+              <li>AI 模型训练、微调、LoRA 训练及数据集构建</li>
+              <li>风格迁移、图像生成、文生图参考等自动化学习用途</li>
+              <li>向任何第三方 AI 平台或数据集上传、投喂上述内容</li>
+              <li>以刮擦、爬虫、批量下载等方式获取本站图片并用于上述目的</li>
+            </ul>
+            <p className="mt-2 text-red-700">
+              如需将本站纹样用于 AI 相关项目，须事先获得书面授权并单独约定使用条件。违反本条款者，我方有权依法追究侵权责任，包括但不限于停止侵害、赔偿损失及公开道歉。
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-serif font-semibold text-ink text-lg mb-3">四、授权性质</h2>
             <p>本授权为非独占授权。同一纹样可同时授权给多个被授权人使用。我方不保证该纹样在市场上的唯一性，亦不承担因其他被授权人使用该纹样而产生的任何责任。</p>
           </section>
 
           <section>
-            <h2 className="font-serif font-semibold text-ink text-lg mb-3">四、个人学习许可（¥19.9/幅，含水印）</h2>
+            <h2 className="font-serif font-semibold text-ink text-lg mb-3">五、个人学习许可（¥19.9/幅，含水印）</h2>
             <p className="mb-2">核心限制：不得用于以营利为目的的任何用途。</p>
             <p className="text-ink font-medium mb-1">可用</p>
             <ul className="list-disc pl-5 space-y-1">
@@ -50,7 +66,7 @@ export default function CopyrightPage() {
           </section>
 
           <section>
-            <h2 className="font-serif font-semibold text-ink text-lg mb-3">五、标准商业许可（¥399/499/幅，无水印 + 授权书）</h2>
+            <h2 className="font-serif font-semibold text-ink text-lg mb-3">六、标准商业许可（¥399/499/幅，无水印 + 授权书）</h2>
             <p className="text-ink font-medium mb-1">可用</p>
             <ul className="list-disc pl-5 space-y-1">
               <li>商品包装与产品设计</li>
@@ -66,7 +82,7 @@ export default function CopyrightPage() {
           </section>
 
           <section>
-            <h2 className="font-serif font-semibold text-ink text-lg mb-3">六、企业源文件授权（¥3,999/幅，PSD 源文件 + 修改权）</h2>
+            <h2 className="font-serif font-semibold text-ink text-lg mb-3">七、企业源文件授权（¥3,999/幅，PSD 源文件 + 修改权）</h2>
             <p className="text-ink font-medium mb-1">可用</p>
             <ul className="list-disc pl-5 space-y-1">
               <li>涵盖标准商业许可的全部用途</li>
@@ -77,7 +93,7 @@ export default function CopyrightPage() {
           </section>
 
           <section>
-            <h2 className="font-serif font-semibold text-ink text-lg mb-3">七、通用限制（所有档位均适用）</h2>
+            <h2 className="font-serif font-semibold text-ink text-lg mb-3">八、通用限制（所有档位均适用）</h2>
             <ul className="list-disc pl-5 space-y-1">
               <li>授权仅限购买者本人使用，不可转让、转售、子授权</li>
               <li>禁止声称拥有该纹样的著作权</li>
@@ -87,12 +103,12 @@ export default function CopyrightPage() {
           </section>
 
           <section>
-            <h2 className="font-serif font-semibold text-ink text-lg mb-3">八、违约与授权终止</h2>
+            <h2 className="font-serif font-semibold text-ink text-lg mb-3">九、违约与授权终止</h2>
             <p>授权因违约终止后，已制作完成但未售出的实物商品，自终止之日起 30 日内可继续销售，逾期须立即停止销售。</p>
           </section>
 
           <section>
-            <h2 className="font-serif font-semibold text-ink text-lg mb-3">九、侵权投诉</h2>
+            <h2 className="font-serif font-semibold text-ink text-lg mb-3">十、侵权投诉</h2>
             <p>如您发现本站内容涉嫌侵犯您的知识产权，请通过 studio@hetu-pattern.com 提交投诉。</p>
             <p className="mt-2">请提供以下信息以协助核实：</p>
             <ul className="list-disc pl-5 space-y-1 mt-1">
@@ -105,7 +121,7 @@ export default function CopyrightPage() {
           </section>
 
           <section>
-            <h2 className="font-serif font-semibold text-ink text-lg mb-3">十、联系方式</h2>
+            <h2 className="font-serif font-semibold text-ink text-lg mb-3">十一、联系方式</h2>
             <p>邮箱：studio@hetu-pattern.com</p>
           </section>
         </div>

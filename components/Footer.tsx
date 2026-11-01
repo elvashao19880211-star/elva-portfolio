@@ -70,7 +70,8 @@ export default function Footer() {
           </p>
           <p className="text-white/40 text-xs max-w-2xl mx-auto leading-relaxed">
             本站所有纹样作品（含复原纹样、创新设计、素材图片及相关文字说明）均为原创智力成果，
-            受《中华人民共和国著作权法》保护。未经权利人书面许可，禁止以任何形式复制、转载、修改、传播或用于商业用途。
+            受《中华人民共和国著作权法》保护。未经权利人书面许可，禁止以任何形式复制、转载、修改、传播、用于商业用途，
+            亦禁止用于 AI 模型训练或数据集构建。
             侵权必究。授权合作请联系 <span className="text-gold/80">小红书 @河图纹画</span>。
           </p>
           <div className="flex items-center justify-center gap-4 pt-1">
