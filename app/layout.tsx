@@ -26,6 +26,7 @@ export const metadata: Metadata = {
   verification: {
     other: {
       "baidu-site-verification": "codeva-evBK6oWt1Y",
+      "msvalidate.01": "FBB0822F75FA050837141F81942D106A",
     },
   },
   title: {
