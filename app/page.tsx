@@ -113,9 +113,24 @@ export default function HomePage() {
                 </div>
                 <p className="text-xs font-semibold tracking-wider mb-2 opacity-80" style={{ color: card.iconColor }}>{card.subtitle}</p>
                 <h3 className="text-xl font-serif font-semibold text-ink mb-2">{card.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{card.desc}</p>
-                <span className="inline-block mt-5 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: card.iconColor }}>
-                  进入 →
+                <p className="text-gray-400 text-sm leading-relaxed pr-12">{card.desc}</p>
+
+                <span
+                  aria-hidden
+                  className="absolute bottom-6 right-6 w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-300 group-hover:bg-white group-hover:shadow-sm"
+                  style={{ borderColor: card.dotColor, color: card.iconColor }}
+                >
+                  <svg
+                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
                 </span>
               </div>
             </a>

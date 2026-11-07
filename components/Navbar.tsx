@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { label: '首页', href: '/' },
   { label: '纹样库', href: '/patterns' },
   { label: '素材库', href: '/materials' },
+  { label: '系统课', href: '/course', highlight: true },
   { label: '会员', href: '/member' },
   { label: '复原记录', href: '/heritage' },
   { label: '企业合作', href: '/cooperation' },
@@ -49,6 +50,7 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map((link) => {
             const isActive = pathname === link.href;
+            const isHighlight = !!(link as { highlight?: boolean }).highlight;
             return (
               <li key={link.href}>
                 <a
@@ -56,7 +58,9 @@ export default function Navbar() {
                   className={`relative px-4 py-2 text-sm rounded-full transition-all duration-200 ${
                     isActive
                       ? 'text-gold font-medium'
-                      : 'text-gray-500 hover:text-ink hover:bg-gray-50'
+                      : isHighlight
+                        ? 'text-gold/90 font-medium border border-gold/25 hover:bg-gold/8 hover:text-gold'
+                        : 'text-gray-500 hover:text-ink hover:bg-gray-50'
                   }`}
                 >
                   {link.label}
@@ -165,7 +169,9 @@ export default function Navbar() {
                 className={`block px-4 py-2.5 rounded-xl text-sm transition-all ${
                   isActive
                     ? 'bg-gold/10 text-gold font-medium'
-                    : 'text-gray-500 hover:bg-gray-50 hover:text-ink'
+                    : (link as { highlight?: boolean }).highlight
+                      ? 'text-gold/90 font-medium border border-gold/20'
+                      : 'text-gray-500 hover:bg-gray-50 hover:text-ink'
                 }`}
               >
                 {link.label}
