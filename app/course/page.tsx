@@ -16,6 +16,8 @@ const MODULES = [
   { n: '六', title: '中国传统纹样商业设计', desc: '从客户需求到方案输出的完整流程' },
 ];
 
+const AUDIENCE = ['平面设计师', '包装设计师', '室内装饰设计师', '汉服设计师', '新中式设计师'];
+
 const SERVICES = [
   { title: '小班授课', desc: '班级规模严格控制，每位学员均可获得充分指导' },
   { title: '主讲全程带课', desc: '主讲老师全程直播授课，可实时提问与互动' },
@@ -26,7 +28,7 @@ const SERVICES = [
 const FAQ = [
   {
     q: '课程需要什么基础？',
-    a: '需具备 PS、AI 或 Procreate 的基础操作能力。本课程不设传统纹样基础门槛，纹样体系自零建立；软件操作能力为必要前提，课程不承担软件基础教学。',
+    a: '需具备 PS、AI 或 Procreate 的基础操作能力。',
   },
   {
     q: '错过直播怎么办？',
@@ -102,6 +104,17 @@ export default function CoursePage() {
             <p className="font-serif text-lg sm:text-2xl text-ink leading-relaxed">
               对传统文化与纹样感兴趣的爱好者
             </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-2 mt-9">
+            {AUDIENCE.map((job) => (
+              <span
+                key={job}
+                className="px-3 py-1.5 rounded-full bg-white text-gray-500 text-xs border border-ink/8"
+              >
+                {job}
+              </span>
+            ))}
           </div>
 
           <div className="mt-14 pt-8 border-t border-ink/8 text-center">
