@@ -249,7 +249,11 @@ export default function CoursePage() {
       </section>
 
       {/* ===== 报名 ===== */}
-      <section id="enroll" className="relative px-4 sm:px-6 py-16 sm:py-24 bg-ink text-white scroll-mt-24 overflow-hidden">
+      <section
+        id="enroll"
+        className="relative px-4 sm:px-6 py-16 sm:py-24 scroll-mt-24 overflow-hidden"
+        style={{ background: 'linear-gradient(160deg, #3F9EAC 0%, #35848F 55%, #2F7D88 100%)' }}
+      >
         <div className="absolute inset-0 pointer-events-none opacity-[0.12]">
           <div className="absolute -top-24 -right-16 w-[420px] h-[420px] rounded-full border border-white/40" />
           <div className="absolute -bottom-32 -left-20 w-[380px] h-[380px] rounded-full border border-white/30" />
@@ -260,15 +264,15 @@ export default function CoursePage() {
             <h2 className="text-2xl sm:text-4xl font-serif font-semibold mb-3">
               报名咨询
             </h2>
-            <p className="text-sm text-white/70">
+            <p className="text-sm text-white/80">
               添加微信，获取完整课程大纲与报名方式
             </p>
           </div>
 
-          <div className="rounded-3xl bg-white p-7 sm:p-10 shadow-2xl shadow-ink/20">
+          <div className="rounded-3xl bg-white p-7 sm:p-10 border-2 border-gold/50 shadow-2xl shadow-ink/10">
             <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-8 items-center">
               <div className="text-center sm:text-left">
-                <p className="text-xs tracking-[0.2em] text-gray-400 mb-4">首期报名附赠</p>
+                <p className="text-xs tracking-[0.2em] text-gold/80 mb-4">首期报名附赠</p>
                 <p className="font-serif text-xl sm:text-2xl font-semibold text-ink leading-snug mb-3">
                   素材库会员一年
                 </p>
@@ -287,8 +291,7 @@ export default function CoursePage() {
 
               <div className="flex justify-center">
                 <div className="relative">
-                  <div className="absolute -inset-2 rounded-2xl bg-gold/10" />
-                  <img
+                  <div className="absolute -inset-2 rounded-2xl bg-gold/10" />                  <img
                     src="/images/wechat-qr.webp"
                     alt="微信二维码 ElvaHTWH"
                     className="relative w-40 h-40 rounded-xl bg-white"
