@@ -152,24 +152,24 @@ export default function CoursePage() {
             </div>
 
             <div className="card p-6 sm:p-7 bg-white">
-              <p className="text-xs font-semibold tracking-wider text-gold mb-3">不适合</p>
-              <h3 className="text-lg font-serif font-semibold text-ink mb-3">
-                这几种情况先别报
-              </h3>
-              <ul className="space-y-2.5 text-sm text-gray-600 leading-relaxed">
-                <li className="flex gap-2">
-                  <span className="text-gray-300 shrink-0">·</span>
-                  <span>完全没有设计软件基础（本课不教 PS 操作）</span>
+              <p className="text-xs font-semibold tracking-wider text-gold mb-3">报名基础要求</p>
+              <ul className="space-y-3 text-sm text-gray-600 leading-relaxed">
+                <li className="flex gap-2.5">
+                  <span className="w-5 h-5 rounded-full bg-gold/10 text-gold text-xs font-semibold flex items-center justify-center shrink-0 mt-0.5">
+                    1
+                  </span>
+                  <span>掌握 <strong className="text-ink font-medium">PS、AI 或 Procreate</strong> 的基础操作</span>
                 </li>
-                <li className="flex gap-2">
-                  <span className="text-gray-300 shrink-0">·</span>
-                  <span>只想找现成纹样素材套用，不想理解原理</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-gray-300 shrink-0">·</span>
-                  <span>想学纹样版权授权相关的内容（不在本课范围）</span>
+                <li className="flex gap-2.5">
+                  <span className="w-5 h-5 rounded-full bg-gold/10 text-gold text-xs font-semibold flex items-center justify-center shrink-0 mt-0.5">
+                    2
+                  </span>
+                  <span>有一定<strong className="text-ink font-medium">美术或艺术基础</strong>知识</span>
                 </li>
               </ul>
+              <p className="text-xs text-gray-400 mt-4 pt-3 border-t border-gray-100 leading-relaxed">
+                本课程不教授软件基础操作与美术基础，请确认符合上述要求再报名。
+              </p>
             </div>
           </div>
         </div>
