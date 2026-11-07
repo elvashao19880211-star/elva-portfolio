@@ -16,11 +16,9 @@ const MODULES = [
   { n: '六', title: '中国传统纹样商业设计', desc: '从客户需求到方案输出的完整流程' },
 ];
 
-const AUDIENCE = ['平面设计师', '包装设计师', '室内装饰设计师', '汉服设计师', '新中式设计师'];
-
 const SERVICES = [
-  { title: '小班授课', desc: '班级规模严格控制，确保每位学员获得充分指导' },
-  { title: '主讲全程带课', desc: '由主讲老师全程直播授课，可实时提问与互动' },
+  { title: '小班授课', desc: '班级规模严格控制，每位学员均可获得充分指导' },
+  { title: '主讲全程带课', desc: '主讲老师全程直播授课，可实时提问与互动' },
   { title: '助教随堂答疑', desc: '配备助教跟班，课后问题可获得及时响应' },
   { title: '作业逐次批改', desc: '每次作业均提供针对性点评与修改建议' },
 ];
@@ -28,23 +26,19 @@ const SERVICES = [
 const FAQ = [
   {
     q: '课程需要什么基础？',
-    a: '需要具备基本的设计软件操作能力（会用 Photoshop），不需要有传统纹样基础——课程就是从零建立体系。完全零基础的同学建议先补 PS 基础。',
+    a: '需具备 PS、AI 或 Procreate 的基础操作能力。本课程不设传统纹样基础门槛，纹样体系自零建立；软件操作能力为必要前提，课程不承担软件基础教学。',
   },
   {
     q: '错过直播怎么办？',
-    a: '每节课都有回放，回放保留至课程结束后 3 个月。不过建议尽量跟直播，方便现场提问。',
+    a: '每节课均提供回放，保留至课程结束后 3 个月。建议尽量参与直播，以便现场提问与互动。',
   },
   {
     q: '课程能退款吗？',
-    a: '开课前可全额退款；开课后前 2 节课内不满意，按剩余课时比例退款；第 3 节课后不再退款。',
+    a: '开课前可全额退款；开课后前 2 节课内提出，按剩余课时比例退款；第 3 节课起不再受理退款。',
   },
   {
-    q: '学完能接到单吗？',
-    a: '课程不承诺接单，但最后一个模块会带你完整走一遍「客户需求 → 考据 → 元素提取 → 结构设计 → 方案输出」的商单流程，这是接单的基础能力。',
-  },
-  {
-    q: '课程包含纹样授权相关内容吗？',
-    a: '不包含。版权与授权属于知识产权范畴，不在本课程范围内。课程聚焦设计方法与实战能力。',
+    q: '学完能接商单吗？',
+    a: '课程不对接单结果作出承诺。第六模块以完整商单流程为线索，涵盖客户需求分析、纹样考据、元素提取、结构设计与方案输出，所培养的是承接商业项目所需的基础能力；能否转化为实际项目，取决于个人积累与市场条件。',
   },
 ];
 
@@ -99,37 +93,25 @@ export default function CoursePage() {
       {/* ===== 适合人群 ===== */}
       <section className="px-4 sm:px-6 py-14 sm:py-20 bg-[#FAF8F3]">
         <div className="max-w-3xl mx-auto">
-          <h2 className="heading-2 text-ink text-center mb-7">招生对象</h2>
+          <h2 className="heading-2 text-ink text-center mb-10">招生对象</h2>
 
-          <p className="font-serif text-base sm:text-lg text-ink/85 text-center leading-loose mb-12">
-            面向希望转型中式设计、
-            <br className="sm:hidden" />
-            或具备传统纹样设计需求的设计师开设的专业课程。
-          </p>
-
-          <div className="text-center">
-            <p className="text-xs tracking-[0.25em] text-gray-400 mb-6">适用方向</p>
-            <div className="flex flex-wrap justify-center gap-x-2.5 gap-y-2.5">
-              {AUDIENCE.map((job) => (
-                <span
-                  key={job}
-                  className="px-4 py-2 rounded-full bg-white text-ink/80 text-xs font-medium border border-ink/10 transition-colors hover:border-qing/40 hover:text-ink"
-                >
-                  {job}
-                </span>
-              ))}
-              <span className="px-4 py-2 rounded-full bg-gold/8 text-ink/80 text-xs font-medium border border-gold/25">
-                传统纹样爱好者
-              </span>
-            </div>
+          <div className="text-center space-y-4">
+            <p className="font-serif text-lg sm:text-2xl text-ink leading-relaxed">
+              有中式设计或传统纹样设计需求的视觉从业者
+            </p>
+            <p className="font-serif text-lg sm:text-2xl text-ink leading-relaxed">
+              对传统文化与纹样感兴趣的爱好者
+            </p>
           </div>
 
-          <div className="mt-14 pt-8 border-t border-ink/8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm text-gray-500">
-            <span>
-              掌握 <strong className="text-ink font-medium">PS、AI 或 Procreate</strong> 的基础操作
-            </span>
-            <span className="hidden sm:block w-px h-3.5 bg-ink/15" />
-            <span>本课程不涉及软件基础操作的教学</span>
+          <div className="mt-14 pt-8 border-t border-ink/8 text-center">
+            <p className="text-xs tracking-[0.2em] text-gray-400 mb-2.5">报名基础条件</p>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              掌握 <strong className="text-ink font-medium">PS、AI 或 Procreate</strong> 的基础应用
+            </p>
+            <p className="text-xs text-gray-400 mt-2">
+              课程不涉及软件基础操作的教学
+            </p>
           </div>
         </div>
       </section>
@@ -141,7 +123,7 @@ export default function CoursePage() {
             教学方式与上课安排
           </h2>
           <p className="text-sm text-white/60 text-center mb-10 max-w-xl mx-auto">
-            小班直播授课，配备助教与作业批改，确保学习效果
+            小班直播授课，配备助教答疑与作业批改
           </p>
 
           {/* 上课信息 */}
@@ -189,7 +171,7 @@ export default function CoursePage() {
         <div className="max-w-5xl mx-auto">
           <h2 className="heading-2 text-ink text-center mb-3">六大模块</h2>
           <p className="text-sm text-gray-500 text-center mb-6 max-w-xl mx-auto">
-            从历代考据出发，一路走到商单落地
+            从历代考据到商单落地
           </p>
 
           <div className="flex items-center justify-center gap-3 text-xs tracking-widest text-gray-400 mb-12">
@@ -277,8 +259,8 @@ export default function CoursePage() {
               <p className="text-sm text-white/80 mb-2">扫码添加微信咨询报名</p>
               <p className="text-lg font-medium mb-3">微信号：ElvaHTWH</p>
               <p className="text-xs text-white/60 leading-relaxed">
-                添加后请说明「纹样课」，我会发送<br />
-                详细课程大纲与报名方式。
+                添加时请注明「纹样课」<br />
+                将发送完整课程大纲与报名方式
               </p>
             </div>
           </div>
