@@ -78,8 +78,6 @@ export default function CoursePage() {
           </h1>
 
           <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-2xl mx-auto mb-8">
-            会 PS 却做不出有深度的中式设计？问题不在软件，在你还不懂纹样背后的逻辑。
-            <br className="hidden sm:block" />
             六大模块，从历代考据到商单落地，六周建立完整的纹样设计体系。
           </p>
 
@@ -126,23 +124,31 @@ export default function CoursePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="card p-6 sm:p-7 bg-white">
               <p className="text-xs font-semibold tracking-wider text-qing mb-3">核心人群</p>
-              <h3 className="text-lg font-serif font-semibold text-ink mb-3">
-                有设计基础，想接中式设计的你
+              <h3 className="text-base font-serif font-semibold text-ink mb-2 leading-relaxed">
+                平面设计师 · 包装设计师 · 室内装饰设计师
+                <br />
+                汉服 / 新中式设计师
               </h3>
-              <ul className="space-y-2.5 text-sm text-gray-600 leading-relaxed">
-                <li className="flex gap-2">
-                  <span className="text-qing shrink-0">·</span>
-                  <span>会 PS、有设计功底，但做中式项目时只能上网搜纹样参考</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-qing shrink-0">·</span>
-                  <span>拼出来的设计总感觉“像但不深”，说不出纹样背后的讲究</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-qing shrink-0">·</span>
-                  <span>想真正搞懂纹样的源流、结构、设计逻辑，而不只是“看起来古风”</span>
-                </li>
-              </ul>
+              <p className="text-sm text-gray-500 mb-4">
+                以及爱好历史、喜欢传统纹样的爱好者
+              </p>
+              <div className="pt-3 border-t border-gray-100">
+                <p className="text-xs text-gray-400 mb-2">常见困扰</p>
+                <ul className="space-y-2.5 text-sm text-gray-600 leading-relaxed">
+                  <li className="flex gap-2">
+                    <span className="text-qing shrink-0">·</span>
+                    <span>会 PS、有设计功底，但做中式项目时只能上网搜纹样参考</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-qing shrink-0">·</span>
+                    <span>拼出来的设计总感觉“像但不深”，说不出纹样背后的讲究</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-qing shrink-0">·</span>
+                    <span>想真正搞懂纹样的源流、结构、设计逻辑，而不只是“看起来古风”</span>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             <div className="card p-6 sm:p-7 bg-white">
