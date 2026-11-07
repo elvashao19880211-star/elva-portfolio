@@ -40,7 +40,7 @@ export default function HomePage() {
 
       {/* ====== 核心入口 ====== */}
       <section className="px-4 sm:px-6 pb-16 sm:pb-28 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {[
             {
               title: '纹样作品库',
@@ -68,6 +68,15 @@ export default function HomePage() {
               washColor: 'rgba(251, 243, 219, 0.4)',
               iconColor: '#A16207',
               dotColor: 'rgba(251, 191, 36, 0.3)',
+            },
+            {
+              title: '纹样系统课',
+              subtitle: '从考据到商业 · 首期早鸟',
+              desc: '六大模块小班直播，主讲带课+助教答疑+作业批改',
+              href: '/course',
+              washColor: 'rgba(63, 158, 172, 0.07)',
+              iconColor: '#2F7D88',
+              dotColor: 'rgba(63, 158, 172, 0.35)',
             },
             {
               title: '书籍推荐',

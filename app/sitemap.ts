@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pages: Array<{ path: string; priority: number; freq: 'daily' | 'weekly' | 'monthly' }> = [
     { path: '', priority: 1.0, freq: 'weekly' },
     { path: '/patterns', priority: 0.9, freq: 'weekly' },
+    { path: '/course', priority: 0.9, freq: 'weekly' },
     { path: '/patterns/revival', priority: 0.9, freq: 'weekly' },
     { path: '/patterns/innovation', priority: 0.9, freq: 'weekly' },
     { path: '/materials', priority: 0.8, freq: 'weekly' },
