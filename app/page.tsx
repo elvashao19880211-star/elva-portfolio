@@ -74,6 +74,7 @@ export default function HomePage() {
               subtitle: '从考据到商业 · 首期早鸟',
               desc: '六大模块小班直播，主讲带课+助教答疑+作业批改',
               href: '/course',
+              badge: '限 6-8 人',
               washColor: 'rgba(63, 158, 172, 0.07)',
               iconColor: '#2F7D88',
               dotColor: 'rgba(63, 158, 172, 0.35)',
@@ -104,6 +105,11 @@ export default function HomePage() {
                   <div className="w-5 h-px" style={{ backgroundColor: card.dotColor }} />
                   <div className="w-1.5 h-1.5 rotate-45" style={{ backgroundColor: card.dotColor }} />
                   <div className="flex-1 h-px" style={{ backgroundColor: card.dotColor }} />
+                  {card.badge && (
+                    <span className="px-2.5 py-1 rounded-full bg-gold/12 text-gold text-[11px] font-medium border border-gold/30 whitespace-nowrap">
+                      {card.badge}
+                    </span>
+                  )}
                 </div>
                 <p className="text-xs font-semibold tracking-wider mb-2 opacity-80" style={{ color: card.iconColor }}>{card.subtitle}</p>
                 <h3 className="text-xl font-serif font-semibold text-ink mb-2">{card.title}</h3>

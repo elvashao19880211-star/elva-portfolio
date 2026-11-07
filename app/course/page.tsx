@@ -253,31 +253,63 @@ export default function CoursePage() {
       </section>
 
       {/* ===== 报名 ===== */}
-      <section id="enroll" className="px-4 sm:px-6 py-14 sm:py-20 bg-qing text-white scroll-mt-24">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-serif font-semibold mb-3">
-            报名咨询
-          </h2>
-          <p className="text-sm text-white/70 mb-8">
-            添加微信，获取完整课程大纲与报名方式
-          </p>
+      <section id="enroll" className="relative px-4 sm:px-6 py-16 sm:py-24 bg-qing text-white scroll-mt-24 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-[0.12]">
+          <div className="absolute -top-24 -right-16 w-[420px] h-[420px] rounded-full border border-white/40" />
+          <div className="absolute -bottom-32 -left-20 w-[380px] h-[380px] rounded-full border border-white/30" />
+        </div>
 
-          <div className="inline-flex flex-col sm:flex-row items-center gap-6 p-7 rounded-2xl bg-white/10 border border-white/20">
-            <img
-              src="/images/wechat-qr.webp"
-              alt="微信二维码 ElvaHTWH"
-              className="w-36 h-36 rounded-lg bg-white p-2"
-            />
-            <div className="text-left">
-              <p className="text-sm text-white/80 mb-2">扫码添加微信咨询报名</p>
-              <p className="text-lg font-medium mb-3">微信号：ElvaHTWH</p>
-              <p className="text-xs text-white/60 leading-relaxed">
-                添加时请注明「纹样课」<br />
-                将发送完整课程大纲与报名方式
-              </p>
-            </div>
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-white/15 border border-white/30 text-white text-xs tracking-[0.15em] mb-5">
+              首期招生 · 限 6-8 席
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-serif font-semibold mb-3">
+              报名咨询
+            </h2>
+            <p className="text-sm text-white/70">
+              添加微信，获取完整课程大纲与报名方式
+            </p>
           </div>
 
+          <div className="rounded-3xl bg-white p-7 sm:p-10 shadow-2xl shadow-ink/20">
+            <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-8 items-center">
+              <div className="text-center sm:text-left">
+                <p className="text-xs tracking-[0.2em] text-gray-400 mb-3">首期早鸟价</p>
+                <div className="flex items-end justify-center sm:justify-start gap-3 mb-6">
+                  <span className="font-serif text-4xl sm:text-5xl font-semibold text-ink leading-none">¥1,999</span>
+                  <span className="text-sm text-gray-300 line-through mb-1">¥2,999</span>
+                </div>
+
+                <div className="flex flex-wrap justify-center sm:justify-start gap-x-5 gap-y-2 text-xs text-gray-500 mb-7">
+                  <span>11月25日开班</span>
+                  <span className="text-gray-200">|</span>
+                  <span>每周 3 次 · 每次 1 小时</span>
+                  <span className="text-gray-200">|</span>
+                  <span>腾讯会议直播</span>
+                </div>
+
+                <div className="pt-6 border-t border-gray-100">
+                  <p className="text-sm text-gray-600 mb-1.5">扫码添加微信咨询</p>
+                  <p className="font-serif text-lg font-semibold text-ink">ElvaHTWH</p>
+                  <p className="text-xs text-gray-400 mt-2 leading-relaxed">
+                    添加时请注明「纹样课」，将发送完整课程大纲与报名方式
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex justify-center">
+                <div className="relative">
+                  <div className="absolute -inset-2 rounded-2xl bg-gold/10" />
+                  <img
+                    src="/images/wechat-qr.webp"
+                    alt="微信二维码 ElvaHTWH"
+                    className="relative w-40 h-40 rounded-xl bg-white"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
