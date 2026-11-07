@@ -8,13 +8,15 @@ export const metadata = {
 };
 
 const MODULES = [
-  { n: '一', title: '历史纹样风格溯源', desc: '历代纹样的特征与源流' },
-  { n: '二', title: '色彩通识与中国传统色', desc: '传统色体系与配色方法' },
-  { n: '三', title: '传统纹样结构构成', desc: '结构法则与拆解方法' },
-  { n: '四', title: '纹样演变图解与元素运用', desc: '演变逻辑与元素提取' },
-  { n: '五', title: '中国传统纹样设计原则', desc: '传统设计的核心准则' },
-  { n: '六', title: '中国传统纹样商业设计', desc: '从客户需求到方案落地' },
+  { n: '一', title: '历史纹样风格溯源', desc: '历代纹样的时代特征与源流脉络' },
+  { n: '二', title: '色彩通识与中国传统色', desc: '传统色体系、配色逻辑与用色方法' },
+  { n: '三', title: '传统纹样结构构成', desc: '结构法则、骨架拆解与重组方法' },
+  { n: '四', title: '纹样演变图解与元素运用', desc: '演变规律的图解与元素提取运用' },
+  { n: '五', title: '中国传统纹样设计原则', desc: '传统造物中的核心设计准则' },
+  { n: '六', title: '中国传统纹样商业设计', desc: '从客户需求到方案输出的完整流程' },
 ];
+
+const AUDIENCE = ['平面设计师', '包装设计师', '室内装饰设计师', '汉服设计师', '新中式设计师'];
 
 const SERVICES = [
   { title: '小班授课', desc: '班级规模严格控制，确保每位学员获得充分指导' },
@@ -96,68 +98,38 @@ export default function CoursePage() {
 
       {/* ===== 适合人群 ===== */}
       <section className="px-4 sm:px-6 py-14 sm:py-20 bg-[#FAF8F3]">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="heading-2 text-ink text-center mb-10">招生对象</h2>
+        <div className="max-w-3xl mx-auto">
+          <h2 className="heading-2 text-ink text-center mb-7">招生对象</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="card p-6 sm:p-7 bg-white">
-              <p className="text-xs font-semibold tracking-wider text-qing mb-4">核心人群</p>
+          <p className="font-serif text-base sm:text-lg text-ink/85 text-center leading-loose mb-12">
+            面向希望转型中式设计、
+            <br className="sm:hidden" />
+            或具备传统纹样设计需求的设计师开设的专业课程。
+          </p>
 
-              <div className="flex flex-wrap gap-2 mb-5">
-                {['平面设计师', '包装设计师', '室内装饰设计师', '汉服设计师', '新中式设计师'].map((job) => (
-                  <span
-                    key={job}
-                    className="px-3 py-1.5 rounded-full bg-qing/8 text-ink text-xs font-medium border border-qing/15"
-                  >
-                    {job}
-                  </span>
-                ))}
-                <span className="px-3 py-1.5 rounded-full bg-gold/10 text-ink text-xs font-medium border border-gold/20">
-                  传统纹样爱好者
+          <div className="text-center">
+            <p className="text-xs tracking-[0.25em] text-gray-400 mb-6">适用方向</p>
+            <div className="flex flex-wrap justify-center gap-x-2.5 gap-y-2.5">
+              {AUDIENCE.map((job) => (
+                <span
+                  key={job}
+                  className="px-4 py-2 rounded-full bg-white text-ink/80 text-xs font-medium border border-ink/10 transition-colors hover:border-qing/40 hover:text-ink"
+                >
+                  {job}
                 </span>
-              </div>
-
-              <p className="text-xs text-gray-400 mb-2">爱好历史、喜欢传统纹样，希望系统了解的人</p>
-
-              <div className="pt-4 mt-4 border-t border-gray-100">
-                <p className="text-xs text-gray-400 mb-3">常见需求</p>
-                <ul className="space-y-3 text-sm text-gray-600 leading-relaxed">
-                  <li className="flex gap-2.5">
-                    <span className="text-qing shrink-0 mt-0.5">•</span>
-                    <span>有设计软件基础，但纹样考据与结构方法缺乏系统训练</span>
-                  </li>
-                  <li className="flex gap-2.5">
-                    <span className="text-qing shrink-0 mt-0.5">•</span>
-                    <span>中式设计易停留在元素堆砌，难以形成有文化依据的完整方案</span>
-                  </li>
-                  <li className="flex gap-2.5">
-                    <span className="text-qing shrink-0 mt-0.5">•</span>
-                    <span>希望掌握纹样的源流、结构与设计方法，而非停留于风格模仿</span>
-                  </li>
-                </ul>
-              </div>
+              ))}
+              <span className="px-4 py-2 rounded-full bg-gold/8 text-ink/80 text-xs font-medium border border-gold/25">
+                传统纹样爱好者
+              </span>
             </div>
+          </div>
 
-            <div className="card p-6 sm:p-7 bg-white">
-              <p className="text-xs font-semibold tracking-wider text-gold mb-4">报名要求</p>
-              <ul className="space-y-3 text-sm text-gray-600 leading-relaxed">
-                <li className="flex gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-gold/10 text-gold text-xs font-semibold flex items-center justify-center shrink-0 mt-0.5">
-                    1
-                  </span>
-                  <span>掌握 <strong className="text-ink font-medium">PS、AI 或 Procreate</strong> 的基础操作</span>
-                </li>
-                <li className="flex gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-gold/10 text-gold text-xs font-semibold flex items-center justify-center shrink-0 mt-0.5">
-                    2
-                  </span>
-                  <span>对传统纹样有兴趣，愿意系统学习</span>
-                </li>
-              </ul>
-              <p className="text-xs text-gray-400 mt-4 pt-3 border-t border-gray-100 leading-relaxed">
-                本课程不涉及软件基础操作的教学。
-              </p>
-            </div>
+          <div className="mt-14 pt-8 border-t border-ink/8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm text-gray-500">
+            <span>
+              掌握 <strong className="text-ink font-medium">PS、AI 或 Procreate</strong> 的基础操作
+            </span>
+            <span className="hidden sm:block w-px h-3.5 bg-ink/15" />
+            <span>本课程不涉及软件基础操作的教学</span>
           </div>
         </div>
       </section>
@@ -213,26 +185,41 @@ export default function CoursePage() {
       </section>
 
       {/* ===== 六大模块 ===== */}
-      <section className="px-4 sm:px-6 py-14 sm:py-20">
-        <div className="max-w-4xl mx-auto">
+      <section className="px-4 sm:px-6 py-14 sm:py-20 bg-white">
+        <div className="max-w-5xl mx-auto">
           <h2 className="heading-2 text-ink text-center mb-3">六大模块</h2>
-          <p className="text-sm text-gray-500 text-center mb-10 max-w-xl mx-auto">
+          <p className="text-sm text-gray-500 text-center mb-6 max-w-xl mx-auto">
             从历代考据出发，一路走到商单落地
           </p>
 
-          <div className="space-y-3">
-            {MODULES.map((m) => (
+          <div className="flex items-center justify-center gap-3 text-xs tracking-widest text-gray-400 mb-12">
+            <span>考据</span>
+            <span className="w-16 h-px bg-gradient-to-r from-qing/50 via-gray-200 to-gold/50" />
+            <span>落地</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {MODULES.map((m, i) => (
               <div
                 key={m.n}
-                className="flex items-start gap-4 p-5 rounded-xl border border-gray-100 hover:border-qing/30 transition-colors bg-white"
+                className="group relative overflow-hidden rounded-2xl bg-[#FAF8F3] border border-transparent p-6 transition-all duration-300 hover:bg-white hover:border-qing/25 hover:shadow-xl hover:shadow-qing/5 hover:-translate-y-0.5"
               >
-                <span className="w-8 h-8 rounded-lg bg-qing/10 text-qing text-sm font-serif font-semibold flex items-center justify-center shrink-0">
+                <span
+                  aria-hidden
+                  className="absolute -right-1 -top-4 font-serif text-7xl leading-none text-qing/8 transition-colors duration-300 group-hover:text-qing/15 select-none"
+                >
                   {m.n}
                 </span>
-                <div className="min-w-0">
-                  <h3 className="text-base font-medium text-ink mb-1">{m.title}</h3>
-                  <p className="text-sm text-gray-500">{m.desc}</p>
-                </div>
+
+                <p className="text-xs tracking-[0.2em] text-qing/70 mb-4">
+                  模块 {String(i + 1).padStart(2, '0')}
+                </p>
+                <h3 className="relative font-serif text-base font-semibold text-ink mb-2 leading-snug">
+                  {m.title}
+                </h3>
+                <p className="relative text-sm text-gray-500 leading-relaxed">{m.desc}</p>
+
+                <span className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-qing/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             ))}
           </div>
