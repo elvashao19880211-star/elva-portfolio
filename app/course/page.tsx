@@ -17,10 +17,10 @@ const MODULES = [
 ];
 
 const SERVICES = [
-  { title: '6-8 人小班', desc: '人数严格控制，确保每个人都被照顾到' },
-  { title: '主讲全程带课', desc: '真人直播讲授，不是录播，随时能提问' },
-  { title: '助教跟班答疑', desc: '课后遇到问题有人回应，不用自己琢磨' },
-  { title: '作业逐次批改', desc: '每次作业都有针对性反馈，真正把方法练进手里' },
+  { title: '小班授课', desc: '班级规模控制在 6-8 人，确保每位学员获得充分指导' },
+  { title: '主讲全程带课', desc: '由主讲老师全程直播授课，可实时提问与互动' },
+  { title: '助教随堂答疑', desc: '配备助教跟班，课后问题可获得及时响应' },
+  { title: '作业逐次批改', desc: '每次作业均提供针对性点评与修改建议' },
 ];
 
 const FAQ = [
@@ -168,24 +168,53 @@ export default function CoursePage() {
         </div>
       </section>
 
-      {/* ===== 课程服务 ===== */}
+      {/* ===== 教学方式与上课安排 ===== */}
       <section className="px-4 sm:px-6 py-14 sm:py-20 bg-ink text-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-serif font-semibold text-center mb-3">
-            小班教学，全程有人带
+            教学方式与上课安排
           </h2>
           <p className="text-sm text-white/60 text-center mb-10 max-w-xl mx-auto">
-            这是本课与「99 元录播课」的核心区别：你买的是系统方法 + 有人盯着你练
+            小班直播授课，配备助教与作业批改，确保学习效果
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {SERVICES.map((s, i) => (
-              <div key={i} className="p-6 rounded-xl bg-white/5 border border-white/10">
-                <h3 className="text-base font-medium text-gold mb-2">{s.title}</h3>
-                <p className="text-sm text-white/60 leading-relaxed">{s.desc}</p>
+          {/* 上课信息 */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mb-10">
+            {[
+              { k: '开班时间', v: '11月25日' },
+              { k: '授课频率', v: '每周 3 次' },
+              { k: '单次时长', v: '1 小时' },
+              { k: '授课平台', v: '腾讯会议' },
+              { k: '预计周期', v: '4-5 周' },
+              { k: '班级规模', v: '6-8 人' },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-4 rounded-xl bg-white/5 border border-white/10 text-center"
+              >
+                <p className="text-xs text-white/50 mb-1.5">{item.k}</p>
+                <p className="text-sm font-medium text-white">{item.v}</p>
               </div>
             ))}
           </div>
+
+          {/* 教学服务 */}
+          <div className="pt-8 border-t border-white/10">
+            <p className="text-xs tracking-widest text-gold/80 text-center mb-6">教学保障</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {SERVICES.map((s, i) => (
+                <div key={i} className="p-5 rounded-xl bg-white/5 border border-white/10">
+                  <h3 className="text-sm font-medium text-gold mb-1.5">{s.title}</h3>
+                  <p className="text-xs text-white/60 leading-relaxed">{s.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="text-xs text-white/40 text-center mt-8 leading-relaxed">
+            课程以六大模块为主线，具体进度根据学员吸收情况微调。<br />
+            每节课均有回放，保留至课程结束后 3 个月。
+          </p>
         </div>
       </section>
 
@@ -213,34 +242,6 @@ export default function CoursePage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ===== 上课信息 ===== */}
-      <section className="px-4 sm:px-6 py-14 sm:py-20 bg-[#FAF8F3]">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="heading-2 text-ink text-center mb-10">上课安排</h2>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {[
-              { k: '开班时间', v: '11月25日' },
-              { k: '上课频率', v: '每周 3 节' },
-              { k: '单节时长', v: '1 小时' },
-              { k: '上课平台', v: '腾讯会议' },
-              { k: '预计周期', v: '4-5 周' },
-              { k: '班级人数', v: '6-8 人' },
-            ].map((item, i) => (
-              <div key={i} className="p-4 rounded-xl bg-white border border-[#f0e9db] text-center">
-                <p className="text-xs text-gray-400 mb-1.5">{item.k}</p>
-                <p className="text-sm font-medium text-ink">{item.v}</p>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-xs text-gray-400 text-center mt-6 leading-relaxed">
-            课程内容以六大模块为主线，具体进度根据学员吸收情况微调。<br />
-            每节课均有回放，保留至课程结束后 3 个月。
-          </p>
         </div>
       </section>
 
