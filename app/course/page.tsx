@@ -16,13 +16,6 @@ const MODULES = [
   { n: '六', title: '中国传统纹样商业设计', desc: '从客户需求到方案落地' },
 ];
 
-const CAN_DO = [
-  '看到一片纹样，能判断它的年代、源流、结构类型',
-  '掌握传统纹样的拆解与再造方法，而不是只会复制',
-  '能针对品牌调性，做出有文化依据的原创纹样',
-  '面对客户需求时，知道从哪一步开始、如何落地',
-];
-
 const SERVICES = [
   { title: '6-8 人小班', desc: '人数严格控制，确保每个人都被照顾到' },
   { title: '主讲全程带课', desc: '真人直播讲授，不是录播，随时能提问' },
@@ -171,30 +164,6 @@ export default function CoursePage() {
                 本课程不教授软件基础操作与美术基础，请确认符合上述要求再报名。
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== 学完能做到 ===== */}
-      <section className="px-4 sm:px-6 py-14 sm:py-20">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="heading-2 text-ink text-center mb-3">学完你能做到</h2>
-          <p className="text-sm text-gray-500 text-center mb-10 max-w-xl mx-auto">
-            从「上网找参考拼凑」到「理解纹样逻辑后原创设计」
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {CAN_DO.map((item, i) => (
-              <div
-                key={i}
-                className="flex gap-3 p-5 rounded-xl bg-[#FDFBF7] border border-[#f0e9db]"
-              >
-                <span className="w-6 h-6 rounded-full bg-qing/10 text-qing text-xs font-semibold flex items-center justify-center shrink-0 mt-0.5">
-                  {i + 1}
-                </span>
-                <p className="text-sm text-gray-600 leading-relaxed">{item}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
