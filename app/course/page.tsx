@@ -170,6 +170,20 @@ export default function CoursePage() {
                 </div>
               ))}
             </div>
+
+            <div className="mt-4 p-5 sm:p-6 rounded-xl bg-gradient-to-r from-gold/15 to-transparent border border-gold/30">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+                <span className="shrink-0 px-3 py-1 rounded-full bg-gold/20 text-gold text-[11px] tracking-[0.12em] w-fit">
+                  首期附赠
+                </span>
+                <div>
+                  <p className="text-sm font-medium text-white mb-1">素材库会员一年</p>
+                  <p className="text-xs text-white/60 leading-relaxed">
+                    可浏览并下载全部无水印素材与大图，价值 ¥159
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <p className="text-xs text-white/40 text-center mt-8 leading-relaxed">
@@ -281,12 +295,19 @@ export default function CoursePage() {
                   <span className="text-sm text-gray-300 line-through mb-1">¥2,999</span>
                 </div>
 
-                <div className="flex flex-wrap justify-center sm:justify-start gap-x-5 gap-y-2 text-xs text-gray-500 mb-7">
+                <div className="flex flex-wrap justify-center sm:justify-start gap-x-5 gap-y-2 text-xs text-gray-500 mb-5">
                   <span>11月25日开班</span>
                   <span className="text-gray-200">|</span>
                   <span>每周 3 次 · 每次 1 小时</span>
                   <span className="text-gray-200">|</span>
                   <span>腾讯会议直播</span>
+                </div>
+
+                <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-gold/8 border border-gold/25 mb-7">
+                  <span className="w-1.5 h-1.5 rotate-45 bg-gold shrink-0" />
+                  <p className="text-xs text-ink/80">
+                    首期报名另赠素材库会员一年（无水印素材与大图下载权限）
+                  </p>
                 </div>
 
                 <div className="pt-6 border-t border-gray-100">

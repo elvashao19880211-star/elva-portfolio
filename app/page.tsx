@@ -72,7 +72,7 @@ export default function HomePage() {
             {
               title: '纹样系统课',
               subtitle: '从考据到商业 · 首期早鸟',
-              desc: '六大模块小班直播，主讲带课+助教答疑+作业批改',
+              desc: '六大模块小班直播，附赠素材库会员一年',
               href: '/course',
               badge: '限 6-8 人',
               washColor: 'rgba(63, 158, 172, 0.07)',
