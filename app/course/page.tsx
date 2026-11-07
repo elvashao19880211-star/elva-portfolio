@@ -17,7 +17,7 @@ const MODULES = [
 ];
 
 const SERVICES = [
-  { title: '小班授课', desc: '班级规模控制在 6-8 人，确保每位学员获得充分指导' },
+  { title: '小班授课', desc: '班级规模严格控制，确保每位学员获得充分指导' },
   { title: '主讲全程带课', desc: '由主讲老师全程直播授课，可实时提问与互动' },
   { title: '助教随堂答疑', desc: '配备助教跟班，课后问题可获得及时响应' },
   { title: '作业逐次批改', desc: '每次作业均提供针对性点评与修改建议' },
@@ -71,7 +71,7 @@ export default function CoursePage() {
           </h1>
 
           <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-2xl mx-auto mb-8">
-            六大模块，从历代考据到商单落地，六周建立完整的纹样设计体系。
+            六大模块，从历代考据到商单落地，系统建立完整的纹样设计体系。
           </p>
 
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-8 px-6 py-5 rounded-2xl bg-gold/5 border border-gold/20">
@@ -277,7 +277,7 @@ export default function CoursePage() {
             报名咨询
           </h2>
           <p className="text-sm text-white/70 mb-8">
-            首期仅招收 6-8 人，添加微信获取完整课程大纲与报名方式
+            添加微信，获取完整课程大纲与报名方式
           </p>
 
           <div className="inline-flex flex-col sm:flex-row items-center gap-6 p-7 rounded-2xl bg-white/10 border border-white/20">
@@ -296,9 +296,6 @@ export default function CoursePage() {
             </div>
           </div>
 
-          <p className="text-xs text-white/50 mt-6">
-            开课前可全额退款，开课后按课时进度处理
-          </p>
         </div>
       </section>
 
