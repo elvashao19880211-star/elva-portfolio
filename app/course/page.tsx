@@ -116,28 +116,37 @@ export default function CoursePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="card p-6 sm:p-7 bg-white">
-              <p className="text-xs font-semibold tracking-wider text-qing mb-3">核心人群</p>
-              <h3 className="text-base font-serif font-semibold text-ink mb-2 leading-relaxed">
-                平面设计师 · 包装设计师 · 室内装饰设计师
-                <br />
-                汉服 / 新中式设计师
-              </h3>
-              <p className="text-sm text-gray-500 mb-4">
-                以及爱好历史、喜欢传统纹样的爱好者
-              </p>
-              <div className="pt-3 border-t border-gray-100">
-                <p className="text-xs text-gray-400 mb-2">常见困扰</p>
-                <ul className="space-y-2.5 text-sm text-gray-600 leading-relaxed">
-                  <li className="flex gap-2">
-                    <span className="text-qing shrink-0">·</span>
+              <p className="text-xs font-semibold tracking-wider text-qing mb-4">核心人群</p>
+
+              <div className="flex flex-wrap gap-2 mb-5">
+                {['平面设计师', '包装设计师', '室内装饰设计师', '汉服设计师', '新中式设计师'].map((job) => (
+                  <span
+                    key={job}
+                    className="px-3 py-1.5 rounded-full bg-qing/8 text-ink text-xs font-medium border border-qing/15"
+                  >
+                    {job}
+                  </span>
+                ))}
+                <span className="px-3 py-1.5 rounded-full bg-gold/10 text-ink text-xs font-medium border border-gold/20">
+                  传统纹样爱好者
+                </span>
+              </div>
+
+              <p className="text-xs text-gray-400 mb-2">爱好历史、喜欢传统纹样，希望系统了解的人</p>
+
+              <div className="pt-4 mt-4 border-t border-gray-100">
+                <p className="text-xs text-gray-400 mb-3">常见困扰</p>
+                <ul className="space-y-3 text-sm text-gray-600 leading-relaxed">
+                  <li className="flex gap-2.5">
+                    <span className="text-qing shrink-0 mt-0.5">•</span>
                     <span>会 PS、有设计功底，但做中式项目时只能上网搜纹样参考</span>
                   </li>
-                  <li className="flex gap-2">
-                    <span className="text-qing shrink-0">·</span>
+                  <li className="flex gap-2.5">
+                    <span className="text-qing shrink-0 mt-0.5">•</span>
                     <span>拼出来的设计总感觉“像但不深”，说不出纹样背后的讲究</span>
                   </li>
-                  <li className="flex gap-2">
-                    <span className="text-qing shrink-0">·</span>
+                  <li className="flex gap-2.5">
+                    <span className="text-qing shrink-0 mt-0.5">•</span>
                     <span>想真正搞懂纹样的源流、结构、设计逻辑，而不只是“看起来古风”</span>
                   </li>
                 </ul>
