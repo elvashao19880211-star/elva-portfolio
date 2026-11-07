@@ -93,7 +93,10 @@ export default function HomePage() {
               key={card.title}
               href={card.href}
               className="group relative overflow-hidden rounded-2xl p-6 sm:p-8 border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-              style={{ backgroundColor: '#FDFBF7', borderColor: '#f3f4f6' }}
+              style={{
+                backgroundColor: '#FDFBF7',
+                borderColor: card.badge ? 'rgba(195, 163, 112, 0.45)' : '#f3f4f6',
+              }}
             >
               {/* 中式水墨晕染 */}
               <div className="absolute top-0 right-0 w-48 h-48 rounded-full -translate-y-1/3 translate-x-1/4 opacity-70" style={{ backgroundColor: card.washColor }} />
@@ -113,25 +116,27 @@ export default function HomePage() {
                 </div>
                 <p className="text-xs font-semibold tracking-wider mb-2 opacity-80" style={{ color: card.iconColor }}>{card.subtitle}</p>
                 <h3 className="text-xl font-serif font-semibold text-ink mb-2">{card.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed pr-12">{card.desc}</p>
+                <p className="text-gray-400 text-sm leading-relaxed">{card.desc}</p>
 
-                <span
-                  aria-hidden
-                  className="absolute bottom-6 right-6 w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-300 group-hover:bg-white group-hover:shadow-sm"
-                  style={{ borderColor: card.dotColor, color: card.iconColor }}
-                >
-                  <svg
-                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                <div className="flex justify-end mt-6">
+                  <span
+                    aria-hidden
+                    className="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-300 group-hover:bg-white group-hover:shadow-sm"
+                    style={{ borderColor: card.dotColor, color: card.iconColor }}
                   >
-                    <path d="M5 12h14M13 6l6 6-6 6" />
-                  </svg>
-                </span>
+                    <svg
+                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                  </span>
+                </div>
               </div>
             </a>
           ))}

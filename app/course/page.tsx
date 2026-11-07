@@ -58,10 +58,6 @@ export default function CoursePage() {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/5 rounded-full blur-3xl pointer-events-none -translate-x-1/3 translate-y-1/2" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-gold/10 border border-gold/25 text-gold text-xs font-medium tracking-wider mb-6">
-            首期早鸟班
-          </span>
-
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-semibold text-ink leading-tight mb-4">
             从考据到商业
             <br className="sm:hidden" />
@@ -130,7 +126,7 @@ export default function CoursePage() {
       </section>
 
       {/* ===== 教学方式与上课安排 ===== */}
-      <section className="px-4 sm:px-6 py-14 sm:py-20 bg-ink text-white">
+      <section className="px-4 sm:px-6 py-14 sm:py-20 bg-qing text-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-serif font-semibold text-center mb-3">
             教学方式与上课安排
@@ -151,28 +147,28 @@ export default function CoursePage() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="p-4 rounded-xl bg-white/5 border border-white/10 text-center"
+                className="p-4 rounded-xl bg-white/10 border border-white/20 text-center"
               >
-                <p className="text-xs text-white/50 mb-1.5">{item.k}</p>
+                <p className="text-xs text-white/60 mb-1.5">{item.k}</p>
                 <p className="text-sm font-medium text-white">{item.v}</p>
               </div>
             ))}
           </div>
 
           {/* 教学服务 */}
-          <div className="pt-8 border-t border-white/10">
-            <p className="text-xs tracking-widest text-gold/80 text-center mb-6">教学保障</p>
+          <div className="pt-8 border-t border-white/20">
+            <p className="text-xs tracking-widest text-white/70 text-center mb-6">教学保障</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {SERVICES.map((s, i) => (
-                <div key={i} className="p-5 rounded-xl bg-white/5 border border-white/10">
-                  <h3 className="text-sm font-medium text-gold mb-1.5">{s.title}</h3>
-                  <p className="text-xs text-white/60 leading-relaxed">{s.desc}</p>
+                <div key={i} className="p-5 rounded-xl bg-white/10 border border-white/20">
+                  <h3 className="text-sm font-medium text-white mb-1.5">{s.title}</h3>
+                  <p className="text-xs text-white/75 leading-relaxed">{s.desc}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <p className="text-xs text-white/40 text-center mt-8 leading-relaxed">
+          <p className="text-xs text-white/60 text-center mt-8 leading-relaxed">
             课程以六大模块为主线，具体进度根据学员吸收情况微调。<br />
             每节课均有回放，保留至课程结束后 3 个月。
           </p>
@@ -253,7 +249,7 @@ export default function CoursePage() {
       </section>
 
       {/* ===== 报名 ===== */}
-      <section id="enroll" className="relative px-4 sm:px-6 py-16 sm:py-24 bg-qing text-white scroll-mt-24 overflow-hidden">
+      <section id="enroll" className="relative px-4 sm:px-6 py-16 sm:py-24 bg-ink text-white scroll-mt-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none opacity-[0.12]">
           <div className="absolute -top-24 -right-16 w-[420px] h-[420px] rounded-full border border-white/40" />
           <div className="absolute -bottom-32 -left-20 w-[380px] h-[380px] rounded-full border border-white/30" />

@@ -8,7 +8,7 @@ const NAV_LINKS = [
   { label: '首页', href: '/' },
   { label: '纹样库', href: '/patterns' },
   { label: '素材库', href: '/materials' },
-  { label: '系统课', href: '/course', highlight: true },
+  { label: '纹样课程', href: '/course', highlight: true },
   { label: '会员', href: '/member' },
   { label: '复原记录', href: '/heritage' },
   { label: '企业合作', href: '/cooperation' },
