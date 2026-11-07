@@ -74,18 +74,6 @@ export default function CoursePage() {
             六大模块，从历代考据到商单落地，六周建立完整的纹样设计体系。
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8 text-xs sm:text-sm">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-qing/5 border border-qing/15 text-ink/75">
-              11月25日开班
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-qing/5 border border-qing/15 text-ink/75">
-              每周 3 节 · 每节 1 小时
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-qing/5 border border-qing/15 text-ink/75">
-              腾讯会议直播
-            </span>
-          </div>
-
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-8 px-6 py-5 rounded-2xl bg-gold/5 border border-gold/20">
             <div className="text-center">
               <p className="text-xs text-gray-400 mb-1">首期早鸟价</p>
@@ -108,13 +96,10 @@ export default function CoursePage() {
 
       {/* ===== 适合人群 ===== */}
       <section className="px-4 sm:px-6 py-14 sm:py-20 bg-[#FAF8F3]">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="heading-2 text-ink text-center mb-3">这门课适合谁</h2>
-          <p className="text-sm text-gray-500 text-center mb-10 max-w-xl mx-auto">
-            不是所有人都适合，先看看是不是你
-          </p>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="heading-2 text-ink text-center mb-10">招生对象</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="card p-6 sm:p-7 bg-white">
               <p className="text-xs font-semibold tracking-wider text-qing mb-4">核心人群</p>
 
@@ -135,26 +120,26 @@ export default function CoursePage() {
               <p className="text-xs text-gray-400 mb-2">爱好历史、喜欢传统纹样，希望系统了解的人</p>
 
               <div className="pt-4 mt-4 border-t border-gray-100">
-                <p className="text-xs text-gray-400 mb-3">常见困扰</p>
+                <p className="text-xs text-gray-400 mb-3">常见需求</p>
                 <ul className="space-y-3 text-sm text-gray-600 leading-relaxed">
                   <li className="flex gap-2.5">
                     <span className="text-qing shrink-0 mt-0.5">•</span>
-                    <span>会 PS、有设计功底，但做中式项目时只能上网搜纹样参考</span>
+                    <span>有设计软件基础，但纹样考据与结构方法缺乏系统训练</span>
                   </li>
                   <li className="flex gap-2.5">
                     <span className="text-qing shrink-0 mt-0.5">•</span>
-                    <span>拼出来的设计总感觉“像但不深”，说不出纹样背后的讲究</span>
+                    <span>中式设计易停留在元素堆砌，难以形成有文化依据的完整方案</span>
                   </li>
                   <li className="flex gap-2.5">
                     <span className="text-qing shrink-0 mt-0.5">•</span>
-                    <span>想真正搞懂纹样的源流、结构、设计逻辑，而不只是“看起来古风”</span>
+                    <span>希望掌握纹样的源流、结构与设计方法，而非停留于风格模仿</span>
                   </li>
                 </ul>
               </div>
             </div>
 
             <div className="card p-6 sm:p-7 bg-white">
-              <p className="text-xs font-semibold tracking-wider text-gold mb-3">报名基础要求</p>
+              <p className="text-xs font-semibold tracking-wider text-gold mb-4">报名要求</p>
               <ul className="space-y-3 text-sm text-gray-600 leading-relaxed">
                 <li className="flex gap-2.5">
                   <span className="w-5 h-5 rounded-full bg-gold/10 text-gold text-xs font-semibold flex items-center justify-center shrink-0 mt-0.5">
@@ -166,11 +151,11 @@ export default function CoursePage() {
                   <span className="w-5 h-5 rounded-full bg-gold/10 text-gold text-xs font-semibold flex items-center justify-center shrink-0 mt-0.5">
                     2
                   </span>
-                  <span>有一定<strong className="text-ink font-medium">美术或艺术基础</strong>知识</span>
+                  <span>对传统纹样有兴趣，愿意系统学习</span>
                 </li>
               </ul>
               <p className="text-xs text-gray-400 mt-4 pt-3 border-t border-gray-100 leading-relaxed">
-                本课程不教授软件基础操作与美术基础，请确认符合上述要求再报名。
+                本课程不涉及软件基础操作的教学。
               </p>
             </div>
           </div>
@@ -292,7 +277,7 @@ export default function CoursePage() {
             报名咨询
           </h2>
           <p className="text-sm text-white/70 mb-8">
-            首期限 6-8 人 · 早鸟价 ¥1,999（正价 ¥2,999）
+            首期仅招收 6-8 人，添加微信获取完整课程大纲与报名方式
           </p>
 
           <div className="inline-flex flex-col sm:flex-row items-center gap-6 p-7 rounded-2xl bg-white/10 border border-white/20">
@@ -312,7 +297,7 @@ export default function CoursePage() {
           </div>
 
           <p className="text-xs text-white/50 mt-6">
-            名额有限，报满即止 · 开课前可全额退款
+            开课前可全额退款，开课后按课时进度处理
           </p>
         </div>
       </section>
